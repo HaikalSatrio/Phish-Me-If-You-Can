@@ -1,0 +1,19 @@
+{
+  "version": "experimental_v1",
+  "accept_threshold": 0.9,
+  "review_threshold": 0.6,
+  "minimum_coverage": 0.75,
+  "weights": {
+    "discoverability": 0.2,
+    "linkability": 0.2,
+    "contactability": 0.2,
+    "context_richness": 0.2,
+    "scenario_support": 0.2
+  },
+  "contact_types": ["email", "phone", "messaging_account"],
+  "context_types": ["workplace", "role", "professional_relationship", "hobby", "public_event"],
+  "scenarios": {
+    "work_related_request": ["workplace", "professional_relationship", "email", "public_event"],
+    "community_event": ["hobby", "public_event", "email"]
+  }
+}

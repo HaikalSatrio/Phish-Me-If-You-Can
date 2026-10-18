@@ -1,0 +1,88 @@
+{
+  "schema_version": "1",
+  "target": {
+    "id": "laura",
+    "name": "Laura Example"
+  },
+  "candidates": [
+    {
+      "id": "laura-profile",
+      "matches": [
+        "explicit synthetic fixture identifier",
+        "matching workplace"
+      ],
+      "contradictions": [],
+      "missing": [],
+      "confidence": 0.95,
+      "decision": "PENDING"
+    },
+    {
+      "id": "laura-profile-other",
+      "matches": [
+        "same display name"
+      ],
+      "contradictions": [],
+      "missing": [
+        "matching identifier"
+      ],
+      "confidence": 0.3,
+      "decision": "PENDING"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "laura-1",
+      "candidate_id": "laura-profile",
+      "type": "workplace",
+      "value": "Example Studio",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.4,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/laura",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "laura-2",
+      "candidate_id": "laura-profile",
+      "type": "hobby",
+      "value": "Drawing",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.4,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/laura",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "laura-unresolved",
+      "candidate_id": "laura-profile-other",
+      "type": "email",
+      "value": "other@example.org",
+      "status": "OBSERVED",
+      "confidence": 0.9,
+      "discoverability": 0.7,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/other",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "source": "synthetic-profile",
+      "status": "SUCCESS"
+    }
+  ]
+}

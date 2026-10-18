@@ -1,0 +1,152 @@
+{
+  "schema_version": "1",
+  "target": {
+    "id": "kevin",
+    "name": "Kevin Example"
+  },
+  "candidates": [
+    {
+      "id": "kevin-profile",
+      "matches": [
+        "explicit synthetic fixture identifier",
+        "matching workplace"
+      ],
+      "contradictions": [],
+      "missing": [],
+      "confidence": 0.95,
+      "decision": "PENDING"
+    },
+    {
+      "id": "kevin-profile-other",
+      "matches": [
+        "same display name"
+      ],
+      "contradictions": [],
+      "missing": [
+        "matching identifier"
+      ],
+      "confidence": 0.3,
+      "decision": "PENDING"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "kevin-1",
+      "candidate_id": "kevin-profile",
+      "type": "workplace",
+      "value": "Example Company",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.8,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/kevin",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "kevin-2",
+      "candidate_id": "kevin-profile",
+      "type": "role",
+      "value": "Engineer",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.8,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/kevin",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "kevin-3",
+      "candidate_id": "kevin-profile",
+      "type": "email",
+      "value": "kevin@example.org",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.8,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/kevin",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "kevin-4",
+      "candidate_id": "kevin-profile",
+      "type": "professional_relationship",
+      "value": "Publicly listed team colleague",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.8,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/kevin",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "kevin-5",
+      "candidate_id": "kevin-profile",
+      "type": "public_event",
+      "value": "Example community conference",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.8,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/kevin",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "kevin-6",
+      "candidate_id": "kevin-profile",
+      "type": "hobby",
+      "value": "Running",
+      "status": "OBSERVED",
+      "confidence": 0.95,
+      "discoverability": 0.8,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/kevin",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "kevin-unresolved",
+      "candidate_id": "kevin-profile-other",
+      "type": "email",
+      "value": "other@example.org",
+      "status": "OBSERVED",
+      "confidence": 0.9,
+      "discoverability": 0.7,
+      "sources": [
+        {
+          "url": "https://example.org/synthetic/other",
+          "observed_at": "2026-10-18T00:00:00Z",
+          "collector": "fixture"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "source": "synthetic-profile",
+      "status": "SUCCESS"
+    }
+  ]
+}
