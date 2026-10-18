@@ -33,15 +33,27 @@ Pencarian Google tanpa API, importer URL publik, serta collector profil GitHub d
 
 ## Pencarian web tanpa API
 
+Untuk username, tersedia collector HTML langsung tanpa API serta perbandingan snapshot:
+
 ```powershell
-.\bin\pmiyc.exe search -source google -name "Anton" -out data/anton-search.json
+.\bin\pmiyc.exe adapters
+.\bin\pmiyc.exe search -source direct -username "HaikalSatrio" -platform github
+.\bin\pmiyc.exe compare -before data/before.json -after data/after.json -out data/changes.json
+```
+
+Adapter langsung saat ini mencakup GitHub dan DEV Community. Setiap hasil menyimpan alasan deteksi, versi aturan, dan hash respons. Perbandingan tidak menganggap halaman yang gagal diakses sebagai penurunan exposure. Implementasi masih eksperimental; lihat [panduan collector langsung](docs/DIRECT_COLLECTION.md) untuk batas dukungan dan langkah penggunaan.
+
+```powershell
+.\bin\pmiyc.exe search -source web -name "Anton" -out data/anton-search.json
 .\bin\pmiyc.exe candidates -input data/anton-search.json
-.\bin\pmiyc.exe search -source google -name "Anton" -platform instagram
+.\bin\pmiyc.exe search -source web -name "Anton" -platform instagram
 .\bin\pmiyc.exe platforms
 .\bin\pmiyc.exe search -source url -url "https://example.org"
 ```
 
-Google menggunakan Chrome atau Edge lokal dengan profil sementara terpisah. Tidak membutuhkan API key. Jika ada CAPTCHA, halaman consent, atau format yang tidak dikenali, status menjadi BLOCKED atau FAILED. Uji langsung terakhir terkena tantangan Google, sehingga keberhasilan pencarian langsung belum terbukti di lingkungan ini. Import URL publik berhasil diuji.
+Sumber `web` memakai feed pencarian publik Bing tanpa API key atau browser. Hasil disaring berdasarkan kata pencarian dan domain platform. Respons HTTP berhasil yang hanya berisi hasil tidak relevan tetap dilaporkan FAILED. Pemeriksaan awal mendapatkan hasil NASA yang relevan, tetapi hasil nama pribadi tidak relevan, sehingga pencarian nama dan sosial belum bisa dijamin berhasil di lingkungan ini.
+
+Sumber `google` tetap tersedia dan menggunakan Chrome atau Edge lokal dengan profil sementara. Tantangan Google masih dapat menghasilkan BLOCKED. Collector URL mengikuti redirect publik dengan batas request. Koleksi yang gagal tanpa kandidat menyimpan diagnostik dan mengembalikan exit code nonzero. Tanpa `-out`, nama file baru dibuat otomatis.
 
 `-platform all` mencoba 12 platform dalam registry, dengan batas waktu dan budget. Ini adalah penemuan tautan terindeks, bukan akses langsung ke semua akun atau semua media sosial. Metadata halaman dan cuplikan pencarian tidak digunakan untuk menghitung PES. Profil yang hanya berisi metadata menghasilkan INSUFFICIENT_EVIDENCE walaupun kandidat dikonfirmasi.
 

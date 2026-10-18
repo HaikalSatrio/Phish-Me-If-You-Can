@@ -1,6 +1,9 @@
 package collector
 
-import "context"
+import (
+	"context"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
+)
 
 type Query struct {
 	Company  string
@@ -14,19 +17,22 @@ type Query struct {
 }
 
 type Profile struct {
-	Key       string
-	Platform  string
-	URL       string
-	SourceURL string
-	Facts     []Fact
-	ID        int64  `json:"id"`
-	Login     string `json:"login"`
-	Name      string `json:"name"`
-	Company   string `json:"company"`
-	Location  string `json:"location"`
-	Email     string `json:"email"`
-	Blog      string `json:"blog"`
-	Type      string `json:"type"`
+	ResponseSHA256 string
+	Rule           string
+	Key            string
+	Platform       string
+	URL            string
+	SourceURL      string
+	Facts          []Fact
+	ID             int64  `json:"id"`
+	Login          string `json:"login"`
+	Name           string `json:"name"`
+	Company        string `json:"company"`
+	Location       string `json:"location"`
+	Email          string `json:"email"`
+	Blog           string `json:"blog"`
+	Type           string `json:"type"`
+	Bio            string `json:"bio"`
 }
 
 type Fact struct{ Type, Value string }
@@ -38,6 +44,7 @@ type Event struct {
 }
 
 type Result struct {
+	Receipts   []domain.CollectionReceipt
 	Profiles   []Profile
 	Events     []Event
 	Requests   int

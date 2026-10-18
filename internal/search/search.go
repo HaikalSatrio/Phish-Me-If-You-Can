@@ -142,6 +142,7 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 		name = s.URL
 	}
 	project := domain.Case{SchemaVersion: "1", Target: domain.Target{ID: s.ID, Name: name}, Search: &s, Candidates: []domain.Candidate{}, Evidence: []domain.Evidence{}, Coverage: []domain.Coverage{}}
+	project.Receipts = r.Receipts
 	for _, ev := range r.Events {
 		project.Coverage = append(project.Coverage, domain.Coverage{Source: ev.Operation, Status: ev.Status})
 	}
@@ -203,7 +204,7 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 			if strings.TrimSpace(fact.Value) == "" {
 				continue
 			}
-			project.Evidence = append(project.Evidence, domain.Evidence{ID: id + "-" + fact.Type, CandidateID: id, Type: fact.Type, Value: fact.Value, Status: "OBSERVED", Confidence: cfg.EvidenceConfidence, Discoverability: cfg.Discoverability, Sources: []domain.Source{{URL: sourceURL, ObservedAt: now, Collector: collectorName + "/" + cfg.Version}}})
+			project.Evidence = append(project.Evidence, domain.Evidence{ID: id + "-" + fact.Type, CandidateID: id, Type: fact.Type, Value: fact.Value, Status: "OBSERVED", Confidence: cfg.EvidenceConfidence, Discoverability: cfg.Discoverability, Sources: []domain.Source{{URL: sourceURL, ObservedAt: now, Collector: collectorName + "/" + cfg.Version, ResponseSHA256: p.ResponseSHA256, Rule: p.Rule}}})
 		}
 	}
 	return evidence.Normalize(project)

@@ -1,0 +1,151 @@
+package collector
+
+import (
+	"context"
+	"encoding/xml"
+	"fmt"
+	"net/http"
+	"net/url"
+	"strings"
+	"time"
+	"unicode"
+)
+
+// Bing reads the public search RSS feed without an API key or browser session.
+type Bing struct {
+	client   *http.Client
+	endpoint string
+}
+
+func NewBing(timeout time.Duration) *Bing {
+	return &Bing{client: publicClient(timeout), endpoint: "https://www.bing.com/search"}
+}
+
+type searchFeed struct {
+	XMLName xml.Name `xml:"rss"`
+	Channel struct {
+		Title string `xml:"title"`
+		Items []struct {
+			Title       string `xml:"title"`
+			Link        string `xml:"link"`
+			Description string `xml:"description"`
+		} `xml:"item"`
+	} `xml:"channel"`
+}
+
+func searchWords(s string) string {
+	return strings.Join(strings.FieldsFunc(strings.ToLower(s), func(r rune) bool {
+		return !unicode.IsLetter(r) && !unicode.IsNumber(r)
+	}), " ")
+}
+
+// This checks textual relevance only, never ownership of a result.
+func relevantResult(q Query, text string) bool {
+	haystack := " " + searchWords(text) + " "
+	for _, clue := range []string{q.Name, q.Username, q.Company, q.Location} {
+		for _, word := range strings.Fields(searchWords(clue)) {
+			if !strings.Contains(haystack, " "+word+" ") {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+func (b *Bing) Collect(ctx context.Context, q Query) Result {
+	r := Result{Profiles: []Profile{}, Events: []Event{}, Status: "SUCCESS", Incomplete: true}
+	if searchWords(q.Name+" "+q.Username) == "" || q.Limit < 1 || q.Limit > 20 || q.Budget < 1 {
+		r.Status = "FAILED"
+		r.Events = append(r.Events, Event{"bing:input", "FAILED", "Name or username and valid budget required"})
+		return r
+	}
+	platforms := []Platform{{Name: "web"}}
+	if q.Platform != "" {
+		platforms = nil
+		for _, p := range Platforms() {
+			if q.Platform == "all" || q.Platform == p.Name {
+				platforms = append(platforms, p)
+			}
+		}
+		if len(platforms) == 0 {
+			r.Status = "FAILED"
+			r.Events = append(r.Events, Event{"bing:input", "FAILED", "Unknown platform"})
+			return r
+		}
+	}
+	seen := map[string]bool{}
+	stopped := false
+	for _, p := range platforms {
+		op := "bing:" + p.Name
+		if stopped || ctx.Err() != nil || r.Requests >= q.Budget {
+			r.Events = append(r.Events, Event{op, "NOT_CHECKED", "Stopped after restriction, cancellation, or request budget"})
+			continue
+		}
+		if r.Requests > 0 {
+			timer := time.NewTimer(2 * time.Second)
+			select {
+			case <-ctx.Done():
+				timer.Stop()
+				r.Events = append(r.Events, Event{op, "NOT_CHECKED", "Cancelled"})
+				continue
+			case <-timer.C:
+			}
+		}
+		query := searchPhrase(q)
+		if len(p.Domains) > 0 {
+			query += " (site:" + strings.Join(p.Domains, " OR site:") + ")"
+		}
+		raw := b.endpoint + "?" + url.Values{"q": {query}, "format": {"rss"}}.Encode()
+		body, status, detail, _ := readPublic(ctx, b.client, raw, nil)
+		r.Requests++
+		if status != "SUCCESS" {
+			r.Status = status
+			r.Events = append(r.Events, Event{op, status, detail})
+			stopped = status == "BLOCKED"
+			continue
+		}
+		var feed searchFeed
+		if xml.Unmarshal(body, &feed) != nil || feed.Channel.Title == "" {
+			r.Status = "FAILED"
+			r.Events = append(r.Events, Event{op, "FAILED", "Expected search RSS; received unsupported content"})
+			stopped = true
+			continue
+		}
+		accepted, rejected := 0, 0
+		invalidURLs, wrongDomains, unrelated := 0, 0, 0
+		for _, item := range feed.Channel.Items {
+			u, err := cleanURL(item.Link)
+			if err != nil {
+				invalidURLs++
+				rejected++
+				continue
+			}
+			if p.Name != "web" && platformFor(u.Hostname()) != p.Name {
+				wrongDomains++
+				rejected++
+				continue
+			}
+			if !relevantResult(q, item.Title+" "+item.Description+" "+item.Link) {
+				unrelated++
+				rejected++
+				continue
+			}
+			if accepted >= q.Limit || seen[u.String()] {
+				continue
+			}
+			accepted++
+			seen[u.String()] = true
+			r.Profiles = append(r.Profiles, Profile{Key: keyFor("web", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: raw, Facts: []Fact{{"search_title", item.Title}, {"search_snippet", item.Description}, {"indexed_url", u.String()}}})
+		}
+		if accepted == 0 {
+			r.Status = "FAILED"
+			r.Events = append(r.Events, Event{op, "FAILED", fmt.Sprintf("No usable matching links: %d invalid URLs, %d outside the requested platform, %d without all query words. The feed is insufficient for this query; this does not establish that the account or public data is absent.", invalidURLs, wrongDomains, unrelated)})
+		} else {
+			r.Events = append(r.Events, Event{op, "SUCCESS", fmt.Sprintf("%d indexed links; %d unrelated or invalid entries rejected. Ownership requires review; destination pages not fetched.", accepted, rejected)})
+		}
+	}
+	if len(r.Profiles) == 0 && r.Status == "SUCCESS" {
+		r.Status = "FAILED"
+	}
+	return r
+}

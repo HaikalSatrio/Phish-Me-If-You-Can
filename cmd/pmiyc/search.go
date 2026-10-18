@@ -19,8 +19,8 @@ func runSearch(args []string) error {
 	fs := flag.NewFlagSet("search", flag.ContinueOnError)
 	name := fs.String("name", "", "subject name")
 	username := fs.String("username", "", "known account username or Bluesky handle")
-	source := fs.String("source", "", "github, google (no API), brave, google-api, url, or bluesky")
-	platform := fs.String("platform", "", "social platform name or all for indexed discovery")
+	source := fs.String("source", "", "direct (HTML, no API), web/bing, github (API), google (browser), brave, google-api, url, or bluesky")
+	platform := fs.String("platform", "", "platform name or all; direct uses implemented adapters, web uses indexed discovery")
 	pageURL := fs.String("url", "", "explicit public page URL")
 	company := fs.String("company", "", "company clue for comparison")
 	location := fs.String("location", "", "location clue for comparison")
@@ -31,7 +31,7 @@ func runSearch(args []string) error {
 		return err
 	}
 	if fs.NArg() != 0 {
-		return fmt.Errorf("unexpected positional arguments")
+		return fmt.Errorf("unexpected positional arguments %q; supply one value after -username, for example: search -source github -username HaikalSatrio", fs.Args())
 	}
 	if *out != "" {
 		if _, err := os.Stat(*out); err == nil {
@@ -63,8 +63,10 @@ func runSearch(args []string) error {
 	if provider == "" {
 		if *pageURL != "" {
 			provider = "url"
+		} else if *username != "" {
+			provider = "direct"
 		} else if *name != "" || *platform != "" {
-			provider = "google"
+			provider = "web"
 		} else {
 			provider = "github"
 		}
@@ -72,6 +74,10 @@ func runSearch(args []string) error {
 	timeout := time.Duration(cfg.TimeoutSeconds) * time.Second
 	var client collector.Collector
 	switch provider {
+	case "direct":
+		client = collector.NewDirect(timeout)
+	case "web", "bing":
+		client = collector.NewBing(timeout)
 	case "github":
 		client = collector.NewGitHub(timeout, os.Getenv("GITHUB_TOKEN"))
 	case "google":
@@ -87,8 +93,8 @@ func runSearch(args []string) error {
 	default:
 		return fmt.Errorf("unknown source %q", provider)
 	}
-	if *platform != "" && provider != "google" && provider != "brave" && provider != "google-api" {
-		return fmt.Errorf("-platform is only supported by search providers")
+	if *platform != "" && provider != "direct" && provider != "web" && provider != "bing" && provider != "google" && provider != "brave" && provider != "google-api" {
+		return fmt.Errorf("-platform is supported by direct collection and search providers")
 	}
 	if *pageURL != "" && provider != "url" {
 		return fmt.Errorf("use -source url with -url")
@@ -105,21 +111,29 @@ func runSearch(args []string) error {
 		return err
 	}
 	fmt.Printf("Saved project: %s\nStatus: %s\nCollection attempts used: %d/%d\n", path, project.Search.Status, project.Search.RequestsUsed, cfg.RequestBudget)
+	fmt.Printf("Collected: %d candidates, %d observations\n", len(project.Candidates), len(project.Evidence))
+	if provider == "web" || provider == "bing" {
+		fmt.Println("Source: Bing public search RSS, no API key. Social results are indexed links, not full account contents.")
+	}
 	printCandidates(project)
+	for _, receipt := range project.Receipts {
+		fmt.Printf("Receipt: %s | %s | rule=%s | response_sha256=%s\n", receipt.Platform, receipt.Status, receipt.Rule, receipt.ResponseSHA256)
+	}
 	fmt.Println("Scope: " + project.Search.Scope)
 	if len(project.Candidates) > 0 {
 		fmt.Println("Review: pmiyc review -input <project.json> -candidate <candidate-id> -decision CONFIRM -out <reviewed.json>")
 	}
-	if project.Search.Status != "BLOCKED" && provider != "url" && project.Search.Attempts < cfg.MaxAttempts && project.Search.RequestsUsed < cfg.RequestBudget {
+	if len(project.Candidates) > 0 && project.Search.Status != "BLOCKED" && project.Search.Status != "FAILED" && provider != "url" && project.Search.Attempts < cfg.MaxAttempts && project.Search.RequestsUsed < cfg.RequestBudget {
 		fmt.Println("Need a closer match? Refine with search -input <project.json> -username <known-username>, -company <company>, or -location <location>.")
 	}
 	if project.Search.Status == "BLOCKED" {
 		fmt.Println("Access was blocked. Check the diagnostic below; a saved project does not mean collection succeeded.")
 	}
 	for _, ev := range project.Search.Events {
-		if ev.Status != "SUCCESS" {
-			fmt.Printf("%s: %s (%s)\n", ev.Operation, ev.Status, ev.Detail)
-		}
+		fmt.Printf("%s: %s (%s)\n", ev.Operation, ev.Status, ev.Detail)
+	}
+	if len(project.Candidates) == 0 && (project.Search.Status == "BLOCKED" || project.Search.Status == "FAILED") {
+		return fmt.Errorf("collection did not succeed; diagnostics saved to %s", path)
 	}
 	return nil
 }
@@ -133,5 +147,14 @@ func printCandidates(c domain.Case) {
 			fmt.Printf("Page title: %q\n", p.Label)
 		}
 		fmt.Printf("\n%s | user=%q name=%q decision=%s\n  URL: %q\n  Company: %q Location: %q\n  Matches: %q\n  Contradictions: %q\n  Missing: %q\n", p.ID, p.Username, p.DisplayName, p.Decision, p.ProfileURL, p.Company, p.Location, p.Matches, p.Contradictions, p.Missing)
+		fmt.Println("  Public observations:")
+		for _, e := range c.Evidence {
+			if e.CandidateID == p.ID {
+				fmt.Printf("    %s: %q\n", e.Type, e.Value)
+			}
+		}
+		if p.Username != "" && p.DisplayName == "" && p.Company == "" && p.Location == "" {
+			fmt.Println("  The account was retrieved, but public name, company, and location were not provided by this source.")
+		}
 	}
 }

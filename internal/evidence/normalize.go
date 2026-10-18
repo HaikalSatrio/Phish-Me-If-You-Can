@@ -1,6 +1,7 @@
 package evidence
 
 import (
+	"encoding/hex"
 	"fmt"
 	"math"
 	"net/url"
@@ -16,6 +17,28 @@ func canonical(s string) string { return strings.ToLower(strings.Join(strings.Fi
 func Normalize(c domain.Case) (domain.Case, error) {
 	if c.SchemaVersion != "1" || strings.TrimSpace(c.Target.ID) == "" || strings.TrimSpace(c.Target.Name) == "" {
 		return c, fmt.Errorf("schema_version 1 and target id/name are required")
+	}
+	receipts := map[string]bool{}
+	for _, receipt := range c.Receipts {
+		u, err := url.Parse(receipt.URL)
+		if err != nil || (u.Scheme != "https" && u.Scheme != "http") || u.Host == "" || receipt.Platform == "" || receipt.Rule == "" || receipt.Reason == "" || receipts[receipt.URL] || receipt.Bytes < 0 {
+			return c, fmt.Errorf("invalid or duplicate collection receipt")
+		}
+		receipts[receipt.URL] = true
+		if _, err := time.Parse(time.RFC3339, receipt.ObservedAt); err != nil {
+			return c, fmt.Errorf("invalid receipt observation time")
+		}
+		switch receipt.Status {
+		case "SUCCESS", "EMPTY", "BLOCKED", "FAILED", "NOT_CHECKED":
+		default:
+			return c, fmt.Errorf("invalid receipt status")
+		}
+		if receipt.ResponseSHA256 != "" || receipt.Status == "SUCCESS" {
+			decoded, err := hex.DecodeString(receipt.ResponseSHA256)
+			if err != nil || len(decoded) != 32 {
+				return c, fmt.Errorf("invalid receipt response digest")
+			}
+		}
 	}
 	candidates := map[string]bool{}
 	confirmed := 0
@@ -90,6 +113,23 @@ func Normalize(c domain.Case) (domain.Case, error) {
 			}
 		}
 		for _, s := range e.Sources {
+			if c.Search != nil && c.Search.Provider == "direct" {
+				matched := false
+				for _, receipt := range c.Receipts {
+					if receipt.Status == "SUCCESS" && receipt.URL == s.URL && receipt.Rule == s.Rule && receipt.ResponseSHA256 == s.ResponseSHA256 && s.ResponseSHA256 != "" {
+						matched = true
+					}
+				}
+				if !matched {
+					return c, fmt.Errorf("direct evidence %s has no matching collection receipt", e.ID)
+				}
+			}
+			if s.ResponseSHA256 != "" {
+				decoded, err := hex.DecodeString(s.ResponseSHA256)
+				if err != nil || len(decoded) != 32 || s.Rule == "" {
+					return c, fmt.Errorf("invalid response provenance for %s", e.ID)
+				}
+			}
 			u, err := url.Parse(s.URL)
 			if err != nil || (u.Scheme != "https" && u.Scheme != "http") || u.Host == "" || s.Collector == "" {
 				return c, fmt.Errorf("invalid source for %s", e.ID)
@@ -97,6 +137,25 @@ func Normalize(c domain.Case) (domain.Case, error) {
 			if _, err := time.Parse(time.RFC3339, s.ObservedAt); err != nil {
 				return c, fmt.Errorf("invalid observation time for %s", e.ID)
 			}
+		}
+	}
+	for _, receipt := range c.Receipts {
+		if receipt.Status != "SUCCESS" {
+			continue
+		}
+		matched := false
+		for _, e := range c.Evidence {
+			if e.Status != "OBSERVED" {
+				continue
+			}
+			for _, source := range e.Sources {
+				if source.URL == receipt.URL && source.ResponseSHA256 == receipt.ResponseSHA256 && source.Rule == receipt.Rule {
+					matched = true
+				}
+			}
+		}
+		if !matched {
+			return c, fmt.Errorf("successful receipt has no matching observed evidence")
 		}
 	}
 	visited := map[string]int{}

@@ -120,6 +120,9 @@ func (g *GitHub) Collect(ctx context.Context, q Query) Result {
 		}
 		r.Events = append(r.Events, Event{"github:user:" + login, status, detail})
 		if status == "SUCCESS" {
+			if p.Bio != "" {
+				p.Facts = append(p.Facts, Fact{"profile_description", p.Bio})
+			}
 			r.Profiles = append(r.Profiles, p)
 		} else {
 			if status == "EMPTY" && q.Username != "" {

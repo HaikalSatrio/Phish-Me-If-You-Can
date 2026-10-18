@@ -22,9 +22,11 @@ type Candidate struct {
 }
 
 type Source struct {
-	URL        string `json:"url"`
-	ObservedAt string `json:"observed_at"`
-	Collector  string `json:"collector"`
+	ResponseSHA256 string `json:"response_sha256,omitempty"`
+	Rule           string `json:"rule,omitempty"`
+	URL            string `json:"url"`
+	ObservedAt     string `json:"observed_at"`
+	Collector      string `json:"collector"`
 }
 
 type Evidence struct {
@@ -46,12 +48,24 @@ type Coverage struct {
 }
 
 type Case struct {
-	Search        *SearchSession `json:"search,omitempty"`
-	SchemaVersion string         `json:"schema_version"`
-	Target        Target         `json:"target"`
-	Candidates    []Candidate    `json:"candidates"`
-	Evidence      []Evidence     `json:"evidence"`
-	Coverage      []Coverage     `json:"coverage"`
+	Receipts      []CollectionReceipt `json:"receipts,omitempty"`
+	Search        *SearchSession      `json:"search,omitempty"`
+	SchemaVersion string              `json:"schema_version"`
+	Target        Target              `json:"target"`
+	Candidates    []Candidate         `json:"candidates"`
+	Evidence      []Evidence          `json:"evidence"`
+	Coverage      []Coverage          `json:"coverage"`
+}
+
+type CollectionReceipt struct {
+	Platform       string `json:"platform"`
+	URL            string `json:"url"`
+	ObservedAt     string `json:"observed_at"`
+	Status         string `json:"status"`
+	Rule           string `json:"rule"`
+	Reason         string `json:"reason"`
+	ResponseSHA256 string `json:"response_sha256,omitempty"`
+	Bytes          int    `json:"bytes,omitempty"`
 }
 
 type SearchSession struct {

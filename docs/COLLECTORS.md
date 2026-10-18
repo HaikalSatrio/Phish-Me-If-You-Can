@@ -37,7 +37,9 @@ Without `-out`, search automatically creates `data/<session-id>-<attempt>.json`.
 
 ## Scope and evidence
 
-Only public profile username, display name, company, location, email, and website fields are captured when present. Empty fields produce no fact. Company is stored as workplace context but is a self-description, not verified employment. Biography text is not parsed into personality traits, relationships, hobbies, or routines. Website links are stored as text and never followed.
+Public profile username, display name, company, location, email, and website fields are captured when present. Biography is retained as profile_description metadata and excluded from PES. Empty fields produce no fact. Company is stored as workplace context but is a self-description, not verified employment. Biography text is not parsed into personality traits, relationships, hobbies, or routines. Website links are stored as text and never followed.
+
+The CLI prints collected observations. An account with only a public username is still a successful retrieval; blank name, company, or location fields do not mean the request failed. Supply one username after `-username`; do not append a second example username such as `octocat`.
 
 Every fact carries the API source URL, observation timestamp, collector version, candidate ID, and explicit experimental annotations. The collector configuration is recorded in the search session. Profiles are always pending review, even when the heuristic score exceeds the PES acceptance threshold.
 

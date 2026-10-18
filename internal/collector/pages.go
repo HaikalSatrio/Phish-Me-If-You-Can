@@ -74,8 +74,38 @@ func (p *Page) Collect(ctx context.Context, q Query) Result {
 		r.Status = "BLOCKED"
 		return r
 	}
-	b, status, detail, content := readPublic(ctx, p.client, u.String(), nil)
-	r.Requests = 1
+	var b []byte
+	var status, detail, content string
+	visited := map[string]bool{}
+	for {
+		visited[u.String()] = true
+		var location string
+		b, status, detail, content, location = readPublicOnce(ctx, p.client, u.String(), nil)
+		r.Requests++
+		if location == "" {
+			break
+		}
+		if r.Requests >= q.Budget || r.Requests >= 5 {
+			status, detail = "FAILED", "Redirect limit or request budget reached"
+			break
+		}
+		next, parseErr := url.Parse(location)
+		if parseErr != nil {
+			status, detail = "FAILED", "Invalid redirect URL"
+			break
+		}
+		next, parseErr = cleanURL(u.ResolveReference(next).String())
+		if parseErr != nil || (u.Scheme == "https" && next.Scheme != "https") {
+			status, detail = "BLOCKED", "Redirect destination is not an allowed public URL"
+			break
+		}
+		if visited[next.String()] {
+			status, detail = "FAILED", "Redirect loop detected"
+			break
+		}
+		r.Events = append(r.Events, Event{"url:redirect", "SUCCESS", "Following public redirect; destination checked before fetching"})
+		u = next
+	}
 	r.Status = status
 	if status != "SUCCESS" {
 		r.Events = append(r.Events, Event{"url:page", status, detail})

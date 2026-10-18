@@ -4,14 +4,29 @@
 
 | Source | Input | Collection mode | Requirement |
 | --- | --- | --- | --- |
+| direct | Known username | Site-specific public HTML profile rules | No API key or browser; GitHub and DEV Community only |
+| web / bing | Name or username | Public Bing search RSS with local relevance and domain filtering | No API key or browser |
 | google | Name or username | Local browser renders the public search page | Installed Chrome, Chromium, or Edge; no API key |
-| url | Explicit public URL | One HTTP request for HTML title and description | Public HTTP(S) page without authentication |
+| url | Explicit public URL | HTML title and description, bounded public redirects | Public HTTP(S) page without authentication |
 | github | Name or username | Public GitHub profile API | Optional GITHUB_TOKEN |
 | bluesky | Full handle | Public Bluesky profile API | No key |
 | brave | Name or username | Search API index results | BRAVE_API_KEY |
 | google-api | Name or username | Legacy Custom Search JSON API | Existing eligible access, GOOGLE_API_KEY and GOOGLE_CSE_ID |
 
-New name searches default to google. Username-only searches default to github. Explicit URLs default to url. Saved sessions retain their provider; legacy GitHub sessions continue to use GitHub. Set `-source` explicitly for predictable scripts.
+New searches with a username default to direct. Name-only searches default to web. Explicit URLs default to url. Saved sessions retain their provider; legacy GitHub sessions continue to use GitHub. Set `-source` explicitly for predictable scripts. See [direct collection](DIRECT_COLLECTION.md) for collection receipts and offline snapshot comparisons.
+
+## No-key web workflow
+
+```powershell
+.\bin\pmiyc.exe search -source web -name "Haikal Satrio"
+.\bin\pmiyc.exe search -source web -name "Haikal Satrio" -platform instagram
+```
+
+This mode uses Bing's public RSS endpoint, not a search API. Each returned item must contain all normalized query words across its title, description, and URL. Social results must also belong to the configured platform domain. This conservative relevance filter can discard valid results; a textual match is not identity verification. Results remain pending review. No destination pages are fetched automatically.
+
+The endpoint can ignore search terms or site filters. HTTP 200 alone is not success. Unrelated results are rejected and a feed without usable matches is FAILED, not proof of no public exposure. Initial diagnostic requests returned relevant NASA results but unrelated results for the supplied personal name. This alternative does not establish reliable personal-name or social search in this environment. A successful feed remains PARTIAL because coverage is incomplete.
+
+Without `-out`, each run creates a new snapshot. A failed or blocked collection with no candidates saves diagnostics and exits nonzero. The CLI prints successful events and observed values as well as errors. Google is selectable separately; providers are not silently substituted.
 
 ## No-key Google workflow
 
@@ -45,7 +60,7 @@ Except for the explicit GitHub and Bluesky API modes, these are indexed discover
 .\bin\pmiyc.exe search -source url -name "Anton" -url "https://example.org/about" -out data/anton-page.json
 ```
 
-The URL importer extracts title and description only. Scripts are not executed and links are not followed. It does not infer employment, interests, email ownership, or relationships from arbitrary text. HTTP redirects are recorded as BLOCKED; provide the final public URL explicitly. PDF and non-HTML files are not supported.
+The URL importer extracts title and description only. Scripts are not executed and page links are not followed. It does not infer employment, interests, email ownership, or relationships from arbitrary text. HTTP redirects are followed within a maximum of five requests and the remaining request budget. Each destination is validated, redirect loops and HTTPS downgrades are rejected, and the final URL is preserved as provenance. PDF and non-HTML files are not supported.
 
 Only HTTP(S), standard ports, and public destinations are allowed. Private, loopback, link-local, reserved destinations, and credential-bearing URLs are rejected. DNS addresses are checked and the connection is pinned to a checked address. HTTP API tokens are scoped to their configured fixed API provider and never attached to imported pages. The browser mode has its own isolated navigation model and does not use this HTTP transport.
 

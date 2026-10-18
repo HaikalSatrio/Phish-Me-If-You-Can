@@ -69,12 +69,17 @@ func publicClient(timeout time.Duration) *http.Client {
 }
 
 func readPublic(ctx context.Context, client *http.Client, raw string, headers map[string]string) ([]byte, string, string, string) {
+	body, status, detail, content, _ := readPublicOnce(ctx, client, raw, headers)
+	return body, status, detail, content
+}
+
+func readPublicOnce(ctx context.Context, client *http.Client, raw string, headers map[string]string) ([]byte, string, string, string, string) {
 	if _, err := cleanURL(raw); err != nil {
-		return nil, "BLOCKED", "URL is not an allowed public destination", ""
+		return nil, "BLOCKED", "URL is not an allowed public destination", "", ""
 	}
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, raw, nil)
 	if err != nil {
-		return nil, "FAILED", "Invalid request", ""
+		return nil, "FAILED", "Invalid request", "", ""
 	}
 	req.Header.Set("User-Agent", "PMIYC/0.3 public-exposure-research")
 	for k, v := range headers {
@@ -82,21 +87,24 @@ func readPublic(ctx context.Context, client *http.Client, raw string, headers ma
 	}
 	resp, err := client.Do(req)
 	if err != nil {
-		return nil, "FAILED", "Request failed, was cancelled, or destination was not public", ""
+		return nil, "FAILED", "Request failed, was cancelled, or destination was not public", "", ""
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode == 404 {
-		return nil, "EMPTY", "Public resource not found", ""
+		return nil, "EMPTY", "Public resource not found", "", ""
+	}
+	if resp.StatusCode == 301 || resp.StatusCode == 302 || resp.StatusCode == 303 || resp.StatusCode == 307 || resp.StatusCode == 308 {
+		return nil, "BLOCKED", fmt.Sprintf("HTTP %d redirect", resp.StatusCode), "", resp.Header.Get("Location")
 	}
 	if resp.StatusCode == 401 || resp.StatusCode == 403 || resp.StatusCode == 429 || (resp.StatusCode >= 300 && resp.StatusCode < 400) {
-		return nil, "BLOCKED", fmt.Sprintf("HTTP %d; access restriction or redirect not followed", resp.StatusCode), ""
+		return nil, "BLOCKED", fmt.Sprintf("HTTP %d; access restriction or redirect not followed", resp.StatusCode), "", ""
 	}
 	if resp.StatusCode != 200 {
-		return nil, "FAILED", fmt.Sprintf("HTTP %d", resp.StatusCode), ""
+		return nil, "FAILED", fmt.Sprintf("HTTP %d", resp.StatusCode), "", ""
 	}
 	b, err := io.ReadAll(io.LimitReader(resp.Body, (2<<20)+1))
 	if err != nil || len(b) > 2<<20 {
-		return nil, "FAILED", "Unreadable or oversized response", ""
+		return nil, "FAILED", "Unreadable or oversized response", "", ""
 	}
-	return b, "SUCCESS", "Public response retrieved", resp.Header.Get("Content-Type")
+	return b, "SUCCESS", "Public response retrieved", resp.Header.Get("Content-Type"), ""
 }
