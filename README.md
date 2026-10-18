@@ -6,7 +6,7 @@ PES adalah indeks eksperimental exposure, bukan probabilitas seseorang akan terk
 
 ## Menjalankan
 
-Memerlukan Go 1.22 atau lebih baru. Jalankan dari root repository:
+Memerlukan Go 1.26 atau lebih baru untuk build. Executable yang sudah dibuat dapat langsung dijalankan. Jalankan dari root repository:
 
 ```sh
 go build -o bin/pmiyc ./cmd/pmiyc
@@ -29,7 +29,23 @@ Pada Windows, executable build dapat diberi nama `bin/pmiyc.exe`. Semua output f
 - Kebijakan scoring berversi dalam `configs/experimental-v1.json`.
 - Penyimpanan snapshot JSON lokal dan output terstruktur untuk integrasi GUI mendatang.
 
-Collector langsung, GUI, persona builder, LLM, SSR, Shapley, attack graph, dan remediation belum diimplementasikan. Semua input saat ini berasal dari JSON. Confidence dan discoverability disuplai oleh dataset atau operator, bukan dihitung dari pencarian otomatis.
+Pencarian Google tanpa API, importer URL publik, serta collector profil GitHub dan Bluesky tersedia. Pencarian sosial menggunakan filter domain pada indeks pencarian. Confidence pencocokan dan discoverability memakai heuristic eksperimental yang dapat dikonfigurasi. Kandidat wajib direview sebelum scoring. GUI, persona builder, LLM, SSR, Shapley, attack graph, dan remediation belum diimplementasikan.
+
+## Pencarian web tanpa API
+
+```powershell
+.\bin\pmiyc.exe search -source google -name "Anton" -out data/anton-search.json
+.\bin\pmiyc.exe candidates -input data/anton-search.json
+.\bin\pmiyc.exe search -source google -name "Anton" -platform instagram
+.\bin\pmiyc.exe platforms
+.\bin\pmiyc.exe search -source url -url "https://example.org"
+```
+
+Google menggunakan Chrome atau Edge lokal dengan profil sementara terpisah. Tidak membutuhkan API key. Jika ada CAPTCHA, halaman consent, atau format yang tidak dikenali, status menjadi BLOCKED atau FAILED. Uji langsung terakhir terkena tantangan Google, sehingga keberhasilan pencarian langsung belum terbukti di lingkungan ini. Import URL publik berhasil diuji.
+
+`-platform all` mencoba 12 platform dalam registry, dengan batas waktu dan budget. Ini adalah penemuan tautan terindeks, bukan akses langsung ke semua akun atau semua media sosial. Metadata halaman dan cuplikan pencarian tidak digunakan untuk menghitung PES. Profil yang hanya berisi metadata menghasilkan INSUFFICIENT_EVIDENCE walaupun kandidat dikonfirmasi.
+
+Untuk GitHub gunakan `search -source github -username octocat`. Untuk Bluesky gunakan `search -source bluesky -username HANDLE`. Lihat [panduan web dan sosial](docs/WEB_AND_SOCIAL.md) serta [panduan GitHub](docs/COLLECTORS.md).
 
 ## Dokumen
 

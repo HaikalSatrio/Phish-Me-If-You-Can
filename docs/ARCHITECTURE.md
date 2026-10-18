@@ -1,6 +1,6 @@
 # Architecture
 
-The core uses Go and the standard library. The CLI is an adapter; domain, evidence, identity, scoring, and storage packages can be called by a future local GUI service.
+The core uses Go; HTML ingestion uses the version-pinned golang.org/x/net/html parser. The CLI is an adapter; domain, evidence, identity, scoring, and storage packages can be called by a future local GUI service.
 
 ## Pipeline
 
@@ -24,8 +24,8 @@ Review creates a new snapshot. There is no authenticated multi-user audit trail 
 
 ## Current limitations
 
-Identity matching is a policy over supplied confidence annotations, matches, contradictions, and operator decisions. Automated identifier comparison is a later collector/identity milestone. Names alone should not be treated as strong matching evidence.
+Manual datasets retain their supplied identity annotations. GitHub collection adds exact normalized name, username, company, and location comparisons under a configurable experimental policy. Collected candidates always require operator review. Names alone are weak matching evidence.
 
 Conflict detection is deliberately conservative and limited to divergent workplace and role values within a candidate. Concurrent roles can be valid but require a richer temporal schema in a later revision. Distinct accepted candidate profiles are not merged across platforms, so cross-profile duplicate control remains future work.
 
-No source requests, message delivery, or model inference occur in the current engine.
+Collectors support public GitHub/Bluesky profiles, explicit page metadata, and search providers. Google browser mode uses an isolated local browser profile and counts navigations rather than all subrequests. Collection and search orchestration live in separate packages and can be called by a future GUI. Session snapshots preserve clues, budgets, events, and source scope. No message delivery or model inference occurs. See COLLECTORS.md and WEB_AND_SOCIAL.md for capabilities and limitations.

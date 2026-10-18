@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/collector"
 	"os"
+	"time"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/evidence"
@@ -13,8 +15,17 @@ import (
 )
 
 func run(args []string) error {
+	if len(args) == 1 && args[0] == "platforms" {
+		for _, p := range collector.Platforms() {
+			fmt.Printf("%s: %s\n", p.Name, p.Mode)
+		}
+		return nil
+	}
+	if len(args) > 0 && args[0] == "search" {
+		return runSearch(args[1:])
+	}
 	if len(args) == 0 {
-		return fmt.Errorf("usage: pmiyc <import|analyze|review> -input case.json [-policy configs/experimental-v1.json] [-out new-file.json]")
+		return fmt.Errorf("usage: pmiyc search -name <name> | pmiyc <import|analyze|review|candidates> -input case.json [-out new-file.json]")
 	}
 	fs := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	input := fs.String("input", "", "case JSON path")
@@ -34,6 +45,9 @@ func run(args []string) error {
 	}
 	var result any
 	switch args[0] {
+	case "candidates":
+		printCandidates(c)
+		return nil
 	case "import":
 		if *out == "" {
 			return fmt.Errorf("import requires -out")
@@ -50,12 +64,32 @@ func run(args []string) error {
 		found := false
 		for i := range c.Candidates {
 			if c.Candidates[i].ID == *candidate {
+				if c.Search != nil && *decision == "CONFIRM" && len(c.Candidates[i].Contradictions) > 0 {
+					return fmt.Errorf("candidate has conflicting clues; refine the search before confirming")
+				}
 				c.Candidates[i].Decision = *decision
 				found = true
 			}
 		}
 		if !found {
 			return fmt.Errorf("candidate not found")
+		}
+		if c.Search != nil {
+			if *decision == "CONFIRM" {
+				for i := range c.Candidates {
+					if c.Candidates[i].ID != *candidate && c.Candidates[i].Decision == "CONFIRM" {
+						c.Candidates[i].Decision = "PENDING"
+					}
+				}
+			}
+			c.Search.Status = "REVIEW_REQUIRED"
+			for _, v := range c.Candidates {
+				if v.Decision == "CONFIRM" {
+					c.Search.Status = "IDENTITY_CONFIRMED"
+				}
+			}
+			c.Search.UpdatedAt = time.Now().UTC().Format(time.RFC3339)
+			c.Search.Events = append(c.Search.Events, domain.SearchEvent{At: c.Search.UpdatedAt, Operation: "review:" + *candidate, Status: *decision, Detail: "Operator decision; confirmation does not independently verify public profile claims"})
 		}
 		normalized, err := evidence.Normalize(c)
 		if err != nil {

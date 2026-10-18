@@ -73,7 +73,10 @@ func Calculate(c domain.Case, p domain.Policy) (domain.Report, error) {
 		return domain.Report{}, err
 	}
 	r.SchemaVersion = "1"
-	r.EngineVersion = "0.1.0"
+	r.EngineVersion = "0.3.0"
+	if c.Search != nil {
+		r.Limitations = append(r.Limitations, c.Search.Scope, "Collector annotations are experimental heuristics. Profile fields are public self-descriptions, not independently verified facts.")
+	}
 	r.InputSHA256 = fmt.Sprintf("%x", sha256.Sum256(inputJSON))
 	r.PolicySHA256 = fmt.Sprintf("%x", sha256.Sum256(policyJSON))
 	confidence := map[string]float64{}
@@ -104,7 +107,8 @@ func Calculate(c domain.Case, p domain.Policy) (domain.Report, error) {
 	all := []string{}
 	d, l := 0.0, 0.0
 	for _, e := range c.Evidence {
-		if e.Status != "OBSERVED" || e.Confidence == 0 || r.IdentityStates[e.CandidateID] != "ACCEPTED" || len(conflicts[e.CandidateID+":"+e.Type]) > 1 {
+		metadataOnly := e.Type == "search_title" || e.Type == "search_snippet" || e.Type == "indexed_url" || e.Type == "page_title" || e.Type == "page_description" || e.Type == "profile_description"
+		if metadataOnly || e.Status != "OBSERVED" || e.Confidence == 0 || r.IdentityStates[e.CandidateID] != "ACCEPTED" || len(conflicts[e.CandidateID+":"+e.Type]) > 1 {
 			r.ExcludedIDs = append(r.ExcludedIDs, e.ID)
 			continue
 		}

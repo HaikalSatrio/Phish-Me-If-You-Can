@@ -34,3 +34,26 @@ func TestImportReviewAnalyze(t *testing.T) {
 		t.Fatal("overwrote saved project")
 	}
 }
+
+func TestSearchReviewSelectsOnlyOneCandidate(t *testing.T) {
+	dir := t.TempDir()
+	input := filepath.Join(dir, "search.json")
+	out := filepath.Join(dir, "reviewed.json")
+	c := domain.Case{SchemaVersion: "1", Target: domain.Target{ID: "test", Name: "Anton"}, Search: &domain.SearchSession{}, Candidates: []domain.Candidate{
+		{ID: "one", Decision: "CONFIRM", RequiresReview: true, Confidence: 0.6},
+		{ID: "two", Decision: "PENDING", RequiresReview: true, Confidence: 0.6},
+	}}
+	if err := storage.WriteNew(input, c); err != nil {
+		t.Fatal(err)
+	}
+	if err := run([]string{"review", "-input", input, "-candidate", "two", "-decision", "CONFIRM", "-out", out}); err != nil {
+		t.Fatal(err)
+	}
+	var saved domain.Case
+	if err := storage.Read(out, &saved); err != nil {
+		t.Fatal(err)
+	}
+	if saved.Candidates[0].Decision != "PENDING" || saved.Candidates[1].Decision != "CONFIRM" || len(saved.Search.Events) != 1 {
+		t.Fatal("review did not preserve exclusive selection and history")
+	}
+}

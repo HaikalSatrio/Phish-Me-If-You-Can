@@ -6,6 +6,8 @@ All five dimensions are in [0, 1]. The aggregate is displayed in [0, 100]. This 
 
 Only OBSERVED facts with positive confidence and ACCEPTED candidate linkage participate. Unknown, inferred, rejected, unresolved, and conflicting workplace/role facts are excluded and listed in the report. Confidence values are heuristic annotations, not probabilities.
 
+Engine 0.3 also excludes discovery metadata types: search_title, search_snippet, indexed_url, page_title, page_description, and profile_description. These observations support source review, not a personal exposure claim. A metadata-only project remains INSUFFICIENT_EVIDENCE after candidate confirmation.
+
 ## Rubrics
 
 | Dimension | Formula |

@@ -18,7 +18,16 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		return c, fmt.Errorf("schema_version 1 and target id/name are required")
 	}
 	candidates := map[string]bool{}
+	confirmed := 0
 	for _, v := range c.Candidates {
+		if c.Search != nil {
+			if !v.RequiresReview {
+				return c, fmt.Errorf("search candidate %s must require review", v.ID)
+			}
+			if v.Decision == "CONFIRM" {
+				confirmed++
+			}
+		}
 		if v.ID == "" || candidates[v.ID] || !Unit(v.Confidence) {
 			return c, fmt.Errorf("invalid or duplicate candidate %q", v.ID)
 		}
@@ -28,6 +37,9 @@ func Normalize(c domain.Case) (domain.Case, error) {
 			return c, fmt.Errorf("invalid decision for %s", v.ID)
 		}
 		candidates[v.ID] = true
+	}
+	if c.Search != nil && confirmed > 1 {
+		return c, fmt.Errorf("a search session can confirm only one candidate")
 	}
 	ids := map[string]bool{}
 	for _, e := range c.Evidence {

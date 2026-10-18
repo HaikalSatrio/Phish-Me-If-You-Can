@@ -6,6 +6,13 @@ type Target struct {
 }
 
 type Candidate struct {
+	Label          string   `json:"label,omitempty"`
+	RequiresReview bool     `json:"requires_review,omitempty"`
+	ProfileURL     string   `json:"profile_url,omitempty"`
+	Username       string   `json:"username,omitempty"`
+	DisplayName    string   `json:"display_name,omitempty"`
+	Company        string   `json:"company,omitempty"`
+	Location       string   `json:"location,omitempty"`
 	ID             string   `json:"id"`
 	Matches        []string `json:"matches"`
 	Contradictions []string `json:"contradictions"`
@@ -39,11 +46,38 @@ type Coverage struct {
 }
 
 type Case struct {
-	SchemaVersion string      `json:"schema_version"`
-	Target        Target      `json:"target"`
-	Candidates    []Candidate `json:"candidates"`
-	Evidence      []Evidence  `json:"evidence"`
-	Coverage      []Coverage  `json:"coverage"`
+	Search        *SearchSession `json:"search,omitempty"`
+	SchemaVersion string         `json:"schema_version"`
+	Target        Target         `json:"target"`
+	Candidates    []Candidate    `json:"candidates"`
+	Evidence      []Evidence     `json:"evidence"`
+	Coverage      []Coverage     `json:"coverage"`
+}
+
+type SearchSession struct {
+	Provider     string        `json:"provider,omitempty"`
+	Platform     string        `json:"platform,omitempty"`
+	URL          string        `json:"url,omitempty"`
+	ID           string        `json:"id"`
+	StartedAt    string        `json:"started_at"`
+	UpdatedAt    string        `json:"updated_at"`
+	Name         string        `json:"name"`
+	Username     string        `json:"username,omitempty"`
+	Company      string        `json:"company,omitempty"`
+	Location     string        `json:"location,omitempty"`
+	Attempts     int           `json:"attempts"`
+	RequestsUsed int           `json:"requests_used"`
+	Status       string        `json:"status"`
+	Scope        string        `json:"scope"`
+	ConfigJSON   string        `json:"config_json"`
+	Events       []SearchEvent `json:"events"`
+}
+
+type SearchEvent struct {
+	At        string `json:"at"`
+	Operation string `json:"operation"`
+	Status    string `json:"status"`
+	Detail    string `json:"detail"`
 }
 
 type Policy struct {

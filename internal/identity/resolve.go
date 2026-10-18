@@ -15,6 +15,9 @@ func Resolve(c domain.Candidate, p domain.Policy) string {
 	if c.Decision == "UNSURE" {
 		return "ABSTAIN"
 	}
+	if c.RequiresReview {
+		return "REVIEW"
+	}
 	if len(c.Matches) == 0 {
 		return "ABSTAIN"
 	}

@@ -12,6 +12,6 @@ This milestone implements evidence handling and an experimental five-dimension P
 4. Add repeated simulations, generic baselines, versioned prompts, experiment metadata, and SSR.
 5. Define coalition value before adding Shapley attribution.
 6. Add explicit graph semantics and cost-based remediation evaluation.
-7. Connect collectors and a nontechnical GUI to the stable core.
+7. Extend the initial GitHub collector with evaluated sources and connect a nontechnical GUI to the stable core.
 
 PES, identity confidence, SSR, and attribution remain separate. Human predictive validity requires a separate evaluation design. No Arsenal edition, deadline, or acceptance claim is established by this prototype.
