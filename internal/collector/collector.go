@@ -17,6 +17,7 @@ type Query struct {
 }
 
 type Profile struct {
+	FactSources    map[string]FactSource
 	ResponseSHA256 string
 	Rule           string
 	Key            string
@@ -34,6 +35,8 @@ type Profile struct {
 	Type           string `json:"type"`
 	Bio            string `json:"bio"`
 }
+
+type FactSource struct{ URL, ResponseSHA256, Rule string }
 
 type Fact struct{ Type, Value string }
 

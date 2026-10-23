@@ -2,6 +2,8 @@ package collector
 
 import (
 	"context"
+	"crypto/tls"
+	"errors"
 	"fmt"
 	"io"
 	"net"
@@ -11,6 +13,85 @@ import (
 	"strings"
 	"time"
 )
+
+var errNonPublicDNS = errors.New("non-public DNS destination")
+
+type dialResult struct {
+	conn net.Conn
+	err  error
+}
+
+// Race already validated addresses so an unreachable IPv6 route cannot consume the whole request timeout.
+func dialCheckedIPs(ctx context.Context, network, port string, ips []netip.Addr, dial func(context.Context, string, string) (net.Conn, error)) (net.Conn, error) {
+	if len(ips) == 0 {
+		return nil, &net.DNSError{Err: "no addresses returned", IsNotFound: true}
+	}
+	for _, ip := range ips {
+		if !publicIP(ip) {
+			return nil, errNonPublicDNS
+		}
+	}
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+	results := make(chan dialResult)
+	for i, ip := range ips {
+		go func(delay time.Duration, address string) {
+			if delay > 0 {
+				timer := time.NewTimer(delay)
+				defer timer.Stop()
+				select {
+				case <-ctx.Done():
+					return
+				case <-timer.C:
+				}
+			}
+			conn, err := dial(ctx, network, address)
+			select {
+			case results <- dialResult{conn, err}:
+			case <-ctx.Done():
+				if conn != nil {
+					conn.Close()
+				}
+			}
+		}(time.Duration(i)*250*time.Millisecond, net.JoinHostPort(ip.String(), port))
+	}
+	var lastErr error
+	for range ips {
+		select {
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		case result := <-results:
+			if result.err == nil {
+				return result.conn, nil
+			}
+			lastErr = result.err
+		}
+	}
+	return nil, fmt.Errorf("public destination unreachable: %w", lastErr)
+}
+
+func networkFailure(err error) (string, string) {
+	var dnsError *net.DNSError
+	var certificateError *tls.CertificateVerificationError
+	var networkError net.Error
+	var operationError *net.OpError
+	switch {
+	case errors.Is(err, errNonPublicDNS):
+		return "BLOCKED", "DNS returned a non-public address; destination was not fetched"
+	case errors.Is(err, context.Canceled):
+		return "FAILED", "Request cancelled"
+	case errors.As(err, &dnsError):
+		return "FAILED", "DNS lookup failed; check the network resolver"
+	case errors.As(err, &certificateError):
+		return "FAILED", "TLS certificate verification failed"
+	case errors.As(err, &networkError) && networkError.Timeout():
+		return "FAILED", "Request timed out"
+	case errors.As(err, &operationError):
+		return "FAILED", "Connection failed after DNS resolution; check network access to the source"
+	default:
+		return "FAILED", "Network request failed"
+	}
+}
 
 func publicIP(a netip.Addr) bool {
 	a = a.Unmap()
@@ -52,18 +133,7 @@ func publicClient(timeout time.Duration) *http.Client {
 		if err != nil {
 			return nil, err
 		}
-		for _, ip := range ips {
-			if !publicIP(ip) {
-				return nil, fmt.Errorf("non-public DNS destination")
-			}
-		}
-		for _, ip := range ips {
-			conn, err := (&net.Dialer{Timeout: timeout}).DialContext(ctx, network, net.JoinHostPort(ip.String(), port))
-			if err == nil {
-				return conn, nil
-			}
-		}
-		return nil, fmt.Errorf("public destination unreachable")
+		return dialCheckedIPs(ctx, network, port, ips, (&net.Dialer{Timeout: timeout}).DialContext)
 	}
 	return &http.Client{Transport: transport, Timeout: timeout, CheckRedirect: func(_ *http.Request, _ []*http.Request) error { return http.ErrUseLastResponse }}
 }
@@ -87,7 +157,8 @@ func readPublicOnce(ctx context.Context, client *http.Client, raw string, header
 	}
 	resp, err := client.Do(req)
 	if err != nil {
-		return nil, "FAILED", "Request failed, was cancelled, or destination was not public", "", ""
+		status, detail := networkFailure(err)
+		return nil, status, detail, "", ""
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode == 404 {
@@ -96,7 +167,13 @@ func readPublicOnce(ctx context.Context, client *http.Client, raw string, header
 	if resp.StatusCode == 301 || resp.StatusCode == 302 || resp.StatusCode == 303 || resp.StatusCode == 307 || resp.StatusCode == 308 {
 		return nil, "BLOCKED", fmt.Sprintf("HTTP %d redirect", resp.StatusCode), "", resp.Header.Get("Location")
 	}
-	if resp.StatusCode == 401 || resp.StatusCode == 403 || resp.StatusCode == 429 || (resp.StatusCode >= 300 && resp.StatusCode < 400) {
+	if resp.StatusCode == 429 {
+		return nil, "BLOCKED", "HTTP 429 rate limit; retry later", "", ""
+	}
+	if resp.StatusCode == 401 {
+		return nil, "BLOCKED", "HTTP 401 authentication required", "", ""
+	}
+	if resp.StatusCode == 403 || (resp.StatusCode >= 300 && resp.StatusCode < 400) {
 		return nil, "BLOCKED", fmt.Sprintf("HTTP %d; access restriction or redirect not followed", resp.StatusCode), "", ""
 	}
 	if resp.StatusCode != 200 {
@@ -107,4 +184,51 @@ func readPublicOnce(ctx context.Context, client *http.Client, raw string, header
 		return nil, "FAILED", "Unreadable or oversized response", "", ""
 	}
 	return b, "SUCCESS", "Public response retrieved", resp.Header.Get("Content-Type"), ""
+}
+
+type publicResponse struct {
+	Body                         []byte
+	URL, Status, Detail, Content string
+	Requests                     int
+}
+
+// Each redirect is validated before fetching and consumes the caller's budget.
+func fetchPublic(ctx context.Context, client *http.Client, raw string, budget int, allowRedirect func(*url.URL) bool) publicResponse {
+	r := publicResponse{URL: raw, Status: "FAILED", Detail: "Request budget exhausted"}
+	visited := map[string]bool{}
+	for r.Requests < budget && r.Requests < 5 {
+		if ctx.Err() != nil {
+			r.Detail = "Request cancelled or session timed out"
+			return r
+		}
+		u, err := cleanURL(r.URL)
+		if err != nil {
+			r.Status, r.Detail = "BLOCKED", "URL is not an allowed public destination"
+			return r
+		}
+		visited[u.String()] = true
+		var location string
+		r.Body, r.Status, r.Detail, r.Content, location = readPublicOnce(ctx, client, u.String(), nil)
+		r.Requests++
+		if location == "" {
+			return r
+		}
+		next, err := url.Parse(location)
+		if err != nil {
+			r.Status, r.Detail = "FAILED", "Invalid redirect URL"
+			return r
+		}
+		next, err = cleanURL(u.ResolveReference(next).String())
+		if err != nil || (u.Scheme == "https" && next.Scheme != "https") || (allowRedirect != nil && !allowRedirect(next)) {
+			r.Status, r.Detail = "BLOCKED", "Redirect destination is outside the allowed public scope"
+			return r
+		}
+		if visited[next.String()] {
+			r.Status, r.Detail = "FAILED", "Redirect loop detected"
+			return r
+		}
+		r.URL = next.String()
+	}
+	r.Status, r.Detail = "FAILED", "Redirect limit or request budget reached"
+	return r
 }

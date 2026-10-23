@@ -1,5 +1,6 @@
 {
   "version": "github_experimental_v1",
+  "searxng_url": "http://127.0.0.1:8888",
   "candidate_limit": 5,
   "request_budget": 20,
   "max_attempts": 3,

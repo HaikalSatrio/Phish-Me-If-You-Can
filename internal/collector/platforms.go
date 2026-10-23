@@ -10,6 +10,7 @@ type Platform struct {
 
 func Platforms() []Platform {
 	return []Platform{
+		{"devto", []string{"dev.to"}, "public profile API and direct HTML, indexed discovery"},
 		{"instagram", []string{"instagram.com"}, "indexed discovery and public page metadata"},
 		{"facebook", []string{"facebook.com"}, "indexed discovery and public page metadata"},
 		{"linkedin", []string{"linkedin.com"}, "indexed discovery and public page metadata"},

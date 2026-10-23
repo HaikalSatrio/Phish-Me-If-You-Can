@@ -12,20 +12,37 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/collector"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/evidence"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/extract"
 )
 
 type Config struct {
-	Version               string  `json:"version"`
-	CandidateLimit        int     `json:"candidate_limit"`
-	RequestBudget         int     `json:"request_budget"`
-	MaxAttempts           int     `json:"max_attempts"`
-	TimeoutSeconds        int     `json:"timeout_seconds"`
-	SessionTimeoutSeconds int     `json:"session_timeout_seconds"`
-	NameConfidence        float64 `json:"name_confidence"`
-	UsernameConfidence    float64 `json:"username_confidence"`
-	AttributeBoost        float64 `json:"attribute_boost"`
-	EvidenceConfidence    float64 `json:"evidence_confidence"`
-	Discoverability       float64 `json:"discoverability"`
+	SearXNGURL            string   `json:"searxng_url,omitempty"`
+	Version               string   `json:"version"`
+	CandidateLimit        int      `json:"candidate_limit"`
+	RequestBudget         int      `json:"request_budget"`
+	MaxAttempts           int      `json:"max_attempts"`
+	TimeoutSeconds        int      `json:"timeout_seconds"`
+	SessionTimeoutSeconds int      `json:"session_timeout_seconds"`
+	NameConfidence        float64  `json:"name_confidence"`
+	UsernameConfidence    float64  `json:"username_confidence"`
+	AttributeBoost        float64  `json:"attribute_boost"`
+	EvidenceConfidence    float64  `json:"evidence_confidence"`
+	Discoverability       float64  `json:"discoverability"`
+	SearXNGEngines        []string `json:"searxng_engines,omitempty"`
+	SearchLanguage        string   `json:"search_language,omitempty"`
+	SearchTimeRange       string   `json:"search_time_range,omitempty"`
+	SearchPages           int      `json:"search_pages,omitempty"`
+	SearXNGSafeSearch     int      `json:"searxng_safesearch,omitempty"`
+}
+
+func (c Config) SearXNGPreferences() collector.SearXNGOptions {
+	return collector.SearXNGOptions{
+		Language:   c.SearchLanguage,
+		Engines:    c.SearXNGEngines,
+		TimeRange:  c.SearchTimeRange,
+		Pages:      c.SearchPages,
+		SafeSearch: c.SearXNGSafeSearch,
+	}
 }
 
 func (c Config) Validate() error {
@@ -36,6 +53,9 @@ func (c Config) Validate() error {
 		if !evidence.Unit(v) {
 			return fmt.Errorf("invalid collector confidence annotation")
 		}
+	}
+	if err := c.SearXNGPreferences().Validate(); err != nil {
+		return err
 	}
 	return nil
 }
@@ -143,7 +163,13 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 	}
 	project := domain.Case{SchemaVersion: "1", Target: domain.Target{ID: s.ID, Name: name}, Search: &s, Candidates: []domain.Candidate{}, Evidence: []domain.Evidence{}, Coverage: []domain.Coverage{}}
 	project.Receipts = r.Receipts
+	coverageIndex := map[string]int{}
 	for _, ev := range r.Events {
+		if index, ok := coverageIndex[ev.Operation]; ok {
+			project.Coverage[index].Status = mergeCoverageStatus(project.Coverage[index].Status, ev.Status)
+			continue
+		}
+		coverageIndex[ev.Operation] = len(project.Coverage)
 		project.Coverage = append(project.Coverage, domain.Coverage{Source: ev.Operation, Status: ev.Status})
 	}
 	if r.Incomplete {
@@ -197,15 +223,107 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 		if candidate.Confidence > 1 {
 			candidate.Confidence = 1
 		}
-		project.Candidates = append(project.Candidates, candidate)
 		facts := []collector.Fact{{Type: "username", Value: p.Login}, {Type: "name", Value: p.Name}, {Type: "workplace", Value: p.Company}, {Type: "location", Value: p.Location}, {Type: "email", Value: p.Email}, {Type: "website", Value: p.Blog}}
 		facts = append(facts, p.Facts...)
+		factIDs := map[string]string{}
+		factValues := map[string]string{}
 		for _, fact := range facts {
 			if strings.TrimSpace(fact.Value) == "" {
 				continue
 			}
-			project.Evidence = append(project.Evidence, domain.Evidence{ID: id + "-" + fact.Type, CandidateID: id, Type: fact.Type, Value: fact.Value, Status: "OBSERVED", Confidence: cfg.EvidenceConfidence, Discoverability: cfg.Discoverability, Sources: []domain.Source{{URL: sourceURL, ObservedAt: now, Collector: collectorName + "/" + cfg.Version, ResponseSHA256: p.ResponseSHA256, Rule: p.Rule}}})
+			evidenceID := id + "-" + fact.Type
+			factIDs[fact.Type] = evidenceID
+			if factValues[fact.Type] != "" {
+				factValues[fact.Type] += " " + fact.Value
+			} else {
+				factValues[fact.Type] = fact.Value
+			}
+			provenance := domain.Source{URL: sourceURL, ObservedAt: now, Collector: collectorName + "/" + cfg.Version, ResponseSHA256: p.ResponseSHA256, Rule: p.Rule}
+			if source, ok := p.FactSources[fact.Type]; ok {
+				provenance.URL, provenance.ResponseSHA256, provenance.Rule = source.URL, source.ResponseSHA256, source.Rule
+			}
+			project.Evidence = append(project.Evidence, domain.Evidence{ID: evidenceID, CandidateID: id, Type: fact.Type, Value: fact.Value, Status: "OBSERVED", Confidence: cfg.EvidenceConfidence, Discoverability: cfg.Discoverability, Sources: []domain.Source{provenance}})
 		}
+		if strings.TrimSpace(candidate.Company) == "" {
+			subjectName := s.Name
+			if strings.TrimSpace(subjectName) == "" {
+				subjectName = p.Name
+			}
+			inference, ok := extract.ExtractCompany(extract.Input{Name: subjectName, Email: p.Email, URL: p.URL, Facts: factValues})
+			if ok {
+				supporting := []string{}
+				seenSupporting := map[string]bool{}
+				for _, typ := range inference.SupportingTypes {
+					evidenceID, exists := factIDs[typ]
+					if !exists || seenSupporting[evidenceID] {
+						continue
+					}
+					seenSupporting[evidenceID] = true
+					supporting = append(supporting, evidenceID)
+				}
+				if len(supporting) > 0 {
+					alternatives := make([]string, 0, len(inference.Alternatives))
+					trace := make([]domain.InferenceAlternative, 0, len(inference.Alternatives))
+					for _, alternative := range inference.Alternatives {
+						alternatives = append(alternatives, alternative.Value)
+						trace = append(trace, domain.InferenceAlternative{Value: alternative.Value, Rule: alternative.Rule, Confidence: alternative.Confidence})
+					}
+					candidate.Company = inference.Value
+					candidate.CompanyInferred = true
+					candidate.CompanyAlternatives = alternatives
+					candidate.CompanyAmbiguous = inference.Ambiguous
+					candidate.Missing = append(candidate.Missing, "Company is inferred from public evidence (unverified)")
+					if inference.Ambiguous {
+						candidate.Missing = append(candidate.Missing, "Company inference is ambiguous: "+strings.Join(alternatives, ", "))
+					}
+					project.Evidence = append(project.Evidence, domain.Evidence{
+						ID:                    id + "-workplace-inferred",
+						CandidateID:           id,
+						Type:                  "workplace",
+						Value:                 inference.Value,
+						Status:                "INFERRED",
+						Confidence:            cfg.EvidenceConfidence * inference.Confidence,
+						Discoverability:       cfg.Discoverability,
+						Sources:               []domain.Source{},
+						SupportingIDs:         supporting,
+						InferenceRule:         inference.Rule,
+						InferenceQuote:        inference.Quote,
+						InferenceQuoteType:    inference.QuoteType,
+						InferenceAlternatives: trace,
+					})
+				}
+			}
+		}
+		project.Candidates = append(project.Candidates, candidate)
 	}
 	return evidence.Normalize(project)
+}
+
+func mergeCoverageStatus(current, next string) string {
+	rank := func(status string) int {
+		switch status {
+		case "BLOCKED":
+			return 4
+		case "FAILED":
+			return 3
+		case "NOT_CHECKED":
+			return 2
+		case "SUCCESS":
+			return 1
+		case "EMPTY":
+			return 0
+		default:
+			return -1
+		}
+	}
+	if rank(next) < 0 {
+		return next
+	}
+	if rank(current) < 0 {
+		return current
+	}
+	if rank(next) > rank(current) {
+		return next
+	}
+	return current
 }

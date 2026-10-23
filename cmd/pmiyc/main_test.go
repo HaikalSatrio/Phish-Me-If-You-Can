@@ -2,6 +2,7 @@ package main
 
 import (
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
@@ -35,6 +36,17 @@ func TestImportReviewAnalyze(t *testing.T) {
 	}
 }
 
+func TestSearchNameAndUsernameGuidance(t *testing.T) {
+	err := run([]string{"search", "-source", "web", "-name", "Haikal", "Satrio", "Dewandaru"})
+	if err == nil || !strings.Contains(err.Error(), `-name "Haikal Satrio Dewandaru"`) {
+		t.Fatalf("missing multiword guidance: %v", err)
+	}
+	err = run([]string{"search", "-source", "devto", "-name", "Ben", "-config", "../../configs/collector-v1.json"})
+	if err == nil || !strings.Contains(err.Error(), "exact usernames") || !strings.Contains(err.Error(), "-platform devto") {
+		t.Fatalf("missing people search guidance: %v", err)
+	}
+}
+
 func TestSearchReviewSelectsOnlyOneCandidate(t *testing.T) {
 	dir := t.TempDir()
 	input := filepath.Join(dir, "search.json")
@@ -55,5 +67,39 @@ func TestSearchReviewSelectsOnlyOneCandidate(t *testing.T) {
 	}
 	if saved.Candidates[0].Decision != "PENDING" || saved.Candidates[1].Decision != "CONFIRM" || len(saved.Search.Events) != 1 {
 		t.Fatal("review did not preserve exclusive selection and history")
+	}
+}
+
+func TestDefaultUsernameSourceAndResume(t *testing.T) {
+	dir := t.TempDir()
+	for _, source := range []string{"", "direct"} {
+		input, out := filepath.Join(dir, "case-"+source+".json"), filepath.Join(dir, "resumed-"+source+".json")
+		args := []string{"search", "-username", "!", "-config", "../../configs/collector-v1.json", "-out", input}
+		if source != "" {
+			args = append(args, "-source", source)
+		}
+		if err := run(args); err == nil {
+			t.Fatal("invalid username reported success")
+		}
+		var saved domain.Case
+		if err := storage.Read(input, &saved); err != nil {
+			t.Fatal(err)
+		}
+		want := source
+		if want == "" {
+			want = "auto"
+		}
+		if saved.Search.Provider != want || saved.Search.RequestsUsed != 0 {
+			t.Fatalf("unexpected routing: %+v", saved.Search)
+		}
+		if err := run([]string{"search", "-input", input, "-config", "../../configs/collector-v1.json", "-out", out}); err == nil {
+			t.Fatal("invalid resumed username reported success")
+		}
+		if err := storage.Read(out, &saved); err != nil {
+			t.Fatal(err)
+		}
+		if saved.Search.Provider != want {
+			t.Fatal("resume changed source")
+		}
 	}
 }

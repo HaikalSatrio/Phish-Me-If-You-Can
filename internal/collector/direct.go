@@ -24,8 +24,8 @@ type Adapter struct {
 
 func DirectAdapters() []Adapter {
 	return []Adapter{
-		{"github", "https://github.com/", `^[A-Za-z0-9][A-Za-z0-9-]{0,38}$`, "github-html-v1"},
-		{"devto", "https://dev.to/", `^[A-Za-z0-9_]{1,30}$`, "devto-html-v1"},
+		{"github", "https://github.com/", `^[A-Za-z0-9][A-Za-z0-9-]{0,38}$`, "github-html-v2"},
+		{"devto", "https://dev.to/", `^[A-Za-z0-9_]{1,30}$`, "devto-html-v2"},
 	}
 }
 
@@ -59,16 +59,18 @@ func (d *Direct) Collect(ctx context.Context, q Query) Result {
 		} else if ctx.Err() != nil || r.Requests >= q.Budget || len(r.Profiles) >= q.Limit {
 			receipt.Status, receipt.Reason = "NOT_CHECKED", "Cancellation, request budget, or candidate limit reached"
 		} else {
-			body, status, detail, content := readPublic(ctx, d.client, raw, nil)
-			r.Requests++
-			receipt.Status, receipt.Reason = status, detail
+			response := fetchPublic(ctx, d.client, raw, q.Budget-r.Requests, func(next *url.URL) bool { return sameProfileURL(next.String(), raw) })
+			body, status, content := response.Body, response.Status, response.Content
+			r.Requests += response.Requests
+			receipt.Status, receipt.Reason = status, response.Detail
 			if status == "SUCCESS" {
+				receipt.URL = response.URL
 				receipt.Bytes = len(body)
 				receipt.ResponseSHA256 = fmt.Sprintf("%x", sha256.Sum256(body))
 				if !strings.Contains(strings.ToLower(content), "text/html") {
 					receipt.Status, receipt.Reason = "FAILED", "Expected public HTML profile"
 				} else {
-					p, status, reason := parseDirect(body, a, q.Username, raw)
+					p, status, reason := parseDirect(body, a, q.Username, response.URL)
 					receipt.Status, receipt.Reason = status, reason
 					if status == "SUCCESS" {
 						p.ResponseSHA256, p.Rule = receipt.ResponseSHA256, a.Rule
@@ -151,8 +153,8 @@ func parseDirect(body []byte, a Adapter, username, raw string) (Profile, string,
 		}
 	}
 	walk(doc)
-	if !sameProfileURL(canonical, raw) || !sameProfileURL(meta["og:url"], raw) {
-		return p, "FAILED", "Canonical and Open Graph URLs do not both match the requested account; layout or redirect requires review"
+	if (canonical == "" && meta["og:url"] == "") || (canonical != "" && !sameProfileURL(canonical, raw)) || (meta["og:url"] != "" && !sameProfileURL(meta["og:url"], raw)) {
+		return p, "FAILED", "Expected matching profile URL metadata; missing or conflicting URLs require review"
 	}
 	switch a.Name {
 	case "github":

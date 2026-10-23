@@ -107,7 +107,7 @@ func Calculate(c domain.Case, p domain.Policy) (domain.Report, error) {
 	all := []string{}
 	d, l := 0.0, 0.0
 	for _, e := range c.Evidence {
-		metadataOnly := e.Type == "search_title" || e.Type == "search_snippet" || e.Type == "indexed_url" || e.Type == "page_title" || e.Type == "page_description" || e.Type == "profile_description"
+		metadataOnly := e.Type == "search_title" || e.Type == "search_snippet" || e.Type == "indexed_url" || e.Type == "page_title" || e.Type == "page_description" || e.Type == "profile_description" || e.Type == "page_text" || e.Type == "page_links"
 		if metadataOnly || e.Status != "OBSERVED" || e.Confidence == 0 || r.IdentityStates[e.CandidateID] != "ACCEPTED" || len(conflicts[e.CandidateID+":"+e.Type]) > 1 {
 			r.ExcludedIDs = append(r.ExcludedIDs, e.ID)
 			continue

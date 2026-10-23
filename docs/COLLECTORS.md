@@ -16,7 +16,7 @@ Run from the repository root:
 .\bin\pmiyc.exe candidates -input data/anton-search.json
 ```
 
-The terminal displays candidate IDs, usernames, public profile links, public company/location fields, matching clues, missing clues, and contradictions. If ambiguous, refine with a known username or compare additional clues:
+The terminal displays candidate IDs, usernames, public profile links, company/location fields, matching clues, missing clues, and contradictions. A company derived from text rather than a structured profile field is marked `(inferred, unverified)`. If ambiguous, refine with a known username or compare additional clues:
 
 ```powershell
 .\bin\pmiyc.exe search -input data/anton-search.json -username "KNOWN_USERNAME" -out data/anton-refined.json
@@ -37,7 +37,7 @@ Without `-out`, search automatically creates `data/<session-id>-<attempt>.json`.
 
 ## Scope and evidence
 
-Public profile username, display name, company, location, email, and website fields are captured when present. Biography is retained as profile_description metadata and excluded from PES. Empty fields produce no fact. Company is stored as workplace context but is a self-description, not verified employment. Biography text is not parsed into personality traits, relationships, hobbies, or routines. Website links are stored as text and never followed.
+Public profile username, display name, company, location, email, and website fields are captured when present. Biography is retained as profile_description metadata and excluded from PES. Empty fields produce no observed fact. Company is stored as workplace context but is a self-description, not verified employment. If the structured company is empty, deterministic extraction from page/snippet/biography text, email domain, or profile domain can add a separate INFERRED workplace supported by those observations; it is marked unverified, excluded from PES, and does not alter identity matching. The evidence carries the inference rule, exact quote, quote type, and ranked alternatives; near-ties and domain/text conflicts are marked ambiguous. Text is not parsed into personality traits, relationships, hobbies, or routines. Website links are stored as text and never followed.
 
 The CLI prints collected observations. An account with only a public username is still a successful retrieval; blank name, company, or location fields do not mean the request failed. Supply one username after `-username`; do not append a second example username such as `octocat`.
 
@@ -51,6 +51,6 @@ Reports include the GitHub-only scope. Collection coverage counts completed requ
 
 The fixed API host is `api.github.com`; redirects are rejected. Response bodies are limited to 2 MiB. HTTP 401, 403, and 429 are recorded as BLOCKED. Error response bodies and token values are not persisted. Optional `GITHUB_TOKEN` is read from the process environment; do not store tokens in project JSON or the repository. The collector operates without a token where the API permits it.
 
-Name matching uses normalized exact equality. Known usernames establish a stronger clue, and exact company/location matches add a configurable boost. Scores are experimental annotations, not calibrated identity probabilities. Case-insensitive mismatch in supplied company/location is treated conservatively as a contradiction; spelling variants can require corrected clues. No automatic identity acceptance occurs.
+Name matching uses normalized exact equality. Known usernames establish a stronger clue, and exact company/location matches add a configurable boost. Scores are experimental annotations, not calibrated identity probabilities. Case-insensitive mismatch in supplied company/location is treated conservatively as a contradiction when it is compared with a structured public field; an inferred company never matches or contradicts the operator clue. Spelling variants can require corrected clues. No automatic identity acceptance occurs.
 
 Live GitHub collection sends the name or username query to GitHub. This collector does not collect private profiles, repositories, commits, or email permutations. Other collection modes are documented in WEB_AND_SOCIAL.md.

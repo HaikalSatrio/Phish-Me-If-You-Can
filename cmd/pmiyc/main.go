@@ -34,7 +34,7 @@ func run(args []string) error {
 		return runSearch(args[1:])
 	}
 	if len(args) == 0 {
-		return fmt.Errorf("usage: pmiyc search -source direct -username <username> | pmiyc adapters | pmiyc compare -before before.json -after after.json | pmiyc <import|analyze|review|candidates> -input case.json [-out new-file.json]")
+		return fmt.Errorf("usage: pmiyc search -source auto -username <username> | pmiyc search -source web -name <name> | pmiyc adapters | pmiyc compare -before before.json -after after.json | pmiyc <import|analyze|review|candidates> -input case.json [-out new-file.json]")
 	}
 	fs := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	input := fs.String("input", "", "case JSON path")

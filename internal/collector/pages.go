@@ -3,10 +3,12 @@ package collector
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"net/url"
+	"regexp"
 	"strings"
 	"time"
 
@@ -74,49 +76,19 @@ func (p *Page) Collect(ctx context.Context, q Query) Result {
 		r.Status = "BLOCKED"
 		return r
 	}
-	var b []byte
-	var status, detail, content string
-	visited := map[string]bool{}
-	for {
-		visited[u.String()] = true
-		var location string
-		b, status, detail, content, location = readPublicOnce(ctx, p.client, u.String(), nil)
-		r.Requests++
-		if location == "" {
-			break
-		}
-		if r.Requests >= q.Budget || r.Requests >= 5 {
-			status, detail = "FAILED", "Redirect limit or request budget reached"
-			break
-		}
-		next, parseErr := url.Parse(location)
-		if parseErr != nil {
-			status, detail = "FAILED", "Invalid redirect URL"
-			break
-		}
-		next, parseErr = cleanURL(u.ResolveReference(next).String())
-		if parseErr != nil || (u.Scheme == "https" && next.Scheme != "https") {
-			status, detail = "BLOCKED", "Redirect destination is not an allowed public URL"
-			break
-		}
-		if visited[next.String()] {
-			status, detail = "FAILED", "Redirect loop detected"
-			break
-		}
-		r.Events = append(r.Events, Event{"url:redirect", "SUCCESS", "Following public redirect; destination checked before fetching"})
-		u = next
-	}
-	r.Status = status
-	if status != "SUCCESS" {
-		r.Events = append(r.Events, Event{"url:page", status, detail})
+	response := fetchPublic(ctx, p.client, u.String(), q.Budget, nil)
+	r.Requests, r.Status = response.Requests, response.Status
+	if response.Status != "SUCCESS" {
+		r.Events = append(r.Events, Event{"url:page", response.Status, response.Detail})
 		return r
 	}
-	if !strings.Contains(strings.ToLower(content), "text/html") {
+	u, _ = cleanURL(response.URL)
+	if !strings.Contains(strings.ToLower(response.Content), "text/html") {
 		r.Status = "FAILED"
-		r.Events = append(r.Events, Event{"url:page", "FAILED", "Only HTML metadata is supported"})
+		r.Events = append(r.Events, Event{"url:page", "FAILED", "Only HTML pages are supported"})
 		return r
 	}
-	doc, err := html.Parse(bytes.NewReader(b))
+	doc, err := html.Parse(bytes.NewReader(response.Body))
 	if err != nil {
 		r.Status = "FAILED"
 		r.Events = append(r.Events, Event{"url:page", "FAILED", "Invalid HTML"})
@@ -145,13 +117,21 @@ func (p *Page) Collect(ctx context.Context, q Query) Result {
 		}
 	}
 	walk(doc)
-	if title == "" && description == "" {
+	text, links := pageContent(doc, u)
+	if title == "" && description == "" && text == "" {
 		r.Status = "FAILED"
 		r.Events = append(r.Events, Event{"url:page", "FAILED", "No extractable page metadata; content may require JavaScript"})
 		return r
 	}
-	r.Profiles = append(r.Profiles, Profile{Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), Facts: []Fact{{"page_title", title}, {"page_description", description}}})
-	r.Events = append(r.Events, Event{"url:page", "SUCCESS", "HTML title/description only; no personal attributes inferred"})
+	facts := []Fact{{"page_title", title}, {"page_description", description}}
+	if text != "" {
+		facts = append(facts, Fact{"page_text", text})
+	}
+	if len(links) > 0 {
+		facts = append(facts, Fact{"page_links", strings.Join(links, "\n")})
+	}
+	r.Profiles = append(r.Profiles, Profile{Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(response.Body)), Rule: "public-page-v2", Facts: facts})
+	r.Events = append(r.Events, Event{"url:page", "SUCCESS", "HTML metadata, bounded page text, and public links; no verified personal facts"})
 	return r
 }
 
@@ -163,9 +143,25 @@ type Bluesky struct {
 func NewBluesky(timeout time.Duration) *Bluesky {
 	return &Bluesky{publicClient(timeout), "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile"}
 }
+
+func validBlueskyHandle(handle string) bool {
+	if len(handle) > 250 || !strings.Contains(handle, ".") {
+		return false
+	}
+	label := regexp.MustCompile(`^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$`)
+	parts := strings.Split(handle, ".")
+	for _, part := range parts {
+		if !label.MatchString(part) {
+			return false
+		}
+	}
+	tld := parts[len(parts)-1]
+	return (tld[0] >= 'a' && tld[0] <= 'z') || (tld[0] >= 'A' && tld[0] <= 'Z')
+}
+
 func (b *Bluesky) Collect(ctx context.Context, q Query) Result {
 	r := Result{Profiles: []Profile{}, Events: []Event{}, Status: "FAILED"}
-	if q.Username == "" || len(q.Username) > 250 || q.Budget < 1 {
+	if !validBlueskyHandle(q.Username) || q.Budget < 1 {
 		r.Events = append(r.Events, Event{"bluesky:input", "FAILED", "Supply a Bluesky handle with -username"})
 		return r
 	}
@@ -188,7 +184,7 @@ func (b *Bluesky) Collect(ctx context.Context, q Query) Result {
 		r.Events = append(r.Events, Event{"bluesky:profile", "FAILED", "Invalid or mismatched public profile"})
 		return r
 	}
-	r.Profiles = append(r.Profiles, Profile{Key: keyFor("bluesky", p.DID), Platform: "bluesky", URL: "https://bsky.app/profile/" + url.PathEscape(p.Handle), SourceURL: raw, Login: p.Handle, Name: p.DisplayName, Facts: []Fact{{"profile_description", p.Description}}})
+	r.Profiles = append(r.Profiles, Profile{Key: keyFor("bluesky", p.DID), Platform: "bluesky", URL: "https://bsky.app/profile/" + url.PathEscape(p.Handle), SourceURL: raw, Login: p.Handle, Name: p.DisplayName, ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(body)), Rule: "bluesky-api-v1", Facts: []Fact{{"profile_description", p.Description}}})
 	r.Events = append(r.Events, Event{"bluesky:profile", "SUCCESS", fmt.Sprintf("Public profile retrieved for %s", p.Handle)})
 	return r
 }

@@ -1,6 +1,6 @@
 # Direct collection and observation changes
 
-This experimental collection path uses public HTML, without API credentials or a browser. It implements two adapters: GitHub and DEV Community. Their rules were designed from public HTML samples. Live end-to-end reliability and automated regression coverage for these new adapters have not yet been established.
+This experimental collection path uses public HTML, without API credentials or a browser. It implements two adapters: GitHub and DEV Community. Regression tests cover matching profile metadata, conflicting URLs, and bounded redirects. See VALIDATION.md for live checks; these do not establish reliability across all accounts and layouts.
 
 ## Usage
 
@@ -12,21 +12,21 @@ Run from the repository root. Use an account you own or are authorized to assess
 .\bin\pmiyc.exe search -source direct -username "YOUR_USERNAME" -platform all
 ```
 
-New searches supplying a username default to direct HTML collection. Existing saved sessions retain their original source. `-platform all` in direct mode means only the adapters listed by `adapters`. The larger `platforms` registry describes search-index discovery, not implemented direct adapters. Instagram, Facebook, and LinkedIn do not yet have direct adapters.
+New searches supplying a username default to the free public API mode `auto`. Select `-source direct` for HTML collection. Existing saved sessions retain their original source. `-platform all` in direct mode means only the adapters listed by `adapters`. The larger `platforms` registry describes search-index discovery, not implemented direct adapters. Instagram, Facebook, and LinkedIn do not yet have direct adapters.
 
 The `github` source remains the existing optional API collector. Use `-source direct -platform github` for HTML without an API. Name-only discovery still uses the separate web path and retains its known limitations.
 
 ## Detection rules
 
-GitHub requires matching canonical and Open Graph profile URLs, profile metadata, and the visible exact username in the expected profile element. DEV requires matching canonical and Open Graph URLs, a profile heading, site metadata, and a profile title marker. HTTP 200 alone is insufficient.
+Both adapters require at least one canonical or Open Graph profile URL. Every supplied profile URL must match the requested account. GitHub also requires profile metadata and the visible exact username in the expected profile element. DEV requires a profile heading, site metadata, and a profile title marker. HTTP 200 alone is insufficient. These extraction rules are versioned as `github-html-v2` and `devto-html-v2`.
 
-Structured display names and usernames become observed fields. Biography and page title remain metadata excluded from PES. No employment, personality, relationships, or interests are inferred from biography text. Identity confirmation remains an explicit operator decision. Matching usernames on two sites do not automatically merge identities.
+Structured display names and usernames become observed fields. Biography and page title remain metadata excluded from PES. A deterministic extractor may add an INFERRED company/workplace from page, snippet, or biography text when a clear organization pattern and the subject name are present. That value is marked unverified, carries its rule/quote/alternatives, is excluded from PES, and cannot create identity matches or contradictions. Bare organization-name matches in education/event context are rejected, and unrelated conflicting or near-tied organizations are marked ambiguous. No personality, relationships, hobbies, or routines are inferred. Identity confirmation remains an explicit operator decision. Matching usernames on two sites do not automatically merge identities.
 
-Each request respects the configured timeout and session budget. Redirects are not followed in direct mode because they may lead to another username or a login page. Explicit URL mode has its separate bounded redirect policy. There are no challenge-solving or authentication steps in the direct adapter.
+Each request respects the configured timeout and session budget. Direct mode follows redirects only when the host and account path still match, allowing case and trailing-slash normalization. Login redirects, different accounts, query-bearing destinations, and HTTPS downgrades are rejected. There is a maximum of five requests including redirects, and every hop consumes budget. Explicit URL mode also permits redirects to other validated public destinations. There are no challenge-solving or authentication steps in the direct adapter.
 
 ## Collection receipts
 
-Every selected adapter produces a receipt containing its requested URL, rule version, timestamp, status, and reason. HTTP 200 response bodies receive a SHA-256 digest and byte count, including bodies rejected by the parser. Non-200 bodies are not retained or hashed. Successful evidence references the matching response digest and rule.
+Every selected adapter produces a receipt containing its URL, rule version, timestamp, status, and reason. Successful requests preserve the final fetched URL. HTTP 200 response bodies receive a SHA-256 digest and byte count, including bodies rejected by the parser. Non-200 bodies are not retained or hashed. Successful evidence references the matching response digest and rule.
 
 Receipts distinguish SUCCESS, EMPTY (HTTP 404), BLOCKED, FAILED, and NOT_CHECKED. A 404 describes the requested URL only. A challenge, timeout, changed layout, or budget stop does not establish account absence.
 
@@ -51,4 +51,4 @@ NOT_OBSERVED means the extractor did not observe that field in the newer success
 
 ## Research positioning
 
-This stage provides evidence-backed collection decisions and comparisons that preserve uncertainty about access and extraction. These are implemented capabilities, not a claim of novelty over other OSINT tools or readiness for conference submission. Benchmarking, false-positive measurement, adapter regression tests, broader platform coverage, and a reproducible offline demonstration remain future validation work.
+This stage provides evidence-backed collection decisions and comparisons that preserve uncertainty about access and extraction. These are implemented capabilities, not a claim of novelty over other OSINT tools or readiness for conference submission. Benchmarking, false-positive measurement, broader platform coverage, and a reproducible offline demonstration remain future validation work.

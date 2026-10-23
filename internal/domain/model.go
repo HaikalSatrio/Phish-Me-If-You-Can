@@ -6,19 +6,22 @@ type Target struct {
 }
 
 type Candidate struct {
-	Label          string   `json:"label,omitempty"`
-	RequiresReview bool     `json:"requires_review,omitempty"`
-	ProfileURL     string   `json:"profile_url,omitempty"`
-	Username       string   `json:"username,omitempty"`
-	DisplayName    string   `json:"display_name,omitempty"`
-	Company        string   `json:"company,omitempty"`
-	Location       string   `json:"location,omitempty"`
-	ID             string   `json:"id"`
-	Matches        []string `json:"matches"`
-	Contradictions []string `json:"contradictions"`
-	Missing        []string `json:"missing"`
-	Confidence     float64  `json:"confidence"`
-	Decision       string   `json:"decision"`
+	Label               string   `json:"label,omitempty"`
+	RequiresReview      bool     `json:"requires_review,omitempty"`
+	ProfileURL          string   `json:"profile_url,omitempty"`
+	Username            string   `json:"username,omitempty"`
+	DisplayName         string   `json:"display_name,omitempty"`
+	Company             string   `json:"company,omitempty"`
+	CompanyInferred     bool     `json:"company_inferred,omitempty"`
+	CompanyAmbiguous    bool     `json:"company_ambiguous,omitempty"`
+	CompanyAlternatives []string `json:"company_alternatives,omitempty"`
+	Location            string   `json:"location,omitempty"`
+	ID                  string   `json:"id"`
+	Matches             []string `json:"matches"`
+	Contradictions      []string `json:"contradictions"`
+	Missing             []string `json:"missing"`
+	Confidence          float64  `json:"confidence"`
+	Decision            string   `json:"decision"`
 }
 
 type Source struct {
@@ -29,17 +32,27 @@ type Source struct {
 	Collector      string `json:"collector"`
 }
 
+type InferenceAlternative struct {
+	Value      string  `json:"value"`
+	Rule       string  `json:"rule"`
+	Confidence float64 `json:"confidence"`
+}
+
 type Evidence struct {
-	ID              string   `json:"id"`
-	CandidateID     string   `json:"candidate_id"`
-	Type            string   `json:"type"`
-	Value           string   `json:"value"`
-	Status          string   `json:"status"`
-	Confidence      float64  `json:"confidence"`
-	Discoverability float64  `json:"discoverability"`
-	Sources         []Source `json:"sources"`
-	SupportingIDs   []string `json:"supporting_ids,omitempty"`
-	Aliases         []string `json:"aliases,omitempty"`
+	ID                    string                 `json:"id"`
+	CandidateID           string                 `json:"candidate_id"`
+	Type                  string                 `json:"type"`
+	Value                 string                 `json:"value"`
+	Status                string                 `json:"status"`
+	Confidence            float64                `json:"confidence"`
+	Discoverability       float64                `json:"discoverability"`
+	Sources               []Source               `json:"sources"`
+	SupportingIDs         []string               `json:"supporting_ids,omitempty"`
+	InferenceRule         string                 `json:"inference_rule,omitempty"`
+	InferenceQuote        string                 `json:"inference_quote,omitempty"`
+	InferenceQuoteType    string                 `json:"inference_quote_type,omitempty"`
+	InferenceAlternatives []InferenceAlternative `json:"inference_alternatives,omitempty"`
+	Aliases               []string               `json:"aliases,omitempty"`
 }
 
 type Coverage struct {

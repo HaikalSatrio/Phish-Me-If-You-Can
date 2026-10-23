@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"sort"
 	"strings"
 	"time"
 	"unicode"
@@ -42,14 +43,44 @@ func searchWords(s string) string {
 // This checks textual relevance only, never ownership of a result.
 func relevantResult(q Query, text string) bool {
 	haystack := " " + searchWords(text) + " "
-	for _, clue := range []string{q.Name, q.Username, q.Company, q.Location} {
-		for _, word := range strings.Fields(searchWords(clue)) {
+	for _, clue := range []string{q.Name, q.Username} {
+		words := strings.Fields(searchWords(clue))
+		matched := len(words) > 0
+		for _, word := range words {
 			if !strings.Contains(haystack, " "+word+" ") {
-				return false
+				matched = false
 			}
 		}
+		if matched {
+			return true
+		}
 	}
-	return true
+	return false
+}
+
+func discoveryPhrase(q Query) string {
+	if strings.TrimSpace(q.Username) != "" && strings.TrimSpace(q.Name) != "" {
+		return "(" + searchPhrase(Query{Name: q.Name}) + " OR " + searchPhrase(Query{Username: q.Username}) + ")"
+	}
+	return searchPhrase(Query{Name: q.Name, Username: q.Username})
+}
+
+func rankResults(profiles []Profile, q Query) {
+	score := func(p Profile) int {
+		text := p.URL
+		for _, f := range p.Facts {
+			text += " " + f.Value
+		}
+		haystack := " " + searchWords(text) + " "
+		n := 0
+		for _, clue := range []string{q.Company, q.Location} {
+			if words := searchWords(clue); words != "" && strings.Contains(haystack, " "+words+" ") {
+				n++
+			}
+		}
+		return n
+	}
+	sort.SliceStable(profiles, func(i, j int) bool { return score(profiles[i]) > score(profiles[j]) })
 }
 
 func (b *Bing) Collect(ctx context.Context, q Query) Result {
@@ -77,7 +108,7 @@ func (b *Bing) Collect(ctx context.Context, q Query) Result {
 	stopped := false
 	for _, p := range platforms {
 		op := "bing:" + p.Name
-		if stopped || ctx.Err() != nil || r.Requests >= q.Budget {
+		if stopped || ctx.Err() != nil || r.Requests >= q.Budget || len(r.Profiles) >= q.Limit {
 			r.Events = append(r.Events, Event{op, "NOT_CHECKED", "Stopped after restriction, cancellation, or request budget"})
 			continue
 		}
@@ -91,7 +122,7 @@ func (b *Bing) Collect(ctx context.Context, q Query) Result {
 			case <-timer.C:
 			}
 		}
-		query := searchPhrase(q)
+		query := discoveryPhrase(q)
 		if len(p.Domains) > 0 {
 			query += " (site:" + strings.Join(p.Domains, " OR site:") + ")"
 		}
@@ -112,6 +143,7 @@ func (b *Bing) Collect(ctx context.Context, q Query) Result {
 			continue
 		}
 		accepted, rejected := 0, 0
+		matches := []Profile{}
 		invalidURLs, wrongDomains, unrelated := 0, 0, 0
 		for _, item := range feed.Channel.Items {
 			u, err := cleanURL(item.Link)
@@ -130,16 +162,20 @@ func (b *Bing) Collect(ctx context.Context, q Query) Result {
 				rejected++
 				continue
 			}
-			if accepted >= q.Limit || seen[u.String()] {
+			if seen[u.String()] {
 				continue
 			}
 			accepted++
 			seen[u.String()] = true
-			r.Profiles = append(r.Profiles, Profile{Key: keyFor("web", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: raw, Facts: []Fact{{"search_title", item.Title}, {"search_snippet", item.Description}, {"indexed_url", u.String()}}})
+			matches = append(matches, Profile{Key: keyFor("web", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: raw, Facts: []Fact{{"search_title", item.Title}, {"search_snippet", item.Description}, {"indexed_url", u.String()}}})
 		}
+		rankResults(matches, q)
+		matches = matches[:min(len(matches), q.Limit-len(r.Profiles))]
+		r.Profiles = append(r.Profiles, matches...)
+		accepted = len(matches)
 		if accepted == 0 {
 			r.Status = "FAILED"
-			r.Events = append(r.Events, Event{op, "FAILED", fmt.Sprintf("No usable matching links: %d invalid URLs, %d outside the requested platform, %d without all query words. The feed is insufficient for this query; this does not establish that the account or public data is absent.", invalidURLs, wrongDomains, unrelated)})
+			r.Events = append(r.Events, Event{op, "FAILED", fmt.Sprintf("No usable matching links: %d invalid URLs, %d outside the requested platform, %d without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.", invalidURLs, wrongDomains, unrelated)})
 		} else {
 			r.Events = append(r.Events, Event{op, "SUCCESS", fmt.Sprintf("%d indexed links; %d unrelated or invalid entries rejected. Ownership requires review; destination pages not fetched.", accepted, rejected)})
 		}

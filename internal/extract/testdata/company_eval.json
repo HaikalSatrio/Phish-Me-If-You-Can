@@ -1,0 +1,579 @@
+{
+  "version": "company-eval-v1",
+  "minimum_precision": 0.95,
+  "minimum_recall": 0.85,
+  "cases": [
+    {
+      "id": "explicit-label",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_title": "Nadia Pratama",
+          "page_text": "Company: Nusantara University Location: Jakarta"
+        }
+      },
+      "want": "Nusantara University"
+    },
+    {
+      "id": "employment-phrase",
+      "input": {
+        "name": "Raka Wijaya",
+        "facts": {
+          "page_text": "Raka Wijaya works at Orbit Labs."
+        }
+      },
+      "want": "Orbit Labs"
+    },
+    {
+      "id": "indonesian-employment",
+      "input": {
+        "name": "Sinta Maharani",
+        "facts": {
+          "page_text": "Sinta Maharani bekerja di PT Sinar Nusantara."
+        }
+      },
+      "want": "PT Sinar Nusantara"
+    },
+    {
+      "id": "role-phrase",
+      "input": {
+        "name": "Dimas Saputra",
+        "facts": {
+          "search_snippet": "Dimas Saputra is Head of Security in Cakrawala Institute."
+        }
+      },
+      "want": "Cakrawala Institute"
+    },
+    {
+      "id": "organization-suffix",
+      "input": {
+        "name": "Ayu Lestari",
+        "facts": {
+          "search_title": "Ayu Lestari | Lecturer Nusantara University"
+        }
+      },
+      "want": "Nusantara University"
+    },
+    {
+      "id": "organization-prefix",
+      "input": {
+        "name": "Budi Santoso",
+        "facts": {
+          "page_text": "Budi Santoso is Director of Yayasan Bina Karsa."
+        }
+      },
+      "want": "Yayasan Bina Karsa"
+    },
+    {
+      "id": "email-domain",
+      "input": {
+        "name": "Maya Kusuma",
+        "email": "maya@orbit-labs.co.id",
+        "facts": {
+          "email": "maya@orbit-labs.co.id"
+        }
+      },
+      "want": "Orbit Labs"
+    },
+    {
+      "id": "profile-domain",
+      "input": {
+        "name": "Nadia Pratama",
+        "url": "https://soc.nusantara.ac.id/people/nadia-pratama/",
+        "facts": {
+          "search_title": "Nadia Pratama",
+          "indexed_url": "https://soc.nusantara.ac.id/people/nadia-pratama/"
+        }
+      },
+      "want": "Nusantara"
+    },
+    {
+      "id": "uppercase-organization",
+      "input": {
+        "name": "Fajar Nugroho",
+        "facts": {
+          "page_text": "Fajar Nugroho works at MERIDIAN GROUP."
+        }
+      },
+      "want": "Meridian Group"
+    },
+    {
+      "id": "sentence-boundary",
+      "input": {
+        "name": "Fajar Nugroho",
+        "facts": {
+          "search_snippet": "Fajar Nugroho. Certified Trainer. Meridian Consulting Group baru saja mengumumkan program baru."
+        }
+      },
+      "want": "Meridian Consulting Group"
+    },
+    {
+      "id": "indonesian-hospital",
+      "input": {
+        "name": "Dewi Anggraini",
+        "facts": {
+          "page_text": "Dewi Anggraini bekerja di Rumah Sakit Sentosa."
+        }
+      },
+      "want": "Rumah Sakit Sentosa"
+    },
+    {
+      "id": "explicit-employer-label",
+      "input": {
+        "name": "Rizal Kurniawan",
+        "facts": {
+          "page_title": "Rizal Kurniawan",
+          "page_description": "Employer - Awan Teknologi"
+        }
+      },
+      "want": "Awan Teknologi"
+    },
+    {
+      "id": "role-at-bank",
+      "input": {
+        "name": "Rizal Kurniawan",
+        "facts": {
+          "page_text": "Rizal Kurniawan is a Security Engineer at Samudra Bank."
+        }
+      },
+      "want": "Samudra Bank"
+    },
+    {
+      "id": "snippet-role",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "search_snippet": "Nadia Pratama, Lecturer at Cakrawala Institute."
+        }
+      },
+      "want": "Cakrawala Institute"
+    },
+    {
+      "id": "title-suffix",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "search_title": "Nadia Pratama - Nusantara University"
+        }
+      },
+      "want": "Nusantara University"
+    },
+    {
+      "id": "education-studied-at",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama studied at Nusantara University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "education-alumni-of",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama is an alumni of Nusantara University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "education-student-at",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama is a student at Nusantara University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "event-speaker",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama spoke at Nusantara University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "guest-lecture",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama gave a guest lecture at Nusantara University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "employment-after-alumni",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "search_snippet": "Nadia Pratama, an alumni relations manager, works at Cakrawala Institute."
+        }
+      },
+      "want": "Cakrawala Institute"
+    },
+    {
+      "id": "name-mismatch",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Someone Else works at Orbit Labs."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "free-email",
+      "input": {
+        "name": "Nadia Pratama",
+        "email": "nadia@gmail.com",
+        "facts": {
+          "email": "nadia@gmail.com"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "social-profile",
+      "input": {
+        "name": "Nadia Pratama",
+        "url": "https://www.linkedin.com/in/nadia-pratama",
+        "facts": {
+          "search_title": "Nadia Pratama"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "generic-organization",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama visited the university today."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "generic-role",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama is a manager in training."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "generic-company-label",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama Company: Confidential"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "self-employment",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama works at Self-Employed."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "lowercase-phrase",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama works at the intersection of design and engineering."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "missing-name",
+      "input": {
+        "facts": {
+          "page_text": "Head of Cybersecurity Program in Nusantara University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "no-support",
+      "input": {
+        "name": "Nadia Pratama",
+        "url": "https://soc.nusantara.ac.id/people/nadia-pratama/",
+        "facts": {
+          "search_title": "Nadia Pratama"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "personal-domain",
+      "input": {
+        "name": "Nadia Pratama",
+        "url": "https://nadiapratama.com/about",
+        "facts": {
+          "search_title": "Nadia Pratama",
+          "indexed_url": "https://nadiapratama.com/about"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "location-only",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama is based in Jakarta."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "product-mention",
+      "input": {
+        "name": "Nadia Pratama",
+        "facts": {
+          "page_text": "Nadia Pratama uses Slack daily."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "explicit-german",
+      "input": {
+        "name": "Lena Hoffmann",
+        "facts": {
+          "page_text": "Lena Hoffmann. Unternehmen: Rheinwerk Solutions GmbH."
+        }
+      },
+      "want": "Rheinwerk Solutions GmbH"
+    },
+    {
+      "id": "explicit-spanish",
+      "input": {
+        "name": "Lucía Fernández",
+        "facts": {
+          "page_text": "Lucía Fernández. Empresa: Meridian Solutions S.A."
+        }
+      },
+      "want": "Meridian Solutions S.A."
+    },
+    {
+      "id": "employment-spanish",
+      "input": {
+        "name": "Lucía Fernández",
+        "facts": {
+          "page_text": "Lucía Fernández trabaja en Meridian Solutions S.A."
+        }
+      },
+      "want": "Meridian Solutions S.A."
+    },
+    {
+      "id": "employment-french",
+      "input": {
+        "name": "Camille Dubois",
+        "facts": {
+          "page_text": "Camille Dubois travaille chez Lumière Conseil SARL."
+        }
+      },
+      "want": "Lumière Conseil SARL"
+    },
+    {
+      "id": "employment-german",
+      "input": {
+        "name": "Jonas Weber",
+        "facts": {
+          "page_text": "Jonas Weber arbeitet bei Nordlicht Systeme GmbH."
+        }
+      },
+      "want": "Nordlicht Systeme GmbH"
+    },
+    {
+      "id": "employment-portuguese",
+      "input": {
+        "name": "Mariana Silva",
+        "facts": {
+          "page_text": "Mariana Silva trabalha na Aurora Tecnologia Ltda."
+        }
+      },
+      "want": "Aurora Tecnologia Ltda"
+    },
+    {
+      "id": "employment-italian",
+      "input": {
+        "name": "Marco Rossi",
+        "facts": {
+          "page_text": "Marco Rossi lavora presso Studio Bianchi S.r.l."
+        }
+      },
+      "want": "Studio Bianchi S.r.l."
+    },
+    {
+      "id": "employment-dutch",
+      "input": {
+        "name": "Sanne de Vries",
+        "facts": {
+          "page_text": "Sanne de Vries werkt bij Delft Robotics B.V."
+        }
+      },
+      "want": "Delft Robotics B.V."
+    },
+    {
+      "id": "role-japanese",
+      "input": {
+        "name": "Kenji Sato",
+        "facts": {
+          "search_snippet": "Kenji Sato is a Security Engineer at Sakura Systems K.K."
+        }
+      },
+      "want": "Sakura Systems K.K."
+    },
+    {
+      "id": "role-uk",
+      "input": {
+        "name": "Amara Okafor",
+        "facts": {
+          "search_snippet": "Amara Okafor is a Product Manager at Northwind Traders PLC."
+        }
+      },
+      "want": "Northwind Traders PLC"
+    },
+    {
+      "id": "employment-india",
+      "input": {
+        "name": "Priya Raman",
+        "facts": {
+          "page_text": "Priya Raman works at Helios Analytics Pvt Ltd."
+        }
+      },
+      "want": "Helios Analytics Pvt Ltd"
+    },
+    {
+      "id": "university-infix",
+      "input": {
+        "name": "Amara Okafor",
+        "facts": {
+          "search_title": "Amara Okafor | University of Oxford"
+        }
+      },
+      "want": "University of Oxford"
+    },
+    {
+      "id": "profile-domain-germany",
+      "input": {
+        "name": "Jonas Weber",
+        "url": "https://www.rheinwerk-solutions.de/team/jonas-weber",
+        "facts": {
+          "search_title": "Jonas Weber",
+          "indexed_url": "https://www.rheinwerk-solutions.de/team/jonas-weber"
+        }
+      },
+      "want": "Rheinwerk Solutions"
+    },
+    {
+      "id": "education-oxford",
+      "input": {
+        "name": "Amara Okafor",
+        "facts": {
+          "page_text": "Amara Okafor studied at University of Oxford."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "event-google",
+      "input": {
+        "name": "Priya Raman",
+        "facts": {
+          "page_text": "Priya Raman spoke at Google Cloud Summit."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "free-email-germany",
+      "input": {
+        "name": "Jonas Weber",
+        "email": "jonas@web.de",
+        "facts": {
+          "email": "jonas@web.de"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "generic-legal-form",
+      "input": {
+        "name": "Lena Hoffmann",
+        "facts": {
+          "page_text": "Lena Hoffmann Company: GmbH."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "location-berlin",
+      "input": {
+        "name": "Lena Hoffmann",
+        "facts": {
+          "page_text": "Lena Hoffmann is based in Berlin."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "employer-label",
+      "input": {
+        "name": "Alex Kim",
+        "facts": {
+          "page_text": "Alex Kim. Employer Linux Foundation Known for Linux."
+        }
+      },
+      "want": "Linux Foundation"
+    },
+    {
+      "id": "prose-role",
+      "input": {
+        "name": "Alex Kim",
+        "facts": {
+          "page_text": "Alex Kim is a software engineer. He bought professor Andrew Tanenbaum's book, in which Tanenbaum describes MINIX."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "prose-suffix",
+      "input": {
+        "name": "Alex Kim",
+        "facts": {
+          "page_text": "Alex Kim. His parents were campus radicals at the University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "alma-mater-field",
+      "input": {
+        "name": "Alex Kim",
+        "facts": {
+          "page_text": "Alex Kim. Almamater Universitas Helsinki Pekerjaan Rekayasawan perangkat lunak."
+        }
+      },
+      "want": ""
+    }
+  ]
+}
