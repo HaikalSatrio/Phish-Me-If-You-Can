@@ -1,0 +1,497 @@
+{
+  "version": "role-eval-v1",
+  "minimum_precision": 0.95,
+  "minimum_recall": 0.85,
+  "cases": [
+    {
+      "id": "yohan-head-snippet",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono, S.Kom., M.TI., CND, CEHmaster, eMAPT. Head of Cyber Security Program. D5543. Cyber Security | Computer Science."
+        }
+      },
+      "want": "Head of Cyber Security Program"
+    },
+    {
+      "id": "yohan-is-head",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is Head of Cybersecurity Program in Bina Nusantara University, Indonesia."
+        }
+      },
+      "want": "Head of Cybersecurity Program"
+    },
+    {
+      "id": "yohan-title-lecturer",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_title": "Yohan Muliono - CND | CEH | eMAPT | CAP | DFE | Lecturer - LinkedIn"
+        }
+      },
+      "want": "Lecturer"
+    },
+    {
+      "id": "yohan-page-title-head",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "page_title": "Yohan Muliono | Head of Cyber Security Program | Binus"
+        }
+      },
+      "want": "Head of Cyber Security Program"
+    },
+    {
+      "id": "linus-occupation",
+      "input": {
+        "name": "Linus Torvalds",
+        "facts": {
+          "page_text": "Linus Torvalds. Occupation Software engineer Employer Linux Foundation"
+        }
+      },
+      "want": "Software Engineer"
+    },
+    {
+      "id": "linus-indonesian-occupation",
+      "input": {
+        "name": "Linus Torvalds",
+        "facts": {
+          "page_text": "Linus Torvalds. Pekerjaan Rekayasawan perangkat lunak Pemberi kerja Linux Foundation"
+        }
+      },
+      "want": "Software Engineer"
+    },
+    {
+      "id": "linus-is-programmer",
+      "input": {
+        "name": "Linus Torvalds",
+        "facts": {
+          "search_snippet": "Linus Torvalds is a Finnish-American computer programmer."
+        }
+      },
+      "want": "Finnish-American Computer Programmer"
+    },
+    {
+      "id": "works-as-engineer",
+      "input": {
+        "name": "Nadia Putri",
+        "facts": {
+          "search_snippet": "Nadia Putri works as a software engineer at Acme."
+        }
+      },
+      "want": "Software Engineer"
+    },
+    {
+      "id": "serves-as-director",
+      "input": {
+        "name": "Nadia Putri",
+        "facts": {
+          "search_snippet": "Nadia Putri serves as Director of Engineering at Acme."
+        }
+      },
+      "want": "Director of Engineering"
+    },
+    {
+      "id": "is-penetration-tester",
+      "input": {
+        "name": "Nadia Putri",
+        "facts": {
+          "search_snippet": "Nadia Putri is a penetration tester."
+        }
+      },
+      "want": "Penetration Tester"
+    },
+    {
+      "id": "is-accountant",
+      "input": {
+        "name": "Siti Rahma",
+        "facts": {
+          "search_snippet": "Siti Rahma is an accountant."
+        }
+      },
+      "want": "Accountant"
+    },
+    {
+      "id": "is-researcher",
+      "input": {
+        "name": "Daniel Weber",
+        "facts": {
+          "search_snippet": "Daniel Weber is a researcher at ETH Zurich."
+        }
+      },
+      "want": "Researcher"
+    },
+    {
+      "id": "is-lecturer",
+      "input": {
+        "name": "Maya Kusuma",
+        "facts": {
+          "search_snippet": "Maya Kusuma is a lecturer in the Department of Computer Science at Binus."
+        }
+      },
+      "want": "Lecturer"
+    },
+    {
+      "id": "is-software-developer",
+      "input": {
+        "name": "Rina Hartono",
+        "facts": {
+          "search_snippet": "Rina Hartono is a software developer."
+        }
+      },
+      "want": "Software Developer"
+    },
+    {
+      "id": "is-cloud-architect",
+      "input": {
+        "name": "Josh Miller",
+        "facts": {
+          "search_snippet": "Josh Miller is a cloud architect."
+        }
+      },
+      "want": "Cloud Architect"
+    },
+    {
+      "id": "is-cybersecurity-consultant",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is a cybersecurity consultant."
+        }
+      },
+      "want": "Cybersecurity Consultant"
+    },
+    {
+      "id": "is-professor",
+      "input": {
+        "name": "Amina Yusuf",
+        "facts": {
+          "search_snippet": "Dr. Amina Yusuf is a professor at the University of Lagos."
+        }
+      },
+      "want": "Professor"
+    },
+    {
+      "id": "is-security-engineer",
+      "input": {
+        "name": "Kenji Sato",
+        "facts": {
+          "search_snippet": "Kenji Sato is a security engineer at Sony."
+        }
+      },
+      "want": "Security Engineer"
+    },
+    {
+      "id": "indonesian-adalah-dosen",
+      "input": {
+        "name": "Nadia Putri",
+        "facts": {
+          "search_snippet": "Nadia Putri adalah seorang dosen di Universitas Indonesia."
+        }
+      },
+      "want": "Lecturer"
+    },
+    {
+      "id": "indonesian-bekerja-sebagai",
+      "input": {
+        "name": "Nadia Putri",
+        "facts": {
+          "search_snippet": "Nadia Putri bekerja sebagai dosen di Universitas Indonesia."
+        }
+      },
+      "want": "Lecturer"
+    },
+    {
+      "id": "indonesian-menjabat-sebagai",
+      "input": {
+        "name": "Budi Santoso",
+        "facts": {
+          "search_snippet": "Budi Santoso menjabat sebagai Direktur Teknologi di Acme."
+        }
+      },
+      "want": "Technology Director"
+    },
+    {
+      "id": "indonesian-role-label",
+      "input": {
+        "name": "Budi Santoso",
+        "facts": {
+          "page_text": "Budi Santoso. Jabatan: Kepala Divisi Keamanan Informasi. Lokasi: Jakarta."
+        }
+      },
+      "want": "Head of Information Security Division"
+    },
+    {
+      "id": "indonesian-trainer",
+      "input": {
+        "name": "Tono Wijaya",
+        "facts": {
+          "search_snippet": "Tono Wijaya bekerja sebagai pelatih di Acme."
+        }
+      },
+      "want": "Trainer"
+    },
+    {
+      "id": "english-role-label",
+      "input": {
+        "name": "Alex Kim",
+        "facts": {
+          "page_text": "Alex Kim. Role: Security Consultant. Location: Jakarta."
+        }
+      },
+      "want": "Security Consultant"
+    },
+    {
+      "id": "english-occupation-lawyer",
+      "input": {
+        "name": "Aisha Rahman",
+        "facts": {
+          "page_text": "Aisha Rahman. Occupation: Lawyer. Employer: Acme."
+        }
+      },
+      "want": "Lawyer"
+    },
+    {
+      "id": "title-senior-data-analyst",
+      "input": {
+        "name": "Amara Okafor",
+        "facts": {
+          "page_title": "Amara Okafor | Senior Data Analyst"
+        }
+      },
+      "want": "Senior Data Analyst"
+    },
+    {
+      "id": "title-chief-technology-officer",
+      "input": {
+        "name": "Amara Okafor",
+        "facts": {
+          "search_title": "Amara Okafor - Chief Technology Officer - Acme"
+        }
+      },
+      "want": "Chief Technology Officer"
+    },
+    {
+      "id": "serves-as-product-manager",
+      "input": {
+        "name": "Lena Park",
+        "facts": {
+          "search_snippet": "Lena Park serves as a product manager at Acme."
+        }
+      },
+      "want": "Product Manager"
+    },
+    {
+      "id": "is-student",
+      "input": {
+        "name": "Kevin Tan",
+        "facts": {
+          "search_snippet": "Kevin Tan is a student at MIT."
+        }
+      },
+      "want": "Student"
+    },
+    {
+      "id": "is-doctor",
+      "input": {
+        "name": "Ravi Menon",
+        "facts": {
+          "search_snippet": "Ravi Menon is a doctor at Singapore General Hospital."
+        }
+      },
+      "want": "Doctor"
+    },
+    {
+      "id": "negative-company-only",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is associated with Bina Nusantara University in Jakarta."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-unrelated-role",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Professor Andrew Tanenbaum wrote the operating system."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-unrelated-title",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "page_title": "Professor Andrew Tanenbaum"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-alumnus",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is an alumnus of Binus University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-member",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is a member of the IEEE."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-location",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is based in Jakarta."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-interests",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is interested in cybersecurity."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-studied",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono studied at Binus University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-credential-only",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono, S.Kom., M.TI., CND, CEHmaster, eMAPT."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-certification",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is a certified ethical hacker."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-works-at",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono works at Bina Nusantara University."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-speaker",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is a speaker at a cybersecurity event."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-title-name-only",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "page_title": "Title: Yohan Muliono"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-company-title",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "page_title": "Bina Nusantara University | Computer Science"
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-generic-hiring",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "The company is hiring a software engineer."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-negated-role",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is not a manager."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-former-role",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono is a former lecturer."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-indonesian-former-role",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Yohan Muliono adalah mantan dosen."
+        }
+      },
+      "want": ""
+    },
+    {
+      "id": "negative-unrelated-person",
+      "input": {
+        "name": "Yohan Muliono",
+        "facts": {
+          "search_snippet": "Nadia Putri works as a software engineer at Acme."
+        }
+      },
+      "want": ""
+    }
+  ]
+}

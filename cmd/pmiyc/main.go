@@ -15,6 +15,9 @@ import (
 )
 
 func run(args []string) error {
+	if len(args) > 0 && args[0] == "enrich" {
+		return runEnrich(args[1:])
+	}
 	if len(args) == 1 && args[0] == "adapters" {
 		for _, a := range collector.DirectAdapters() {
 			fmt.Printf("%s | %s{username} | rule=%s | HTML without API | experimental, live reliability not established\n", a.Name, a.BaseURL, a.Rule)
@@ -34,7 +37,7 @@ func run(args []string) error {
 		return runSearch(args[1:])
 	}
 	if len(args) == 0 {
-		return fmt.Errorf("usage: pmiyc search -source auto -username <username> | pmiyc search -source web -name <name> | pmiyc adapters | pmiyc compare -before before.json -after after.json | pmiyc <import|analyze|review|candidates> -input case.json [-out new-file.json]")
+		return fmt.Errorf("usage: pmiyc search -source auto -username <username> | pmiyc search -source web -name <name> | pmiyc enrich -input case.json -out enriched.json [-model local-model] | pmiyc adapters | pmiyc compare -before before.json -after after.json | pmiyc <import|analyze|review|candidates> -input case.json [-out new-file.json]")
 	}
 	fs := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	input := fs.String("input", "", "case JSON path")

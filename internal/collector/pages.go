@@ -124,13 +124,16 @@ func (p *Page) Collect(ctx context.Context, q Query) Result {
 		return r
 	}
 	facts := []Fact{{"page_title", title}, {"page_description", description}}
+	if people := structuredPeople(doc); people != "" {
+		facts = append(facts, Fact{"person_jsonld", people})
+	}
 	if text != "" {
 		facts = append(facts, Fact{"page_text", text})
 	}
 	if len(links) > 0 {
 		facts = append(facts, Fact{"page_links", strings.Join(links, "\n")})
 	}
-	r.Profiles = append(r.Profiles, Profile{Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(response.Body)), Rule: "public-page-v2", Facts: facts})
+	r.Profiles = append(r.Profiles, Profile{Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(response.Body)), Rule: "public-page-v3", Facts: facts})
 	r.Events = append(r.Events, Event{"url:page", "SUCCESS", "HTML metadata, bounded page text, and public links; no verified personal facts"})
 	return r
 }

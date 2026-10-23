@@ -192,9 +192,41 @@ func printCandidates(c domain.Case) {
 				companyNote = " (inferred, unverified, ambiguous)"
 			}
 		}
-		fmt.Printf("\n%s | user=%q name=%q decision=%s\n  URL: %q\n  Company: %q%s Location: %q\n  Matches: %q\n  Contradictions: %q\n  Missing: %q\n", p.ID, p.Username, p.DisplayName, p.Decision, p.ProfileURL, p.Company, companyNote, p.Location, p.Matches, p.Contradictions, p.Missing)
+		roleNote := ""
+		if p.RoleInferred {
+			roleNote = " (inferred, unverified)"
+		}
+		fmt.Printf("\n%s | user=%q name=%q decision=%s\n  URL: %q\n  Company: %q%s Role: %q%s Location: %q\n  Matches: %q\n  Contradictions: %q\n  Missing: %q\n", p.ID, p.Username, p.DisplayName, p.Decision, p.ProfileURL, p.Company, companyNote, p.Role, roleNote, p.Location, p.Matches, p.Contradictions, p.Missing)
 		if len(p.CompanyAlternatives) > 0 {
 			fmt.Printf("  Company alternatives (audit): %q\n", p.CompanyAlternatives)
+		}
+		if len(p.RoleAlternatives) > 0 {
+			fmt.Printf("  Role alternatives (audit): %q\n", p.RoleAlternatives)
+		}
+		for _, r := range c.Relations {
+			if r.CandidateID != p.ID {
+				continue
+			}
+			fmt.Printf("  Relationship [%s, %s, %s]: role=%q organization=%q", r.Status, r.Temporal, r.Kind, r.Role, r.Organization)
+			if r.StartYear != 0 {
+				fmt.Printf(" start=%d", r.StartYear)
+			}
+			if r.EndYear != 0 {
+				fmt.Printf(" end=%d", r.EndYear)
+			}
+			fmt.Printf("\n    method=%s evidence=%s quote=%q\n", r.Method, r.EvidenceID, r.Quote)
+			for _, e := range c.Evidence {
+				if e.ID == r.EvidenceID {
+					for _, s := range e.Sources {
+						fmt.Printf("    Source: %s (observed %s)\n", s.URL, s.ObservedAt)
+					}
+				}
+			}
+		}
+		for _, run := range c.Extraction {
+			if run.CandidateID == p.ID {
+				fmt.Printf("  Extraction: %s %s accepted=%d rejected=%d model=%q notes=%q\n", run.Mode, run.Status, run.Accepted, run.Rejected, run.Model, run.Notes)
+			}
 		}
 		fmt.Println("  Public observations:")
 		for _, e := range c.Evidence {
@@ -203,6 +235,9 @@ func printCandidates(c domain.Case) {
 				status := ""
 				if e.Status != "OBSERVED" {
 					status = " [" + e.Status + "]"
+				}
+				if e.SupersededBy != "" {
+					status += " [superseded by " + e.SupersededBy + "]"
 				}
 				audit := ""
 				if e.InferenceRule != "" {
@@ -215,15 +250,15 @@ func printCandidates(c domain.Case) {
 					}
 					audit += ")"
 				}
-				if (e.Type == "page_text" || e.Type == "page_links") && len(value) > 400 {
+				if (e.Type == "page_text" || e.Type == "page_links" || e.Type == "person_jsonld") && len(value) > 400 {
 					fmt.Printf("    %s%s%s: %q (preview; full observation in saved JSON)\n", e.Type, status, audit, string(value[:400]))
 				} else {
 					fmt.Printf("    %s%s%s: %q\n", e.Type, status, audit, e.Value)
 				}
 			}
 		}
-		if p.Username != "" && p.DisplayName == "" && p.Company == "" && p.Location == "" {
-			fmt.Println("  The account was retrieved, but public name, company, and location were not provided by this source.")
+		if p.Username != "" && p.DisplayName == "" && p.Company == "" && p.Role == "" && p.Location == "" {
+			fmt.Println("  The account was retrieved, but public name, company, role, and location were not provided by this source.")
 		}
 	}
 }

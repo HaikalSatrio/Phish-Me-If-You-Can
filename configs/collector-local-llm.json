@@ -1,0 +1,21 @@
+{
+  "version": "github_experimental_v1",
+  "searxng_url": "http://127.0.0.1:8888",
+  "candidate_limit": 5,
+  "request_budget": 20,
+  "max_attempts": 3,
+  "timeout_seconds": 15,
+  "session_timeout_seconds": 600,
+  "name_confidence": 0.3,
+  "username_confidence": 0.6,
+  "attribute_boost": 0.15,
+  "evidence_confidence": 1.0,
+  "discoverability": 0.5,
+  "extraction": {
+    "mode": "hybrid",
+    "url": "http://127.0.0.1:11434",
+    "model": "qwen2.5:7b",
+    "timeout_seconds": 90,
+    "max_requests": 5
+  }
+}

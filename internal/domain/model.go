@@ -13,8 +13,15 @@ type Candidate struct {
 	DisplayName         string   `json:"display_name,omitempty"`
 	Company             string   `json:"company,omitempty"`
 	CompanyInferred     bool     `json:"company_inferred,omitempty"`
+	CompanyTemporal     string   `json:"company_temporal,omitempty"`
+	CompanyRelationIDs  []string `json:"company_relation_ids,omitempty"`
 	CompanyAmbiguous    bool     `json:"company_ambiguous,omitempty"`
 	CompanyAlternatives []string `json:"company_alternatives,omitempty"`
+	Role                string   `json:"role,omitempty"`
+	RoleInferred        bool     `json:"role_inferred,omitempty"`
+	RoleTemporal        string   `json:"role_temporal,omitempty"`
+	RoleRelationIDs     []string `json:"role_relation_ids,omitempty"`
+	RoleAlternatives    []string `json:"role_alternatives,omitempty"`
 	Location            string   `json:"location,omitempty"`
 	ID                  string   `json:"id"`
 	Matches             []string `json:"matches"`
@@ -39,6 +46,7 @@ type InferenceAlternative struct {
 }
 
 type Evidence struct {
+	SupersededBy          string                 `json:"superseded_by,omitempty"`
 	ID                    string                 `json:"id"`
 	CandidateID           string                 `json:"candidate_id"`
 	Type                  string                 `json:"type"`
@@ -55,12 +63,23 @@ type Evidence struct {
 	Aliases               []string               `json:"aliases,omitempty"`
 }
 
+type PersonRecord struct {
+	Name        string   `json:"name"`
+	JobTitles   []string `json:"job_titles,omitempty"`
+	Employers   []string `json:"employers,omitempty"`
+	Schools     []string `json:"schools,omitempty"`
+	Memberships []string `json:"memberships,omitempty"`
+	BirthPlaces []string `json:"birth_places,omitempty"`
+}
+
 type Coverage struct {
 	Source string `json:"source"`
 	Status string `json:"status"`
 }
 
 type Case struct {
+	Relations     []Relation          `json:"relations,omitempty"`
+	Extraction    []ExtractionRun     `json:"extraction,omitempty"`
 	Receipts      []CollectionReceipt `json:"receipts,omitempty"`
 	Search        *SearchSession      `json:"search,omitempty"`
 	SchemaVersion string              `json:"schema_version"`
@@ -68,6 +87,38 @@ type Case struct {
 	Candidates    []Candidate         `json:"candidates"`
 	Evidence      []Evidence          `json:"evidence"`
 	Coverage      []Coverage          `json:"coverage"`
+}
+
+// Relation is an unverified statement about a subject, not an identity decision.
+type Relation struct {
+	ID           string `json:"id"`
+	CandidateID  string `json:"candidate_id"`
+	Subject      string `json:"subject"`
+	Kind         string `json:"kind"`
+	Organization string `json:"organization,omitempty"`
+	Role         string `json:"role,omitempty"`
+	StartYear    int    `json:"start_year,omitempty"`
+	EndYear      int    `json:"end_year,omitempty"`
+	Temporal     string `json:"temporal"`
+	EvidenceID   string `json:"evidence_id"`
+	Quote        string `json:"quote"`
+	Method       string `json:"method"`
+	Status       string `json:"status"`
+}
+
+type ExtractionRun struct {
+	CandidateID  string   `json:"candidate_id"`
+	Version      string   `json:"version"`
+	Mode         string   `json:"mode"`
+	Model        string   `json:"model,omitempty"`
+	Status       string   `json:"status"`
+	ObservedAt   string   `json:"observed_at"`
+	InputSHA256  string   `json:"input_sha256"`
+	OutputSHA256 string   `json:"output_sha256,omitempty"`
+	DurationMS   int64    `json:"duration_ms"`
+	Accepted     int      `json:"accepted"`
+	Rejected     int      `json:"rejected"`
+	Notes        []string `json:"notes,omitempty"`
 }
 
 type CollectionReceipt struct {

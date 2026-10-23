@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/extract"
 )
 
 func Unit(v float64) bool       { return !math.IsNaN(v) && !math.IsInf(v, 0) && v >= 0 && v <= 1 }
@@ -200,7 +201,15 @@ func Normalize(c domain.Case) (domain.Case, error) {
 	seen := map[string]int{}
 	for _, e := range c.Evidence {
 		e.Type = canonical(e.Type)
-		e.Value = strings.Join(strings.Fields(e.Value), " ")
+		if e.Type == "page_text" {
+			lines := strings.Split(e.Value, "\n")
+			for i := range lines {
+				lines[i] = strings.Join(strings.Fields(lines[i]), " ")
+			}
+			e.Value = strings.TrimSpace(strings.Join(lines, "\n"))
+		} else {
+			e.Value = strings.Join(strings.Fields(e.Value), " ")
+		}
 		key := e.CandidateID + "\x00" + e.Type + "\x00" + canonical(e.Value)
 		if i, ok := seen[key]; ok && e.Status == "OBSERVED" {
 			x := &out[i]
@@ -245,5 +254,24 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		}
 	}
 	c.Evidence = out
+	byID := map[string]domain.Evidence{}
+	for _, e := range out {
+		byID[e.ID] = e
+	}
+	relationIDs := map[string]bool{}
+	for i := range c.Relations {
+		r := &c.Relations[i]
+		if resolved, ok := aliases[r.EvidenceID]; ok {
+			r.EvidenceID = resolved
+		}
+		e, ok := byID[r.EvidenceID]
+		if !ok || e.Status != "OBSERVED" || e.CandidateID != r.CandidateID || !extract.RelationTextType(e.Type) || r.ID == "" || relationIDs[r.ID] || r.Status != "UNVERIFIED" || r.Method == "" {
+			return c, fmt.Errorf("invalid relation provenance %s", r.ID)
+		}
+		if err := extract.ValidateRelation(*r, r.Subject, extract.Document{ID: e.ID, Type: e.Type, Text: e.Value}); err != nil {
+			return c, fmt.Errorf("invalid relation %s: %w", r.ID, err)
+		}
+		relationIDs[r.ID] = true
+	}
 	return c, nil
 }

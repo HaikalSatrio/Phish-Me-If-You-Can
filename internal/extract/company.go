@@ -81,6 +81,11 @@ var textRules = []textRule{
 		confidence: 0.72,
 	},
 	{
+		name:       "executive-role-organization-v1",
+		re:         regexp.MustCompile(`(?i)\b(?:ceo|cto|cfo|coo|cio|cmo|chro|chief\s+(?:executive|technology|financial|operating|information|marketing)\s+officer|treasurer|secretary|president|vice\s+president|chair(?:man|woman)?|founder|co-?founder|owner|technoking)\s+of\s+([^,.;!?|\n\r]{2,100})`),
+		confidence: 0.68,
+	},
+	{
 		name: "role-organization-phrase-v2",
 		re: regexp.MustCompile(`(?i)\b(?:head|director|manager|professor|lecturer|dosen|guru|teacher|staff|engineer|developer|analyst|consultant|researcher|scientist|architect|specialist|officer|intern|founder|co-founder|owner|ceo|cto|cfo|coo|president|dean|chair|lead|principal|partner|associate|assistant|coordinator|supervisor|administrator|trainer|instructor)\b` +
 			`(?:\s+of\s+[^,.;!?|\n\r]{1,60}?\s+(?:at|in|for|with|di|pada)|\s+(?:at|for|with|di|pada))\s+([^|\n\r;]{2,100})`),
@@ -272,11 +277,12 @@ var (
 	}
 	affiliationContextWords = []string{
 		"alma mater", "almamater", "alumni", "alumna", "alumnus", "bachelor",
-		"conferencia", "conference",
+		"champion", "competition", "conferencia", "conference",
 		"conferenza", "degree", "doctorate", "doctoral", "educación", "education",
 		"educação", "estudiante", "estudia", "estudió", "étudiant", "formación",
 		"formazione", "graduate", "graduated", "graduation", "guest", "konferenz",
-		"kuliah", "laurea", "lecture", "licenciatura", "lulus", "mahasiswa",
+		"gelar", "juara", "kompetisi", "kuliah", "laurea", "lecture", "licenciatura", "lulus",
+		"mahasiswa", "pendidikan", "sarjana", "studi", "doktoral",
 		"master", "maestría", "palestra", "phd", "ponente", "seminario",
 		"seminar", "séminaire", "speaker", "spoke", "student", "studentessa",
 		"studente", "studied", "studies", "study", "studiert", "visit", "visited",
@@ -335,7 +341,8 @@ var (
 	}
 	shortAcronyms = map[string]string{
 		"ag": "AG", "b.v": "B.V.", "bca": "BCA", "bni": "BNI", "bri": "BRI",
-		"bv": "BV", "co": "Co", "cv": "CV", "gmbh": "GmbH", "ibm": "IBM",
+		"bem": "BEM", "bv": "BV", "co": "Co", "cv": "CV", "gmbh": "GmbH", "hima": "HIMA",
+		"himti": "HIMTI", "hmif": "HMIF", "ibm": "IBM",
 		"k.k": "K.K.", "kk": "K.K.", "llc": "LLC", "llp": "LLP",
 		"ltda": "Ltda", "n.v": "N.V.", "nv": "NV", "pd": "PD", "plc": "PLC",
 		"pt": "PT", "pte": "Pte", "pty": "Pty", "s.a": "S.A.",
@@ -369,6 +376,7 @@ var (
 		"indonesian-employment-phrase-v1":    5,
 		"international-employment-phrase-v1": 5,
 		"employer-label-v1":                  5,
+		"executive-role-organization-v1":     6,
 		"role-organization-phrase-v2":        4,
 		"organization-prefix-v2":             3,
 		"organization-infix-v1":              3,
@@ -424,7 +432,10 @@ func ExtractCompany(in Input) (Inference, bool) {
 		if bareOrganizationRule && organizationSpanHasProseMarker(value) {
 			return
 		}
-		if rule == "role-organization-phrase-v2" && !organizationTargetStartsProper(raw) {
+		if (rule == "role-organization-phrase-v2" || rule == "executive-role-organization-v1") && !organizationTargetStartsProper(raw) {
+			return
+		}
+		if rule == "executive-role-organization-v1" && organizationSpanHasProseMarker(raw) {
 			return
 		}
 		key := strings.ToLower(value)
@@ -743,10 +754,14 @@ func organizationSpanHasProseMarker(value string) bool {
 		switch word {
 		case "and", "atau", "dan", "or", "serta", "with":
 			return true
-		case "article", "articles", "award", "book", "books", "buku", "chapter",
-			"conference", "course", "curriculum", "dissertation", "journal",
-			"makalah", "medal", "medali", "paper", "papers", "penghargaan",
-			"penerima", "prize", "proceedings", "thesis":
+		case "adalah", "dari", "dengan", "diperdagangkan", "ini", "itu", "merupakan",
+			"pada", "publik", "sebagai", "tersebut", "untuk", "yang":
+			return true
+		case "article", "articles", "award", "book", "books", "bootcamp", "buku", "chapter",
+			"competition", "conference", "course", "curriculum", "dissertation", "event",
+			"festival", "hackathon", "journal", "makalah", "medal", "medali", "paper",
+			"papers", "penghargaan", "penerima", "prize", "proceedings", "seminar", "summit",
+			"thesis", "training", "webinar", "workshop":
 			return true
 		}
 		if word == previous {
@@ -831,9 +846,71 @@ func normalizeOrganization(raw, name string) string {
 	value = strings.Trim(value, " .,:;!?*")
 	value = trimLeadingName(value, name)
 	value = trimSocialCounts(value)
+	value = trimExecutiveOrganization(value)
+	value = trimLeadingRoleOrganization(value)
 	value = trimStopWords(value, leadingStopWords, false)
 	value = trimStopWords(value, trailingStopWords, true)
 	return displayOrganization(value)
+}
+
+func trimExecutiveOrganization(value string) string {
+	lower := strings.ToLower(value)
+	index := strings.Index(lower, " of ")
+	if index <= 0 {
+		return value
+	}
+	left := strings.TrimSpace(value[:index])
+	right := strings.TrimSpace(value[index+4:])
+	if !executiveOrganizationRole(left) || !organizationMarkerLike(right) {
+		return value
+	}
+	return right
+}
+
+func trimLeadingRoleOrganization(value string) string {
+	fields := strings.Fields(value)
+	for index := 1; index < len(fields); index++ {
+		right := strings.Join(fields[index:], " ")
+		if !organizationMarkerLike(right) {
+			continue
+		}
+		left := strings.Join(fields[:index], " ")
+		if index == 1 && (strings.EqualFold(left, "president") || strings.EqualFold(left, "chair")) {
+			continue
+		}
+		if executiveOrganizationRole(left) {
+			return right
+		}
+	}
+	return value
+}
+
+func executiveOrganizationRole(value string) bool {
+	for _, word := range words(value) {
+		switch word {
+		case "ceo", "cto", "cfo", "coo", "cio", "cmo", "chro", "chief",
+			"treasurer", "secretary", "president", "chair", "chairman", "chairwoman",
+			"founder", "co-founder", "cofounder", "owner", "technoking":
+			return true
+		}
+	}
+	return false
+}
+
+func organizationMarkerLike(value string) bool {
+	for _, word := range words(value) {
+		switch word {
+		case "university", "universitas", "université", "universidad", "universität",
+			"institute", "institut", "college", "academy", "akademi", "school", "sekolah",
+			"politeknik", "corporation", "corp", "incorporated", "inc", "limited", "ltd",
+			"llc", "llp", "plc", "gmbh", "ag", "sas", "sarl", "ltda", "limitada",
+			"group", "holdings", "foundation", "yayasan", "bank", "hospital", "centre",
+			"center", "laboratory", "labs", "technologies", "technology", "solutions",
+			"systems", "consulting", "company", "agency", "ministry", "department":
+			return true
+		}
+	}
+	return false
 }
 
 func sentenceContext(value string, start, end int) string {

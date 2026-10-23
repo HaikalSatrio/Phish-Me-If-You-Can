@@ -21,8 +21,19 @@ type evalCase struct {
 	Want  string `json:"want"`
 }
 
+type evalExtractor func(Input) (Inference, bool)
+
 func TestCompanyEvaluation(t *testing.T) {
-	data, err := os.ReadFile(filepath.Join("testdata", "company_eval.json"))
+	evaluate(t, "company_eval.json", "company-eval-v1", ExtractCompany)
+}
+
+func TestRoleEvaluation(t *testing.T) {
+	evaluate(t, "role_eval.json", "role-eval-v1", ExtractRole)
+}
+
+func evaluate(t *testing.T, filename, version string, extract evalExtractor) {
+	t.Helper()
+	data, err := os.ReadFile(filepath.Join("testdata", filename))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -30,12 +41,12 @@ func TestCompanyEvaluation(t *testing.T) {
 	if err := json.Unmarshal(data, &corpus); err != nil {
 		t.Fatal(err)
 	}
-	if corpus.Version != "company-eval-v1" || len(corpus.Cases) < 20 {
+	if corpus.Version != version || len(corpus.Cases) < 20 {
 		t.Fatalf("invalid evaluation corpus: %+v", corpus)
 	}
 	truePositive, falsePositive, falseNegative, trueNegative := 0, 0, 0, 0
 	for _, test := range corpus.Cases {
-		got, ok := ExtractCompany(test.Input)
+		got, ok := extract(test.Input)
 		predicted := ""
 		if ok {
 			predicted = got.Value
@@ -45,7 +56,7 @@ func TestCompanyEvaluation(t *testing.T) {
 		}
 		want := strings.Join(strings.Fields(test.Want), " ")
 		switch {
-		case want != "" && predicted != "" && sameCompany(want, predicted):
+		case want != "" && predicted != "" && sameValue(want, predicted):
 			truePositive++
 		case want == "" && predicted == "":
 			trueNegative++
@@ -72,7 +83,7 @@ func TestCompanyEvaluation(t *testing.T) {
 	}
 }
 
-func sameCompany(a, b string) bool {
+func sameValue(a, b string) bool {
 	return strings.EqualFold(strings.Join(strings.Fields(a), " "), strings.Join(strings.Fields(b), " "))
 }
 

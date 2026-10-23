@@ -47,6 +47,14 @@ func pageContent(doc *html.Node, base *url.URL) (string, []string) {
 			case "head", "script", "style", "noscript", "nav", "footer", "header", "form", "template", "svg":
 				return
 			}
+			if text.Len() < 32768 {
+				switch n.Data {
+				case "p", "div", "section", "li", "tr", "h1", "h2", "h3", "br":
+					text.WriteByte('\n')
+				case "td", "th":
+					text.WriteString(" | ")
+				}
+			}
 			for _, a := range n.Attr {
 				if a.Key == "hidden" || (a.Key == "aria-hidden" && a.Val == "true") {
 					return
@@ -73,9 +81,21 @@ func pageContent(doc *html.Node, base *url.URL) (string, []string) {
 		for c := n.FirstChild; c != nil; c = c.NextSibling {
 			walk(c)
 		}
+		if n.Type == html.ElementNode && text.Len() < 32768 {
+			switch n.Data {
+			case "p", "div", "section", "li", "tr", "h1", "h2", "h3":
+				text.WriteByte('\n')
+			}
+		}
 	}
 	walk(root)
-	value := []rune(strings.Join(strings.Fields(text.String()), " "))
+	lines := []string{}
+	for _, line := range strings.Split(text.String(), "\n") {
+		if line = strings.Join(strings.Fields(line), " "); line != "" {
+			lines = append(lines, line)
+		}
+	}
+	value := []rune(strings.Join(lines, "\n"))
 	if len(value) > 8000 {
 		value = append(value[:8000], []rune(" [truncated]")...)
 	}

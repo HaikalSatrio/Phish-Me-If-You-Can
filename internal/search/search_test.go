@@ -163,23 +163,11 @@ func TestWebCompanyInferenceStaysUnverifiedAndUnscored(t *testing.T) {
 	if candidate.Company != "Bina Nusantara University" || !candidate.CompanyInferred || candidate.CompanyAmbiguous || candidate.Confidence != 0 {
 		t.Fatalf("inferred company changed identity confidence or value: %+v", candidate)
 	}
-	if len(candidate.CompanyAlternatives) == 0 {
-		t.Fatalf("inference alternatives were not retained: %+v", candidate)
+	if len(candidate.Contradictions) != 0 || candidate.Role != "Head of Cybersecurity Program" || !candidate.RoleInferred {
+		t.Fatalf("invalid unverified relationship projection: %+v", candidate)
 	}
-	if len(candidate.Contradictions) != 0 {
-		t.Fatalf("inferred company was treated as a contradiction: %+v", candidate.Contradictions)
-	}
-	var inferred *domain.Evidence
-	for i := range c.Evidence {
-		if c.Evidence[i].ID == "web-yohan-workplace-inferred" {
-			inferred = &c.Evidence[i]
-		}
-	}
-	if inferred == nil || inferred.Status != "INFERRED" || inferred.Type != "workplace" || len(inferred.SupportingIDs) == 0 || len(inferred.Sources) != 0 {
-		t.Fatalf("invalid inferred evidence: %+v", inferred)
-	}
-	if inferred.InferenceRule != "role-organization-phrase-v2" || inferred.InferenceQuote == "" || inferred.InferenceQuoteType != "search_snippet" || len(inferred.InferenceAlternatives) == 0 {
-		t.Fatalf("missing inference audit trace: %+v", inferred)
+	if len(c.Relations) != 1 || c.Relations[0].Status != "UNVERIFIED" || c.Relations[0].EvidenceID != "web-yohan-search_snippet" || c.Relations[0].Quote == "" {
+		t.Fatalf("missing relation provenance: %+v", c.Relations)
 	}
 	c.Candidates[0].Decision = "CONFIRM"
 	r, err := scoring.Calculate(c, policy)
@@ -189,19 +177,10 @@ func TestWebCompanyInferenceStaysUnverifiedAndUnscored(t *testing.T) {
 	if r.IdentityStates["web-yohan"] != "ACCEPTED" {
 		t.Fatalf("candidate was not accepted: %+v", r.IdentityStates)
 	}
-	excluded := false
-	for _, id := range r.ExcludedIDs {
-		if id == inferred.ID {
-			excluded = true
-		}
-	}
-	if !excluded {
-		t.Fatal("inferred workplace was not excluded from scoring")
-	}
 	for _, dimension := range r.Dimensions {
 		for _, id := range dimension.EvidenceIDs {
-			if id == inferred.ID {
-				t.Fatal("inferred workplace entered a PES dimension")
+			if strings.Contains(id, "relation-") || strings.Contains(id, "search_snippet") {
+				t.Fatal("relations or snippets entered scoring")
 			}
 		}
 	}
@@ -227,7 +206,7 @@ func TestWebAmbiguousCompanyInferenceIsMarked(t *testing.T) {
 		t.Fatal(err)
 	}
 	candidate := c.Candidates[0]
-	if !candidate.CompanyInferred || !candidate.CompanyAmbiguous || len(candidate.CompanyAlternatives) == 0 {
+	if candidate.Company != "" || candidate.CompanyInferred || !candidate.CompanyAmbiguous || len(candidate.CompanyAlternatives) != 2 {
 		t.Fatalf("ambiguity was hidden: %+v", candidate)
 	}
 	ambiguousNote := false
@@ -239,23 +218,13 @@ func TestWebAmbiguousCompanyInferenceIsMarked(t *testing.T) {
 	if !ambiguousNote {
 		t.Fatalf("missing ambiguity note: %+v", candidate.Missing)
 	}
-	var inferred *domain.Evidence
-	for i := range c.Evidence {
-		if c.Evidence[i].ID == "web-nadia-workplace-inferred" {
-			inferred = &c.Evidence[i]
+	if len(c.Relations) != 2 {
+		t.Fatalf("competing claims not preserved: %+v", c.Relations)
+	}
+	for _, relation := range c.Relations {
+		if relation.Status != "UNVERIFIED" || relation.Quote == "" || relation.EvidenceID == "" {
+			t.Fatal("missing ambiguity trace")
 		}
-	}
-	if inferred == nil || len(inferred.InferenceAlternatives) == 0 || inferred.InferenceAlternatives[0].Rule == "" || inferred.InferenceAlternatives[0].Confidence <= 0 {
-		t.Fatalf("ambiguity trace was not persisted: %+v", inferred)
-	}
-	foundAlternative := false
-	for _, alternative := range inferred.InferenceAlternatives {
-		if alternative.Value == "Orbit Labs" && alternative.Rule == "employment-phrase-v1" {
-			foundAlternative = true
-		}
-	}
-	if !foundAlternative {
-		t.Fatalf("alternative audit was not persisted: %+v", inferred.InferenceAlternatives)
 	}
 }
 

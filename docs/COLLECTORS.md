@@ -16,7 +16,7 @@ Run from the repository root:
 .\bin\pmiyc.exe candidates -input data/anton-search.json
 ```
 
-The terminal displays candidate IDs, usernames, public profile links, company/location fields, matching clues, missing clues, and contradictions. A company derived from text rather than a structured profile field is marked `(inferred, unverified)`. If ambiguous, refine with a known username or compare additional clues:
+The terminal displays candidate IDs, usernames, public profile links, company/role/location fields, matching clues, missing clues, and contradictions. A company or role derived from text rather than a structured profile field is marked `(inferred, unverified)`. If company inference is ambiguous, refine with a known username or compare additional clues:
 
 ```powershell
 .\bin\pmiyc.exe search -input data/anton-search.json -username "KNOWN_USERNAME" -out data/anton-refined.json
@@ -37,9 +37,9 @@ Without `-out`, search automatically creates `data/<session-id>-<attempt>.json`.
 
 ## Scope and evidence
 
-Public profile username, display name, company, location, email, and website fields are captured when present. Biography is retained as profile_description metadata and excluded from PES. Empty fields produce no observed fact. Company is stored as workplace context but is a self-description, not verified employment. If the structured company is empty, deterministic extraction from page/snippet/biography text, email domain, or profile domain can add a separate INFERRED workplace supported by those observations; it is marked unverified, excluded from PES, and does not alter identity matching. The evidence carries the inference rule, exact quote, quote type, and ranked alternatives; near-ties and domain/text conflicts are marked ambiguous. Text is not parsed into personality traits, relationships, hobbies, or routines. Website links are stored as text and never followed.
+Public profile username, display name, company, location, email, and website fields are captured when present. Biography remains profile_description metadata, excluded from PES. Company is a self-description rather than verified employment. The relation pipeline extracts only subject-bound employment, public office, occupation, education, membership and birthplace claims with source quotes and periods. Historical or ambiguous relationships do not become current summary fields. Model proposals are optional and local; all inferred relationships remain excluded from PES and identity matching. See [EXTRACTION.md](EXTRACTION.md). Website links are stored as text and never followed by profile collectors.
 
-The CLI prints collected observations. An account with only a public username is still a successful retrieval; blank name, company, or location fields do not mean the request failed. Supply one username after `-username`; do not append a second example username such as `octocat`.
+The CLI prints collected observations. An account with only a public username is still a successful retrieval; blank name, company, role, or location fields do not mean the request failed. Supply one username after `-username`; do not append a second example username such as `octocat`.
 
 Every fact carries the API source URL, observation timestamp, collector version, candidate ID, and explicit experimental annotations. The collector configuration is recorded in the search session. Profiles are always pending review, even when the heuristic score exceeds the PES acceptance threshold.
 

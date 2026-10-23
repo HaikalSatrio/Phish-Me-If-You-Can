@@ -36,6 +36,25 @@ func TestImportReviewAnalyze(t *testing.T) {
 	}
 }
 
+func TestEnrichPreservesInputAndRefusesOverwrite(t *testing.T) {
+	dir := t.TempDir()
+	out := filepath.Join(dir, "enriched.json")
+	args := []string{"enrich", "-input", "../../fixtures/kevin.json", "-out", out}
+	if err := run(args); err != nil {
+		t.Fatal(err)
+	}
+	var saved domain.Case
+	if err := storage.Read(out, &saved); err != nil {
+		t.Fatal(err)
+	}
+	if len(saved.Extraction) != len(saved.Candidates) {
+		t.Fatal("missing extraction audit")
+	}
+	if err := run(args); err == nil {
+		t.Fatal("overwrote enrichment")
+	}
+}
+
 func TestSearchNameAndUsernameGuidance(t *testing.T) {
 	err := run([]string{"search", "-source", "web", "-name", "Haikal", "Satrio", "Dewandaru"})
 	if err == nil || !strings.Contains(err.Error(), `-name "Haikal Satrio Dewandaru"`) {
