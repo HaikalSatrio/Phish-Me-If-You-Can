@@ -45,6 +45,49 @@ func profileRole(role string) bool {
 	return false
 }
 
+func headlineRole(value string) bool {
+	if profileRole(value) {
+		return true
+	}
+	parts := roleConjunction.Split(value, -1)
+	if len(parts) < 2 || len(parts) > 3 {
+		return false
+	}
+	for _, part := range parts {
+		if !profileRole(part) {
+			return false
+		}
+	}
+	return true
+}
+
+func functionTarget(value string) bool {
+	if organizationMarker.MatchString(value) {
+		return false
+	}
+	for _, term := range []string{
+		"program", "programs", "division", "department", "faculty", "studies",
+		"engineering", "cybersecurity", "security", "information", "technology",
+		"computer", "software", "product", "business", "finance", "marketing",
+		"operations", "research", "development", "design", "data", "analytics",
+		"audit", "compliance", "risk", "governance", "strategy", "communications",
+		"public relations", "human resources", "legal", "medicine", "health",
+		"education", "academic", "student", "affairs", "services", "laboratory",
+		"lab", "sales", "growth", "talent", "people", "infrastructure",
+		"platform", "cloud", "network", "systems", "support", "quality",
+		"safety", "procurement", "manufacturing", "production", "logistics",
+		"treasury", "accounting", "tax", "policy", "partnerships", "innovation",
+		"digital", "architecture", "it", "hr",
+	} {
+		if containsWords(value, term) {
+			return true
+		}
+	}
+	return false
+}
+
+var organizationMarker = regexp.MustCompile(`(?i)\b(?:ltd|limited|inc|incorporated|llc|plc|corp|corporation|company|gmbh|university|institute|association|foundation|bank)\.?$|^(?:PT\.?|CV\.?|universitas|institut|yayasan)\s|^(?:university|institute|association)\s+of\s`)
+
 func profileRelationFields(body string) (kind, org, role string) {
 	body = literalField(strings.TrimSpace(body))
 	for _, suffix := range []string{" specializing in ", " specialising in "} {
@@ -62,10 +105,16 @@ func profileRelationFields(body string) (kind, org, role string) {
 			continue
 		}
 		// "Head of Cybersecurity Program" names a function, not an employer.
+		if separator == " of " && functionTarget(right) {
+			if headlineRole(left) {
+				return "occupation", "", body
+			}
+			continue
+		}
 		if separator == " of " && !organizationTargetStartsProper(right) {
 			continue
 		}
-		if !profileRole(left) && len(roleConjunction.Split(left, -1)) == 1 {
+		if !headlineRole(left) {
 			continue
 		}
 		kind = "employment"
@@ -83,13 +132,13 @@ func profileRelationFields(body string) (kind, org, role string) {
 		}
 		return kind, right, left
 	}
-	if profileRole(body) || len(roleConjunction.Split(body, -1)) > 1 && validRoleValue(body) {
+	if headlineRole(body) {
 		return "occupation", "", body
 	}
 	return "", "", ""
 }
 
-// Profile headers retain unknown time instead of guessing a current position.
+// Undated profile headers become headline claims, not verified current employment.
 // Parsing stops at narrative or another name, so later people's roles are excluded.
 func profileRelations(subject string, doc Document, asOf time.Time) []domain.Relation {
 	switch doc.Type {
@@ -145,6 +194,9 @@ func profileRelations(subject string, doc Document, asOf time.Time) []domain.Rel
 			break
 		}
 		s, e, state := temporal(quote, "", asOf)
+		if state == "unknown" {
+			state = "headline"
+		}
 		r := domain.Relation{Subject: subject, Kind: kind, Organization: org, Role: role, StartYear: s, EndYear: e, Temporal: state, EvidenceID: doc.ID, Quote: quote, Method: RelationVersion, Status: "UNVERIFIED"}
 		if ValidateRelation(r, subject, doc) == nil {
 			out = append(out, r)

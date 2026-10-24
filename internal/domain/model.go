@@ -6,29 +6,38 @@ type Target struct {
 }
 
 type Candidate struct {
-	Label               string   `json:"label,omitempty"`
-	RequiresReview      bool     `json:"requires_review,omitempty"`
-	ProfileURL          string   `json:"profile_url,omitempty"`
-	Username            string   `json:"username,omitempty"`
-	DisplayName         string   `json:"display_name,omitempty"`
-	Company             string   `json:"company,omitempty"`
-	CompanyInferred     bool     `json:"company_inferred,omitempty"`
-	CompanyTemporal     string   `json:"company_temporal,omitempty"`
-	CompanyRelationIDs  []string `json:"company_relation_ids,omitempty"`
-	CompanyAmbiguous    bool     `json:"company_ambiguous,omitempty"`
-	CompanyAlternatives []string `json:"company_alternatives,omitempty"`
-	Role                string   `json:"role,omitempty"`
-	RoleInferred        bool     `json:"role_inferred,omitempty"`
-	RoleTemporal        string   `json:"role_temporal,omitempty"`
-	RoleRelationIDs     []string `json:"role_relation_ids,omitempty"`
-	RoleAlternatives    []string `json:"role_alternatives,omitempty"`
-	Location            string   `json:"location,omitempty"`
-	ID                  string   `json:"id"`
-	Matches             []string `json:"matches"`
-	Contradictions      []string `json:"contradictions"`
-	Missing             []string `json:"missing"`
-	Confidence          float64  `json:"confidence"`
-	Decision            string   `json:"decision"`
+	RoleClaims          []SummaryClaim `json:"role_claims,omitempty"`
+	CompanyClaims       []SummaryClaim `json:"company_claims,omitempty"`
+	Label               string         `json:"label,omitempty"`
+	RequiresReview      bool           `json:"requires_review,omitempty"`
+	ProfileURL          string         `json:"profile_url,omitempty"`
+	Username            string         `json:"username,omitempty"`
+	DisplayName         string         `json:"display_name,omitempty"`
+	Company             string         `json:"company,omitempty"`
+	CompanyInferred     bool           `json:"company_inferred,omitempty"`
+	CompanyTemporal     string         `json:"company_temporal,omitempty"`
+	CompanyRelationIDs  []string       `json:"company_relation_ids,omitempty"`
+	CompanyAmbiguous    bool           `json:"company_ambiguous,omitempty"`
+	CompanyAlternatives []string       `json:"company_alternatives,omitempty"`
+	Role                string         `json:"role,omitempty"`
+	RoleInferred        bool           `json:"role_inferred,omitempty"`
+	RoleTemporal        string         `json:"role_temporal,omitempty"`
+	RoleRelationIDs     []string       `json:"role_relation_ids,omitempty"`
+	RoleAlternatives    []string       `json:"role_alternatives,omitempty"`
+	Location            string         `json:"location,omitempty"`
+	ID                  string         `json:"id"`
+	Matches             []string       `json:"matches"`
+	Contradictions      []string       `json:"contradictions"`
+	Missing             []string       `json:"missing"`
+	Confidence          float64        `json:"confidence"`
+	Decision            string         `json:"decision"`
+}
+
+type SummaryClaim struct {
+	Value       string   `json:"value"`
+	Kind        string   `json:"kind"`
+	Temporal    string   `json:"temporal"`
+	RelationIDs []string `json:"relation_ids"`
 }
 
 type Source struct {
@@ -91,34 +100,70 @@ type Case struct {
 
 // Relation is an unverified statement about a subject, not an identity decision.
 type Relation struct {
-	ID           string `json:"id"`
-	CandidateID  string `json:"candidate_id"`
-	Subject      string `json:"subject"`
-	Kind         string `json:"kind"`
-	Organization string `json:"organization,omitempty"`
-	Role         string `json:"role,omitempty"`
-	StartYear    int    `json:"start_year,omitempty"`
-	EndYear      int    `json:"end_year,omitempty"`
-	Temporal     string `json:"temporal"`
-	EvidenceID   string `json:"evidence_id"`
-	Quote        string `json:"quote"`
-	Method       string `json:"method"`
-	Status       string `json:"status"`
+	Reviews      []RelationReview `json:"reviews,omitempty"`
+	ID           string           `json:"id"`
+	CandidateID  string           `json:"candidate_id"`
+	Subject      string           `json:"subject"`
+	Kind         string           `json:"kind"`
+	Organization string           `json:"organization,omitempty"`
+	Role         string           `json:"role,omitempty"`
+	StartYear    int              `json:"start_year,omitempty"`
+	EndYear      int              `json:"end_year,omitempty"`
+	Temporal     string           `json:"temporal"`
+	EvidenceID   string           `json:"evidence_id"`
+	Quote        string           `json:"quote"`
+	Method       string           `json:"method"`
+	Status       string           `json:"status"`
+}
+
+type RelationReview struct {
+	Decision string `json:"decision"`
+	At       string `json:"at"`
+	Reason   string `json:"reason"`
+}
+
+func RelationDecision(r Relation) string {
+	if len(r.Reviews) == 0 {
+		return "PENDING"
+	}
+	return r.Reviews[len(r.Reviews)-1].Decision
+}
+
+type ExtractionRejection struct {
+	Index    int      `json:"index"`
+	Code     string   `json:"code"`
+	Detail   string   `json:"detail"`
+	Proposal Relation `json:"proposal"`
+}
+
+type ExtractionAdjustment struct {
+	Index  int    `json:"index"`
+	Field  string `json:"field"`
+	From   string `json:"from"`
+	To     string `json:"to"`
+	Reason string `json:"reason"`
 }
 
 type ExtractionRun struct {
-	CandidateID  string   `json:"candidate_id"`
-	Version      string   `json:"version"`
-	Mode         string   `json:"mode"`
-	Model        string   `json:"model,omitempty"`
-	Status       string   `json:"status"`
-	ObservedAt   string   `json:"observed_at"`
-	InputSHA256  string   `json:"input_sha256"`
-	OutputSHA256 string   `json:"output_sha256,omitempty"`
-	DurationMS   int64    `json:"duration_ms"`
-	Accepted     int      `json:"accepted"`
-	Rejected     int      `json:"rejected"`
-	Notes        []string `json:"notes,omitempty"`
+	Adjustments    []ExtractionAdjustment `json:"adjustments,omitempty"`
+	Rejections     []ExtractionRejection  `json:"rejections,omitempty"`
+	PromptSHA256   string                 `json:"prompt_sha256,omitempty"`
+	ModelDigest    string                 `json:"model_digest,omitempty"`
+	RuntimeOptions map[string]int         `json:"runtime_options,omitempty"`
+	ErrorCode      string                 `json:"error_code,omitempty"`
+	RawResponse    string                 `json:"raw_response,omitempty"`
+	CandidateID    string                 `json:"candidate_id"`
+	Version        string                 `json:"version"`
+	Mode           string                 `json:"mode"`
+	Model          string                 `json:"model,omitempty"`
+	Status         string                 `json:"status"`
+	ObservedAt     string                 `json:"observed_at"`
+	InputSHA256    string                 `json:"input_sha256"`
+	OutputSHA256   string                 `json:"output_sha256,omitempty"`
+	DurationMS     int64                  `json:"duration_ms"`
+	Accepted       int                    `json:"accepted"`
+	Rejected       int                    `json:"rejected"`
+	Notes          []string               `json:"notes,omitempty"`
 }
 
 type CollectionReceipt struct {

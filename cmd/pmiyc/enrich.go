@@ -21,6 +21,7 @@ func runEnrich(args []string) error {
 	endpoint := fs.String("ollama-url", "http://127.0.0.1:11434", "local Ollama origin")
 	timeout := fs.Int("timeout", 90, "timeout in seconds per local request (1-300)")
 	budget := fs.Int("max-requests", 5, "maximum local model requests (1-20)")
+	debug := fs.Bool("debug-extraction", false, "save the bounded raw local model response in the new snapshot")
 	if err := fs.Parse(args); err != nil {
 		return err
 	}
@@ -37,6 +38,7 @@ func runEnrich(args []string) error {
 		return err
 	}
 	cfg := extract.Config{URL: *endpoint, Model: *model, TimeoutSeconds: *timeout, MaxRequests: *budget}
+	cfg.SaveRawResponse = *debug
 	if *model != "" {
 		cfg.Mode = "hybrid"
 	}

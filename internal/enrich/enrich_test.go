@@ -120,14 +120,58 @@ func TestSummaryRoleAlternativesUseCanonicalEnglish(t *testing.T) {
 		t.Fatal(err)
 	}
 	p := got.Candidates[0]
-	if p.Role != "" || p.Company != "" || !reflect.DeepEqual(p.RoleAlternatives, []string{"Lecturer", "Researcher"}) {
+	if p.Role != "Lecturer; Researcher" || p.RoleTemporal != "multiple_claims" || len(p.RoleClaims) != 2 || p.Company != "" || !reflect.DeepEqual(p.RoleAlternatives, []string{"Lecturer", "Researcher"}) {
 		t.Fatalf("role alternatives were not canonicalized: %+v", p)
+	}
+}
+
+func TestProfileHeadlineSummary(t *testing.T) {
+	cases := []struct {
+		name, text, company, role string
+	}{
+		{"Yohan Muliono", "Yohan Muliono - Head of Cyber Security Program", "", "Head of Cyber Security Program"},
+		{"Elon Musk", "Elon Musk - Co-founder and CEO of Tesla", "Tesla", "Co-founder and CEO"},
+		{"Yohan Muliono", "Yohan Muliono - Head of Cyber Security Program 2014-2024", "", ""},
+	}
+	for _, tc := range cases {
+		t.Run(tc.text, func(t *testing.T) {
+			c := fixture(tc.text)
+			c.Target.Name = tc.name
+			c.Evidence[0].Type = "search_title"
+			got, err := Run(context.Background(), c, extract.Config{})
+			if err != nil {
+				t.Fatal(err)
+			}
+			p := got.Candidates[0]
+			if p.Company != tc.company || p.Role != tc.role {
+				t.Fatalf("incorrect headline summary: %+v", p)
+			}
+			if tc.role != "" && p.RoleTemporal != "headline" {
+				t.Fatalf("headline role lost its temporal marker: %+v", p)
+			}
+			if tc.company != "" && p.CompanyTemporal != "headline" {
+				t.Fatalf("headline company lost its temporal marker: %+v", p)
+			}
+			if tc.role != "" && !strings.Contains(strings.Join(p.Missing, " "), "undated profile headline") {
+				t.Fatalf("headline summary lacks an audit note: %+v", p.Missing)
+			}
+			if tc.role == "" && tc.company == "" && !strings.Contains(strings.Join(p.Missing, " "), "no unambiguous current or headline relationship") {
+				t.Fatalf("historical headline was not withheld: %+v", p)
+			}
+			if len(got.Relations) != 1 || got.Relations[0].Temporal == "" {
+				t.Fatalf("headline provenance lost: %+v", got.Relations)
+			}
+		})
 	}
 }
 
 func TestLocalProposalsDoNotChangeSummaryOrIdentity(t *testing.T) {
 	quote := "Ayu Lestari interviewed Budi Santoso, Chief Financial Officer at Contoso Ltd."
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodGet {
+			w.Write([]byte(`{"models":[]}`))
+			return
+		}
 		proposal := map[string]any{"subject": "Ayu Lestari", "kind": "employment", "organization": "Contoso Ltd", "role": "Chief Financial Officer", "start_year": 0, "end_year": 0, "temporal": "present_assertion", "evidence_id": "doc", "quote": quote}
 		content, _ := json.Marshal(map[string]any{"relations": []any{proposal}})
 		json.NewEncoder(w).Encode(map[string]any{"done": true, "message": map[string]string{"content": string(content)}})
@@ -149,7 +193,14 @@ func TestLocalProposalsDoNotChangeSummaryOrIdentity(t *testing.T) {
 
 func TestLocalFailurePreservesRulesAndReportsBudget(t *testing.T) {
 	calls := 0
-	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { calls++; w.WriteHeader(http.StatusServiceUnavailable) }))
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodGet {
+			w.Write([]byte(`{"models":[]}`))
+			return
+		}
+		calls++
+		w.WriteHeader(http.StatusServiceUnavailable)
+	}))
 	defer srv.Close()
 	c := fixture("Ayu Lestari works at Orbit Labs.")
 	other := c.Candidates[0]

@@ -30,7 +30,10 @@ func relationFieldValue(field string, r domain.Relation) string {
 }
 
 func summaryRelation(r domain.Relation) bool {
-	return r.Status == "UNVERIFIED" && (r.Method == extract.RelationVersion || r.Method == "jsonld/"+extract.RelationVersion)
+	if r.Status != "UNVERIFIED" || domain.RelationDecision(r) == "REJECT" {
+		return false
+	}
+	return domain.RelationDecision(r) == "ACCEPT" || r.Method == extract.RelationVersion || r.Method == "jsonld/"+extract.RelationVersion
 }
 
 func summaryKey(value string) string {
@@ -38,9 +41,11 @@ func summaryKey(value string) string {
 }
 
 func summaryField(candidateID, field string, relations []domain.Relation) fieldSummary {
-	present := map[string]string{}
-	presentIDs := map[string][]string{}
+	current := map[string]string{}
+	currentTemporal := map[string]string{}
+	currentIDs := map[string][]string{}
 	otherIDs := map[string][]string{}
+	unknown := map[string][]domain.Relation{}
 	for _, r := range relations {
 		if r.CandidateID != candidateID || !summaryRelation(r) {
 			continue
@@ -50,42 +55,90 @@ func summaryField(candidateID, field string, relations []domain.Relation) fieldS
 			continue
 		}
 		key := summaryKey(value)
-		if r.Temporal == "present_assertion" {
-			if _, ok := present[key]; !ok {
-				present[key] = value
+		if r.Temporal == "present_assertion" || r.Temporal == "headline" {
+			if _, ok := current[key]; !ok {
+				current[key] = value
 			}
-			presentIDs[key] = append(presentIDs[key], r.ID)
+			currentIDs[key] = append(currentIDs[key], r.ID)
+			if currentTemporal[key] != "present_assertion" {
+				currentTemporal[key] = r.Temporal
+			}
 			continue
 		}
-		otherIDs[key] = append(otherIDs[key], r.ID)
+		if r.Temporal == "unknown" {
+			unknown[key] = append(unknown[key], r)
+		}
+		if r.Temporal == "historical" {
+			otherIDs[key] = append(otherIDs[key], r.ID)
+		}
 	}
-	if len(present) == 0 {
+	if len(current) == 0 {
+		for key, relations := range unknown {
+			current[key] = relationFieldValue(field, relations[0])
+			currentTemporal[key] = "unknown"
+		}
+	}
+	for key, relations := range unknown {
+		if _, ok := current[key]; ok {
+			for _, r := range relations {
+				currentIDs[key] = append(currentIDs[key], r.ID)
+			}
+		}
+	}
+	if len(current) == 0 {
 		return fieldSummary{}
 	}
-	keys := make([]string, 0, len(present))
-	for key := range present {
+	keys := make([]string, 0, len(current))
+	for key := range current {
 		keys = append(keys, key)
 	}
 	sort.Strings(keys)
 	if len(keys) > 1 {
 		out := fieldSummary{}
 		for _, key := range keys {
-			out.alternatives = append(out.alternatives, present[key])
+			out.alternatives = append(out.alternatives, current[key])
+			out.ids = append(out.ids, currentIDs[key]...)
 		}
+		if field == "role" {
+			conflict := false
+			for _, key := range keys {
+				if len(otherIDs[key]) > 0 {
+					conflict = true
+				}
+			}
+			if !conflict {
+				out.value = strings.Join(out.alternatives, "; ")
+				out.temporal = "multiple_claims"
+			}
+		}
+		sort.Strings(out.ids)
 		return out
 	}
 	key := keys[0]
-	ids := append([]string(nil), presentIDs[key]...)
+	ids := append([]string(nil), currentIDs[key]...)
 	if len(otherIDs[key]) > 0 {
 		ids = append(ids, otherIDs[key]...)
 		sort.Strings(ids)
 		return fieldSummary{temporal: "conflicting", ids: ids}
 	}
 	sort.Strings(ids)
-	return fieldSummary{value: present[key], temporal: "present_assertion", ids: ids}
+	return fieldSummary{value: current[key], temporal: currentTemporal[key], ids: ids}
 }
 
 func projectSummary(p *domain.Candidate, relations []domain.Relation) {
+	p.RoleClaims = nil
+	p.CompanyClaims = nil
+	for _, r := range relations {
+		if r.CandidateID != p.ID || !summaryRelation(r) {
+			continue
+		}
+		if role := relationFieldValue("role", r); role != "" {
+			p.RoleClaims = appendClaim(p.RoleClaims, role, r)
+		}
+		if company := relationFieldValue("company", r); company != "" {
+			p.CompanyClaims = appendClaim(p.CompanyClaims, company, r)
+		}
+	}
 	company := summaryField(p.ID, "company", relations)
 	role := summaryField(p.ID, "role", relations)
 	p.CompanyAlternatives = company.alternatives
@@ -107,17 +160,63 @@ func projectSummary(p *domain.Candidate, relations []domain.Relation) {
 	if p.CompanyInferred || p.RoleInferred {
 		notes["Extraction: summary fields are unverified source claims; inspect each field's period and relationship references"] = true
 	}
-	if len(company.alternatives) > 1 || len(role.alternatives) > 1 {
-		notes["Extraction: competing present-tense values remain ambiguous; only the affected summary field is withheld"] = true
+	if company.temporal == "headline" || role.temporal == "headline" {
+		notes["Extraction: summary includes an undated profile headline; verify it against the current source"] = true
+	}
+	if len(company.alternatives) > 1 || len(role.alternatives) > 1 && role.value == "" {
+		notes["Extraction: competing current or headline values remain ambiguous; only the affected summary field is withheld"] = true
+	}
+	if role.temporal == "multiple_claims" {
+		notes["Extraction: several role claims are displayed separately; this does not establish concurrent employment"] = true
+	}
+	if company.temporal == "unknown" || role.temporal == "unknown" {
+		notes["Extraction: source provides a relationship without a known period"] = true
 	}
 	if company.temporal == "conflicting" || role.temporal == "conflicting" {
 		notes["Extraction: the value is supported but source claims disagree on its period"] = true
 	}
 	if p.Company == "" && p.Role == "" && len(company.alternatives) == 0 && len(role.alternatives) == 0 && company.temporal != "conflicting" && role.temporal != "conflicting" {
-		notes["Extraction: no unambiguous present-tense relationship; inspect history and proposals"] = true
+		notes["Extraction: no unambiguous current or headline relationship; inspect history and proposals"] = true
 	}
 	for note := range notes {
 		p.Missing = append(p.Missing, note)
 	}
 	sort.Strings(p.Missing)
+}
+
+func appendClaim(claims []domain.SummaryClaim, value string, r domain.Relation) []domain.SummaryClaim {
+	for i := range claims {
+		if summaryKey(claims[i].Value) == summaryKey(value) && claims[i].Kind == r.Kind && claims[i].Temporal == r.Temporal {
+			claims[i].RelationIDs = append(claims[i].RelationIDs, r.ID)
+			return claims
+		}
+	}
+	return append(claims, domain.SummaryClaim{Value: value, Kind: r.Kind, Temporal: r.Temporal, RelationIDs: []string{r.ID}})
+}
+
+// Reproject changes only derived summaries, never identity or observed fields.
+func Reproject(c *domain.Case) {
+	for i := range c.Candidates {
+		p := &c.Candidates[i]
+		if p.CompanyInferred {
+			p.Company = ""
+		}
+		if p.RoleInferred {
+			p.Role = ""
+		}
+		p.CompanyInferred = false
+		p.RoleInferred = false
+		p.CompanyTemporal = ""
+		p.RoleTemporal = ""
+		p.CompanyRelationIDs = nil
+		p.RoleRelationIDs = nil
+		notes := []string{}
+		for _, n := range p.Missing {
+			if !strings.HasPrefix(n, "Extraction:") {
+				notes = append(notes, n)
+			}
+		}
+		p.Missing = notes
+		projectSummary(p, c.Relations)
+	}
 }

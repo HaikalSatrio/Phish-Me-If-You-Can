@@ -188,6 +188,9 @@ func printCandidates(c domain.Case) {
 		companyNote := ""
 		if p.CompanyInferred {
 			companyNote = " (inferred, unverified)"
+			if p.CompanyTemporal != "" {
+				companyNote += " [" + p.CompanyTemporal + "]"
+			}
 			if p.CompanyAmbiguous {
 				companyNote = " (inferred, unverified, ambiguous)"
 			}
@@ -195,19 +198,28 @@ func printCandidates(c domain.Case) {
 		roleNote := ""
 		if p.RoleInferred {
 			roleNote = " (inferred, unverified)"
+			if p.RoleTemporal != "" {
+				roleNote += " [" + p.RoleTemporal + "]"
+			}
 		}
 		fmt.Printf("\n%s | user=%q name=%q decision=%s\n  URL: %q\n  Company: %q%s Role: %q%s Location: %q\n  Matches: %q\n  Contradictions: %q\n  Missing: %q\n", p.ID, p.Username, p.DisplayName, p.Decision, p.ProfileURL, p.Company, companyNote, p.Role, roleNote, p.Location, p.Matches, p.Contradictions, p.Missing)
 		if len(p.CompanyAlternatives) > 0 {
 			fmt.Printf("  Company alternatives (audit): %q\n", p.CompanyAlternatives)
 		}
 		if len(p.RoleAlternatives) > 0 {
-			fmt.Printf("  Role alternatives (audit): %q\n", p.RoleAlternatives)
+			fmt.Printf("  Role claims (not necessarily concurrent): %q\n", p.RoleAlternatives)
+		}
+		for _, claim := range p.RoleClaims {
+			fmt.Printf("  Role detail: %q | %s | %s | relations=%q\n", claim.Value, claim.Kind, claim.Temporal, claim.RelationIDs)
+		}
+		for _, claim := range p.CompanyClaims {
+			fmt.Printf("  Company detail: %q | %s | %s | relations=%q\n", claim.Value, claim.Kind, claim.Temporal, claim.RelationIDs)
 		}
 		for _, r := range c.Relations {
 			if r.CandidateID != p.ID {
 				continue
 			}
-			fmt.Printf("  Relationship [%s, %s, %s]: role=%q organization=%q", r.Status, r.Temporal, r.Kind, r.Role, r.Organization)
+			fmt.Printf("  Relationship %s [%s, %s, %s, review=%s]: role=%q organization=%q", r.ID, r.Status, r.Temporal, r.Kind, domain.RelationDecision(r), r.Role, r.Organization)
 			if r.StartYear != 0 {
 				fmt.Printf(" start=%d", r.StartYear)
 			}
@@ -226,6 +238,9 @@ func printCandidates(c domain.Case) {
 		for _, run := range c.Extraction {
 			if run.CandidateID == p.ID {
 				fmt.Printf("  Extraction: %s %s accepted=%d rejected=%d model=%q notes=%q\n", run.Mode, run.Status, run.Accepted, run.Rejected, run.Model, run.Notes)
+				for _, rejection := range run.Rejections {
+					fmt.Printf("    Rejected proposal %d: %s | evidence=%s | %s\n", rejection.Index, rejection.Code, rejection.Proposal.EvidenceID, rejection.Detail)
+				}
 			}
 		}
 		fmt.Println("  Public observations:")

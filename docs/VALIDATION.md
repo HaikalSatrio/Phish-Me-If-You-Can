@@ -1,8 +1,37 @@
 # Validation
 
-## Evidence-bound relationships, 24 October 2026
+## Relationship summary and local-model validation, 24 October 2026
 
-The default search extraction pipeline now uses `relations-v2`. Earlier field-extractor results below describe the previous pipeline; those functions and corpora remain baseline tests, not accuracy claims for the new pipeline.
+The default pipeline is `relations-v3`. Regression fixes cover undated corroboration erasing correct summaries, legal company suffixes being absorbed into roles, full English/Indonesian/ISO date expressions, historical claim visibility, and multiple role claims. Operator relationship review is independent of identity review and persists through replay. Tests also cover summary reference validation, preserved input snapshots, refusal to overwrite outputs, model rejection details, constrained source IDs, model metadata, and optional raw responses.
+
+`TestRelationRegressionEvaluation` uses 13 labeled cases in `internal/extract/testdata/relation-regression.json`: nine positive cases containing ten relationships, plus four negative cases. This corpus was used during implementation, including to refine normalization after the first model run. It is a known regression set, not a held-out benchmark. Field metrics compare unique values per case; relationship metrics additionally require exact kind, subject, field boundaries, years, and temporal state.
+
+| Extractor | Role precision / recall | Company precision / recall | Relationship precision / recall | Empty cases |
+| --- | --- | --- | --- | --- |
+| Rules | 1.000 / 1.000 | 1.000 / 1.000 | 1.000 / 1.000 | 4/13 |
+| Local Qwen after grounding | 1.000 / 0.889 | 1.000 / 0.875 | 1.000 / 0.900 | 5/13 |
+
+The local run used installed `qwen2.5:7b`, digest `845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e`, temperature 0, context 8192, and maximum output 3072 tokens. Thirteen sequential local extractions took 22.585 seconds in total on this workstation. No retained proposal had a wrong subject or period in this small corpus. Qwen invented an end year in one otherwise useful proposal; validation rejected it, causing the remaining miss. Rules recovered that case. Empty-case counts include correct abstentions on the four negatives, and are not all extraction failures. Accepted model proposals still require operator review before summary projection.
+
+Reproduce rules and optionally the real local model from the repository root:
+
+```powershell
+go test ./internal/extract -run '^TestRelationRegressionEvaluation$' -count=1 -v
+$env:PMIYC_EVAL_MODEL = 'qwen2.5:7b'
+$env:PMIYC_EVAL_OUT = Join-Path (Get-Location) 'data/my-regression-evaluation.json'
+go test ./internal/extract -run '^TestRelationRegressionEvaluation$' -count=1 -v
+Remove-Item Env:PMIYC_EVAL_MODEL, Env:PMIYC_EVAL_OUT
+```
+
+The optional report refuses to overwrite an existing file. It records each proposal and trace alongside the metrics. Local audit artifacts are under ignored `data/validation-relations-v3-20261024-105735/`. Snapshot replays restored the corroborated Engineer/Orbit Labs fields, separated CEO from Example Software Ltd, and retained the dated 2018-2022 employment as history with clean company text. Saved Yohan and Brian snapshots now show multiple role claims with individual references. The saved Joko Widodo snapshot retains the 2014-2024 public-office history in `role_claims`; it does not label that history as current employment or fill company from incidental organizations.
+
+A separate real-snapshot replay used Qwen on the first three Yohan candidates. Two proposals failed grounding (`FIELD_NOT_QUOTED` and `QUOTE_NOT_FOUND`), and one returned an empty list; two further candidates were skipped by the request budget. No model proposal was retained in that run. Rules preserved the supported roles. This result demonstrates that success on short synthetic cases does not establish usefulness on multi-document web snapshots. Source-specific context selection and independently labeled real snapshots remain priorities; current input selection still starts near the first matching subject within each observation.
+
+These checks do not measure search coverage, independent real-profile precision, cross-source identity resolution, or current employment truth. Those require separately labeled snapshots and review, including common names, conflicting dates, sparse profiles, and blocked-source cases. This validation does not establish Black Hat Arsenal readiness.
+
+## Earlier evidence-bound relationships, 24 October 2026
+
+The earlier pipeline used `relations-v2`. Field-extractor results below describe an older pipeline; those functions and corpora remain baseline tests, not accuracy claims for the current pipeline.
 
 - `go test ./...`, `go vet ./...`, and the Windows executable build passed using Go 1.27.2. Build emitted a nonfatal sandbox module-cache warning and returned success.
 - `TestRelationshipChallenge`: 26 known regression cases, with all 15 positive cases matched and 11 abstention cases passing. On these deliberately challenging cases, the previous company extractor emitted 16 values inconsistent with the expected current-employer field; the relationship pipeline emitted none. Historical employers count as incorrect only when presented as current. These figures are not held-out precision/recall or evidence of general OSINT accuracy.
@@ -11,7 +40,13 @@ The default search extraction pipeline now uses `relations-v2`. Earlier field-ex
 - Local model HTTP fixtures verify JSON Schema requests, missing/extra JSON rejection, invented organizations/dates, wrong subjects/evidence IDs, incomplete responses, response limits, forbidden remote origins, redirect rejection, and isolation of model proposals from summaries and identity decisions. Literal quote validation alone cannot detect every semantic misattribution; a multi-person fixture explicitly checks that such a proposal cannot alter the summary.
 - Replayed the existing local Joko Widodo snapshot without new web requests. The Indonesian and English biography text produced historical public-office relationships for 2014-2024 with source citations. All five company summaries were empty; the hospital, cabinet-table organization and incidental ministry no longer populated company. Older inferred fields remain marked superseded for audit. The output is in ignored `data/jokowi-relations-v2-final.json`.
 
-Ollama was not found on PATH or at its standard per-user Windows install location. No model was installed or downloaded, and no real-model accuracy, latency, or hardware suitability was measured. The supplied local-model configuration is opt-in. No live collection reliability benchmark or independent unseen-person evaluation was performed in this change. See [EXTRACTION.md](EXTRACTION.md) for the remaining limitations.
+Ollama was not available during the initial relations-v2 implementation. A local Ollama installation with `qwen2.5:7b` was later exercised through the opt-in hybrid configuration; no real-model accuracy benchmark or independent unseen-person evaluation was performed. The supplied local-model configuration remains opt-in. See [EXTRACTION.md](EXTRACTION.md) for the remaining limitations.
+
+## Profile headline and role-boundary semantics, 24 October 2026
+
+Undated profile headers now produce `headline` relations instead of `unknown` periods. A headline is summary-eligible but remains unverified and adds an audit note; historical headline text remains historical and is withheld. `Head of Cyber Security Program` and `Head of Cybersecurity` are stored as full occupation roles rather than employers, while `CEO of Tesla` becomes employment with role `CEO` and organization `Tesla`. Membership phrases such as `Treasurer of HIMTI BINUS University` remain membership relations.
+
+`TestProfileHeadlineRelations` covers six extraction cases, including explicit `at` employers and a historical headline; `TestProfileHeadlineRejectsSkillList` prevents a skills headline from becoming a role. `TestProfileHeadlineSummary` covers headline role, headline employment, and historical withholding. `go test ./...`, `go vet ./...`, and the Windows build passed. Replaying the saved Yohan snapshot now yields `Head of Cyber Security Program` and `Head of Cybersecurity` roles with empty company summaries; replaying the saved Brian snapshot keeps the `Cybersecurity & Web Development` skill list out of the role summary and leaves multi-role LinkedIn headlines as alternatives. These are regression and collection-behavior observations, not a live-profile accuracy measurement.
 
 ## Deterministic role inference, 24 October 2026
 

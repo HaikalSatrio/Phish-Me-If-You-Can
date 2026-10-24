@@ -11,7 +11,7 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
 
-const RelationVersion = "relations-v2"
+const RelationVersion = "relations-v3"
 
 type Document struct {
 	ID   string `json:"id"`
@@ -33,12 +33,8 @@ func RelationTextType(typ string) bool {
 
 var relationVerb = regexp.MustCompile(`(?i)^(works at|worked at|bekerja di|pernah bekerja di|works as|worked as|serves as|served as|menjabat sebagai|pernah menjabat sebagai|is|was|adalah|merupakan)\s+(.+)$`)
 var relationSeparator = regexp.MustCompile(`(?i)\s+(?:at|in|di|pada)\s+`)
-var periodRange = regexp.MustCompile(`(?i)\b((?:18|19|20|21)\d{2})\s*(?:-|–|—|to|until|through|sampai|hingga|s/d)\s*((?:18|19|20|21)\d{2})\b`)
-var periodStart = regexp.MustCompile(`(?i)\b(?:since|sejak|from|dari)\s+((?:18|19|20|21)\d{2})\b`)
-var periodEnd = regexp.MustCompile(`(?i)\b(?:until|hingga|sampai)\s+((?:18|19|20|21)\d{2})\b`)
-var dateTail = regexp.MustCompile(`(?i)\s+(?:from|since|during|between|in|pada|sejak|dari|selama|tahun)\s+(?:tahun\s+)?(?:18|19|20|21)\d{2}|\s*\(?\b(?:18|19|20|21)\d{2}\s*[-–—]`)
 var publicOffice = regexp.MustCompile(`(?i)^(?:(?:the|a|an|seorang|mantan|former|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|ke-?\d+|\d+(?:st|nd|rd|th))\s+)*(?:presiden(?:t)?|wakil presiden|vice president|governor|gubernur|mayor|wali kota|walikota|menteri|minister|prime minister|perdana menteri)\b`)
-var negatedRelation = regexp.MustCompile(`(?i)\b(?:not|never|denied|denies|allegedly|rumored|rumoured|reportedly|might|may|could|will|would|bukan|tidak|dikabarkan|diduga|akan|jika|if)\b`)
+var negatedRelation = regexp.MustCompile(`(?i)\b(?:not|never|denied|denies|allegedly|rumored|rumoured|reportedly|might|could|would|bukan|tidak|dikabarkan|diduga|akan|jika|if)\b|\b(?:may|will)\s+(?:be|work|serve|join|become)\b`)
 var aliasClause = regexp.MustCompile(`(?i)^,\s*(?:also known as|known as|dikenal sebagai)\s+[^,;.!?]{1,80},\s*`)
 
 func compact(s string) string { return strings.Join(strings.Fields(s), " ") }
@@ -68,32 +64,6 @@ func Sentences(text string) []string {
 		out = append(out, v)
 	}
 	return out
-}
-
-func temporal(quote, verb string, asOf time.Time) (int, int, string) {
-	start, end := 0, 0
-	state := "unknown"
-	if m := periodRange.FindStringSubmatch(quote); len(m) > 0 {
-		start, _ = strconv.Atoi(m[1])
-		end, _ = strconv.Atoi(m[2])
-	} else {
-		if m := periodStart.FindStringSubmatch(quote); len(m) > 0 {
-			start, _ = strconv.Atoi(m[1])
-		}
-		if m := periodEnd.FindStringSubmatch(quote); len(m) > 0 {
-			end, _ = strconv.Atoi(m[1])
-		}
-	}
-	lower := strings.ToLower(" " + quote + " ")
-	if start > asOf.Year() {
-		return start, end, "future"
-	}
-	if end != 0 && end <= asOf.Year() || strings.Contains(lower, " former ") || strings.Contains(lower, " mantan ") || strings.Contains(verb, "worked") || strings.Contains(verb, "served") || verb == "was" || strings.HasPrefix(verb, "pernah") {
-		state = "historical"
-	} else if verb != "" {
-		state = "present_assertion"
-	}
-	return start, end, state
 }
 
 func literalField(s string) string {
@@ -281,7 +251,7 @@ func ValidateRelation(r domain.Relation, subject string, doc Document) error {
 		return fmt.Errorf("unsupported period")
 	}
 	switch r.Temporal {
-	case "unknown", "historical", "present_assertion", "future":
+	case "unknown", "historical", "present_assertion", "headline", "future":
 	default:
 		return fmt.Errorf("unsupported temporal status")
 	}

@@ -259,6 +259,7 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		byID[e.ID] = e
 	}
 	relationIDs := map[string]bool{}
+	relationsByID := map[string]domain.Relation{}
 	for i := range c.Relations {
 		r := &c.Relations[i]
 		if resolved, ok := aliases[r.EvidenceID]; ok {
@@ -271,7 +272,38 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		if err := extract.ValidateRelation(*r, r.Subject, extract.Document{ID: e.ID, Type: e.Type, Text: e.Value}); err != nil {
 			return c, fmt.Errorf("invalid relation %s: %w", r.ID, err)
 		}
+		previousTime := time.Time{}
+		for _, review := range r.Reviews {
+			at, err := time.Parse(time.RFC3339, review.At)
+			if err != nil || at.Before(previousTime) || strings.TrimSpace(review.Reason) == "" || len(review.Reason) > 2000 || (review.Decision != "ACCEPT" && review.Decision != "REJECT" && review.Decision != "PENDING") {
+				return c, fmt.Errorf("invalid relationship review %s", r.ID)
+			}
+			previousTime = at
+		}
 		relationIDs[r.ID] = true
+		relationsByID[r.ID] = *r
+	}
+	for _, candidate := range c.Candidates {
+		for field, claims := range map[string][]domain.SummaryClaim{"role": candidate.RoleClaims, "company": candidate.CompanyClaims} {
+			for _, claim := range claims {
+				if claim.Value == "" || len(claim.RelationIDs) == 0 {
+					return c, fmt.Errorf("invalid %s summary claim for %s", field, candidate.ID)
+				}
+				for _, id := range claim.RelationIDs {
+					r, ok := relationsByID[id]
+					value := extract.CanonicalRole(r.Role)
+					if field == "company" {
+						value = r.Organization
+						if r.Kind != "employment" {
+							value = ""
+						}
+					}
+					if !ok || r.CandidateID != candidate.ID || !strings.EqualFold(strings.Join(strings.Fields(value), " "), strings.Join(strings.Fields(claim.Value), " ")) || r.Kind != claim.Kind || r.Temporal != claim.Temporal {
+						return c, fmt.Errorf("invalid %s summary reference %s", field, id)
+					}
+				}
+			}
+		}
 	}
 	return c, nil
 }

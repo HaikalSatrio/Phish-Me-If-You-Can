@@ -29,6 +29,10 @@ func TestLocalGroundingAndTransport(t *testing.T) {
 			p := valid
 			tc.mutate(&p)
 			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				if r.Method == http.MethodGet {
+					w.Write([]byte(`{"models":[]}`))
+					return
+				}
 				if r.URL.Path != "/api/chat" || r.Method != "POST" {
 					t.Error("unexpected endpoint")
 				}
@@ -69,6 +73,10 @@ func TestLocalFailureModes(t *testing.T) {
 	for _, mode := range []string{"redirect", "bad-json", "truncated", "oversized", "unknown-field", "extra-json", "missing-array", "missing-field", "null-field"} {
 		t.Run(mode, func(t *testing.T) {
 			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				if r.Method == http.MethodGet {
+					w.Write([]byte(`{"models":[]}`))
+					return
+				}
 				switch mode {
 				case "redirect":
 					w.Header().Set("Location", "https://example.org")

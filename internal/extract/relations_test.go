@@ -5,6 +5,43 @@ import (
 	"time"
 )
 
+func TestProfileHeadlineRelations(t *testing.T) {
+	cases := []struct {
+		id, name, text, kind, org, role, state string
+		start, end                             int
+	}{
+		{"headline-function", "Yohan Muliono", "Yohan Muliono - Head of Cyber Security Program", "occupation", "", "Head of Cyber Security Program", "headline", 0, 0},
+		{"headline-function-short", "Yohan Muliono", "Yohan Muliono - Head of Cybersecurity", "occupation", "", "Head of Cybersecurity", "headline", 0, 0},
+		{"headline-explicit-employer", "Yohan Muliono", "Yohan Muliono - Head of Cyber Security Program at Bina Nusantara University", "employment", "Bina Nusantara University", "Head of Cyber Security Program", "headline", 0, 0},
+		{"headline-executive", "Elon Musk", "Elon Musk - Co-founder and CEO of Tesla", "employment", "Tesla", "Co-founder and CEO", "headline", 0, 0},
+		{"headline-membership", "Brian Filbert Chandra", "Brian Filbert Chandra - Treasurer of HIMTI BINUS University", "membership", "HIMTI BINUS University", "Treasurer", "headline", 0, 0},
+		{"headline-history", "Yohan Muliono", "Yohan Muliono - Head of Cyber Security Program 2014-2024", "occupation", "", "Head of Cyber Security Program", "historical", 2014, 2024},
+	}
+	for _, tc := range cases {
+		t.Run(tc.id, func(t *testing.T) {
+			doc := Document{ID: "title", Type: "search_title", Text: tc.text}
+			got := Relations(tc.name, []Document{doc}, time.Date(2026, 10, 24, 0, 0, 0, 0, time.UTC))
+			if len(got) != 1 {
+				t.Fatalf("expected one relationship, got %+v", got)
+			}
+			r := got[0]
+			if r.Kind != tc.kind || r.Organization != tc.org || r.Role != tc.role || r.Temporal != tc.state || r.StartYear != tc.start || r.EndYear != tc.end {
+				t.Fatalf("incorrect headline relationship: %+v", r)
+			}
+			if err := ValidateRelation(r, tc.name, doc); err != nil {
+				t.Fatal(err)
+			}
+		})
+	}
+}
+
+func TestProfileHeadlineRejectsSkillList(t *testing.T) {
+	doc := Document{ID: "title", Type: "search_title", Text: "Brian Filbert Chandra - Cybersecurity & Web Development"}
+	if got := Relations("Brian Filbert Chandra", []Document{doc}, time.Date(2026, 10, 24, 0, 0, 0, 0, time.UTC)); len(got) != 0 {
+		t.Fatalf("skill list became a headline role: %+v", got)
+	}
+}
+
 func TestRelationshipChallenge(t *testing.T) {
 	cases := []struct {
 		id, name, text, kind, org, role, state string

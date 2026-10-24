@@ -31,6 +31,14 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 	if err != nil {
 		return input, err
 	}
+	reviewed := map[string]domain.Relation{}
+	reviewedList := []domain.Relation{}
+	for _, r := range c.Relations {
+		if len(r.Reviews) > 0 {
+			reviewed[relationKey(r)] = r
+			reviewedList = append(reviewedList, r)
+		}
+	}
 	c.Relations = nil
 	c.Extraction = nil
 	for i := range c.Evidence {
@@ -97,20 +105,34 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 				relations = append(relations, proposals...)
 			}
 		}
+		for _, r := range reviewedList {
+			if r.CandidateID == p.ID {
+				relations = append(relations, r)
+			}
+		}
 		seen := map[string]bool{}
 		for _, r := range relations {
-			key := fmt.Sprintf("%s|%s|%s|%s|%s|%d|%d|%s", r.EvidenceID, r.Kind, r.Role, r.Organization, r.Temporal, r.StartYear, r.EndYear, r.Quote)
+			r.CandidateID = p.ID
+			key := relationKey(r)
 			if seen[key] {
 				continue
 			}
 			seen[key] = true
-			r.CandidateID = p.ID
-			r.ID = fmt.Sprintf("%s-relation-%d", p.ID, len(seen))
+			if old, ok := reviewed[key]; ok {
+				r = old
+			}
+			digest := sha256.Sum256([]byte(key))
+			r.ID = fmt.Sprintf("%s-relation-%x", p.ID, digest[:8])
 			c.Relations = append(c.Relations, r)
 		}
 		projectSummary(p, c.Relations)
 	}
 	return evidence.Normalize(c)
+}
+
+func relationKey(r domain.Relation) string {
+	data, _ := json.Marshal([]any{r.CandidateID, r.EvidenceID, r.Subject, r.Kind, r.Role, r.Organization, r.StartYear, r.EndYear, r.Temporal})
+	return string(data)
 }
 
 func boundedDocuments(subject string, docs []extract.Document) []extract.Document {

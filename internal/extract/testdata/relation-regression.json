@@ -1,0 +1,19 @@
+{
+  "as_of": "2026-10-24T00:00:00Z",
+  "description": "Known synthetic regression cases, not held-out accuracy or real-web coverage.",
+  "cases": [
+    {"id":"present","subject":"Ayu Lestari","type":"page_text","text":"Ayu Lestari works as Engineer at Orbit Labs.","expected":[{"kind":"employment","role":"Engineer","organization":"Orbit Labs","temporal":"present_assertion"}]},
+    {"id":"legal-company","subject":"Nadia Pratama","type":"search_title","text":"Nadia Pratama - CEO of Example Software Ltd","expected":[{"kind":"employment","role":"CEO","organization":"Example Software Ltd","temporal":"headline"}]},
+    {"id":"english-full-dates","subject":"Ayu Lestari","type":"page_text","text":"Ayu Lestari worked as Engineer at Orbit Labs from 1 January 2018 to 31 December 2022.","expected":[{"kind":"employment","role":"Engineer","organization":"Orbit Labs","temporal":"historical","start_year":2018,"end_year":2022}]},
+    {"id":"indonesian-full-dates","subject":"Rani Kusuma","type":"page_text","text":"Rani Kusuma pernah bekerja di PT. Cakrawala sejak 2 Januari 2019 hingga 30 Desember 2023.","expected":[{"kind":"employment","organization":"PT. Cakrawala","temporal":"historical","start_year":2019,"end_year":2023}]},
+    {"id":"iso-dates","subject":"Maya Putri","type":"page_text","text":"Maya Putri worked as Engineer at Northstar Labs from 2017-01-01 to 2021-12-31.","expected":[{"kind":"employment","role":"Engineer","organization":"Northstar Labs","temporal":"historical","start_year":2017,"end_year":2021}]},
+    {"id":"may-is-a-month","subject":"Will Morgan","type":"page_text","text":"Will Morgan works as Engineer at Orbit Labs since 1 May 2020.","expected":[{"kind":"employment","role":"Engineer","organization":"Orbit Labs","temporal":"present_assertion","start_year":2020}]},
+    {"id":"function-not-employer","subject":"Dimas Putra","type":"search_title","text":"Dimas Putra - Head of Cyber Security Program","expected":[{"kind":"occupation","role":"Head of Cyber Security Program","temporal":"headline"}]},
+    {"id":"past-public-office","subject":"Joko Widodo","type":"page_text","text":"Joko Widodo served as President of Indonesia from 2014 to 2024.","expected":[{"kind":"public_office","role":"President of Indonesia","temporal":"historical","start_year":2014,"end_year":2024}]},
+    {"id":"other-person-role","subject":"Ayu Lestari","type":"page_text","text":"Ayu Lestari interviewed Budi Santoso, Chief Financial Officer at Contoso Ltd.","expected":[]},
+    {"id":"negation","subject":"Rani Kusuma","type":"page_text","text":"Rani Kusuma never worked at Orbit Labs.","expected":[]},
+    {"id":"incidental-company","subject":"Dimas Putra","type":"page_text","text":"Dimas Putra visited Orbit Labs for a public event.","expected":[]},
+    {"id":"skills-not-role","subject":"Nadia Pratama","type":"search_title","text":"Nadia Pratama - Cybersecurity & Web Development","expected":[]},
+    {"id":"multiple-roles","subject":"Maya Putri","type":"page_text","text":"Maya Putri works as Engineer at Orbit Labs. Maya Putri works as Researcher at Northstar Labs.","expected":[{"kind":"employment","role":"Engineer","organization":"Orbit Labs","temporal":"present_assertion"},{"kind":"employment","role":"Researcher","organization":"Northstar Labs","temporal":"present_assertion"}]}
+  ]
+}
