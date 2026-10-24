@@ -1,8 +1,14 @@
 # Validation
 
-## Relationship summary and local-model validation, 24 October 2026
+## New-name comparison and passage extraction, 24 October 2026
 
-The default pipeline is `relations-v3`. Regression fixes cover undated corroboration erasing correct summaries, legal company suffixes being absorbed into roles, full English/Indonesian/ISO date expressions, historical claim visibility, and multiple role claims. Operator relationship review is independent of identity review and persists through replay. Tests also cover summary reference validation, preserved input snapshots, refusal to overwrite outputs, model rejection details, constrained source IDs, model metadata, and optional raw responses.
+The default pipeline is now `relations-v4`. Three previously unsearched names were collected once and replayed through rules and local Qwen before and after the changes. Observed evidence hashes match across replays. See [COMPARISON-NEW-NAMES.md](COMPARISON-NEW-NAMES.md) for per-name results, errors, model configuration, artifacts, and limitations. Rules now fill six company fields and nine role fields across 15 candidates; the earlier pipeline filled one incorrect company and five roles. Model proposals passing validation increased from three to thirteen, including overlap with rules. These counts do not measure general accuracy or establish current employment truth.
+
+The full Go test suite, vet, and Windows build passed. Added regression cases cover varied grammar, incorrect attribution to a longer personal name, topic/employer separation, source passage bounds, later subject mentions, source ID mapping, rejection of generated quotes, and preservation of source citations. The existing 13-case known regression corpus was also rerun with Qwen: all ten expected relationships were retained and the four negative cases produced no retained relationships.
+
+## Earlier relationship summary and local-model validation, 24 October 2026
+
+The earlier pipeline used `relations-v3`. Regression fixes covered undated corroboration erasing correct summaries, legal company suffixes being absorbed into roles, full English/Indonesian/ISO date expressions, historical claim visibility, and multiple role claims. Operator relationship review is independent of identity review and persists through replay. Tests also cover summary reference validation, preserved input snapshots, refusal to overwrite outputs, model rejection details, constrained source IDs, model metadata, and optional raw responses.
 
 `TestRelationRegressionEvaluation` uses 13 labeled cases in `internal/extract/testdata/relation-regression.json`: nine positive cases containing ten relationships, plus four negative cases. This corpus was used during implementation, including to refine normalization after the first model run. It is a known regression set, not a held-out benchmark. Field metrics compare unique values per case; relationship metrics additionally require exact kind, subject, field boundaries, years, and temporal state.
 

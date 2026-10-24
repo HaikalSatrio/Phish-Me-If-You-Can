@@ -31,6 +31,9 @@ func validRoleValue(role string) bool {
 // A headline role starts with a role word or a bounded professional qualifier.
 func profileRole(role string) bool {
 	qualifiers := map[string]bool{"general": true, "senior": true, "junior": true, "software": true, "security": true, "information": true, "cyber": true, "cybersecurity": true, "computer": true, "science": true, "awareness": true, "penetration": true, "financial": true, "technical": true, "business": true, "product": true, "full": true, "stack": true}
+	for _, q := range []string{"digital", "strategic", "communication", "communications", "startup", "public"} {
+		qualifiers[q] = true
+	}
 	if !validLiteral(role, 16) {
 		return false
 	}
@@ -89,23 +92,37 @@ func functionTarget(value string) bool {
 var organizationMarker = regexp.MustCompile(`(?i)\b(?:ltd|limited|inc|incorporated|llc|plc|corp|corporation|company|gmbh|university|institute|association|foundation|bank)\.?$|^(?:PT\.?|CV\.?|universitas|institut|yayasan)\s|^(?:university|institute|association)\s+of\s`)
 
 func profileRelationFields(body string) (kind, org, role string) {
+	if parts := strings.SplitN(body, ",", 2); len(parts) == 2 && headlineRole(strings.TrimSpace(parts[0])) {
+		left, right := strings.TrimSpace(parts[0]), literalField(strings.TrimSpace(parts[1]))
+		if validLiteral(right, 14) && organizationTargetStartsProper(right) && !strings.Contains(right, " & ") {
+			return "employment", right, left
+		}
+		return "occupation", "", left
+	}
 	body = literalField(strings.TrimSpace(body))
+	if m := possessiveRole.FindStringSubmatch(body); len(m) > 0 && validLiteral(m[1], 14) && organizationTargetStartsProper(m[1]) && headlineRole(m[2]) {
+		return "employment", m[1], m[2]
+	}
 	for _, suffix := range []string{" specializing in ", " specialising in "} {
 		if i := strings.Index(strings.ToLower(body), suffix); i >= 0 {
 			body = body[:i]
 		}
 	}
-	for _, separator := range []string{" at ", " in ", " di ", " of "} {
+	for _, separator := range []string{" at ", " for ", " in ", " di ", " of "} {
 		index := strings.Index(strings.ToLower(body), separator)
 		if index < 0 {
 			continue
 		}
 		left, right := strings.TrimSpace(body[:index]), strings.TrimSpace(body[index+len(separator):])
+		right = strings.TrimSpace(regexp.MustCompile(`(?i)^the\s+`).ReplaceAllString(right, ""))
+		if separator == " in " && (!organizationMarker.MatchString(right) || !organizationTargetStartsProper(right)) {
+			continue
+		}
 		if !validRoleValue(left) || !validLiteral(right, 14) {
 			continue
 		}
 		// "Head of Cybersecurity Program" names a function, not an employer.
-		if separator == " of " && functionTarget(right) {
+		if separator == " of " && functionTarget(right) && !organizationalLeadership.MatchString(left) {
 			if headlineRole(left) {
 				return "occupation", "", body
 			}

@@ -145,6 +145,7 @@ type ExtractionAdjustment struct {
 }
 
 type ExtractionRun struct {
+	Passages       []ExtractionPassage    `json:"passages,omitempty"`
 	Adjustments    []ExtractionAdjustment `json:"adjustments,omitempty"`
 	Rejections     []ExtractionRejection  `json:"rejections,omitempty"`
 	PromptSHA256   string                 `json:"prompt_sha256,omitempty"`
@@ -164,6 +165,13 @@ type ExtractionRun struct {
 	Accepted       int                    `json:"accepted"`
 	Rejected       int                    `json:"rejected"`
 	Notes          []string               `json:"notes,omitempty"`
+}
+
+type ExtractionPassage struct {
+	ID         string `json:"id"`
+	EvidenceID string `json:"evidence_id"`
+	Type       string `json:"type"`
+	Text       string `json:"text"`
 }
 
 type CollectionReceipt struct {

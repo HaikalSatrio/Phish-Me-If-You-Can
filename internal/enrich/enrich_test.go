@@ -172,7 +172,7 @@ func TestLocalProposalsDoNotChangeSummaryOrIdentity(t *testing.T) {
 			w.Write([]byte(`{"models":[]}`))
 			return
 		}
-		proposal := map[string]any{"subject": "Ayu Lestari", "kind": "employment", "organization": "Contoso Ltd", "role": "Chief Financial Officer", "start_year": 0, "end_year": 0, "temporal": "present_assertion", "evidence_id": "doc", "quote": quote}
+		proposal := map[string]any{"subject": "Ayu Lestari", "kind": "employment", "organization": "Contoso Ltd", "role": "Chief Financial Officer", "start_year": 0, "end_year": 0, "temporal": "present_assertion", "evidence_id": "s1"}
 		content, _ := json.Marshal(map[string]any{"relations": []any{proposal}})
 		json.NewEncoder(w).Encode(map[string]any{"done": true, "message": map[string]string{"content": string(content)}})
 	}))

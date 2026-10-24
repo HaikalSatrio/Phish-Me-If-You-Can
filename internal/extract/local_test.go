@@ -12,7 +12,7 @@ import (
 
 func TestLocalGroundingAndTransport(t *testing.T) {
 	quote := "Ayu Lestari works as Engineer at Orbit Labs."
-	valid := proposedRelation{Subject: "Ayu Lestari", Kind: "employment", Role: "Engineer", Organization: "Orbit Labs", Temporal: "present_assertion", EvidenceID: "doc", Quote: quote}
+	valid := proposedRelation{Subject: "Ayu Lestari", Kind: "employment", Role: "Engineer", Organization: "Orbit Labs", Temporal: "present_assertion", EvidenceID: "s1"}
 	for _, tc := range []struct {
 		name   string
 		mutate func(*proposedRelation)
@@ -22,7 +22,7 @@ func TestLocalGroundingAndTransport(t *testing.T) {
 		{"invented-employer", func(p *proposedRelation) { p.Organization = "Contoso" }, 0},
 		{"invented-year", func(p *proposedRelation) { p.StartYear = 2020 }, 0},
 		{"wrong-subject", func(p *proposedRelation) { p.Subject = "Budi Santoso" }, 0},
-		{"fake-quote", func(p *proposedRelation) { p.Quote = "Ayu Lestari works at Contoso." }, 0},
+		{"unmapped-passage", func(p *proposedRelation) { p.EvidenceID = "doc" }, 0},
 		{"foreign-evidence", func(p *proposedRelation) { p.EvidenceID = "other" }, 0},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -52,6 +52,9 @@ func TestLocalGroundingAndTransport(t *testing.T) {
 			if len(got) != tc.want || run.Rejected != 1-tc.want || run.InputSHA256 == "" || run.OutputSHA256 == "" {
 				t.Fatalf("got %+v trace %+v", got, run)
 			}
+			if tc.want == 1 && (got[0].EvidenceID != "doc" || !strings.Contains(quote, got[0].Quote) || len(run.Passages) != 1) {
+				t.Fatal("lost passage provenance")
+			}
 		})
 	}
 }
@@ -70,7 +73,7 @@ func TestLocalRejectsRemoteOrigins(t *testing.T) {
 }
 
 func TestLocalFailureModes(t *testing.T) {
-	for _, mode := range []string{"redirect", "bad-json", "truncated", "oversized", "unknown-field", "extra-json", "missing-array", "missing-field", "null-field"} {
+	for _, mode := range []string{"redirect", "bad-json", "truncated", "oversized", "unknown-field", "extra-json", "missing-array", "missing-field", "null-field", "generated-quote"} {
 		t.Run(mode, func(t *testing.T) {
 			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				if r.Method == http.MethodGet {
@@ -100,6 +103,9 @@ func TestLocalFailureModes(t *testing.T) {
 					}
 					if mode == "null-field" {
 						content = `{"relations":[{"subject":null,"kind":"occupation","organization":"","role":"Engineer","start_year":0,"end_year":0,"temporal":"unknown","evidence_id":"doc","quote":"Ayu is Engineer"}]}`
+					}
+					if mode == "generated-quote" {
+						content = `{"relations":[{"subject":"Ayu","kind":"occupation","organization":"","role":"Engineer","start_year":0,"end_year":0,"temporal":"unknown","evidence_id":"s1","quote":"Ayu is Engineer"}]}`
 					}
 					json.NewEncoder(w).Encode(map[string]any{"done": true, "message": map[string]string{"content": content}})
 				}

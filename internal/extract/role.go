@@ -8,6 +8,7 @@ import (
 )
 
 var roleWords = map[string]bool{
+	"activist": true, "aktivis": true, "advocate": true, "blogger": true, "bloger": true, "entrepreneur": true, "mentor": true, "pegiat": true, "fellow": true,
 	"accountant": true, "administrator": true, "advisor": true, "adviser": true,
 	"akuntan": true, "analis": true, "analyst": true, "apoteker": true,
 	"architect": true, "arsitek": true, "assistant": true, "asisten": true,

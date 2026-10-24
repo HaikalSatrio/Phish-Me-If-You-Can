@@ -79,6 +79,9 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	if !containsWords(r.Quote, subject) {
 		return fail("SUBJECT_NOT_QUOTED", "Quote does not contain the requested subject")
 	}
+	if conflictingSubjectName(subject, r.Quote) {
+		return fail("SUBJECT_NAME_CONFLICT", "The passage introduces a longer personal name, not the requested full name")
+	}
 	for _, v := range []struct{ name, value string }{{"role", r.Role}, {"organization", r.Organization}} {
 		if v.value != "" && !containsWords(r.Quote, v.value) {
 			return fail("FIELD_NOT_QUOTED", v.name+" is not literal in the source quote")
@@ -96,6 +99,7 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	// Deterministic corrections require an explicit relationship with the same fields.
 	proofDoc := doc
 	proofDoc.Text = r.Quote
+	proved := false
 	for _, proof := range Relations(subject, []Document{proofDoc}, asOf) {
 		if proof.Kind == "public_office" && proof.Organization == "" && r.Organization != "" && strings.EqualFold(proof.Role, r.Role+" of "+r.Organization) {
 			adjust("role", r.Role, proof.Role, "Preserved the public-office title boundary in the quoted source")
@@ -110,7 +114,10 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 			adjust("role", r.Role, "", "The proposed role is a relationship verb, not a job title")
 			r.Role = ""
 		}
-		if strings.EqualFold(proof.Role, r.Role) && strings.EqualFold(proof.Organization, r.Organization) {
+		if proofRoleMatches(proof.Role, r.Role) && strings.EqualFold(proof.Organization, r.Organization) {
+			proved = true
+			adjust("quote", r.Quote, proof.Quote, "Focused the selected passage on its explicit relationship")
+			r.Quote = proof.Quote
 			adjust("kind", r.Kind, proof.Kind, "Explicit relationship in the quoted source")
 			r.Kind = proof.Kind
 			adjust("temporal", r.Temporal, proof.Temporal, "Explicit tense or profile heading in the quoted source")
@@ -120,6 +127,17 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	}
 	if relationshipVerbValue.MatchString(r.Role) {
 		return fail("ROLE_IS_VERB", "The proposed role is a relationship verb, not a job title")
+	}
+	if strings.EqualFold(r.Role, "board of directors") {
+		return fail("ROLE_IS_COLLECTIVE", "A governing body is not an individual's job title")
+	}
+	if !proved && r.Temporal == "present_assertion" && !explicitPresent.MatchString(r.Quote) {
+		state := "unknown"
+		if doc.Type == "search_title" || doc.Type == "page_title" || doc.Type == "search_snippet" || doc.Type == "page_description" || doc.Type == "profile_description" {
+			state = "headline"
+		}
+		adjust("temporal", r.Temporal, state, "No explicit present-tense relationship in the selected passage")
+		r.Temporal = state
 	}
 	s, e, state := temporal(r.Quote, "", asOf)
 	if r.StartYear != 0 && r.StartYear != s || r.EndYear != 0 && r.EndYear != e {
@@ -142,8 +160,8 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 			return fail("RELATION_SHAPE", "Occupation requires a role without an employer; use employment for an explicit employer")
 		}
 	case "public_office":
-		if r.Role == "" {
-			return fail("RELATION_SHAPE", "Public office requires a position")
+		if r.Role == "" || !publicOffice.MatchString(r.Role) {
+			return fail("RELATION_SHAPE", "Public office requires an explicit government position")
 		}
 	case "birthplace", "education", "membership":
 		if r.Organization == "" {
@@ -154,3 +172,28 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 }
 
 var relationshipVerbValue = regexp.MustCompile(`(?i)^(?:works?|worked|serves?|served)(?:\s+(?:at|as|in))?$|^(?:pernah\s+)?(?:bekerja|menjabat)(?:\s+(?:di|sebagai))?$`)
+
+var explicitPresent = regexp.MustCompile(`(?i)\b(?:is|works|serves|adalah|merupakan|menjabat|bekerja)\b`)
+
+func proofRoleMatches(proof, proposed string) bool {
+	if strings.EqualFold(proof, proposed) {
+		return true
+	}
+	for _, part := range roleConjunction.Split(proof, -1) {
+		if strings.EqualFold(strings.TrimSpace(part), proposed) {
+			return true
+		}
+	}
+	return false
+}
+
+func conflictingSubjectName(subject, text string) bool {
+	// A biographical introduction may reveal a different, longer personal name.
+	pattern := regexp.MustCompile(`(?m)^([\p{Lu}][\p{L}'-]+(?:\s+[\p{Lu}][\p{L}'-]+){0,3})\s+` + regexp.QuoteMeta(subject) + `(?:\s*\([^)]{0,220}\))?\s+(?:is|was|adalah|merupakan)\b`)
+	for _, m := range pattern.FindAllStringSubmatch(text, -1) {
+		if !literalRole(m[1]) && !strings.EqualFold(m[1], "Dr") && !strings.EqualFold(m[1], "Professor") {
+			return true
+		}
+	}
+	return false
+}

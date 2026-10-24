@@ -11,7 +11,7 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
 
-const RelationVersion = "relations-v3"
+const RelationVersion = "relations-v4"
 
 type Document struct {
 	ID   string `json:"id"`
@@ -32,7 +32,7 @@ func RelationTextType(typ string) bool {
 }
 
 var relationVerb = regexp.MustCompile(`(?i)^(works at|worked at|bekerja di|pernah bekerja di|works as|worked as|serves as|served as|menjabat sebagai|pernah menjabat sebagai|is|was|adalah|merupakan)\s+(.+)$`)
-var relationSeparator = regexp.MustCompile(`(?i)\s+(?:at|in|di|pada)\s+`)
+var relationSeparator = regexp.MustCompile(`(?i)\s+(?:at|for|di|pada)\s+`)
 var publicOffice = regexp.MustCompile(`(?i)^(?:(?:the|a|an|seorang|mantan|former|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|ke-?\d+|\d+(?:st|nd|rd|th))\s+)*(?:presiden(?:t)?|wakil presiden|vice president|governor|gubernur|mayor|wali kota|walikota|menteri|minister|prime minister|perdana menteri)\b`)
 var negatedRelation = regexp.MustCompile(`(?i)\b(?:not|never|denied|denies|allegedly|rumored|rumoured|reportedly|might|could|would|bukan|tidak|dikabarkan|diduga|akan|jika|if)\b|\b(?:may|will)\s+(?:be|work|serve|join|become)\b`)
 var aliasClause = regexp.MustCompile(`(?i)^,\s*(?:also known as|known as|dikenal sebagai)\s+[^,;.!?]{1,80},\s*`)
@@ -106,6 +106,9 @@ func literalRole(s string) bool {
 }
 
 func subjectPrefix(quote, subject string) (string, bool) {
+	if loc := leadingPeriod.FindStringIndex(quote); loc != nil {
+		quote = quote[loc[1]:]
+	}
 	// Match full names at the beginning of a clause, never a substring of a name.
 	parts := strings.Fields(subject)
 	if len(parts) == 0 {
@@ -121,6 +124,11 @@ func subjectPrefix(quote, subject string) (string, bool) {
 	}
 	// Retain the comma for the explicitly scoped alias form.
 	rest := strings.TrimSpace(quote[idx[1]:])
+	if strings.HasPrefix(rest, "(") {
+		if end := strings.Index(rest, ")"); end > 0 && end < 220 {
+			rest = strings.TrimSpace(rest[end+1:])
+		}
+	}
 	if strings.HasSuffix(strings.TrimSpace(quote[:idx[1]]), ",") {
 		rest = ", " + rest
 	}
@@ -139,6 +147,7 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 		}
 		out = append(out, biographyRelations(subject, doc, asOf)...)
 		out = append(out, profileRelations(subject, doc, asOf)...)
+		out = append(out, attributedTitleRelations(subject, doc, asOf)...)
 		for _, quote := range Sentences(doc.Text) {
 			if len([]rune(quote)) > 600 || negatedRelation.MatchString(quote) {
 				continue
@@ -162,7 +171,7 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 				if len(m) == 0 {
 					continue
 				}
-				verb, body := strings.ToLower(m[1]), m[2]
+				verb, body := strings.ToLower(m[1]), primaryRoleClause(m[2])
 				r.StartYear, r.EndYear, r.Temporal = temporal(quote, verb, asOf)
 				body = regexp.MustCompile(`(?i)^(?:a|an|the|seorang|former|mantan)\s+`).ReplaceAllString(body, "")
 				if publicOffice.MatchString(body) && (strings.Contains(strings.ToLower(body), "indonesia") || strings.Contains(strings.ToLower(body), "republik") || strings.Contains(strings.ToLower(body), "republic") || strings.Contains(strings.ToLower(body), "governor") || strings.Contains(strings.ToLower(body), "gubernur") || strings.Contains(strings.ToLower(body), "wali kota") || strings.Contains(strings.ToLower(body), "mayor")) {
@@ -171,6 +180,8 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 				} else if strings.HasSuffix(verb, " at") || strings.HasSuffix(verb, " di") {
 					r.Kind = "employment"
 					r.Organization = literalField(body)
+				} else if kind, org, role := profileRelationFields(body); kind != "" {
+					r.Kind, r.Organization, r.Role = kind, org, role
 				} else if loc := relationSeparator.FindStringIndex(body); loc != nil {
 					r.Kind = "employment"
 					r.Role = literalField(body[:loc[0]])

@@ -93,13 +93,11 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 		}
 		c.Extraction = append(c.Extraction, trace)
 		if cfg.Mode == "hybrid" {
-			// Prioritize subject-bearing sentences and bound the complete model input.
-			bounded := boundedDocuments(subject, docs)
-			if len(bounded) == 0 || requests >= cfg.MaxRequests || ctx.Err() != nil {
+			if len(extract.SelectPassages(subject, docs)) == 0 || requests >= cfg.MaxRequests || ctx.Err() != nil {
 				c.Extraction = append(c.Extraction, domain.ExtractionRun{CandidateID: p.ID, Version: extract.RelationVersion, Mode: "hybrid", Model: cfg.Model, Status: "SKIPPED", ObservedAt: asOf.Format(time.RFC3339), InputSHA256: trace.InputSHA256, Notes: []string{"No matching context, local request budget exhausted, or session cancelled"}})
 			} else {
 				requests++
-				proposals, run := extract.LocalRelations(ctx, cfg, subject, bounded, asOf)
+				proposals, run := extract.LocalRelations(ctx, cfg, subject, docs, asOf)
 				run.CandidateID = p.ID
 				c.Extraction = append(c.Extraction, run)
 				relations = append(relations, proposals...)
@@ -133,31 +131,4 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 func relationKey(r domain.Relation) string {
 	data, _ := json.Marshal([]any{r.CandidateID, r.EvidenceID, r.Subject, r.Kind, r.Role, r.Organization, r.StartYear, r.EndYear, r.Temporal})
 	return string(data)
-}
-
-func boundedDocuments(subject string, docs []extract.Document) []extract.Document {
-	out := []extract.Document{}
-	remaining := 12000
-	for _, d := range docs {
-		if remaining <= 0 {
-			break
-		}
-		// Keep whole contiguous observations so quotes remain auditable.
-		i := strings.Index(strings.ToLower(d.Text), strings.ToLower(subject))
-		if i < 0 {
-			continue
-		}
-		start := max(0, i-200)
-		for start > 0 && d.Text[start]&0xc0 == 0x80 {
-			start--
-		}
-		runes := []rune(d.Text[start:])
-		if len(runes) > remaining {
-			runes = runes[:remaining]
-		}
-		d.Text = string(runes)
-		remaining -= len(runes)
-		out = append(out, d)
-	}
-	return out
 }
