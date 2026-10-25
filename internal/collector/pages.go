@@ -133,7 +133,12 @@ func (p *Page) Collect(ctx context.Context, q Query) Result {
 	if len(links) > 0 {
 		facts = append(facts, Fact{"page_links", strings.Join(links, "\n")})
 	}
-	r.Profiles = append(r.Profiles, Profile{Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(response.Body)), Rule: "public-page-v3", Facts: facts})
+	name, profileLinks := pageIdentity(doc, u, facts)
+	if len(profileLinks) > 0 {
+		encoded, _ := json.Marshal(profileLinks)
+		facts = append(facts, Fact{"profile_links", string(encoded)})
+	}
+	r.Profiles = append(r.Profiles, Profile{Name: name, Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(response.Body)), Rule: "public-page-v5", Facts: facts})
 	r.Events = append(r.Events, Event{"url:page", "SUCCESS", "HTML metadata, bounded page text, and public links; no verified personal facts"})
 	return r
 }

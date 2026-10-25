@@ -83,6 +83,35 @@ func TestHistoricalClaimsRemainVisible(t *testing.T) {
 	if p.Role != "" || p.Company != "" || len(p.RoleClaims) != 1 || len(p.CompanyClaims) != 1 || p.RoleClaims[0].Temporal != "historical" || p.CompanyClaims[0].Value != "Orbit Labs" {
 		t.Fatalf("history hidden or misrepresented as current: %+v", p)
 	}
+	if p.CompanyStatus != "historical_only" {
+		t.Fatalf("missing company explanation: %+v", p)
+	}
+}
+
+func TestCompanyAbsenceHasSpecificReason(t *testing.T) {
+	for _, tc := range []struct{ text, status string }{
+		{"Ayu Lestari is a Lecturer.", "no_employment_claim"},
+		{"Ayu Lestari works at Orbit Labs.", "available"},
+		{"Ayu Lestari works at Orbit Labs. Ayu Lestari works at Example Ltd.", "ambiguous"},
+		{"Ayu Lestari works at Orbit Labs. Ayu Lestari worked at Orbit Labs from 2010 to 2015.", "period_conflict"},
+	} {
+		c, err := Run(context.Background(), fixture(tc.text), extract.Config{})
+		if err != nil {
+			t.Fatal(err)
+		}
+		if c.Candidates[0].CompanyStatus != tc.status {
+			t.Fatalf("%s: %+v", tc.text, c.Candidates[0])
+		}
+	}
+	c, err := Run(context.Background(), fixture("Ayu Lestari works at Orbit Labs."), extract.Config{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	c.Relations[0].Method = "ollama/" + extract.RelationVersion
+	Reproject(&c)
+	if c.Candidates[0].CompanyStatus != "pending_review" || c.Candidates[0].Company != "" {
+		t.Fatalf("model review reason missing: %+v", c.Candidates[0])
+	}
 }
 
 func TestSummaryClaimsRequireMatchingSourceRelationships(t *testing.T) {

@@ -11,7 +11,7 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
 
-const RelationVersion = "relations-v4"
+const RelationVersion = "relations-v6"
 
 type Document struct {
 	ID   string `json:"id"`
@@ -97,8 +97,9 @@ func literalRole(s string) bool {
 	if publicOffice.MatchString(s) {
 		return true
 	}
-	for _, w := range strings.Fields(strings.ToLower(s)) {
-		if roleWords[w] {
+	words := strings.Fields(strings.ToLower(s))
+	for _, w := range words {
+		if roleWords[w] && (!ambiguousRolePrefix[w] || len(words) == 1) {
 			return true
 		}
 	}
@@ -139,7 +140,7 @@ func subjectPrefix(quote, subject string) (string, bool) {
 }
 
 func Relations(subject string, docs []Document, asOf time.Time) []domain.Relation {
-	out := []domain.Relation{}
+	out := personalBiographyRelations(subject, docs, asOf)
 	for _, doc := range docs {
 		if doc.Type == "person_jsonld" {
 			out = append(out, structuredRelations(subject, doc)...)
@@ -147,6 +148,7 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 		}
 		out = append(out, biographyRelations(subject, doc, asOf)...)
 		out = append(out, profileRelations(subject, doc, asOf)...)
+		out = append(out, profileBlockRelations(subject, doc, asOf)...)
 		out = append(out, attributedTitleRelations(subject, doc, asOf)...)
 		for _, quote := range Sentences(doc.Text) {
 			if len([]rune(quote)) > 600 || negatedRelation.MatchString(quote) {
@@ -179,13 +181,13 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 					r.Role = literalField(body)
 				} else if strings.HasSuffix(verb, " at") || strings.HasSuffix(verb, " di") {
 					r.Kind = "employment"
-					r.Organization = literalField(body)
+					r.Organization = organizationField(body)
 				} else if kind, org, role := profileRelationFields(body); kind != "" {
 					r.Kind, r.Organization, r.Role = kind, org, role
 				} else if loc := relationSeparator.FindStringIndex(body); loc != nil {
 					r.Kind = "employment"
 					r.Role = literalField(body[:loc[0]])
-					r.Organization = literalField(body[loc[1]:])
+					r.Organization = organizationField(body[loc[1]:])
 					for _, word := range []string{"student", "undergraduate", "postgraduate", "mahasiswa", "mahasiswi", "pelajar"} {
 						if containsWords(r.Role, word) {
 							r.Kind = "education"

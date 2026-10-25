@@ -6,6 +6,9 @@ type Target struct {
 }
 
 type Candidate struct {
+	EducationClaims     []SummaryClaim `json:"education_claims,omitempty"`
+	DiscoveryBasis      string         `json:"discovery_basis,omitempty"`
+	LinkedFrom          string         `json:"linked_from,omitempty"`
 	RoleClaims          []SummaryClaim `json:"role_claims,omitempty"`
 	CompanyClaims       []SummaryClaim `json:"company_claims,omitempty"`
 	Label               string         `json:"label,omitempty"`
@@ -14,6 +17,7 @@ type Candidate struct {
 	Username            string         `json:"username,omitempty"`
 	DisplayName         string         `json:"display_name,omitempty"`
 	Company             string         `json:"company,omitempty"`
+	CompanyStatus       string         `json:"company_status,omitempty"`
 	CompanyInferred     bool           `json:"company_inferred,omitempty"`
 	CompanyTemporal     string         `json:"company_temporal,omitempty"`
 	CompanyRelationIDs  []string       `json:"company_relation_ids,omitempty"`
@@ -185,23 +189,41 @@ type CollectionReceipt struct {
 	Bytes          int    `json:"bytes,omitempty"`
 }
 
+type AccountClue struct {
+	Platform string `json:"platform"`
+	Username string `json:"username"`
+}
+
 type SearchSession struct {
-	Provider     string        `json:"provider,omitempty"`
-	Platform     string        `json:"platform,omitempty"`
-	URL          string        `json:"url,omitempty"`
-	ID           string        `json:"id"`
-	StartedAt    string        `json:"started_at"`
-	UpdatedAt    string        `json:"updated_at"`
-	Name         string        `json:"name"`
-	Username     string        `json:"username,omitempty"`
-	Company      string        `json:"company,omitempty"`
-	Location     string        `json:"location,omitempty"`
-	Attempts     int           `json:"attempts"`
-	RequestsUsed int           `json:"requests_used"`
-	Status       string        `json:"status"`
-	Scope        string        `json:"scope"`
-	ConfigJSON   string        `json:"config_json"`
-	Events       []SearchEvent `json:"events"`
+	Research     []ResearchStep `json:"research,omitempty"`
+	Accounts     []AccountClue  `json:"accounts,omitempty"`
+	Provider     string         `json:"provider,omitempty"`
+	Platform     string         `json:"platform,omitempty"`
+	URL          string         `json:"url,omitempty"`
+	ID           string         `json:"id"`
+	StartedAt    string         `json:"started_at"`
+	UpdatedAt    string         `json:"updated_at"`
+	Name         string         `json:"name"`
+	Username     string         `json:"username,omitempty"`
+	Company      string         `json:"company,omitempty"`
+	Location     string         `json:"location,omitempty"`
+	Attempts     int            `json:"attempts"`
+	RequestsUsed int            `json:"requests_used"`
+	Status       string         `json:"status"`
+	Scope        string         `json:"scope"`
+	ConfigJSON   string         `json:"config_json"`
+	Events       []SearchEvent  `json:"events"`
+}
+
+// Research steps describe retrieval choices, never verified identity links.
+type ResearchStep struct {
+	Action   string `json:"action"`
+	FromURL  string `json:"from_url,omitempty"`
+	URL      string `json:"url,omitempty"`
+	Query    string `json:"query,omitempty"`
+	Reason   string `json:"reason"`
+	Status   string `json:"status"`
+	Requests int    `json:"requests"`
 }
 
 type SearchEvent struct {

@@ -1,6 +1,10 @@
 # Ekstraksi hubungan dengan bukti
 
-Pencarian sekarang menjalankan `relations-v4`. Ekstraktor company/role lama tetap tersedia sebagai baseline pengujian, tetapi tidak lagi mengisi hasil pencarian. Penyebutan nama di suatu halaman tidak cukup untuk mengaitkan semua organisasi di halaman itu dengan orang tersebut.
+Pencarian sekarang menjalankan `relations-v6`. Ekstraktor company/role lama tetap tersedia sebagai baseline pengujian, tetapi tidak lagi mengisi hasil pencarian. Penyebutan nama di suatu halaman tidak cukup untuk mengaitkan semua organisasi di halaman itu dengan orang tersebut.
+
+Field company tetap aktif. Snapshot baru menyimpan `company_status`, dan CLI menjelaskan company kosong: `no_employment_claim` berarti belum ada hubungan pekerjaan yang memenuhi syarat, `pending_review` berarti ada usulan pekerjaan model yang belum diputuskan operator, `historical_only` berarti hanya riwayat, `non_current_claims` berarti hanya klaim dengan periode lain, `ambiguous` berarti beberapa organisasi, dan `period_conflict` berarti periode bertentangan. Company terisi memakai status `available`; status ini tidak memverifikasi klaim. Nama domain atau organisasi yang sekadar muncul di halaman tidak otomatis menjadi company. Jalankan `enrich` untuk menghitung status pada snapshot lama.
+
+Versi 6 membatasi kata seperti `Executive` dan `Chief` agar nama penerbit tidak menjadi jabatan, serta memisahkan uraian tugas seperti `working on ...` dari nama employer. Bio orang pertama didukung secara terbatas: judul halaman harus sama dengan nama lengkap, teks harus dibuka dengan nama itu dan pernyataan `I'm`/`I am`, lalu memiliki klausa employer eksplisit. Narasi wawancara, fiksi, dan subjek lain ditolak. Kutipan tetap berasal dari teks yang sama dan periode dibaca dari klausa pekerjaan yang bersangkutan. Konteks pendek yang mendukung hubungan ini diprioritaskan untuk Ollama, tetapi model tetap dapat salah memilih kutipan atau mengarang tanggal. `present_assertion` berarti sumber menggunakan bentuk kini, bukan verifikasi pekerjaan saat ini. Lihat [validasi versi 6 dan akun lintas platform](COMPARISON-ACCOUNT-QUALITY.md).
 
 Pipeline menyimpan hubungan pekerjaan (`employment`), jabatan publik (`public_office`), profesi (`occupation`), pendidikan (`education`), keanggotaan (`membership`), dan tempat lahir (`birthplace`). Setiap hubungan memiliki subjek, kutipan literal, ID observasi sumber, metode, periode jika tertulis, dan status `UNVERIFIED`. URL, waktu observasi, serta hash respons tersedia melalui observasi yang dirujuk.
 
@@ -14,7 +18,9 @@ Rules juga membaca bentuk `Chief Policy Officer for Example Labs`, `Example's Pr
 
 Riwayat tidak menjadi pekerjaan saat ini. Contoh kutipan `Joko Widodo ... Presiden Indonesia ketujuh dari tahun 2014 sampai 2024` menghasilkan jabatan publik historis, bukan perusahaan. Nama rumah sakit dalam berita kelahiran dan jabatan orang lain dalam tabel kabinet tidak menjadi perusahaan/jabatan subjek. Hasil bergantung pada teks yang berhasil dikoleksi, bukan pengetahuan umum yang dimasukkan diam-diam.
 
-`public-page-v3` mempertahankan batas paragraf, baris tabel, dan pemisah sel. JSON-LD `Person` diekstrak sebagai observasi `person_jsonld` yang dibatasi; `name`, `jobTitle`, `worksFor`, `alumniOf`, `memberOf`, dan `birthPlace` dipisahkan per orang. Konteks dan referensi eksternal tidak diambil. Nama harus cocok persis setelah normalisasi spasi/huruf. Periode JSON-LD tetap `unknown`; beberapa employer/job title tidak dipasangkan melalui perkalian silang. Tabel bebas belum mempunyai parser hubungan umum.
+`public-page-v4` mempertahankan batas paragraf, baris tabel, pemisah sel, dan header profil atau artikel. Banner situs, navigasi, serta elemen tersembunyi tetap dikecualikan. JSON-LD `Person` diekstrak sebagai observasi `person_jsonld` yang dibatasi; `name`, `jobTitle`, `worksFor`, `alumniOf`, `memberOf`, dan `birthPlace` dipisahkan per orang. Referensi `@id` diselesaikan hanya dari objek pada halaman yang sama, termasuk script JSON-LD terpisah. ID ambigu tidak dipakai, hasil duplikat dibuang, dan penelusuran dibatasi. Konteks dan referensi eksternal tidak diambil. Nama harus cocok persis setelah normalisasi spasi/huruf. Periode JSON-LD tetap `unknown`; beberapa employer/job title tidak dipasangkan melalui perkalian silang. Tabel bebas belum mempunyai parser hubungan umum.
+
+Rules membaca blok profil yang dimulai dengan nama lengkap, termasuk gelar, kemudian baris jabatan eksplisit atau field berlabel `Role`/`Company` dan `Jabatan`/`Perusahaan`. Pembacaan berhenti pada baris yang tidak dikenal. Nama organisasi tanpa label tidak otomatis digabung dengan jabatan. Kutipan tetap satu rentang asli dari satu observasi. Seleksi konteks Ollama mempertahankan field profil bersebelahan pada halaman panjang. Nama merek satu kata dengan huruf kecil dapat diterima pada klausa employer yang eksplisit; kalimat penjelas setelah koma tidak lagi menjadi bagian dari jabatan atau menggantikan employer yang sudah disebut. Lihat [hasil validasi profil](COMPARISON-PROFILE-QUALITY.md).
 
 ## Memproses snapshot lama tanpa pencarian ulang
 
@@ -23,7 +29,7 @@ Riwayat tidak menjadi pekerjaan saat ini. Contoh kutipan `Joko Widodo ... Presid
 .\bin\pmiyc.exe candidates -input data/hasil-relasi.json
 ```
 
-Input asli tidak diubah dan output tidak boleh menimpa file. Inferensi lama tetap disimpan dengan `superseded_by: relations-v4` untuk audit, tetapi tidak lagi menjadi ringkasan. Memproses ulang snapshot tidak memulihkan teks yang terpotong atau struktur HTML yang sudah hilang. Jalankan pencarian baru jika memerlukan observasi baru.
+Input asli tidak diubah dan output tidak boleh menimpa file. Inferensi lama tetap disimpan dengan `superseded_by: relations-v6` untuk audit, tetapi tidak lagi menjadi ringkasan. Memproses ulang snapshot tidak memulihkan teks yang terpotong atau struktur HTML yang sudah hilang. Jalankan pencarian baru jika memerlukan observasi baru.
 
 ## LLM lokal opsional
 
@@ -55,7 +61,7 @@ Model memilih ID potongan pendek seperti `s1` melalui `evidence_id` pada respons
 
 Tambahkan `-debug-extraction` pada `enrich` atau `extraction.save_raw_response: true` pada konfigurasi untuk menyimpan respons mentah lokal yang dibatasi ukurannya. Default tidak menyimpan respons mentah. Informasi kutipan dan usulan yang ditolak tetap tercatat tanpa flag tersebut.
 
-Kutipan harus benar-benar ada pada observasi milik kandidat; subjek, organisasi, jabatan dan tahun harus didukung literal oleh kutipan. Respons rusak, terpotong, berlebih, atau memakai ID potongan lain ditolak. JSON Schema membatasi subjek dan ID potongan ke input aktual. Validator menolak pengantar biografi yang jelas menyebut nama orang lebih panjang, badan kolektif yang dijadikan jabatan individu, dan periode tanpa dukungan sumber. Pemeriksaan nama ini terbatas pada pola pengantar, bukan penyelesaian identitas secara umum. Instruksi dalam halaman diperlakukan sebagai data. Validasi literal belum membuktikan hubungan semantik: kutipan dapat menyebut beberapa orang. Karena itu usulan model tetap terlihat sebagai `ollama/relations-v4`, memerlukan pemeriksaan hubungan, dan tidak otomatis mengisi ringkasan atau PES. Konfirmasi identitas kandidat juga tidak memverifikasi hubungan tersebut.
+Kutipan harus benar-benar ada pada observasi milik kandidat; subjek, organisasi, jabatan dan tahun harus didukung literal oleh kutipan. Respons rusak, terpotong, berlebih, atau memakai ID potongan lain ditolak. JSON Schema membatasi subjek dan ID potongan ke input aktual. Validator menolak pengantar biografi yang jelas menyebut nama orang lebih panjang, badan kolektif yang dijadikan jabatan individu, dan periode tanpa dukungan sumber. Pemeriksaan nama ini terbatas pada pola pengantar, bukan penyelesaian identitas secara umum. Instruksi dalam halaman diperlakukan sebagai data. Validasi literal belum membuktikan hubungan semantik: kutipan dapat menyebut beberapa orang. Karena itu usulan model tetap terlihat sebagai `ollama/relations-v6`, memerlukan pemeriksaan hubungan, dan tidak otomatis mengisi ringkasan atau PES. Konfirmasi identitas kandidat juga tidak memverifikasi hubungan tersebut.
 
 Untuk membandingkan mode secara adil, koleksi sekali lalu proses snapshot yang sama:
 
@@ -79,6 +85,8 @@ Lihat ID, kutipan, metode, dan status review dengan `candidates`, lalu buat snap
 `ACCEPT` membuat usulan model layak dipertimbangkan dalam ringkasan sesuai aturan periode dan konflik. `REJECT` mengecualikan hubungan dari ringkasan. `PENDING` mencabut keputusan sebelumnya; usulan model kembali memerlukan review, sedangkan hubungan rules mengikuti aturan default. Riwayat keputusan, waktu, dan alasan tetap disimpan. ID hubungan stabil untuk tuple kandidat, dokumen, subjek, jenis, nilai, dan periode yang sama; keputusan ikut dipertahankan saat `enrich` dijalankan ulang. Sumber input tidak diubah. Review ini tidak mengubah identitas, status `UNVERIFIED`, atau kelayakan PES.
 
 ## Batas dan evaluasi
+
+Pendidikan tersedia sebagai `candidates[].education_claims` dengan referensi hubungan dan periode. Perusahaan tetap khusus hubungan employment. Nama yang diamati pada halaman kandidat menjadi subjek ekstraksi sebelum nama pencarian, sehingga input nama depan dapat diperkaya dari nama lengkap yang benar-benar tercantum pada sumber. Klaim dari kandidat lain tidak dipindahkan ke akun awal. Lihat [alur penelusuran bertahap](ITERATIVE-RESEARCH.md).
 
 - Aturan prosa terutama mencakup Indonesia dan Inggris. Pengurangan tebakan meningkatkan abstention; beberapa judul profil yang dulu menghasilkan field sekarang hanya tersimpan sebagai observasi.
 - Alias/typo seperti `Jokowi dodo` tidak otomatis menjadi `Joko Widodo`. Alias yang tertulis dalam biografi membantu parsing nama kanonik, bukan penggabungan identitas antarhalaman.

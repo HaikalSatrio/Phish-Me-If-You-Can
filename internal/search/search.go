@@ -67,7 +67,10 @@ func (c Config) Validate() error {
 	return nil
 }
 
-type Input struct{ Name, Username, Company, Location, Provider, Platform, URL string }
+type Input struct {
+	Name, Username, Company, Location, Provider, Platform, URL string
+	Accounts                                                   []domain.AccountClue
+}
 
 func norm(s string) string { return strings.ToLower(strings.Join(strings.Fields(s), " ")) }
 
@@ -76,7 +79,7 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 		return domain.Case{}, err
 	}
 	in.Name = strings.TrimSpace(in.Name)
-	in.Username = strings.TrimSpace(in.Username)
+	in.Username = strings.TrimPrefix(strings.TrimSpace(in.Username), "@")
 	if len(in.Name) > 150 || len(in.Company) > 150 || len(in.Location) > 150 || len(in.Username) > 250 || len(in.URL) > 4096 {
 		return domain.Case{}, fmt.Errorf("search clues must be at most 150 bytes")
 	}
@@ -86,6 +89,9 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 	s.Provider = in.Provider
 	if s.Provider == "" {
 		s.Provider = "github"
+		if len(in.Accounts) > 0 {
+			s.Provider = "web"
+		}
 	}
 	s.Platform = in.Platform
 	s.URL = in.URL
@@ -132,11 +138,20 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 		}
 		s.ID = "search-" + hex.EncodeToString(id[:])
 	}
+	accounts := append(append([]domain.AccountClue(nil), s.Accounts...), in.Accounts...)
+	var accountErr error
+	s.Accounts, accountErr = collector.NormalizeAccounts(accounts)
+	if accountErr != nil {
+		return domain.Case{}, accountErr
+	}
+	if len(s.Accounts) > 0 && (s.Provider != "web" || s.Platform != "" || s.Username != "") {
+		return domain.Case{}, fmt.Errorf("-account requires -source web and cannot be combined with -username or -platform; scope each account as platform:username")
+	}
 	if s.Provider != "github" {
 		s.Scope = "Public " + s.Provider + " observations only. Indexed snippets and page metadata are not verified personal facts. Coverage is request completion, not completeness across the internet."
 	}
-	if s.Name == "" && s.Username == "" && s.URL == "" {
-		return domain.Case{}, fmt.Errorf("provide -name or -username")
+	if s.Name == "" && s.Username == "" && s.URL == "" && len(s.Accounts) == 0 {
+		return domain.Case{}, fmt.Errorf("provide -name, -username, -account, or -url")
 	}
 	if s.Provider == "github" && s.Username != "" && !collector.ValidLogin(s.Username) {
 		return domain.Case{}, fmt.Errorf("invalid GitHub username")
@@ -146,10 +161,11 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 	}
 	ctx, cancel := context.WithTimeout(ctx, time.Duration(cfg.SessionTimeoutSeconds)*time.Second)
 	defer cancel()
-	r := c.Collect(ctx, collector.Query{Name: s.Name, Username: s.Username, Company: s.Company, Location: s.Location, URL: s.URL, Platform: s.Platform, Limit: cfg.CandidateLimit, Budget: cfg.RequestBudget - s.RequestsUsed})
+	r := c.Collect(ctx, collector.Query{Name: s.Name, Username: s.Username, Accounts: s.Accounts, Company: s.Company, Location: s.Location, URL: s.URL, Platform: s.Platform, Limit: cfg.CandidateLimit, Budget: cfg.RequestBudget - s.RequestsUsed})
 	now = time.Now().UTC().Format(time.RFC3339)
 	s.Attempts++
 	s.RequestsUsed += r.Requests
+	s.Research = append(append([]domain.ResearchStep(nil), s.Research...), r.Research...)
 	s.UpdatedAt = now
 	s.Status = r.Status
 	if len(r.Profiles) > 0 {
@@ -167,6 +183,9 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 	}
 	if name == "" {
 		name = s.URL
+	}
+	if name == "" && len(s.Accounts) > 0 {
+		name = s.Accounts[0].Platform + ":" + s.Accounts[0].Username
 	}
 	project := domain.Case{SchemaVersion: "1", Target: domain.Target{ID: s.ID, Name: name}, Search: &s, Candidates: []domain.Candidate{}, Evidence: []domain.Evidence{}, Coverage: []domain.Coverage{}}
 	project.Receipts = r.Receipts
@@ -195,6 +214,10 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 		}
 		candidate := domain.Candidate{ID: id, RequiresReview: true, Username: p.Login, DisplayName: p.Name, Company: p.Company, Location: p.Location, ProfileURL: "https://github.com/" + p.Login, Decision: "PENDING", Matches: []string{}, Contradictions: []string{}, Missing: []string{}}
 		candidate.ProfileURL = profileURL
+		candidate.DiscoveryBasis, candidate.LinkedFrom = p.DiscoveryBasis, p.LinkedFrom
+		for _, linked := range collector.LinkedAccounts(p, s.Accounts) {
+			candidate.Matches = append(candidate.Matches, fmt.Sprintf("Public page links to supplied %s:%s (evidence=%s-page_links); ownership unverified", linked.Platform, linked.Username, id))
+		}
 		for _, f := range p.Facts {
 			if f.Type == "search_title" || f.Type == "page_title" {
 				candidate.Label = f.Value

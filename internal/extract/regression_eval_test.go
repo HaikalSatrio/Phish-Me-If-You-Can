@@ -69,6 +69,7 @@ func TestRelationRegressionEvaluation(t *testing.T) {
 		Description string `json:"description"`
 		Cases       []struct {
 			ID, Subject, Type, Text string
+			Documents               []Document        `json:"documents"`
 			Expected                []domain.Relation `json:"expected"`
 		} `json:"cases"`
 	}
@@ -114,6 +115,9 @@ func TestRelationRegressionEvaluation(t *testing.T) {
 				tc.Expected[i].Subject = tc.Subject
 			}
 			docs := []Document{{ID: tc.ID, Type: tc.Type, Text: tc.Text}}
+			if len(tc.Documents) > 0 {
+				docs = tc.Documents
+			}
 			var got []domain.Relation
 			var trace domain.ExtractionRun
 			started := time.Now()

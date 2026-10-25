@@ -12,6 +12,31 @@ import (
 func structuredPeople(doc *html.Node) string {
 	people := []domain.PersonRecord{}
 	budget := 64 << 10
+	values := []any{}
+	objects := map[string]map[string]any{}
+	var index func(any, int)
+	index = func(v any, depth int) {
+		if depth > 16 || len(objects) >= 256 {
+			return
+		}
+		switch x := v.(type) {
+		case []any:
+			for _, item := range x {
+				index(item, depth+1)
+			}
+		case map[string]any:
+			if id, ok := x["@id"].(string); ok && id != "" && len(x) > 1 {
+				if _, exists := objects[id]; exists {
+					objects[id] = nil
+				} else {
+					objects[id] = x
+				}
+			}
+			for _, key := range []string{"@graph", "mainEntity", "author", "employee", "worksFor", "alumniOf", "memberOf", "birthPlace"} {
+				index(x[key], depth+1)
+			}
+		}
+	}
 	var names func(any) []string
 	names = func(v any) []string {
 		out := []string{}
@@ -23,6 +48,10 @@ func structuredPeople(doc *html.Node) string {
 		case map[string]any:
 			if name, ok := x["name"].(string); ok {
 				out = names(name)
+			} else if id, ok := x["@id"].(string); ok {
+				if name, ok := objects[id]["name"].(string); ok {
+					out = names(name)
+				}
 			}
 		case []any:
 			for _, item := range x {
@@ -34,17 +63,26 @@ func structuredPeople(doc *html.Node) string {
 		}
 		return out[:min(len(out), 10)]
 	}
+	seenPeople := map[string]bool{}
+	remaining := 2048
 	var scan func(any, int)
 	scan = func(v any, depth int) {
-		if depth > 16 || len(people) >= 20 {
+		if depth > 16 || len(people) >= 20 || remaining <= 0 {
 			return
 		}
+		remaining--
 		switch x := v.(type) {
 		case []any:
 			for _, item := range x {
 				scan(item, depth+1)
 			}
 		case map[string]any:
+			if id, ok := x["@id"].(string); ok && len(x) == 1 {
+				if resolved := objects[id]; resolved != nil {
+					scan(resolved, depth+1)
+				}
+				return
+			}
 			person := false
 			for _, typ := range names(x["@type"]) {
 				if typ == "Person" || typ == "https://schema.org/Person" || typ == "http://schema.org/Person" {
@@ -54,7 +92,12 @@ func structuredPeople(doc *html.Node) string {
 			if person {
 				n := names(x["name"])
 				if len(n) == 1 {
-					people = append(people, domain.PersonRecord{Name: n[0], JobTitles: names(x["jobTitle"]), Employers: names(x["worksFor"]), Schools: names(x["alumniOf"]), Memberships: names(x["memberOf"]), BirthPlaces: names(x["birthPlace"])})
+					person := domain.PersonRecord{Name: n[0], JobTitles: names(x["jobTitle"]), Employers: names(x["worksFor"]), Schools: names(x["alumniOf"]), Memberships: names(x["memberOf"]), BirthPlaces: names(x["birthPlace"])}
+					key, _ := json.Marshal(person)
+					if !seenPeople[string(key)] {
+						seenPeople[string(key)] = true
+						people = append(people, person)
+					}
 				}
 			}
 			// Named containers avoid guessing ownership from unrelated nested objects.
@@ -84,7 +127,8 @@ func structuredPeople(doc *html.Node) string {
 			}
 			var value any
 			if json.Unmarshal([]byte(b.String()), &value) == nil {
-				scan(value, 0)
+				values = append(values, value)
+				index(value, 0)
 			}
 		}
 		for child := n.FirstChild; child != nil; child = child.NextSibling {
@@ -92,6 +136,9 @@ func structuredPeople(doc *html.Node) string {
 		}
 	}
 	walk(doc)
+	for _, value := range values {
+		scan(value, 0)
+	}
 	if len(people) == 0 {
 		return ""
 	}

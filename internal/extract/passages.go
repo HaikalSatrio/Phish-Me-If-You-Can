@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
@@ -28,6 +29,15 @@ func SelectPassages(subject string, docs []Document) []domain.ExtractionPassage 
 		remaining -= size
 		out = append(out, domain.ExtractionPassage{ID: fmt.Sprintf("s%d", len(out)+1), EvidenceID: doc.ID, Type: doc.Type, Text: text})
 	}
+	// Prefer the bounded personal introduction over unrelated dates later in the biography.
+	for _, relation := range personalBiographyRelations(subject, docs, time.Now().UTC()) {
+		for _, doc := range docs {
+			if doc.ID == relation.EvidenceID {
+				add(doc, relation.Quote)
+				break
+			}
+		}
+	}
 	continuation := regexp.MustCompile(`(?i)^(?:she|he|ia|dia)\s`)
 	for _, doc := range ordered {
 		if subject == "" || !containsWords(doc.Text, subject) {
@@ -36,6 +46,26 @@ func SelectPassages(subject string, docs []Document) []domain.ExtractionPassage 
 		if len([]rune(doc.Text)) <= 1000 {
 			add(doc, doc.Text)
 			continue
+		}
+		if doc.Type == "page_text" {
+			lines := strings.Split(doc.Text, "\n")
+			for i, line := range lines {
+				if !profileSubjectLine(strings.TrimSpace(line), subject) {
+					continue
+				}
+				end := i + 1
+				for end < len(lines) && end < i+7 {
+					next := strings.TrimSpace(lines[end])
+					kind, _, _ := profileRelationFields(next)
+					if !profileLabel.MatchString(next) && kind == "" {
+						break
+					}
+					end++
+				}
+				if end > i+1 {
+					add(doc, strings.Join(lines[i:end], "\n"))
+				}
+			}
 		}
 		sentences := Sentences(doc.Text)
 		offset := 0

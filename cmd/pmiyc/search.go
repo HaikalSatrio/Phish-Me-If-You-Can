@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/collector"
@@ -15,12 +16,30 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/storage"
 )
 
+type accountFlags []domain.AccountClue
+
+func (a *accountFlags) String() string { return fmt.Sprint([]domain.AccountClue(*a)) }
+func (a *accountFlags) Set(value string) error {
+	platform, username, ok := strings.Cut(value, ":")
+	if !ok {
+		return fmt.Errorf("account must use platform:username, for example instagram:@haikal_satrio")
+	}
+	normalized, err := collector.NormalizeAccounts(append(append([]domain.AccountClue(nil), *a...), domain.AccountClue{Platform: platform, Username: username}))
+	if err != nil {
+		return err
+	}
+	*a = normalized
+	return nil
+}
+
 func runSearch(args []string) error {
 	fs := flag.NewFlagSet("search", flag.ContinueOnError)
 	name := fs.String("name", "", "subject name")
 	username := fs.String("username", "", "exact account username or full Bluesky handle; use -name for people search")
+	var accounts accountFlags
+	fs.Var(&accounts, "account", "known platform:username clue; repeat for multiple platforms (web source)")
 	source := fs.String("source", "", "auto (free public profiles), direct (HTML), web (free search and pages), searxng, duckduckgo, bing, github, devto, google, brave, google-api, url, or bluesky")
-	platform := fs.String("platform", "", "platform name or all; direct uses implemented adapters, web uses indexed discovery")
+	platform := fs.String("platform", "", "platform name or all; web tries scoped account hints and indexed discovery")
 	pageURL := fs.String("url", "", "explicit public page URL")
 	company := fs.String("company", "", "company clue for comparison")
 	location := fs.String("location", "", "location clue for comparison")
@@ -61,7 +80,9 @@ func runSearch(args []string) error {
 		}
 	}
 	if provider == "" {
-		if *pageURL != "" {
+		if len(accounts) > 0 {
+			provider = "web"
+		} else if *pageURL != "" {
 			provider = "url"
 		} else if *username != "" {
 			provider = "auto"
@@ -114,8 +135,8 @@ func runSearch(args []string) error {
 	if *platform != "" && provider != "auto" && provider != "direct" && provider != "web" && provider != "searxng" && provider != "duckduckgo" && provider != "bing" && provider != "google" && provider != "brave" && provider != "google-api" {
 		return fmt.Errorf("-platform is supported by direct collection and search providers")
 	}
-	if *pageURL != "" && provider != "url" {
-		return fmt.Errorf("use -source url with -url")
+	if *pageURL != "" && provider != "url" && provider != "web" {
+		return fmt.Errorf("use -source url or -source web with -url")
 	}
 	lookupUsername := *username
 	if lookupUsername == "" && previous != nil && previous.Search != nil {
@@ -124,7 +145,7 @@ func runSearch(args []string) error {
 	if (provider == "devto" || provider == "bluesky" || provider == "direct" || provider == "auto") && lookupUsername == "" {
 		return fmt.Errorf("-source %s retrieves exact usernames and requires -username; to find people by name on DEV use: search -source web -platform devto -name \"Ben\"", provider)
 	}
-	project, err := search.Run(ctx, client, search.Input{Name: *name, Username: *username, Company: *company, Location: *location, Provider: provider, Platform: *platform, URL: *pageURL}, cfg, previous)
+	project, err := search.Run(ctx, client, search.Input{Name: *name, Username: *username, Accounts: accounts, Company: *company, Location: *location, Provider: provider, Platform: *platform, URL: *pageURL}, cfg, previous)
 	if err != nil {
 		return err
 	}
@@ -138,7 +159,7 @@ func runSearch(args []string) error {
 	fmt.Printf("Saved project: %s\nStatus: %s\nRequests used: %d/%d\n", path, project.Search.Status, project.Search.RequestsUsed, cfg.RequestBudget)
 	fmt.Printf("Collected: %d candidates, %d observations\n", len(project.Candidates), len(project.Evidence))
 	if provider == "web" {
-		fmt.Println("Source: SearXNG, then DuckDuckGo HTML and Bing RSS fallbacks, followed by public page extraction. No API key required.")
+		fmt.Println("Source: public account/URL clues, linked biographies, SearXNG/DuckDuckGo/Bing, and bounded follow-up name searches. No API key required.")
 		if cfg.SearXNGURL != "" {
 			fmt.Println("Configured SearXNG service is tried before the public search fallbacks.")
 		} else {
@@ -171,6 +192,7 @@ func runSearch(args []string) error {
 	for _, ev := range project.Search.Events {
 		fmt.Printf("%s: %s (%s)\n", ev.Operation, ev.Status, ev.Detail)
 	}
+	printNextQuestions(project)
 	if len(project.Candidates) == 0 && (project.Search.Status == "BLOCKED" || project.Search.Status == "FAILED") {
 		return fmt.Errorf("collection did not succeed; diagnostics saved to %s", path)
 	}
@@ -178,14 +200,38 @@ func runSearch(args []string) error {
 }
 
 func printCandidates(c domain.Case) {
+	if c.Search != nil && len(c.Search.Research) > 0 {
+		fmt.Println("Research trail (retrieval clues, not verified identity links):")
+		for _, step := range c.Search.Research {
+			fmt.Printf("  %s [%s] requests=%d query=%q url=%q from=%q | %s\n", step.Action, step.Status, step.Requests, step.Query, step.URL, step.FromURL, step.Reason)
+		}
+	}
 	if len(c.Candidates) == 0 {
 		fmt.Println("No candidate profiles collected. Check source status before drawing conclusions.")
 	}
 	for _, p := range c.Candidates {
+		if p.DiscoveryBasis != "" {
+			fmt.Printf("Discovery: %s | linked from=%q | identity needs review\n", p.DiscoveryBasis, p.LinkedFrom)
+		}
 		if p.Label != "" {
 			fmt.Printf("Page title: %q\n", p.Label)
 		}
 		companyNote := ""
+		if p.Company == "" {
+			reasons := map[string]string{
+				"ambiguous":           "multiple company claims; inspect alternatives",
+				"period_conflict":     "source claims disagree on the period",
+				"pending_review":      "model employment proposal needs relationship review",
+				"historical_only":     "only historical employers; inspect company details",
+				"non_current_claims":  "only non-current company claims; inspect periods",
+				"no_employment_claim": "no eligible explicit employment claim in collected sources",
+			}
+			reason := reasons[p.CompanyStatus]
+			if reason == "" {
+				reason = "not established; inspect source evidence and relationships"
+			}
+			companyNote = " (" + reason + ")"
+		}
 		if p.CompanyInferred {
 			companyNote = " (inferred, unverified)"
 			if p.CompanyTemporal != "" {
@@ -214,6 +260,12 @@ func printCandidates(c domain.Case) {
 		}
 		for _, claim := range p.CompanyClaims {
 			fmt.Printf("  Company detail: %q | %s | %s | relations=%q\n", claim.Value, claim.Kind, claim.Temporal, claim.RelationIDs)
+		}
+		if len(p.EducationClaims) == 0 {
+			fmt.Println("  Education: not established from collected sources")
+		}
+		for _, claim := range p.EducationClaims {
+			fmt.Printf("  Education: %q (unverified source claim) | %s | relations=%q\n", claim.Value, claim.Temporal, claim.RelationIDs)
 		}
 		for _, r := range c.Relations {
 			if r.CandidateID != p.ID {

@@ -128,6 +128,7 @@ func summaryField(candidateID, field string, relations []domain.Relation) fieldS
 func projectSummary(p *domain.Candidate, relations []domain.Relation) {
 	p.RoleClaims = nil
 	p.CompanyClaims = nil
+	p.EducationClaims = nil
 	for _, r := range relations {
 		if r.CandidateID != p.ID || !summaryRelation(r) {
 			continue
@@ -137,6 +138,9 @@ func projectSummary(p *domain.Candidate, relations []domain.Relation) {
 		}
 		if company := relationFieldValue("company", r); company != "" {
 			p.CompanyClaims = appendClaim(p.CompanyClaims, company, r)
+		}
+		if r.Kind == "education" && r.Organization != "" {
+			p.EducationClaims = appendClaim(p.EducationClaims, r.Organization, r)
 		}
 	}
 	company := summaryField(p.ID, "company", relations)
@@ -156,12 +160,16 @@ func projectSummary(p *domain.Candidate, relations []domain.Relation) {
 		p.RoleTemporal = role.temporal
 		p.RoleRelationIDs = role.ids
 	}
+	p.CompanyStatus = companyStatus(*p, company, relations)
 	notes := map[string]bool{}
 	if p.CompanyInferred || p.RoleInferred {
 		notes["Extraction: summary fields are unverified source claims; inspect each field's period and relationship references"] = true
 	}
 	if company.temporal == "headline" || role.temporal == "headline" {
 		notes["Extraction: summary includes an undated profile headline; verify it against the current source"] = true
+	}
+	if company.temporal == "present_assertion" || role.temporal == "present_assertion" {
+		notes["Extraction: present tense is wording from the source, not verification of current employment; the source may be outdated"] = true
 	}
 	if len(company.alternatives) > 1 || len(role.alternatives) > 1 && role.value == "" {
 		notes["Extraction: competing current or headline values remain ambiguous; only the affected summary field is withheld"] = true
@@ -182,6 +190,32 @@ func projectSummary(p *domain.Candidate, relations []domain.Relation) {
 		p.Missing = append(p.Missing, note)
 	}
 	sort.Strings(p.Missing)
+}
+
+func companyStatus(p domain.Candidate, summary fieldSummary, relations []domain.Relation) string {
+	if p.Company != "" {
+		return "available"
+	}
+	if len(summary.alternatives) > 1 {
+		return "ambiguous"
+	}
+	if summary.temporal == "conflicting" {
+		return "period_conflict"
+	}
+	for _, r := range relations {
+		if r.CandidateID == p.ID && r.Kind == "employment" && r.Organization != "" && strings.HasPrefix(r.Method, "ollama/") && domain.RelationDecision(r) == "PENDING" {
+			return "pending_review"
+		}
+	}
+	if len(p.CompanyClaims) > 0 {
+		for _, claim := range p.CompanyClaims {
+			if claim.Temporal != "historical" {
+				return "non_current_claims"
+			}
+		}
+		return "historical_only"
+	}
+	return "no_employment_claim"
 }
 
 func appendClaim(claims []domain.SummaryClaim, value string, r domain.Relation) []domain.SummaryClaim {

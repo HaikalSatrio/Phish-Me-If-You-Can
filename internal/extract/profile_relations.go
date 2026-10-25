@@ -9,8 +9,18 @@ import (
 )
 
 var roleConjunction = regexp.MustCompile(`(?i)\s+(?:and|dan|&)\s+`)
-var profileSeparator = regexp.MustCompile(`\s*[|\x{00b7}\x{2022}\x{2013}\x{2014}]\s*|\s+-\s+|\.\s+`)
+var profileSeparator = regexp.MustCompile(`\s*[|\x{00b7}\x{2022}\x{2013}\x{2014}]\s*|\s+-\s+|\.\s+|\r?\n`)
 var credentialPrefix = regexp.MustCompile(`^(?:[A-Z](?:\.[A-Za-z]{1,6})+\.?|[A-Z][A-Z0-9/-]{1,15}(?:master)?|[a-z]{1,2}[A-Z]{2,12})(?:[,\.\s]+|$)`)
+
+var ambiguousRolePrefix = map[string]bool{"executive": true, "chief": true, "principal": true, "associate": true, "assistant": true, "vice": true, "staff": true}
+var organizationDescription = regexp.MustCompile(`(?i)\s+(?:working\s+(?:on|with|to)|where\s|which\s|speciali[sz]ing\s+in|focusing\s+on|responsible\s+for|developing\s|building\s|yang\s|dengan\s+tugas)`)
+
+func organizationField(value string) string {
+	if loc := organizationDescription.FindStringIndex(value); loc != nil {
+		value = value[:loc[0]]
+	}
+	return literalField(value)
+}
 
 func validRoleValue(role string) bool {
 	if validLiteral(role, 16) {
@@ -37,11 +47,12 @@ func profileRole(role string) bool {
 	if !validLiteral(role, 16) {
 		return false
 	}
-	for _, word := range strings.Fields(strings.ToLower(role)) {
-		if roleWords[word] {
+	words := strings.Fields(strings.ToLower(role))
+	for _, word := range words {
+		if roleWords[word] && (!ambiguousRolePrefix[word] || len(words) == 1) {
 			return true
 		}
-		if !qualifiers[word] {
+		if !qualifiers[word] && !ambiguousRolePrefix[word] {
 			return false
 		}
 	}
@@ -91,10 +102,28 @@ func functionTarget(value string) bool {
 
 var organizationMarker = regexp.MustCompile(`(?i)\b(?:ltd|limited|inc|incorporated|llc|plc|corp|corporation|company|gmbh|university|institute|association|foundation|bank)\.?$|^(?:PT\.?|CV\.?|universitas|institut|yayasan)\s|^(?:university|institute|association)\s+of\s`)
 
+// Explicit employer clauses may name a brand written entirely in lowercase.
+func profileEmployerTarget(value string) bool {
+	if organizationTargetStartsProper(value) {
+		return true
+	}
+	if !regexp.MustCompile(`^[\p{L}][\p{L}\p{N}.-]{1,59}$`).MatchString(value) || functionTarget(value) || headlineRole(value) {
+		return false
+	}
+	switch strings.ToLower(value) {
+	case "company", "organization", "organisation", "team", "community", "club", "department", "division", "school", "university", "remote", "freelance", "independent", "self-employed", "retired", "unemployed", "unknown", "none", "null", "n/a", "it", "us", "them", "you", "him", "her", "myself", "yourself":
+		return false
+	}
+	return true
+}
+
 func profileRelationFields(body string) (kind, org, role string) {
 	if parts := strings.SplitN(body, ",", 2); len(parts) == 2 && headlineRole(strings.TrimSpace(parts[0])) {
-		left, right := strings.TrimSpace(parts[0]), literalField(strings.TrimSpace(parts[1]))
-		if validLiteral(right, 14) && organizationTargetStartsProper(right) && !strings.Contains(right, " & ") {
+		left, right := strings.TrimSpace(parts[0]), organizationField(strings.TrimSpace(parts[1]))
+		if kind, org, role := profileRelationFields(left); org != "" {
+			return kind, org, role
+		}
+		if validLiteral(right, 14) && profileEmployerTarget(right) && !strings.Contains(right, " & ") {
 			return "employment", right, left
 		}
 		return "occupation", "", left
@@ -115,6 +144,7 @@ func profileRelationFields(body string) (kind, org, role string) {
 		}
 		left, right := strings.TrimSpace(body[:index]), strings.TrimSpace(body[index+len(separator):])
 		right = strings.TrimSpace(regexp.MustCompile(`(?i)^the\s+`).ReplaceAllString(right, ""))
+		right = organizationField(right)
 		if separator == " in " && (!organizationMarker.MatchString(right) || !organizationTargetStartsProper(right)) {
 			continue
 		}
@@ -128,7 +158,7 @@ func profileRelationFields(body string) (kind, org, role string) {
 			}
 			continue
 		}
-		if separator == " of " && !organizationTargetStartsProper(right) {
+		if separator == " of " && !profileEmployerTarget(right) {
 			continue
 		}
 		if !headlineRole(left) {
@@ -178,7 +208,7 @@ func profileRelations(subject string, doc Document, asOf time.Time) []domain.Rel
 	nameEnd := regexp.MustCompile(`(?i)^` + regexp.QuoteMeta(subject)).FindStringIndex(text)[1]
 	rest := text[nameEnd:]
 	for n := 0; n < 24; n++ {
-		rest = strings.TrimLeft(rest, " ,.:|\u00b7\u2022\u2013\u2014-")
+		rest = strings.TrimLeft(rest, " \r\n,.:|\u00b7\u2022\u2013\u2014-")
 		first := strings.Fields(rest)
 		if len(first) == 0 {
 			return nil

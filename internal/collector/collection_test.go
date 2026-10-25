@@ -102,14 +102,17 @@ func TestPageContentExtraction(t *testing.T) {
 
 func TestDiscoveryRelevanceAndRanking(t *testing.T) {
 	q := Query{Name: "Anton Test", Username: "antont", Company: "Example Corp", Location: "Jakarta", Budget: 1, Limit: 1}
-	if !relevantResult(q, "Anton Test writes software") || !relevantResult(q, "https://example.org/antont") || relevantResult(q, "Someone Else Example Corp Jakarta") {
+	if relevantResult(q, "Anton Test writes software") || !relevantResult(q, "https://example.org/antont") || relevantResult(q, "Someone Else Example Corp Jakarta") {
 		t.Fatal("primary identity relevance failed")
+	}
+	if !relevantResult(Query{Name: q.Name}, "Anton Test writes software") {
+		t.Fatal("name-only discovery rejected matching name")
 	}
 	if strings.Contains(discoveryPhrase(q), "Jakarta") || strings.Contains(discoveryPhrase(q), "Example Corp") {
 		t.Fatal("optional hints restrict discovery")
 	}
 	b := NewBing(time.Second)
-	b.client = mockClient(`<rss><channel><title>Results</title><item><title>Anton Test</title><link>https://example.org/a</link></item><item><title>Anton Test</title><description>Example Corp Jakarta</description><link>https://example.org/b</link></item></channel></rss>`, "application/rss+xml", 200)
+	b.client = mockClient(`<rss><channel><title>Results</title><item><title>Anton Test (antont)</title><link>https://example.org/a</link></item><item><title>Anton Test (antont)</title><description>Example Corp Jakarta</description><link>https://example.org/b</link></item></channel></rss>`, "application/rss+xml", 200)
 	r := b.Collect(context.Background(), q)
 	if len(r.Profiles) != 1 || r.Profiles[0].URL != "https://example.org/b" {
 		t.Fatalf("ranking did not precede limit: %+v", r)

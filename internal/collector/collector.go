@@ -6,6 +6,7 @@ import (
 )
 
 type Query struct {
+	Accounts []domain.AccountClue
 	Company  string
 	Location string
 	URL      string
@@ -17,6 +18,8 @@ type Query struct {
 }
 
 type Profile struct {
+	DiscoveryBasis string
+	LinkedFrom     string
 	FactSources    map[string]FactSource
 	ResponseSHA256 string
 	Rule           string
@@ -47,6 +50,7 @@ type Event struct {
 }
 
 type Result struct {
+	Research   []domain.ResearchStep
 	Receipts   []domain.CollectionReceipt
 	Profiles   []Profile
 	Events     []Event

@@ -56,13 +56,21 @@ Adapter langsung saat ini mencakup GitHub dan DEV Community. Setiap hasil menyim
 .\bin\pmiyc.exe search -source web -name "Anton" -out data/anton-search.json
 .\bin\pmiyc.exe candidates -input data/anton-search.json
 .\bin\pmiyc.exe search -source web -name "Anton" -platform instagram
+.\bin\pmiyc.exe search -source web -name "Haikal" -account "instagram:@haikal_satrio" -account "github:HaikalSatrio"
+.\bin\pmiyc.exe next -input data/anton-search.json
 .\bin\pmiyc.exe platforms
 .\bin\pmiyc.exe search -source url -url "https://example.org"
 ```
 
-Sumber `web` mencoba SearXNG lokal di `http://127.0.0.1:8888`, lalu HTML publik DuckDuckGo dan Bing RSS selama budget dan batas kandidat masih tersedia, bukan hanya ketika sumber pertama kosong. SearXNG selalu mengirim kueri nama tanpa petunjuk lebih dulu, lalu variasi dengan perusahaan/lokasi; jumlah halaman, bahasa, engine, dan rentang waktu dapat diatur dengan `search_pages`, `search_language`, `searxng_engines`, dan `search_time_range`. Hasil harus cocok dengan nama atau username serta domain platform. Perusahaan dan lokasi digunakan untuk mengurutkan hasil, sehingga cuplikan yang tidak menyebutkannya tidak langsung dibuang. Halaman hasil kemudian diambil selama budget masih tersedia. Teks halaman dibatasi 8.000 karakter dan tautan publik maksimal 50 per halaman; CLI menampilkan pratinjau dan JSON menyimpan hasil lengkap dalam batas tersebut. Mesin pencarian tetap dapat memblokir akses atau memberikan hasil tidak relevan.
+Sumber `web` mencoba URL atau halaman akun yang diberikan lebih dulu, lalu SearXNG lokal di `http://127.0.0.1:8888`, HTML publik DuckDuckGo, dan Bing RSS selama budget dan batas kandidat masih tersedia. Ulangi `-account platform:username` untuk maksimal delapan petunjuk akun; setiap akun dicari pada platformnya sendiri dan tetap menjadi kandidat terpisah. Petunjuk tersimpan saat sesi dilanjutkan. Jangan gabungkan `-account` dengan `-username` atau `-platform`; gunakan pasangan platform dan username pada setiap flag. Untuk satu akun, `-username` dengan `-platform` tetap tersedia. URL eksplisit dapat dipakai melalui `-source web -url` atau `-source url -url`. Halaman hasil tebakan URL akun harus menyebut handle pada metadata dan tidak boleh berpindah ke akun lain. Kecocokan ini belum memverifikasi kepemilikan.
+
+Pada indeks, username menjadi batas pencarian jika diberikan; kecocokan nama saja tidak cukup. Awalan `@` boleh digunakan. Tanpa petunjuk akun atau username, pencarian memakai nama. SearXNG mengirim kueri utama lebih dulu, lalu variasi dengan nama, perusahaan, atau lokasi, maksimal empat kueri per akun; jumlah halaman, bahasa, engine, dan rentang waktu dapat diatur dengan `search_pages`, `search_language`, `searxng_engines`, dan `search_time_range`. Perusahaan dan lokasi mengurutkan hasil tanpa membuang cuplikan yang tidak menyebutkannya. Semua tahap berbagi budget request dan batas kandidat. Teks halaman dibatasi 8.000 karakter dan tautan publik maksimal 50 per halaman. Mesin pencarian dapat memblokir akses atau memberikan hasil tidak relevan; hasil kosong belum membuktikan akun tidak ada.
+
+Setelah pencarian, CLI menampilkan pertanyaan tindak lanjut sesuai bukti yang belum jelas. `pmiyc next -input data/hasil.json` menampilkan ulang pertanyaan tanpa request jaringan; tambahkan `-out data/pertanyaan.json` untuk JSON beserta ID kandidat/hubungan. Jawaban diterapkan melalui `search`, `review`, atau `review-relation`, bukan tebakan otomatis. Ini belum merupakan percakapan interaktif melalui stdin. Identitas, employer, dan periode direview secara terpisah. Lihat [validasi akun dan kualitas ekstraksi](docs/COMPARISON-ACCOUNT-QUALITY.md).
 
 Ekstraksi menyimpan hubungan beserta subjek, kutipan, sumber, dan periode. Jabatan publik historis dipisahkan dari pekerjaan saat ini; pendidikan, keanggotaan, dan tempat lahir tidak menjadi company. Company/role diringkas dari hubungan deterministik atau usulan yang diterima operator. Beberapa role dan riwayat tampil sebagai klaim terpisah dengan referensi sumber; perusahaan yang berbeda tetap ambigu. Semua klaim tetap unverified dan tidak memengaruhi confidence identitas atau PES.
+
+Company tidak dinonaktifkan dan tidak memerlukan input `-company` agar dapat terisi. Output menjelaskan field kosong, sedangkan JSON menyimpan `company_status`: misalnya `no_employment_claim`, `historical_only`, `ambiguous`, `period_conflict`, atau `pending_review`. Status ini menjelaskan hasil ekstraksi, bukan keadaan pekerjaan orang tersebut.
 
 Gunakan `pmiyc enrich -input data/hasil-lama.json -out data/hasil-relasi.json` untuk memproses ulang snapshot. Tambahkan `-model qwen2.5:7b` untuk model lokal yang sudah dipasang, dan `-debug-extraction` jika memerlukan respons mentah. Alasan penolakan model dicatat per usulan. Perintah `review-relation` menyediakan keputusan ACCEPT/REJECT/PENDING tanpa mengubah input asli. Model tidak diunduh otomatis dan tidak memerlukan API berbayar. Lihat [panduan ekstraksi dan LLM lokal](docs/EXTRACTION.md) untuk konfigurasi, review, periode, serta batas validasi.
 
@@ -80,6 +88,7 @@ Untuk GitHub gunakan `search -source github -username octocat`. Untuk Bluesky gu
 
 ## Dokumen
 
+- [Penelusuran bertahap, bukti identitas, dan pendidikan](docs/ITERATIVE-RESEARCH.md)
 - [Arsitektur](docs/ARCHITECTURE.md)
 - [Spesifikasi PES](docs/PES_SPEC.md)
 - [Batas riset dan roadmap](docs/RESEARCH_SCOPE.md)

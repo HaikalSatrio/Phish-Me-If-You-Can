@@ -44,7 +44,10 @@ func pageContent(doc *html.Node, base *url.URL) (string, []string) {
 	walk = func(n *html.Node) {
 		if n.Type == html.ElementNode {
 			switch n.Data {
-			case "head", "script", "style", "noscript", "nav", "footer", "header", "form", "template", "svg":
+			case "head", "script", "style", "noscript", "nav", "footer", "form", "template", "svg":
+				return
+			}
+			if n.Data == "header" && !contentHeader(n) {
 				return
 			}
 			if text.Len() < 32768 {
@@ -100,4 +103,32 @@ func pageContent(doc *html.Node, base *url.URL) (string, []string) {
 		value = append(value[:8000], []rune(" [truncated]")...)
 	}
 	return string(value), links
+}
+
+// Profile and article headings are content, while site banners are navigation.
+func contentHeader(n *html.Node) bool {
+	if strings.EqualFold(attr(n, "role"), "banner") {
+		return false
+	}
+	for parent := n.Parent; parent != nil; parent = parent.Parent {
+		if parent.Data == "main" || parent.Data == "article" || attr(parent, "role") == "main" {
+			return true
+		}
+	}
+	var heading func(*html.Node) bool
+	heading = func(node *html.Node) bool {
+		if node.Type == html.ElementNode && (node.Data == "nav" || attr(node, "hidden") != "" || attr(node, "aria-hidden") == "true") {
+			return false
+		}
+		if node.Type == html.ElementNode && node.Data == "h1" {
+			return true
+		}
+		for child := node.FirstChild; child != nil; child = child.NextSibling {
+			if heading(child) {
+				return true
+			}
+		}
+		return false
+	}
+	return heading(n)
 }

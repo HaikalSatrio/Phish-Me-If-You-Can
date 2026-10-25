@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | auto | Known username | GitHub, DEV Community, and Bluesky public profile APIs | No required key; default for new username searches |
 | direct | Known username | Site-specific public HTML profile rules | No API key or browser; GitHub and DEV Community only |
-| web | Name or username | Local or configured SearXNG, then DuckDuckGo HTML and Bing RSS fallbacks; then destination pages | No API key or browser |
+| web | Name, username, account clues, or public URL | Supplied page/account hints, then SearXNG, DuckDuckGo HTML and Bing RSS; then destination pages | No API key or browser |
 | duckduckgo / bing | Name or username | One public search index, without destination fetches | No API key or browser |
 | searxng | Name or username | Configured SearXNG JSON search, without destination fetches | Operator-run service; see local setup below |
 | google | Name or username | Local browser renders the public search page | Installed Chrome, Chromium, or Edge; no API key |
@@ -17,7 +17,7 @@
 | brave | Name or username | Search API index results | BRAVE_API_KEY |
 | google-api | Name or username | Legacy Custom Search JSON API | Existing eligible access, GOOGLE_API_KEY and GOOGLE_CSE_ID |
 
-New searches with a username default to auto. Name-only searches default to web. Explicit URLs default to url. Saved sessions retain their provider; legacy GitHub sessions continue to use GitHub. Set `-source` explicitly for predictable scripts. See [direct collection](DIRECT_COLLECTION.md) for collection receipts and offline snapshot comparisons.
+New searches with `-account` default to web. With only `-username`, the default is auto. Name-only searches default to web. Explicit URLs without account flags default to url. Saved sessions retain their provider; legacy GitHub sessions continue to use GitHub. Set `-source` explicitly for predictable scripts. See [direct collection](DIRECT_COLLECTION.md) for collection receipts and offline snapshot comparisons.
 
 Auto mode tries each supported API independently within the shared request and candidate budgets. A failed source does not prevent other platforms from being attempted. A short Bluesky username is tried only as `USERNAME.bsky.social`; custom domains require the full handle. Syntax-incompatible platforms are marked NOT_CHECKED. No usernames are merged into a shared identity.
 
@@ -26,9 +26,18 @@ Auto mode tries each supported API independently within the shared request and c
 ```powershell
 .\bin\pmiyc.exe search -source web -name "Haikal Satrio"
 .\bin\pmiyc.exe search -source web -name "Haikal Satrio" -platform instagram
+.\bin\pmiyc.exe search -source web -name "Haikal" -username "@haikal_satrio" -platform instagram
+.\bin\pmiyc.exe search -source web -name "Haikal" -account "instagram:@haikal_satrio" -account "github:HaikalSatrio"
+.\bin\pmiyc.exe search -source web -name "Full Name" -url "https://example.org/profile"
 ```
 
-This mode first tries SearXNG at `http://127.0.0.1:8888`, or the configured `searxng_url`. SearXNG always sends a name-only base query first, then up to three hint variants (company, location, both) and optional pages; configure `search_pages` (1-3), `search_language`, `searxng_engines`, `search_time_range`, and `searxng_safesearch` in the collector config. DuckDuckGo HTML and then Bing RSS are tried with the remaining budget and candidate slots, even when SearXNG already returned profiles. Each result must match all normalized words of at least one primary clue: name or username. Company and location rank results rather than excluding incomplete snippets. Social results must also belong to the configured platform domain. Matching text is not identity verification. Destination pages are fetched with remaining budget, preserving search and page provenance separately. A failed page does not discard its indexed evidence.
+Supplied URLs and scoped account hints are fetched before search indexes. Repeat `-account platform:username` for up to eight distinct clues. These are saved as `search.accounts`; refinement appends and deduplicates new clues. Do not mix `-account` with global `-username` or `-platform`. Handle routes are supported for github, devto, instagram, linkedin, facebook, x, tiktok, youtube, threads, reddit, pinterest, and bluesky. Bluesky requires a full handle. Use an explicit URL for other formats or federated instances. Route support does not guarantee that a site exposes usable public metadata; only Instagram and GitHub were checked live for this change.
+
+A generated account URL is retained only when the destination stays on the requested platform and account path, and public title/description mentions the complete handle. Generic, mismatched, or unavailable-account titles do not establish a candidate. Explicit URLs are collected as supplied public-page clues. Private destinations, login pages, and challenges remain blocked. Duplicate page/index results share a candidate while keeping page and index provenance separate. Attempted account pages are not fetched twice in a run. Request and candidate budgets apply to all phases.
+
+The index phase tries SearXNG at `http://127.0.0.1:8888`, or the configured `searxng_url`, then DuckDuckGo HTML and Bing RSS. Each account clue produces its own platform-scoped query. When supplied, username is the primary constraint; an optional leading `@` is removed. Without a username, results must match all normalized name words. SearXNG adds name, company, location, or combined hints, capped at four queries per account. Configure `search_pages` (1-3), `search_language`, `searxng_engines`, `search_time_range`, and `searxng_safesearch` in the collector config. Exact account paths rank ahead of incidental mentions. Company and location rank results rather than excluding incomplete snippets. Destination pages are fetched with remaining budget. A failed page does not discard indexed evidence. Neither a supplied handle nor a metadata match verifies identity or shared account ownership.
+
+Search output includes targeted follow-up questions. `pmiyc next -input data/result.json` recomputes them without network access. Optional `-out data/questions.json` writes structured questions and affected IDs without modifying the snapshot. Identity decisions use `review`; employment proposals use `review-relation`; missing public sources use another search. No identity or relationship is automatically accepted, and the existing review flow still selects one primary candidate per search session.
 
 Search endpoints can ignore terms or site filters and may be unavailable on a network. HTTP 200 alone is not success. Unrelated results are rejected and a response without usable matches is EMPTY or FAILED (depending on the provider), not proof of no public exposure. A successful search remains PARTIAL because index coverage is incomplete. See VALIDATION.md for observed successes and failures.
 
@@ -51,6 +60,8 @@ The service binds only to `127.0.0.1:8888`. JSON output is enabled in `deploy/se
 An explicit `searxng_url` setting is saved in the search configuration and must remain unchanged when resuming a session. Sessions saved before the default config included `searxng_url` must be restarted rather than resumed. Web mode uses the fixed local service above unless the collector config sets a different `searxng_url`. Only the trusted search service may use loopback addressing; destination pages still require public addresses. Service redirects are not followed. Non-loopback service URLs must use public HTTPS on standard ports. `-source searxng` uses `configs/collector-v1.json` or another explicit configuration. Its `-platform all` performs the same expanded general queries and retains links belonging to registry domains, without issuing one query per platform. Upstream blocks and rate limits still apply.
 
 ## Exact usernames versus names
+
+Web discovery can follow explicit biography links and search observed names or account handles beyond their original platform. Derived name hypotheses remain distinct from observed names. See [iterative research](ITERATIVE-RESEARCH.md) for budgets, provenance, education summaries, and measured limitations.
 
 `search -source devto -username ben` retrieves the public account `https://dev.to/ben`, whose display name was Ben Halpern in the live check. It does not enumerate display names containing Ben. Use `search -source web -platform devto -name "Ben"` for indexed name discovery; results can include profile pages and articles and are not an exhaustive people directory. Multiword values need quotes: `-name "Haikal Satrio Dewandaru"`. CLI errors now explain this distinction before attempting invalid exact-username requests.
 

@@ -284,7 +284,7 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		relationsByID[r.ID] = *r
 	}
 	for _, candidate := range c.Candidates {
-		for field, claims := range map[string][]domain.SummaryClaim{"role": candidate.RoleClaims, "company": candidate.CompanyClaims} {
+		for field, claims := range map[string][]domain.SummaryClaim{"role": candidate.RoleClaims, "company": candidate.CompanyClaims, "education": candidate.EducationClaims} {
 			for _, claim := range claims {
 				if claim.Value == "" || len(claim.RelationIDs) == 0 {
 					return c, fmt.Errorf("invalid %s summary claim for %s", field, candidate.ID)
@@ -295,6 +295,12 @@ func Normalize(c domain.Case) (domain.Case, error) {
 					if field == "company" {
 						value = r.Organization
 						if r.Kind != "employment" {
+							value = ""
+						}
+					}
+					if field == "education" {
+						value = r.Organization
+						if r.Kind != "education" {
 							value = ""
 						}
 					}

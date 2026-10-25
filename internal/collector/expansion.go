@@ -14,21 +14,21 @@ func quoteTerm(s string) string { return `"` + s + `"` }
 // narrow later variants so a hint can never suppress the discovery query.
 func searchPhrases(q Query) []string {
 	name := sanitizeTerm(q.Name)
-	username := sanitizeTerm(q.Username)
+	username := strings.TrimPrefix(sanitizeTerm(q.Username), "@")
 	primary := name
-	if primary == "" {
+	if username != "" {
 		primary = username
 	}
 	if primary == "" {
 		return nil
 	}
 	base := quoteTerm(primary)
-	if name != "" && username != "" && !strings.EqualFold(name, username) {
-		base = "(" + quoteTerm(name) + " OR " + quoteTerm(username) + ")"
-	}
 	company := sanitizeTerm(q.Company)
 	location := sanitizeTerm(q.Location)
 	phrases := []string{base}
+	if name != "" && username != "" && !strings.EqualFold(name, username) {
+		phrases = append(phrases, base+" "+quoteTerm(name))
+	}
 	if company != "" {
 		phrases = append(phrases, base+" "+quoteTerm(company))
 	}

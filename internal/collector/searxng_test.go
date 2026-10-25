@@ -107,7 +107,7 @@ func TestSearXNGRejectsInvalidSearchOptions(t *testing.T) {
 func TestSearchPhrasesPrioritizeIdentity(t *testing.T) {
 	q := Query{Name: "Anton Test", Username: "antont", Company: "Example Corp", Location: "Jakarta"}
 	phrases := searchPhrases(q)
-	if len(phrases) != 4 || phrases[0] != `("Anton Test" OR "antont")` {
+	if len(phrases) != 4 || phrases[0] != `"antont"` {
 		t.Fatalf("unexpected primary phrase: %q", phrases)
 	}
 	for _, hint := range []string{"Example Corp", "Jakarta"} {
@@ -115,11 +115,13 @@ func TestSearchPhrasesPrioritizeIdentity(t *testing.T) {
 			t.Fatalf("optional hint %q restricted the primary query", hint)
 		}
 	}
-	if !strings.Contains(phrases[1], "Example Corp") || !strings.Contains(phrases[2], "Jakarta") {
+	if !strings.Contains(phrases[1], "Anton Test") || !strings.Contains(phrases[2], "Example Corp") || !strings.Contains(phrases[3], "Jakarta") {
 		t.Fatalf("hint variants missing: %q", phrases)
 	}
-	if !strings.Contains(phrases[3], "Example Corp") || !strings.Contains(phrases[3], "Jakarta") {
-		t.Fatalf("combined hint variant missing: %q", phrases)
+	for _, phrase := range phrases {
+		if !strings.Contains(phrase, `"antont"`) || strings.Contains(phrase, " OR ") {
+			t.Fatalf("username clue was broadened: %q", phrases)
+		}
 	}
 	if got := searchPhrases(Query{Name: "Anton Test"}); len(got) != 1 || got[0] != `"Anton Test"` {
 		t.Fatalf("name-only phrase failed: %q", got)

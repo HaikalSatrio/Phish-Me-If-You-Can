@@ -150,39 +150,98 @@ func NewDiscovery(timeout time.Duration) *Discovery {
 
 func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 	r := Result{Status: "FAILED", Incomplete: true}
-	seen := map[string]bool{}
+	if q.Budget < 1 || q.Limit < 1 || q.Limit > 20 {
+		r.Events = []Event{{"web:input", "FAILED", "Valid request and candidate budgets required"}}
+		return r
+	}
+	accounts, err := NormalizeAccounts(q.Accounts)
+	if err != nil {
+		r.Events = []Event{{"web:input", "FAILED", err.Error()}}
+		return r
+	}
+	q.Accounts = accounts
+	seen := map[string]int{}
+	attempted := map[string]bool{}
+	unavailable := map[int]bool{}
 	status := "FAILED"
-	for _, provider := range d.providers {
+	for _, anchor := range discoveryAnchors(q) {
+		key := discoveryURLKey(anchor.URL)
+		if attempted[key] {
+			continue
+		}
 		if ctx.Err() != nil || r.Requests >= q.Budget || len(r.Profiles) >= q.Limit {
-			break
+			r.Events = append(r.Events, Event{"web:anchor", "NOT_CHECKED", "Account or URL clue not fetched: budget, candidate limit, or cancellation"})
+			continue
 		}
-		next := q
-		next.Budget -= r.Requests
-		next.Limit = q.Limit - len(r.Profiles)
-		if next.Budget < 1 || next.Limit < 1 {
-			break
-		}
-		part := provider.Collect(ctx, next)
+		attempted[key] = true
+		part := d.collectAnchor(ctx, anchor, q.Budget-r.Requests)
 		r.Requests += part.Requests
 		r.Events = append(r.Events, part.Events...)
-		if part.Status == "BLOCKED" {
-			status = "BLOCKED"
-		} else if part.Status == "EMPTY" && status != "BLOCKED" {
-			status = "EMPTY"
-		}
-		for _, profile := range part.Profiles {
-			if len(r.Profiles) >= q.Limit {
-				break
-			}
-			key := profile.Key
-			if key == "" {
-				key = profile.URL
-			}
-			if key == "" || seen[key] {
+		status = part.Status
+		for _, p := range part.Profiles {
+			key = discoveryURLKey(p.URL)
+			attempted[key] = true
+			if i, ok := seen[key]; ok {
+				mergeProfileFacts(&r.Profiles[i], p)
 				continue
 			}
-			seen[key] = true
-			r.Profiles = append(r.Profiles, profile)
+			seen[key] = len(r.Profiles)
+			p.DiscoveryBasis = "supplied public account or URL clue; ownership unverified"
+			r.Profiles = append(r.Profiles, p)
+		}
+	}
+	research := q.Budget >= 8 && (len(q.Accounts) > 0 || q.URL != "" || q.Username != "")
+	if research {
+		d.followResearchLinks(ctx, q, &r, attempted, seen, 3)
+	}
+	reserve := 0
+	if research {
+		reserve = min(6, (q.Budget-r.Requests)/2)
+	}
+	for providerIndex, provider := range d.providers {
+		for _, query := range discoveryQueries(q) {
+			if unavailable[providerIndex] {
+				break
+			}
+			if ctx.Err() != nil || r.Requests >= q.Budget || len(r.Profiles) >= q.Limit {
+				break
+			}
+			next := query
+			next.Budget -= r.Requests + reserve
+			if research {
+				next.Budget = min(2, next.Budget)
+			}
+			next.Limit = q.Limit - len(r.Profiles)
+			if research && q.Limit > 2 {
+				next.Limit--
+			}
+			if next.Budget < 1 || next.Limit < 1 {
+				break
+			}
+			part := provider.Collect(ctx, next)
+			unavailable[providerIndex] = operationalFailure(part)
+			r.Requests += part.Requests
+			r.Events = append(r.Events, part.Events...)
+			if part.Status == "BLOCKED" {
+				status = "BLOCKED"
+			} else if part.Status == "EMPTY" && status != "BLOCKED" {
+				status = "EMPTY"
+			}
+			for _, profile := range part.Profiles {
+				if len(r.Profiles) >= q.Limit {
+					break
+				}
+				key := discoveryURLKey(profile.URL)
+				if key == "" {
+					continue
+				}
+				if i, ok := seen[key]; ok {
+					mergeProfileFacts(&r.Profiles[i], profile)
+					continue
+				}
+				seen[key] = len(r.Profiles)
+				r.Profiles = append(r.Profiles, profile)
+			}
 		}
 	}
 	if len(r.Profiles) > 0 {
@@ -193,10 +252,14 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 	for i := range r.Profiles {
 		p := &r.Profiles[i]
 		op := fmt.Sprintf("web:page:%d", i+1)
+		if attempted[discoveryURLKey(p.URL)] {
+			continue
+		}
 		if ctx.Err() != nil || r.Requests >= q.Budget {
 			r.Events = append(r.Events, Event{op, "NOT_CHECKED", "Page fetch budget or session time exhausted"})
 			continue
 		}
+		attempted[discoveryURLKey(p.URL)] = true
 		page := d.page.Collect(ctx, Query{URL: p.URL, Budget: q.Budget - r.Requests, Limit: 1})
 		r.Requests += page.Requests
 		detail := "Destination extraction failed; indexed evidence retained"
@@ -208,11 +271,20 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 			continue
 		}
 		observed := page.Profiles[0]
-		p.FactSources = map[string]FactSource{}
-		for _, fact := range observed.Facts {
-			p.Facts = append(p.Facts, fact)
-			p.FactSources[fact.Type] = FactSource{URL: observed.SourceURL, ResponseSHA256: observed.ResponseSHA256, Rule: observed.Rule}
-		}
+		attempted[discoveryURLKey(observed.URL)] = true
+		mergeProfileFacts(p, observed)
+	}
+	// Rebuild after ranking so URL indexes still point at the right documents.
+	seen = map[string]int{}
+	for i, p := range r.Profiles {
+		seen[discoveryURLKey(p.URL)] = i
+	}
+	if research {
+		d.researchQueries(ctx, q, &r, attempted, seen, unavailable)
+	}
+	d.followResearchLinks(ctx, q, &r, attempted, seen, 4)
+	if len(r.Profiles) > 0 {
+		r.Status = "SUCCESS"
 	}
 	return r
 }

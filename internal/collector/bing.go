@@ -6,10 +6,13 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
 	"unicode"
+
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
 
 // Bing reads the public search RSS feed without an API key or browser session.
@@ -42,6 +45,9 @@ func searchWords(s string) string {
 
 // This checks textual relevance only, never ownership of a result.
 func relevantResult(q Query, text string) bool {
+	if username := strings.TrimPrefix(strings.TrimSpace(q.Username), "@"); username != "" {
+		return regexp.MustCompile(`(?i)(?:^|[^\p{L}\p{N}_.-])` + regexp.QuoteMeta(username) + `(?:$|[^\p{L}\p{N}_.-])`).MatchString(text)
+	}
 	haystack := " " + searchWords(text) + " "
 	for _, clue := range []string{q.Name, q.Username} {
 		words := strings.Fields(searchWords(clue))
@@ -59,8 +65,8 @@ func relevantResult(q Query, text string) bool {
 }
 
 func discoveryPhrase(q Query) string {
-	if strings.TrimSpace(q.Username) != "" && strings.TrimSpace(q.Name) != "" {
-		return "(" + searchPhrase(Query{Name: q.Name}) + " OR " + searchPhrase(Query{Username: q.Username}) + ")"
+	if username := strings.TrimPrefix(strings.TrimSpace(q.Username), "@"); username != "" {
+		return searchPhrase(Query{Username: username})
 	}
 	return searchPhrase(Query{Name: q.Name, Username: q.Username})
 }
@@ -73,6 +79,25 @@ func rankResults(profiles []Profile, q Query) {
 		}
 		haystack := " " + searchWords(text) + " "
 		n := 0
+		clues := append([]domain.AccountClue(nil), q.Accounts...)
+		if q.Username != "" {
+			clues = append(clues, domain.AccountClue{Platform: q.Platform, Username: q.Username})
+		}
+		for _, clue := range clues {
+			username := strings.TrimPrefix(strings.TrimSpace(clue.Username), "@")
+			if u, err := url.Parse(p.URL); err == nil {
+				if username == "" || clue.Platform != "" && clue.Platform != "all" && platformFor(u.Hostname()) != clue.Platform {
+					continue
+				}
+				parts := strings.Split(strings.Trim(u.Path, "/"), "/")
+				for _, part := range parts {
+					if strings.EqualFold(strings.TrimPrefix(part, "@"), username) {
+						n += 4
+						break
+					}
+				}
+			}
+		}
 		for _, clue := range []string{q.Company, q.Location} {
 			if words := searchWords(clue); words != "" && strings.Contains(haystack, " "+words+" ") {
 				n++

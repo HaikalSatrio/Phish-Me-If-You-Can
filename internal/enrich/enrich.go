@@ -73,10 +73,10 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 		}
 		p.Missing = notes
 		subject := c.Target.Name
-		if c.Search != nil && c.Search.Name != "" {
-			subject = c.Search.Name
-		} else if p.DisplayName != "" {
+		if p.DisplayName != "" {
 			subject = p.DisplayName
+		} else if c.Search != nil && c.Search.Name != "" {
+			subject = c.Search.Name
 		}
 		docs := []extract.Document{}
 		for _, e := range c.Evidence {

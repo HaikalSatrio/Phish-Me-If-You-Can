@@ -173,7 +173,7 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 
 var relationshipVerbValue = regexp.MustCompile(`(?i)^(?:works?|worked|serves?|served)(?:\s+(?:at|as|in))?$|^(?:pernah\s+)?(?:bekerja|menjabat)(?:\s+(?:di|sebagai))?$`)
 
-var explicitPresent = regexp.MustCompile(`(?i)\b(?:is|works|serves|adalah|merupakan|menjabat|bekerja)\b`)
+var explicitPresent = regexp.MustCompile(`(?i)\b(?:is|works|serves|adalah|merupakan|menjabat|bekerja|I am|I'm|I\x{2019}m)\b`)
 
 func proofRoleMatches(proof, proposed string) bool {
 	if strings.EqualFold(proof, proposed) {
