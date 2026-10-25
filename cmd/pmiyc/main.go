@@ -16,6 +16,12 @@ import (
 )
 
 func run(args []string) error {
+	if len(args) > 0 && args[0] == "profile" {
+		return runProfile(args[1:])
+	}
+	if len(args) > 0 && args[0] == "benchmark" {
+		return runBenchmark(args[1:])
+	}
 	if len(args) > 0 && args[0] == "challenge" {
 		return runChallenge(args[1:])
 	}
@@ -47,7 +53,7 @@ func run(args []string) error {
 		return runSearch(args[1:])
 	}
 	if len(args) == 0 {
-		return fmt.Errorf("usage: pmiyc search -source auto -username <username> | pmiyc search -source web -name <name> | pmiyc enrich -input case.json -out enriched.json [-model local-model] | pmiyc review-relation -input case.json -out reviewed.json -relation <id> -decision <ACCEPT|REJECT|PENDING> -reason <reason> | pmiyc challenge -input case.json -out reviewed.json | pmiyc next -input case.json | pmiyc adapters | pmiyc compare -before before.json -after after.json | pmiyc <import|analyze|review|candidates> -input case.json [-out new-file.json]")
+		return fmt.Errorf("usage: pmiyc benchmark -out report.json [-model local-model] | pmiyc search -source auto -username <username> | pmiyc search -source web -name <name> | pmiyc enrich -input case.json -out enriched.json [-model local-model] | pmiyc review-relation -input case.json -out reviewed.json -relation <id> -decision <ACCEPT|REJECT|PENDING> -reason <reason> | pmiyc challenge -input case.json -out reviewed.json | pmiyc profile -input reviewed.json [-out profile.json] | pmiyc next -input case.json | pmiyc adapters | pmiyc compare -before before.json -after after.json | pmiyc <import|analyze|review|candidates> -input case.json [-out new-file.json]")
 	}
 	fs := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	input := fs.String("input", "", "case JSON path")

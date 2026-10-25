@@ -49,6 +49,12 @@ func relevantSearchResult(q Query, raw, title, snippet string) bool {
 	return !directoryResult(raw) && (relevantResult(q, title+" "+snippet+" "+raw) || partialProfileName(q, raw, title))
 }
 
+// AcceptIndexedPerson exposes the same candidate filter used by public search
+// collectors for replaying labeled index results without network requests.
+func AcceptIndexedPerson(q Query, raw, title, snippet string) bool {
+	return relevantSearchResult(q, raw, title, snippet)
+}
+
 func indexedProfile(q Query, raw, source, title, snippet string) Profile {
 	u, _ := url.Parse(raw)
 	p := Profile{Key: keyFor("web", raw), Platform: platformFor(u.Hostname()), URL: raw, SourceURL: source, Facts: []Fact{{"search_title", title}, {"search_snippet", snippet}, {"indexed_url", raw}}}

@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/dossier"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/evidence"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/identity"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/storage"
@@ -137,18 +138,15 @@ func challenge(args []string, reader io.Reader, writer io.Writer) error {
 	if err != nil {
 		return err
 	}
+	profile, err := dossier.Build(result)
+	if err != nil {
+		return err
+	}
 	if err := storage.WriteNew(*out, result); err != nil {
 		return err
 	}
 	fmt.Fprintf(writer, "Saved identity review: %s\n", *out)
-	confirmed := 0
-	for _, p := range result.Candidates {
-		if p.Decision == "CONFIRM" {
-			confirmed++
-			fmt.Fprintf(writer, "Confirmed profile: %q | %q\n  Source summaries (unverified): role=%q company=%q\n", p.DisplayName, p.ProfileURL, p.Role, p.Company)
-		}
-	}
-	fmt.Fprintf(writer, "Associated %d profiles with this target. Original observations and relationship review states are retained.\n", confirmed)
+	printProfile(writer, profile)
 	for _, q := range identity.NextQuestions(result) {
 		fmt.Fprintf(writer, "Next [%s]: %s\n  Action: pmiyc %s\n", q.Code, q.Prompt, q.Action)
 	}

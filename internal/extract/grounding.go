@@ -96,6 +96,14 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	if regexp.MustCompile(`(?i)\b(?:interviewed|interviews|met|visited|mewawancarai|bertemu|mengunjungi)\b`).MatchString(r.Quote) {
 		return fail("SUBJECT_ATTRIBUTION", "Quote describes an interaction; the role may belong to another person")
 	}
+	for _, clause := range relativeRelationship.FindAllString(r.Quote, -1) {
+		if r.Role != "" && containsWords(clause, r.Role) || r.Organization != "" && containsWords(clause, r.Organization) {
+			return fail("RELATIVE_ATTRIBUTION", "The quoted role or organization is attributed to a relative or friend")
+		}
+	}
+	if r.Kind == "education" && r.Organization != "" && (headlineRole(r.Organization) || strings.EqualFold(r.Organization, r.Role)) {
+		return fail("EDUCATION_IS_ROLE", "Education organization is a role or student title, not an institution")
+	}
 	// Deterministic corrections require an explicit relationship with the same fields.
 	proofDoc := doc
 	proofDoc.Text = r.Quote
@@ -174,6 +182,8 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 var relationshipVerbValue = regexp.MustCompile(`(?i)^(?:works?|worked|serves?|served)(?:\s+(?:at|as|in))?$|^(?:pernah\s+)?(?:bekerja|menjabat)(?:\s+(?:di|sebagai))?$`)
 
 var explicitPresent = regexp.MustCompile(`(?i)\b(?:is|works|serves|adalah|merupakan|menjabat|bekerja|I am|I'm|I\x{2019}m)\b`)
+
+var relativeRelationship = regexp.MustCompile(`(?i)\b(?:husband|wife|mother|father|daughter|son|sister|brother|friend|suami|istri|ayah|ibu|anak|kakak|adik|teman)\s+(?:is|was|works\s+(?:as|at)|worked\s+(?:as|at)|adalah|merupakan|bekerja\s+(?:sebagai|di))\s+[^.;\n]{1,180}`)
 
 func proofRoleMatches(proof, proposed string) bool {
 	if strings.EqualFold(proof, proposed) {

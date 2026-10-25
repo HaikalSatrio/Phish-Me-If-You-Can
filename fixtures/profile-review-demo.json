@@ -1,0 +1,16 @@
+{
+  "schema_version": "1",
+  "target": {"id": "fictional-profile-demo", "name": "Lila"},
+  "search": {"provider": "web", "name": "Lila"},
+  "candidates": [
+    {"id": "demo-instagram", "profile_url": "https://instagram.com/pmiyc_fixture_lila", "requires_review": true, "decision": "PENDING"},
+    {"id": "demo-linkedin", "profile_url": "https://linkedin.com/in/pmiyc-fixture-lila", "requires_review": true, "decision": "PENDING"}
+  ],
+  "evidence": [
+    {"id": "ig-title", "candidate_id": "demo-instagram", "type": "page_title", "value": "Lila (@pmiyc_fixture_lila) | Instagram", "status": "OBSERVED", "confidence": 1, "sources": [{"url": "https://instagram.com/pmiyc_fixture_lila", "collector": "fictional-fixture", "observed_at": "2026-10-25T00:00:00Z"}]},
+    {"id": "ig-bio", "candidate_id": "demo-instagram", "type": "search_snippet", "value": "@pmiyc_fixture_lila: \"Cyber Security Lecturer\"", "status": "OBSERVED", "confidence": 1, "sources": [{"url": "https://search.example.org/fictional-instagram", "collector": "fictional-fixture", "observed_at": "2026-10-25T00:00:00Z"}]},
+    {"id": "li-title", "candidate_id": "demo-linkedin", "type": "search_title", "value": "Lila Utami - Lecturer at Cedar University", "status": "OBSERVED", "confidence": 1, "sources": [{"url": "https://search.example.org/fictional-linkedin", "collector": "fictional-fixture", "observed_at": "2026-10-25T00:00:00Z"}]},
+    {"id": "li-bio", "candidate_id": "demo-linkedin", "type": "search_snippet", "value": "Lecturer at Cedar University · Pendidikan: Harbor University · Lokasi: Bandung", "status": "OBSERVED", "confidence": 1, "sources": [{"url": "https://search.example.org/fictional-linkedin", "collector": "fictional-fixture", "observed_at": "2026-10-25T00:00:00Z"}]}
+  ],
+  "coverage": [{"source": "fictional-fixture", "status": "SUCCESS"}]
+}

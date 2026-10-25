@@ -2,6 +2,10 @@
 
 Mesin Go untuk analisis exposure dari evidence publik dalam penelitian defensif. Prototipe ini mengikuti Build Guidelines dan menyediakan evidence ingestion, review identitas, penyimpanan lokal, serta lima dimensi Personal Exposure Score (PES).
 
+Evaluasi yang dapat dijalankan ulang tersedia melalui `pmiyc benchmark -out data/benchmark.json`. Tambahkan `-model qwen2.5:7b` untuk membandingkan rules dan Ollama pada input identik. Corpus awal berisi 24 kasus sintetis, bukan ukuran akurasi web. Lihat [panduan benchmark](docs/BENCHMARK.md).
+
+Setelah konfirmasi identitas, `pmiyc profile -input data/hasil-reviewed.json -out data/profile-report.json` menggabungkan klaim dari profil terkonfirmasi dengan kutipan, periode, sumber, dan penanda employer yang perlu diperiksa. Lihat [ringkasan profil](docs/PROFILE-SUMMARY.md).
+
 PES adalah indeks eksperimental exposure, bukan probabilitas seseorang akan terkena phishing. Bobot, threshold, dan rubric contoh belum divalidasi secara empiris.
 
 ## Menjalankan

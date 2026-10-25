@@ -11,7 +11,7 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
 
-const RelationVersion = "relations-v7"
+const RelationVersion = "relations-v8"
 
 type Document struct {
 	ID   string `json:"id"`

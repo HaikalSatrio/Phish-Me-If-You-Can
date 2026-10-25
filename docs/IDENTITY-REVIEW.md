@@ -41,7 +41,7 @@ Kedua hubungan berstatus `UNVERIFIED`, berperiode `headline`, dan kedua identita
 
 `identity_reviews` menyimpan waktu, alasan, dan keputusan lengkap untuk seluruh kandidat. Beberapa profil hanya dapat dikonfirmasi dalam sesi pencarian dengan catatan eksplisit yang konsisten. Sumber asli, kutipan, dan keputusan hubungan tetap dipertahankan. `enrich` mempertahankan riwayat; koleksi baru membentuk kandidat baru yang perlu direview kembali.
 
-Company dan role tetap merupakan ringkasan per profil. Asosiasi identitas belum menggabungkan seluruh klaim menjadi satu biografi. Nama profil, tautan profil, dan hubungan yang belum terverifikasi tidak masuk PES hanya karena identitas dikonfirmasi. Usulan Ollama tetap memerlukan `review-relation` untuk dipakai dalam ringkasan.
+Company dan role pada snapshot tetap merupakan ringkasan per profil. Setelah konfirmasi, `challenge` menampilkan [ringkasan gabungan](PROFILE-SUMMARY.md) yang dapat dibaca ulang dengan `profile -input ...`. Ringkasan mempertahankan asal dan periode setiap klaim, variasi nama, serta hal yang perlu direview. Nama profil, tautan profil, dan hubungan yang belum terverifikasi tidak masuk PES hanya karena identitas dikonfirmasi. Usulan Ollama tetap memerlukan `review-relation` untuk bergabung dengan klaim sumber; usulan yang masih pending ditampilkan terpisah.
 
 Pola bio belum mencakup semua bahasa, format, atau cara menyebut pekerjaan. Sumber tertutup, halaman gagal diambil, dan teks yang tidak lengkap tetap membatasi hasil. Tahap berikutnya adalah corpus evaluasi independen untuk mengukur salah atribusi, kelengkapan ekstraksi, dan ketepatan abstensi sebelum memperluas integrasi atau antarmuka graph.
 

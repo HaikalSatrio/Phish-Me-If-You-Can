@@ -1,6 +1,8 @@
 # Ekstraksi hubungan dengan bukti
 
-Pencarian sekarang menjalankan `relations-v7`. Ekstraktor company/role lama tetap tersedia sebagai baseline pengujian, tetapi tidak lagi mengisi hasil pencarian. Penyebutan nama di suatu halaman tidak cukup untuk mengaitkan semua organisasi di halaman itu dengan orang tersebut.
+Pencarian sekarang menjalankan `relations-v8`. Ekstraktor company/role lama tetap tersedia sebagai baseline pengujian, tetapi tidak lagi mengisi hasil pencarian. Penyebutan nama di suatu halaman tidak cukup untuk mengaitkan semua organisasi di halaman itu dengan orang tersebut.
+
+Versi v8 menolak usulan model yang mengaitkan profesi eksplisit kerabat atau teman kepada subjek, serta usulan pendidikan yang memakai judul role sebagai institusi. Perubahan berasal dari [benchmark pada input yang sama](BENCHMARK-BASELINE.md); aturan tersebut belum mencakup semua bentuk atribusi bahasa alami.
 
 Pola `profile-binding-v1` mendukung bukti terpisah dari judul dan bio/headline profil Instagram atau LinkedIn. Nama satu kata diterima pada format profil yang cocok. Nama disimpan dalam `subject_quote` dengan `subject_evidence_id`; hubungan tetap memakai kutipan literal dan `evidence_id` sendiri. Keduanya harus berasal dari kandidat yang sama dan lolos validasi pola profil. Ini tidak melonggarkan grounding usulan Ollama. Headline yang terpotong tidak dipakai untuk mengisi jabatan yang tidak lengkap. Lihat [konfirmasi profil dan batas ekstraksi](IDENTITY-REVIEW.md).
 
@@ -31,7 +33,7 @@ Rules membaca blok profil yang dimulai dengan nama lengkap, termasuk gelar, kemu
 .\bin\pmiyc.exe candidates -input data/hasil-relasi.json
 ```
 
-Input asli tidak diubah dan output tidak boleh menimpa file. Inferensi lama tetap disimpan dengan `superseded_by: relations-v7` untuk audit, tetapi tidak lagi menjadi ringkasan. Memproses ulang snapshot tidak memulihkan teks yang terpotong atau struktur HTML yang sudah hilang. Jalankan pencarian baru jika memerlukan observasi baru.
+Input asli tidak diubah dan output tidak boleh menimpa file. Inferensi lama tetap disimpan dengan `superseded_by: relations-v8` untuk audit, tetapi tidak lagi menjadi ringkasan. Memproses ulang snapshot tidak memulihkan teks yang terpotong atau struktur HTML yang sudah hilang. Jalankan pencarian baru jika memerlukan observasi baru.
 
 ## LLM lokal opsional
 
@@ -63,7 +65,7 @@ Model memilih ID potongan pendek seperti `s1` melalui `evidence_id` pada respons
 
 Tambahkan `-debug-extraction` pada `enrich` atau `extraction.save_raw_response: true` pada konfigurasi untuk menyimpan respons mentah lokal yang dibatasi ukurannya. Default tidak menyimpan respons mentah. Informasi kutipan dan usulan yang ditolak tetap tercatat tanpa flag tersebut.
 
-Kutipan harus benar-benar ada pada observasi milik kandidat; subjek, organisasi, jabatan dan tahun harus didukung literal oleh kutipan. Respons rusak, terpotong, berlebih, atau memakai ID potongan lain ditolak. JSON Schema membatasi subjek dan ID potongan ke input aktual. Validator menolak pengantar biografi yang jelas menyebut nama orang lebih panjang, badan kolektif yang dijadikan jabatan individu, dan periode tanpa dukungan sumber. Pemeriksaan nama ini terbatas pada pola pengantar, bukan penyelesaian identitas secara umum. Instruksi dalam halaman diperlakukan sebagai data. Validasi literal belum membuktikan hubungan semantik: kutipan dapat menyebut beberapa orang. Karena itu usulan model tetap terlihat sebagai `ollama/relations-v7`, memerlukan pemeriksaan hubungan, dan tidak otomatis mengisi ringkasan atau PES. Konfirmasi identitas kandidat juga tidak memverifikasi hubungan tersebut.
+Kutipan harus benar-benar ada pada observasi milik kandidat; subjek, organisasi, jabatan dan tahun harus didukung literal oleh kutipan. Respons rusak, terpotong, berlebih, atau memakai ID potongan lain ditolak. JSON Schema membatasi subjek dan ID potongan ke input aktual. Validator menolak pengantar biografi yang jelas menyebut nama orang lebih panjang, badan kolektif yang dijadikan jabatan individu, dan periode tanpa dukungan sumber. Pemeriksaan nama ini terbatas pada pola pengantar, bukan penyelesaian identitas secara umum. Instruksi dalam halaman diperlakukan sebagai data. Validasi literal belum membuktikan hubungan semantik: kutipan dapat menyebut beberapa orang. Karena itu usulan model tetap terlihat sebagai `ollama/relations-v8`, memerlukan pemeriksaan hubungan, dan tidak otomatis mengisi ringkasan atau PES. Konfirmasi identitas kandidat juga tidak memverifikasi hubungan tersebut.
 
 Untuk membandingkan mode secara adil, koleksi sekali lalu proses snapshot yang sama:
 
