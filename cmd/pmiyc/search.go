@@ -44,6 +44,7 @@ func runSearch(args []string) error {
 	company := fs.String("company", "", "company clue for comparison")
 	location := fs.String("location", "", "location clue for comparison")
 	input := fs.String("input", "", "saved search session to refine")
+	interactive := fs.Bool("interactive", false, "review collected identities interactively and save a separate reviewed snapshot")
 	out := fs.String("out", "", "new output file, default data/<session>-<attempt>.json")
 	config := fs.String("config", "configs/collector-v1.json", "collector configuration")
 	if err := fs.Parse(args); err != nil {
@@ -196,6 +197,9 @@ func runSearch(args []string) error {
 	if len(project.Candidates) == 0 && (project.Search.Status == "BLOCKED" || project.Search.Status == "FAILED") {
 		return fmt.Errorf("collection did not succeed; diagnostics saved to %s", path)
 	}
+	if *interactive && len(project.Candidates) > 0 {
+		return runChallenge([]string{"-input", path, "-out", strings.TrimSuffix(path, filepath.Ext(path)) + "-reviewed.json"})
+	}
 	return nil
 }
 
@@ -279,8 +283,11 @@ func printCandidates(c domain.Case) {
 				fmt.Printf(" end=%d", r.EndYear)
 			}
 			fmt.Printf("\n    method=%s evidence=%s quote=%q\n", r.Method, r.EvidenceID, r.Quote)
+			if r.SubjectEvidenceID != "" {
+				fmt.Printf("    Subject evidence=%s title=%q\n", r.SubjectEvidenceID, r.SubjectQuote)
+			}
 			for _, e := range c.Evidence {
-				if e.ID == r.EvidenceID {
+				if e.ID == r.EvidenceID || e.ID == r.SubjectEvidenceID {
 					for _, s := range e.Sources {
 						fmt.Printf("    Source: %s (observed %s)\n", s.URL, s.ObservedAt)
 					}

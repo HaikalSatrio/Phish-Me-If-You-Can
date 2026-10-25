@@ -20,13 +20,15 @@ powershell -File scripts/start-local-search.ps1
 
 Nama halaman diambil dari field display name GitHub, judul profil Instagram yang cocok dengan handle, atau satu objek Person yang namanya cocok dengan heading utama. Sumber lain dapat tetap mempunyai nama kosong. Nama yang diamati menjadi subjek ekstraksi untuk kandidat itu, sehingga input nama depan tidak menggantikan nama lengkap dalam sumber.
 
+Judul profil LinkedIn juga dapat menyediakan nama teramati. Nama profil yang merupakan subset berurutan minimal dua kata dari input dapat dipertahankan untuk review, tanpa konfirmasi otomatis. Pencarian SearXNG menyediakan variasi nama penuh dan pendek khusus LinkedIn; akun yang diberikan tetap disertai query nama lintas platform. Cuplikan berbeda dari beberapa query untuk URL yang sama disimpan terpisah beserta provenance. Lihat [batas pencocokan nama](IDENTITY-REVIEW.md).
+
 ## Jejak dan batas
 
 `search.research` menyimpan tindakan, query, URL asal/tujuan, alasan, status, dan jumlah request. `discovery_basis` dan `linked_from` menjelaskan asal kandidat. Tautan balik eksplisit menuju akun yang diberikan dicatat dalam `matches` dengan referensi evidence. Tautan ini tidak menaikkan confidence atau mengonfirmasi kepemilikan akun.
 
 Penelusuran query lanjutan aktif jika ada petunjuk akun/URL dan budget awal setidaknya delapan request. Maksimum tiga query lanjutan dan empat pengambilan tautan bio per koleksi. Semua permintaan, termasuk redirect, memakai budget dan deadline sesi yang sama. Kandidat tetap dibatasi `candidate_limit`; saat limit penuh, penelusuran berhenti. Nama dan hubungan dari URL berbeda belum digabung menjadi satu identitas. Layanan yang gagal karena jaringan atau challenge tidak dicoba lagi untuk setiap petunjuk dalam koleksi yang sama; kegagalan menemukan hasil untuk satu query tidak menonaktifkan layanan.
 
-`next` mendahulukan permintaan URL bio publik jika penelusuran belum menghasilkan nama, pendidikan, perusahaan, atau role. Pertanyaan tidak membuat keputusan otomatis.
+`next` mendahulukan permintaan URL bio publik jika penelusuran belum menghasilkan nama, pendidikan, perusahaan, atau role. Pertanyaan identitas menyertakan kartu kandidat dan kutipan sumber. `challenge` atau `search -interactive` menerima pilihan pengguna dan menyimpan asosiasi profil secara eksplisit; pertanyaan tidak membuat keputusan otomatis. Lihat [alur konfirmasi identitas](IDENTITY-REVIEW.md).
 
 ## Validasi
 

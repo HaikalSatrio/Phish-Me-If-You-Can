@@ -11,7 +11,7 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
 
-const RelationVersion = "relations-v6"
+const RelationVersion = "relations-v7"
 
 type Document struct {
 	ID   string `json:"id"`
@@ -240,7 +240,7 @@ func ValidateRelation(r domain.Relation, subject string, doc Document) error {
 	if !strings.EqualFold(compact(r.Subject), compact(subject)) || r.EvidenceID != doc.ID || len(r.Quote) < 3 || len([]rune(r.Quote)) > 1000 || !strings.Contains(doc.Text, r.Quote) {
 		return fmt.Errorf("subject or citation mismatch")
 	}
-	if !containsWords(r.Quote, subject) {
+	if !containsWords(r.Quote, subject) && (r.SubjectEvidenceID == "" || r.SubjectQuote == "") {
 		return fmt.Errorf("subject absent from quote")
 	}
 	switch r.Kind {

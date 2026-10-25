@@ -62,8 +62,40 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		}
 		candidates[v.ID] = true
 	}
+	lastReview := map[string]string{}
+	previousReviewTime := time.Time{}
+	for _, review := range c.IdentityReviews {
+		at, err := time.Parse(time.RFC3339, review.At)
+		if err != nil || at.Before(previousReviewTime) || strings.TrimSpace(review.Reason) == "" || len(review.Reason) > 2000 || len(review.Decisions) != len(c.Candidates) {
+			return c, fmt.Errorf("invalid identity review")
+		}
+		lastReview = map[string]string{}
+		for _, d := range review.Decisions {
+			if !candidates[d.CandidateID] || lastReview[d.CandidateID] != "" {
+				return c, fmt.Errorf("invalid identity review candidate")
+			}
+			switch d.Decision {
+			case "CONFIRM", "REJECT", "UNSURE", "PENDING":
+			default:
+				return c, fmt.Errorf("invalid identity review decision")
+			}
+			lastReview[d.CandidateID] = d.Decision
+		}
+		previousReviewTime = at
+	}
 	if c.Search != nil && confirmed > 1 {
-		return c, fmt.Errorf("a search session can confirm only one candidate")
+		for _, p := range c.Candidates {
+			if lastReview[p.ID] != p.Decision || p.Decision == "CONFIRM" && len(p.Contradictions) > 0 {
+				return c, fmt.Errorf("confirming multiple profiles requires an explicit identity review without unresolved contradictions")
+			}
+		}
+	}
+	if len(c.IdentityReviews) > 0 {
+		for _, p := range c.Candidates {
+			if lastReview[p.ID] != p.Decision {
+				return c, fmt.Errorf("identity decisions differ from the latest review")
+			}
+		}
 	}
 	ids := map[string]bool{}
 	for _, e := range c.Evidence {
@@ -265,12 +297,31 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		if resolved, ok := aliases[r.EvidenceID]; ok {
 			r.EvidenceID = resolved
 		}
+		if resolved, ok := aliases[r.SubjectEvidenceID]; ok {
+			r.SubjectEvidenceID = resolved
+		}
 		e, ok := byID[r.EvidenceID]
 		if !ok || e.Status != "OBSERVED" || e.CandidateID != r.CandidateID || !extract.RelationTextType(e.Type) || r.ID == "" || relationIDs[r.ID] || r.Status != "UNVERIFIED" || r.Method == "" {
 			return c, fmt.Errorf("invalid relation provenance %s", r.ID)
 		}
 		if err := extract.ValidateRelation(*r, r.Subject, extract.Document{ID: e.ID, Type: e.Type, Text: e.Value}); err != nil {
 			return c, fmt.Errorf("invalid relation %s: %w", r.ID, err)
+		}
+		if r.SubjectEvidenceID != "" || r.SubjectQuote != "" {
+			title, found := byID[r.SubjectEvidenceID]
+			if !found || title.CandidateID != r.CandidateID || title.Status != "OBSERVED" {
+				return c, fmt.Errorf("invalid subject provenance %s", r.ID)
+			}
+			raw := ""
+			for _, p := range c.Candidates {
+				if p.ID == r.CandidateID {
+					raw = p.ProfileURL
+					break
+				}
+			}
+			if err := extract.ValidateProfileBinding(*r, raw, extract.Document{ID: e.ID, Type: e.Type, Text: e.Value}, extract.Document{ID: title.ID, Type: title.Type, Text: title.Value}); err != nil {
+				return c, fmt.Errorf("invalid bound relation %s: %w", r.ID, err)
+			}
 		}
 		previousTime := time.Time{}
 		for _, review := range r.Reviews {

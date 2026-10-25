@@ -7,6 +7,7 @@ import (
 	"unicode"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/profile"
 	"golang.org/x/net/html"
 )
 
@@ -72,11 +73,9 @@ func pageIdentity(doc *html.Node, base *url.URL, facts []Fact) (string, []resear
 				name = people[0].Name
 			}
 		}
-		if f.Type == "page_title" && platformFor(base.Hostname()) == "instagram" {
-			prefix, rest, ok := strings.Cut(f.Value, " (@")
-			handle, _, ended := strings.Cut(rest, ")")
-			if ok && ended && strings.EqualFold(handle, strings.Trim(base.Path, "/")) && plausiblePersonName(prefix) {
-				name = prefix
+		if f.Type == "page_title" {
+			if observed, ok := profile.NameFromTitle(base.String(), f.Value); ok {
+				name = observed
 			}
 		}
 	}

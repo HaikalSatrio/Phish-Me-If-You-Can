@@ -7,12 +7,13 @@ import (
 )
 
 type Question struct {
-	Code         string   `json:"code"`
-	Prompt       string   `json:"prompt"`
-	Reason       string   `json:"reason"`
-	Action       string   `json:"action"`
-	CandidateIDs []string `json:"candidate_ids,omitempty"`
-	RelationIDs  []string `json:"relation_ids,omitempty"`
+	Candidates   []ReviewCard `json:"candidates,omitempty"`
+	Code         string       `json:"code"`
+	Prompt       string       `json:"prompt"`
+	Reason       string       `json:"reason"`
+	Action       string       `json:"action"`
+	CandidateIDs []string     `json:"candidate_ids,omitempty"`
+	RelationIDs  []string     `json:"relation_ids,omitempty"`
 }
 
 // NextQuestions suggests missing evidence or review steps without changing decisions.
@@ -41,7 +42,7 @@ func NextQuestions(c domain.Case) []Question {
 		if !useful && c.Search != nil && len(c.Search.Research) > 0 {
 			out = append(out, Question{Code: "PUBLIC_BIO_SOURCE", Prompt: "Which public biography, portfolio, or institutional profile links this account to a full name or affiliation?", Reason: "Research collected pages but has not established a public name, education, or employment claim. More pages alone do not resolve identity.", Action: "search -source web -name <name> -account <platform:username> -url <public-biography-url>", CandidateIDs: pending})
 		}
-		out = append(out, Question{Code: "IDENTITY_REVIEW", Prompt: "Which candidate can you establish as the intended person? Leave uncertain candidates pending.", Reason: "Names and supplied handles do not verify ownership or link accounts across platforms.", Action: "review -input <project> -candidate <id> -decision CONFIRM|REJECT|UNSURE -out <new-project>", CandidateIDs: pending})
+		out = append(out, Question{Code: "IDENTITY_REVIEW", Prompt: "Which of these profiles belong to the intended person? Select all that you can establish, none, or unsure.", Reason: "Profile names and source claims are shown for comparison; confirmation of identity does not verify employment.", Action: "challenge -input <project> -out <reviewed-project>", CandidateIDs: pending, Candidates: Cards(c)})
 	}
 	if !confirmed && len(pending) == 0 {
 		return []Question{{Code: "NEW_IDENTITY_CLUE", Prompt: "Which additional public account or URL can distinguish the intended person?", Reason: "All collected candidates were rejected.", Action: "search -source web -name <full-name> -account <platform:username> or -url <public-url>"}}

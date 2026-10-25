@@ -26,6 +26,14 @@ func searchPhrases(q Query) []string {
 	company := sanitizeTerm(q.Company)
 	location := sanitizeTerm(q.Location)
 	phrases := []string{base}
+	if username == "" && len(strings.Fields(name)) >= 3 && (q.Platform == "" || q.Platform == "linkedin") {
+		suffix := ""
+		if q.Platform == "" {
+			suffix = " (site:linkedin.com)"
+			phrases = append(phrases, base+suffix)
+		}
+		phrases = append(phrases, quoteTerm(strings.Join(strings.Fields(name)[:2], " "))+suffix)
+	}
 	if name != "" && username != "" && !strings.EqualFold(name, username) {
 		phrases = append(phrases, base+" "+quoteTerm(name))
 	}

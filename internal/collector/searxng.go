@@ -144,7 +144,7 @@ func (s *SearXNG) Collect(ctx context.Context, q Query) Result {
 	if collectCap < 6 {
 		collectCap = 6
 	}
-	seen := map[string]bool{}
+	seen := map[string]int{}
 	parsedAny := false
 	for index, phrase := range phrases {
 		for page := 1; page <= pages; page++ {
@@ -204,7 +204,7 @@ func (s *SearXNG) Collect(ctx context.Context, q Query) Result {
 			added := 0
 			for _, item := range data.Results {
 				u, err := cleanURL(item.URL)
-				if err != nil || seen[u.String()] || !relevantResult(q, item.Title+" "+item.Content+" "+item.URL) {
+				if err != nil || !relevantSearchResult(q, item.URL, item.Title, item.Content) {
 					continue
 				}
 				platform := platformFor(u.Hostname())
@@ -214,11 +214,16 @@ func (s *SearXNG) Collect(ctx context.Context, q Query) Result {
 				if q.Platform != "" && q.Platform != "all" && platform != q.Platform {
 					continue
 				}
+				profile := indexedProfile(q, u.String(), raw, item.Title, item.Content)
+				if at, exists := seen[u.String()]; exists {
+					mergeProfileFacts(&r.Profiles[at], profile)
+					continue
+				}
 				if len(r.Profiles) >= collectCap {
 					break
 				}
-				seen[u.String()] = true
-				r.Profiles = append(r.Profiles, Profile{Key: keyFor("web", u.String()), Platform: platform, URL: u.String(), SourceURL: raw, Facts: []Fact{{"search_title", item.Title}, {"search_snippet", item.Content}, {"indexed_url", u.String()}}})
+				seen[u.String()] = len(r.Profiles)
+				r.Profiles = append(r.Profiles, profile)
 				added++
 			}
 			r.Events = append(r.Events, Event{op, "SUCCESS", fmt.Sprintf("%d relevant links; %d upstream engines unavailable (phrase %d/%d, page %d). No matches do not establish account absence.", added, len(data.Unresponsive), index+1, len(phrases), page)})

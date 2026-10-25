@@ -255,13 +255,18 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 		}
 		facts := []collector.Fact{{Type: "username", Value: p.Login}, {Type: "name", Value: p.Name}, {Type: "workplace", Value: p.Company}, {Type: "location", Value: p.Location}, {Type: "email", Value: p.Email}, {Type: "website", Value: p.Blog}}
 		facts = append(facts, p.Facts...)
+		factCounts := map[string]int{}
 		for _, fact := range facts {
 			if strings.TrimSpace(fact.Value) == "" {
 				continue
 			}
 			evidenceID := id + "-" + fact.Type
+			factCounts[fact.Type]++
+			if factCounts[fact.Type] > 1 {
+				evidenceID += fmt.Sprintf("-%d", factCounts[fact.Type])
+			}
 			provenance := domain.Source{URL: sourceURL, ObservedAt: now, Collector: collectorName + "/" + cfg.Version, ResponseSHA256: p.ResponseSHA256, Rule: p.Rule}
-			if source, ok := p.FactSources[fact.Type]; ok {
+			if source := collector.SourceForFact(p, fact); source.URL != "" {
 				provenance.URL, provenance.ResponseSHA256, provenance.Rule = source.URL, source.ResponseSHA256, source.Rule
 			}
 			project.Evidence = append(project.Evidence, domain.Evidence{ID: evidenceID, CandidateID: id, Type: fact.Type, Value: fact.Value, Status: "OBSERVED", Confidence: cfg.EvidenceConfidence, Discoverability: cfg.Discoverability, Sources: []domain.Source{provenance}})

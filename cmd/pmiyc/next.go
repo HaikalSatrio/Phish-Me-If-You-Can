@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/evidence"
@@ -17,6 +18,9 @@ func printNextQuestions(c domain.Case) {
 	}
 	for _, q := range questions {
 		fmt.Printf("Next [%s]: %s\n  Why: %s\n  Action: pmiyc %s\n", q.Code, q.Prompt, q.Reason, q.Action)
+		if len(q.Candidates) > 0 {
+			printReviewCards(os.Stdout, q.Candidates)
+		}
 	}
 }
 

@@ -16,6 +16,45 @@ type fakeCollector struct {
 	calls  int
 }
 
+func TestPartialProfileRetainsEducationAndQueryProvenance(t *testing.T) {
+	var cfg Config
+	if err := storage.Read("../../configs/collector-v1.json", &cfg); err != nil {
+		t.Fatal(err)
+	}
+	first := collector.Fact{Type: "search_snippet", Value: "Undergraduate Cyber Security Student"}
+	second := collector.Fact{Type: "search_snippet", Value: "Undergraduate Cyber Security Student | Example University · Pengalaman: Example Community · Pendidikan: Example University · Lokasi: Jakarta"}
+	f := &fakeCollector{result: collector.Result{Status: "SUCCESS", Requests: 2, Profiles: []collector.Profile{{
+		Key: "partial-person", URL: "https://linkedin.com/in/raka-aditya", SourceURL: "https://search.example/full", DiscoveryBasis: "partial observed profile name; identity review required",
+		Facts:       []collector.Fact{{Type: "search_title", Value: "Raka Aditya - Undergraduate Cyber Security Student"}, first, second},
+		FactSources: map[string]collector.FactSource{second.Type + "\x00" + second.Value: {URL: "https://search.example/scoped"}},
+	}}}}
+	c, err := Run(context.Background(), f, Input{Provider: "web", Name: "Raka Aditya Pranata"}, cfg, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	p := c.Candidates[0]
+	if p.Decision != "PENDING" || p.DisplayName != "Raka Aditya" || p.Company != "" {
+		t.Fatalf("identity or employer was invented: %+v", p)
+	}
+	found := false
+	for _, r := range c.Relations {
+		if r.Kind == "education" && r.Organization == "Example University" {
+			found = true
+			if r.Status != "UNVERIFIED" || r.SubjectEvidenceID == "" {
+				t.Fatalf("missing subject proof: %+v", r)
+			}
+			for _, e := range c.Evidence {
+				if e.ID == r.EvidenceID && (e.Value != second.Value || e.Sources[0].URL != "https://search.example/scoped") {
+					t.Fatalf("education attributed to the wrong query: %+v", e)
+				}
+			}
+		}
+	}
+	if !found {
+		t.Fatalf("explicit education label lost: %+v", c.Relations)
+	}
+}
+
 func (f *fakeCollector) Collect(_ context.Context, _ collector.Query) collector.Result {
 	f.calls++
 	return f.result

@@ -24,6 +24,11 @@ func discoveryQueries(q Query) []Query {
 		next.Accounts, next.URL = nil, ""
 		out = append(out, next)
 	}
+	if len(strings.Fields(q.Name)) >= 2 {
+		next := q
+		next.Platform, next.Username, next.Accounts, next.URL = "", "", nil, ""
+		out = append(out, next)
+	}
 	return out
 }
 
@@ -67,22 +72,37 @@ func mergeProfileFacts(dst *Profile, src Profile) {
 		}
 		dst.FactSources["name"] = source
 	}
-	seen := map[string]bool{}
+	seen := map[Fact]bool{}
+	counts := map[string]int{}
 	for _, fact := range dst.Facts {
-		seen[fact.Type] = true
+		seen[fact] = true
+		counts[fact.Type]++
+		dst.FactSources[fact.Type+"\x00"+fact.Value] = SourceForFact(*dst, fact)
 	}
 	for _, fact := range src.Facts {
-		if seen[fact.Type] {
+		if seen[fact] || counts[fact.Type] >= 8 {
 			continue
 		}
-		seen[fact.Type] = true
+		seen[fact] = true
+		counts[fact.Type]++
 		dst.Facts = append(dst.Facts, fact)
-		source, ok := src.FactSources[fact.Type]
-		if !ok {
-			source = FactSource{URL: src.SourceURL, ResponseSHA256: src.ResponseSHA256, Rule: src.Rule}
+		source := SourceForFact(src, fact)
+		dst.FactSources[fact.Type+"\x00"+fact.Value] = source
+		if counts[fact.Type] == 1 {
+			dst.FactSources[fact.Type] = source
 		}
-		dst.FactSources[fact.Type] = source
 	}
+}
+
+// SourceForFact keeps query-specific provenance for distinct values of a field.
+func SourceForFact(p Profile, fact Fact) FactSource {
+	if source, ok := p.FactSources[fact.Type+"\x00"+fact.Value]; ok {
+		return source
+	}
+	if source, ok := p.FactSources[fact.Type]; ok {
+		return source
+	}
+	return FactSource{URL: p.SourceURL, ResponseSHA256: p.ResponseSHA256, Rule: p.Rule}
 }
 
 func (d *Discovery) collectAnchor(ctx context.Context, anchor discoveryAnchor, budget int) Result {

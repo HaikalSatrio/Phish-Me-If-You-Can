@@ -41,7 +41,7 @@ func validRoleValue(role string) bool {
 // A headline role starts with a role word or a bounded professional qualifier.
 func profileRole(role string) bool {
 	qualifiers := map[string]bool{"general": true, "senior": true, "junior": true, "software": true, "security": true, "information": true, "cyber": true, "cybersecurity": true, "computer": true, "science": true, "awareness": true, "penetration": true, "financial": true, "technical": true, "business": true, "product": true, "full": true, "stack": true}
-	for _, q := range []string{"digital", "strategic", "communication", "communications", "startup", "public"} {
+	for _, q := range []string{"digital", "strategic", "communication", "communications", "startup", "public", "deputy"} {
 		qualifiers[q] = true
 	}
 	if !validLiteral(role, 16) {
@@ -118,6 +118,9 @@ func profileEmployerTarget(value string) bool {
 }
 
 func profileRelationFields(body string) (kind, org, role string) {
+	if strings.Contains(body, "...") || strings.Contains(body, "\u2026") || regexp.MustCompile(`(?i)\s+(?:at|for|in|di|of)\s*$`).MatchString(body) {
+		return "", "", ""
+	}
 	if parts := strings.SplitN(body, ",", 2); len(parts) == 2 && headlineRole(strings.TrimSpace(parts[0])) {
 		left, right := strings.TrimSpace(parts[0]), organizationField(strings.TrimSpace(parts[1]))
 		if kind, org, role := profileRelationFields(left); org != "" {

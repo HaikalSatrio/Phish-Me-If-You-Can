@@ -182,7 +182,7 @@ func (b *Bing) Collect(ctx context.Context, q Query) Result {
 				rejected++
 				continue
 			}
-			if !relevantResult(q, item.Title+" "+item.Description+" "+item.Link) {
+			if !relevantSearchResult(q, item.Link, item.Title, item.Description) {
 				unrelated++
 				rejected++
 				continue
@@ -192,7 +192,7 @@ func (b *Bing) Collect(ctx context.Context, q Query) Result {
 			}
 			accepted++
 			seen[u.String()] = true
-			matches = append(matches, Profile{Key: keyFor("web", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: raw, Facts: []Fact{{"search_title", item.Title}, {"search_snippet", item.Description}, {"indexed_url", u.String()}}})
+			matches = append(matches, indexedProfile(q, u.String(), raw, item.Title, item.Description))
 		}
 		rankResults(matches, q)
 		matches = matches[:min(len(matches), q.Limit-len(r.Profiles))]

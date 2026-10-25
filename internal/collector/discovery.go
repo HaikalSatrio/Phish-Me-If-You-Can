@@ -120,8 +120,8 @@ func parseDuckDuckGo(body []byte, source string, q Query, platform string) ([]Pr
 					break
 				}
 			}
-			if err == nil && (platform == "web" || platformFor(u.Hostname()) == platform) && relevantResult(q, title+" "+snippet+" "+u.String()) {
-				profiles = append(profiles, Profile{Key: keyFor("web", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: source, Facts: []Fact{{"search_title", title}, {"search_snippet", snippet}, {"indexed_url", u.String()}}})
+			if err == nil && (platform == "web" || platformFor(u.Hostname()) == platform) && relevantSearchResult(q, u.String(), title, snippet) {
+				profiles = append(profiles, indexedProfile(q, u.String(), source, title, snippet))
 			}
 		}
 		for c := n.FirstChild; c != nil; c = c.NextSibling {

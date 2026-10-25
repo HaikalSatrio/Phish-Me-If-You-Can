@@ -91,33 +91,47 @@ type Coverage struct {
 }
 
 type Case struct {
-	Relations     []Relation          `json:"relations,omitempty"`
-	Extraction    []ExtractionRun     `json:"extraction,omitempty"`
-	Receipts      []CollectionReceipt `json:"receipts,omitempty"`
-	Search        *SearchSession      `json:"search,omitempty"`
-	SchemaVersion string              `json:"schema_version"`
-	Target        Target              `json:"target"`
-	Candidates    []Candidate         `json:"candidates"`
-	Evidence      []Evidence          `json:"evidence"`
-	Coverage      []Coverage          `json:"coverage"`
+	IdentityReviews []IdentityReview    `json:"identity_reviews,omitempty"`
+	Relations       []Relation          `json:"relations,omitempty"`
+	Extraction      []ExtractionRun     `json:"extraction,omitempty"`
+	Receipts        []CollectionReceipt `json:"receipts,omitempty"`
+	Search          *SearchSession      `json:"search,omitempty"`
+	SchemaVersion   string              `json:"schema_version"`
+	Target          Target              `json:"target"`
+	Candidates      []Candidate         `json:"candidates"`
+	Evidence        []Evidence          `json:"evidence"`
+	Coverage        []Coverage          `json:"coverage"`
 }
 
 // Relation is an unverified statement about a subject, not an identity decision.
 type Relation struct {
-	Reviews      []RelationReview `json:"reviews,omitempty"`
-	ID           string           `json:"id"`
-	CandidateID  string           `json:"candidate_id"`
-	Subject      string           `json:"subject"`
-	Kind         string           `json:"kind"`
-	Organization string           `json:"organization,omitempty"`
-	Role         string           `json:"role,omitempty"`
-	StartYear    int              `json:"start_year,omitempty"`
-	EndYear      int              `json:"end_year,omitempty"`
-	Temporal     string           `json:"temporal"`
-	EvidenceID   string           `json:"evidence_id"`
-	Quote        string           `json:"quote"`
-	Method       string           `json:"method"`
-	Status       string           `json:"status"`
+	SubjectEvidenceID string           `json:"subject_evidence_id,omitempty"`
+	SubjectQuote      string           `json:"subject_quote,omitempty"`
+	Reviews           []RelationReview `json:"reviews,omitempty"`
+	ID                string           `json:"id"`
+	CandidateID       string           `json:"candidate_id"`
+	Subject           string           `json:"subject"`
+	Kind              string           `json:"kind"`
+	Organization      string           `json:"organization,omitempty"`
+	Role              string           `json:"role,omitempty"`
+	StartYear         int              `json:"start_year,omitempty"`
+	EndYear           int              `json:"end_year,omitempty"`
+	Temporal          string           `json:"temporal"`
+	EvidenceID        string           `json:"evidence_id"`
+	Quote             string           `json:"quote"`
+	Method            string           `json:"method"`
+	Status            string           `json:"status"`
+}
+
+type CandidateDecision struct {
+	CandidateID string `json:"candidate_id"`
+	Decision    string `json:"decision"`
+}
+
+type IdentityReview struct {
+	At        string              `json:"at"`
+	Reason    string              `json:"reason"`
+	Decisions []CandidateDecision `json:"decisions"`
 }
 
 type RelationReview struct {
