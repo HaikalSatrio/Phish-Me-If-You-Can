@@ -291,6 +291,9 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		byID[e.ID] = e
 	}
 	relationIDs := map[string]bool{}
+	if err := normalizeNames(&c, aliases, byID); err != nil {
+		return c, err
+	}
 	relationsByID := map[string]domain.Relation{}
 	for i := range c.Relations {
 		r := &c.Relations[i]
@@ -343,6 +346,9 @@ func Normalize(c domain.Case) (domain.Case, error) {
 				for _, id := range claim.RelationIDs {
 					r, ok := relationsByID[id]
 					value := extract.CanonicalRole(r.Role)
+					if field == "role" && canonical(claim.Value) == canonical(extract.PriorRoleSummary(r.Role)) {
+						value = claim.Value
+					}
 					if field == "company" {
 						value = r.Organization
 						if r.Kind != "employment" {

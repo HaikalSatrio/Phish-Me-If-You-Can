@@ -9,9 +9,10 @@ import (
 	"unicode"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/personname"
 )
 
-const RelationVersion = "relations-v8"
+const RelationVersion = "relations-v9"
 
 type Document struct {
 	ID   string `json:"id"`
@@ -43,15 +44,22 @@ func compact(s string) string { return strings.Join(strings.Fields(s), " ") }
 func Sentences(text string) []string {
 	var out []string
 	start := 0
+	depth := 0
 	for i, r := range text {
-		boundary := r == '\n' || r == ';' || r == '!' || r == '?'
+		if r == '(' {
+			depth++
+		}
+		if r == ')' && depth > 0 {
+			depth--
+		}
+		boundary := r == '\n' || depth == 0 && (r == ';' || r == '!' || r == '?')
 		if r == '.' && (i+1 == len(text) || text[i+1] == ' ' || text[i+1] == '\n') {
 			words := strings.Fields(text[start:i])
 			last := ""
 			if len(words) > 0 {
 				last = strings.ToLower(words[len(words)-1])
 			}
-			boundary = last != "pt" && last != "dr" && last != "mr" && last != "mrs" && last != "prof"
+			boundary = depth == 0 && last != "pt" && last != "dr" && last != "mr" && last != "mrs" && last != "prof" && last != "jr" && last != "sr" && len([]rune(last)) != 1
 		}
 		if boundary {
 			if v := strings.TrimSpace(text[start:i]); v != "" {
@@ -107,6 +115,13 @@ func literalRole(s string) bool {
 }
 
 func subjectPrefix(quote, subject string) (string, bool) {
+	for _, claim := range personname.Find(subject, quote) {
+		if personname.Equal(claim.Name, subject) && claim.Kind == "known_as" && strings.HasPrefix(quote, claim.Quote) {
+			parts := strings.Fields(claim.Quote)
+			verb := parts[len(parts)-1]
+			return verb + quote[len(claim.Quote):], true
+		}
+	}
 	if loc := leadingPeriod.FindStringIndex(quote); loc != nil {
 		quote = quote[loc[1]:]
 	}
@@ -158,6 +173,14 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 			if !ok {
 				continue
 			}
+			temporalText := quote
+			for _, claim := range personname.Find(subject, quote) {
+				if personname.Equal(claim.Name, subject) && claim.Kind == "known_as" && strings.HasPrefix(quote, claim.Quote) {
+					// Former aliases and birth dates do not date a person's occupation.
+					temporalText = rest
+					break
+				}
+			}
 			r := domain.Relation{Subject: subject, EvidenceID: doc.ID, Quote: quote, Method: RelationVersion, Status: "UNVERIFIED", Temporal: "unknown"}
 			// Non-employment relations must never populate the company summary.
 			lower := strings.ToLower(rest)
@@ -165,7 +188,7 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 				if strings.HasPrefix(lower, marker.prefix) {
 					r.Kind = marker.kind
 					r.Organization = literalField(rest[len(marker.prefix):])
-					r.StartYear, r.EndYear, r.Temporal = temporal(quote, "", asOf)
+					r.StartYear, r.EndYear, r.Temporal = temporal(temporalText, "", asOf)
 				}
 			}
 			if r.Kind == "" {
@@ -174,7 +197,7 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 					continue
 				}
 				verb, body := strings.ToLower(m[1]), primaryRoleClause(m[2])
-				r.StartYear, r.EndYear, r.Temporal = temporal(quote, verb, asOf)
+				r.StartYear, r.EndYear, r.Temporal = temporal(temporalText, verb, asOf)
 				body = regexp.MustCompile(`(?i)^(?:a|an|the|seorang|former|mantan)\s+`).ReplaceAllString(body, "")
 				if publicOffice.MatchString(body) && (strings.Contains(strings.ToLower(body), "indonesia") || strings.Contains(strings.ToLower(body), "republik") || strings.Contains(strings.ToLower(body), "republic") || strings.Contains(strings.ToLower(body), "governor") || strings.Contains(strings.ToLower(body), "gubernur") || strings.Contains(strings.ToLower(body), "wali kota") || strings.Contains(strings.ToLower(body), "mayor")) {
 					r.Kind = "public_office"
@@ -196,6 +219,21 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 				} else {
 					r.Kind = "occupation"
 					r.Role = literalField(body)
+				}
+			}
+			if r.Kind == "occupation" {
+				r.Role = occupationField(r.Role)
+				if !literalRole(r.Role) {
+					if parts := occupationParts(r.Role); len(parts) > 1 {
+						for _, part := range parts {
+							claim := r
+							claim.Role = part
+							if ValidateRelation(claim, subject, doc) == nil {
+								out = append(out, claim)
+							}
+						}
+						continue
+					}
 				}
 			}
 			if r.Role != "" && !literalRole(r.Role) || r.Organization != "" && !validLiteral(r.Organization, 14) {

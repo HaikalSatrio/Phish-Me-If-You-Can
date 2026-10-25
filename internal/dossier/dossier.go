@@ -9,6 +9,7 @@ import (
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/evidence"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/identity"
 )
 
 type Profile struct {
@@ -55,6 +56,7 @@ type Issue struct {
 }
 
 type Report struct {
+	PublicNames         []identity.NameCard     `json:"public_names,omitempty"`
 	Version             string                  `json:"version"`
 	InputSHA256         string                  `json:"input_sha256"`
 	SearchName          string                  `json:"search_name"`
@@ -109,11 +111,26 @@ func Build(input domain.Case) (Report, error) {
 		}
 		selected[p.ID] = true
 		out.Profiles = append(out.Profiles, profile)
+		out.PublicNames = append(out.PublicNames, identity.NameCards(c, p.ID)...)
 	}
 	if len(selected) == 0 {
 		return out, nil
 	}
 	out.Status = "SOURCE_REVIEW_REQUIRED"
+	publicNames := map[string]map[string]bool{}
+	for _, claim := range out.PublicNames {
+		key := normalized(claim.Alias)
+		if publicNames[key] == nil {
+			publicNames[key] = map[string]bool{}
+		}
+		publicNames[key][normalized(claim.Name)] = true
+	}
+	for _, names := range publicNames {
+		if len(names) > 1 {
+			out.Issues = append(out.Issues, Issue{Code: "PUBLIC_NAME_VARIANTS", Detail: "Sources associate an alias with different public names. Review possible namesakes and name variants; no single real or legal name has been selected."})
+			break
+		}
+	}
 	byID := map[string]domain.Evidence{}
 	nameIndex := map[string]int{}
 	hasWorkplace := false
@@ -180,7 +197,7 @@ func Build(input domain.Case) (Report, error) {
 			out.Other = append(out.Other, claim)
 		}
 	}
-	if len(out.ObservedNames) == 0 {
+	if len(out.ObservedNames) == 0 && len(out.PublicNames) == 0 {
 		out.Issues = append(out.Issues, Issue{Code: "NO_OBSERVED_NAME", Detail: "No sourced name field was collected for the confirmed profiles."})
 	}
 	if len(out.ObservedNames) > 1 {

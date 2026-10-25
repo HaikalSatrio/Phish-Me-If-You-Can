@@ -65,6 +65,12 @@ func relevantResult(q Query, text string) bool {
 }
 
 func discoveryPhrase(q Query) string {
+	if q.Purpose == "biography" {
+		phrases := searchPhrases(q)
+		if len(phrases) > 0 {
+			return phrases[0]
+		}
+	}
 	if username := strings.TrimPrefix(strings.TrimSpace(q.Username), "@"); username != "" {
 		return searchPhrase(Query{Username: username})
 	}
@@ -79,6 +85,9 @@ func rankResults(profiles []Profile, q Query) {
 		}
 		haystack := " " + searchWords(text) + " "
 		n := 0
+		if q.Platform == "" && q.Username == "" && len(q.Accounts) == 0 && hasPublicName(q.Name, p) {
+			n += 8
+		}
 		clues := append([]domain.AccountClue(nil), q.Accounts...)
 		if q.Username != "" {
 			clues = append(clues, domain.AccountClue{Platform: q.Platform, Username: q.Username})

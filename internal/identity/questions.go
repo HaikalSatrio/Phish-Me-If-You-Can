@@ -34,6 +34,11 @@ func NextQuestions(c domain.Case) []Question {
 	}
 	if !confirmed && len(pending) > 0 {
 		useful := false
+		for _, name := range c.NameClaims {
+			if !rejected[name.CandidateID] {
+				useful = true
+			}
+		}
 		for _, p := range c.Candidates {
 			if !rejected[p.ID] && (p.DisplayName != "" || p.Company != "" || p.Role != "" || len(p.EducationClaims) > 0) {
 				useful = true
@@ -43,6 +48,9 @@ func NextQuestions(c domain.Case) []Question {
 			out = append(out, Question{Code: "PUBLIC_BIO_SOURCE", Prompt: "Which public biography, portfolio, or institutional profile links this account to a full name or affiliation?", Reason: "Research collected pages but has not established a public name, education, or employment claim. More pages alone do not resolve identity.", Action: "search -source web -name <name> -account <platform:username> -url <public-biography-url>", CandidateIDs: pending})
 		}
 		out = append(out, Question{Code: "IDENTITY_REVIEW", Prompt: "Which of these profiles belong to the intended person? Select all that you can establish, none, or unsure.", Reason: "Profile names and source claims are shown for comparison; confirmation of identity does not verify employment.", Action: "challenge -input <project> -out <reviewed-project>", CandidateIDs: pending, Candidates: Cards(c)})
+		if len(NameAmbiguities(c)) > 0 {
+			out[len(out)-1].Reason = "Sources associate an alias with different public names. Compare possible namesakes or spelling variants before associating profiles."
+		}
 	}
 	if !confirmed && len(pending) == 0 {
 		return []Question{{Code: "NEW_IDENTITY_CLUE", Prompt: "Which additional public account or URL can distinguish the intended person?", Reason: "All collected candidates were rejected.", Action: "search -source web -name <full-name> -account <platform:username> or -url <public-url>"}}

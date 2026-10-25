@@ -6,6 +6,8 @@ Evaluasi yang dapat dijalankan ulang tersedia melalui `pmiyc benchmark -out data
 
 Setelah konfirmasi identitas, `pmiyc profile -input data/hasil-reviewed.json -out data/profile-report.json` menggabungkan klaim dari profil terkonfirmasi dengan kutipan, periode, sumber, dan penanda employer yang perlu diperiksa. Lihat [ringkasan profil](docs/PROFILE-SUMMARY.md).
 
+Hubungan nama panggung dan nama publik sekarang diekstrak dari kutipan eksplisit tanpa Ollama. Nama yang ambigu tetap dipisahkan untuk review, dan pencarian nama saja dapat menambahkan query biografi dalam budget yang sama. Lihat [cara kerja dan hasil uji 17 query](docs/PUBLIC-NAMES.md).
+
 PES adalah indeks eksperimental exposure, bukan probabilitas seseorang akan terkena phishing. Bobot, threshold, dan rubric contoh belum divalidasi secara empiris.
 
 ## Menjalankan

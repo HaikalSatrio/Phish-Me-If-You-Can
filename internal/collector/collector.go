@@ -6,6 +6,7 @@ import (
 )
 
 type Query struct {
+	Purpose  string
 	Accounts []domain.AccountClue
 	Company  string
 	Location string

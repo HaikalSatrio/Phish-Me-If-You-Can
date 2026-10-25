@@ -20,6 +20,7 @@ import (
 func printReviewCards(w io.Writer, cards []identity.ReviewCard) {
 	for i, card := range cards {
 		fmt.Fprintf(w, "\n[%d] name=%q | %s\n  Title: %q\n  Profile: %q\n", i+1, card.Name, card.Decision, card.Title, card.URL)
+		printPublicNames(w, card.Names)
 		if len(card.Contradictions) > 0 {
 			fmt.Fprintf(w, "  Conflicting clues: %q\n", card.Contradictions)
 		}

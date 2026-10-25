@@ -26,6 +26,7 @@ type ClaimCard struct {
 }
 
 type ReviewCard struct {
+	Names          []NameCard  `json:"names,omitempty"`
 	CandidateID    string      `json:"candidate_id"`
 	Name           string      `json:"name,omitempty"`
 	Title          string      `json:"title,omitempty"`
@@ -33,6 +34,26 @@ type ReviewCard struct {
 	Decision       string      `json:"decision"`
 	Claims         []ClaimCard `json:"claims"`
 	Contradictions []string    `json:"contradictions,omitempty"`
+}
+
+type NameCard struct {
+	domain.NameClaim
+	Sources []domain.Source `json:"sources"`
+}
+
+func NameCards(c domain.Case, candidateID string) []NameCard {
+	out := []NameCard{}
+	for _, claim := range c.NameClaims {
+		if claim.CandidateID != candidateID {
+			continue
+		}
+		for _, e := range c.Evidence {
+			if e.ID == claim.EvidenceID {
+				out = append(out, NameCard{claim, e.Sources})
+			}
+		}
+	}
+	return out
 }
 
 func Cards(c domain.Case) []ReviewCard {
@@ -43,6 +64,7 @@ func Cards(c domain.Case) []ReviewCard {
 	cards := []ReviewCard{}
 	for _, p := range c.Candidates {
 		card := ReviewCard{CandidateID: p.ID, Name: p.DisplayName, Title: p.Label, URL: p.ProfileURL, Decision: p.Decision, Claims: []ClaimCard{}, Contradictions: append([]string(nil), p.Contradictions...)}
+		card.Names = NameCards(c, p.ID)
 		for _, r := range c.Relations {
 			if r.CandidateID != p.ID || domain.RelationDecision(r) == "REJECT" {
 				continue

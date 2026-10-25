@@ -6,6 +6,15 @@ import (
 	"strings"
 )
 
+var publicOccupationEnglish = map[string]string{
+	"penulis lagu":          "Songwriter",
+	"penyanyi-penulis lagu": "Singer-songwriter",
+	"pelawak tunggal":       "Stand-up comedian",
+	"selebritas internet":   "Internet personality",
+	"musisi":                "Musician",
+	"pegulat":               "Wrestler",
+}
+
 var roleEnglishExact = map[string]string{
 	"analis keamanan":                      "Security Analyst",
 	"arsitek produk":                       "Product Architect",
@@ -353,9 +362,18 @@ var roleEnglishWords = map[string]string{
 	"yang":          "",
 }
 
+var songwriterPhrase = regexp.MustCompile(`(?i)\bpenulis lagu\b`)
+
 func CanonicalRole(value string) string {
+	if english, ok := publicOccupationEnglish[strings.ToLower(strings.Join(strings.Fields(value), " "))]; ok {
+		return english
+	}
+	value = songwriterPhrase.ReplaceAllString(value, "Songwriter")
 	return canonicalEnglishRole(value)
 }
+
+// PriorRoleSummary retains compatibility with saved summaries from earlier extractors.
+func PriorRoleSummary(value string) string { return canonicalEnglishRole(value) }
 
 func canonicalEnglishRole(value string) string {
 	value = strings.Join(strings.Fields(value), " ")

@@ -8,6 +8,7 @@ import (
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/dossier"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/identity"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/storage"
 )
 
@@ -50,6 +51,7 @@ func printProfile(w io.Writer, r dossier.Report) {
 		fmt.Fprintf(w, "  %q | %q\n", p.Name, p.URL)
 	}
 	fmt.Fprintln(w, "Observed names:")
+	printPublicNames(w, r.PublicNames)
 	if len(r.ObservedNames) == 0 {
 		fmt.Fprintln(w, "  Not established from collected sources.")
 	}
@@ -104,4 +106,13 @@ func printProfile(w io.Writer, r dossier.Report) {
 		fmt.Fprintf(w, "Review [%s]: %s\n", issue.Code, issue.Detail)
 	}
 	fmt.Fprintln(w, "All source claims remain unverified. Identity confirmation does not verify current employment or education.")
+}
+
+func printPublicNames(w io.Writer, names []identity.NameCard) {
+	for _, name := range names {
+		fmt.Fprintf(w, "  Public name claim: %q -> %q (%s, unverified)\n    Quote: %q\n", name.Alias, name.Name, name.Kind, name.Quote)
+		for _, source := range name.Sources {
+			fmt.Fprintf(w, "    Source: %q (observed %s)\n", source.URL, source.ObservedAt)
+		}
+	}
 }

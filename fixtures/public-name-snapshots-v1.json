@@ -1,0 +1,2642 @@
+{
+  "version": "public-name-snapshots-v1",
+  "captured_at_utc": "2026-10-25",
+  "scope": "Curated regression excerpts of public search observations. Expected values represent literal source claims, not independently verified legal names. This is not an independent accuracy benchmark.",
+  "cases": [
+    {
+      "query": "Lady Gaga",
+      "original_snapshot_sha256": "15037f01a3e2bfef808f1451d69456f7faca3909fde2ae54c3fa90025124b8f3",
+      "expected": [
+        {
+          "candidate_id": "web-d536465c78a800260318bc0cd05b9384cbb1fc96f1248a54337a7d973fa42a67",
+          "alias": "Lady Gaga",
+          "name": "Stefani Joanne Angelina Germanotta"
+        },
+        {
+          "candidate_id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772",
+          "alias": "Lady Gaga",
+          "name": "Stefani Joanne Angelina Germanotta"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "lady-gaga",
+          "name": "Lady Gaga"
+        },
+        "candidates": [
+          {
+            "id": "web-d536465c78a800260318bc0cd05b9384cbb1fc96f1248a54337a7d973fa42a67",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Lady_Gaga",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Lady_Gaga",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772-page_title",
+            "candidate_id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772",
+            "type": "page_title",
+            "value": "Lady Gaga - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "399c078ef6b6f8476478722991319d197eff3cf67cf2e4e9e1f9b54dec9c3515",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Lady_Gaga",
+                "observed_at": "2026-10-25T13:58:32Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772-search_snippet",
+            "candidate_id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772",
+            "type": "search_snippet",
+            "value": "Stefani Joanne Angelina Germanotta (lahir 28 Maret 1986 ), dikenal secara profesional sebagai Lady Gaga, adalah seorang penyanyi, penulis lagu, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lady+Gaga%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:32Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772-search_title",
+            "candidate_id": "web-c03ad666e303483895fd0f066d4e63c172f7cb7ee1820d9e76036297fbf02772",
+            "type": "search_title",
+            "value": "Lady Gaga - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lady+Gaga%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:32Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-d536465c78a800260318bc0cd05b9384cbb1fc96f1248a54337a7d973fa42a67-search_snippet",
+            "candidate_id": "web-d536465c78a800260318bc0cd05b9384cbb1fc96f1248a54337a7d973fa42a67",
+            "type": "search_snippet",
+            "value": "Stefani Joanne Angelina Germanotta (born March 28, 1986), known professionally as Lady Gaga, is an American singer, songwriter, and actress.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lady+Gaga%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:32Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-d536465c78a800260318bc0cd05b9384cbb1fc96f1248a54337a7d973fa42a67-search_title",
+            "candidate_id": "web-d536465c78a800260318bc0cd05b9384cbb1fc96f1248a54337a7d973fa42a67",
+            "type": "search_title",
+            "value": "Lady Gaga - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lady+Gaga%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:32Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Bruno Mars",
+      "original_snapshot_sha256": "6ef559cbd02bc61aecd9715b14b5eca92092d54559362bca837a108bbe845894",
+      "expected": [
+        {
+          "candidate_id": "web-c937d6889c65ae897aa58f9e9cb243491c43000653e761460ba959cd537e97bc",
+          "alias": "Bruno Mars",
+          "name": "Peter Gene Hernandez"
+        },
+        {
+          "candidate_id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5",
+          "alias": "Bruno Mars",
+          "name": "Peter Eugene Hernandez"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "bruno-mars",
+          "name": "Bruno Mars"
+        },
+        "candidates": [
+          {
+            "id": "web-c937d6889c65ae897aa58f9e9cb243491c43000653e761460ba959cd537e97bc",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Bruno_Mars",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Bruno_Mars",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5-page_title",
+            "candidate_id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5",
+            "type": "page_title",
+            "value": "Bruno Mars - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "3cf6eaad641b1a1fe0d99a95706bf221dc542188534a3aa55b2898cf9c266e4d",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Bruno_Mars",
+                "observed_at": "2026-10-25T13:58:37Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5-search_snippet",
+            "candidate_id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5",
+            "type": "search_snippet",
+            "value": "Peter Eugene Hernandez (lahir 8 Oktober 1985), dikenal secara profesional sebagai Bruno Mars, adalah seorang penyanyi-penulis lagu, multi-instrumentalis, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bruno+Mars%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:37Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5-search_title",
+            "candidate_id": "web-5a65b1356a4ad2bcd272c6fbe5b326308776a1c42728cbbde92d5f1dee26b7a5",
+            "type": "search_title",
+            "value": "Bruno Mars - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bruno+Mars%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:37Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c937d6889c65ae897aa58f9e9cb243491c43000653e761460ba959cd537e97bc-search_snippet",
+            "candidate_id": "web-c937d6889c65ae897aa58f9e9cb243491c43000653e761460ba959cd537e97bc",
+            "type": "search_snippet",
+            "value": "Peter Gene Hernandez (born October 8, 1985), known professionally as Bruno Mars, is an American singer-songwriter, record producer and dancer.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bruno+Mars%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:37Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c937d6889c65ae897aa58f9e9cb243491c43000653e761460ba959cd537e97bc-search_title",
+            "candidate_id": "web-c937d6889c65ae897aa58f9e9cb243491c43000653e761460ba959cd537e97bc",
+            "type": "search_title",
+            "value": "Bruno Mars - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bruno+Mars%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:37Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "The Weeknd",
+      "original_snapshot_sha256": "e6437b8298e053ea0968842ee538edd048d3e8f1022cedafcdaa3e18c74bd9d7",
+      "expected": [
+        {
+          "candidate_id": "web-1939d607805905336e054b577c42ad31df4763dabd402ea533fc8ff76c1ea37e",
+          "alias": "the Weeknd",
+          "name": "Abel Tesfaye"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "the-weeknd",
+          "name": "The Weeknd"
+        },
+        "candidates": [
+          {
+            "id": "web-1939d607805905336e054b577c42ad31df4763dabd402ea533fc8ff76c1ea37e",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/The_Weeknd",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-1939d607805905336e054b577c42ad31df4763dabd402ea533fc8ff76c1ea37e-search_snippet",
+            "candidate_id": "web-1939d607805905336e054b577c42ad31df4763dabd402ea533fc8ff76c1ea37e",
+            "type": "search_snippet",
+            "value": "Abel Tesfaye known professionally as the Weeknd, is a Canadian singer, songwriter, record producer, and actor. Regarded as an influential figure in popular ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22The+Weeknd%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-1939d607805905336e054b577c42ad31df4763dabd402ea533fc8ff76c1ea37e-search_title",
+            "candidate_id": "web-1939d607805905336e054b577c42ad31df4763dabd402ea533fc8ff76c1ea37e",
+            "type": "search_title",
+            "value": "The Weeknd - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22The+Weeknd%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Lorde",
+      "original_snapshot_sha256": "c2a6676c9d423c82da382756d172a7dcd2e5c5b54c2fe22851620559b86f976d",
+      "expected": [
+        {
+          "candidate_id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5",
+          "alias": "Lorde",
+          "name": "Ella Marija Lani Yelich-O'Connor"
+        },
+        {
+          "candidate_id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd",
+          "alias": "Lorde",
+          "name": "Ella Marija Lani Yelich-O'Connor"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "lorde",
+          "name": "Lorde"
+        },
+        "candidates": [
+          {
+            "id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Lorde",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Lorde",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd-page_title",
+            "candidate_id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd",
+            "type": "page_title",
+            "value": "Lorde - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "5a09e5e008eb614c33e5694e59f5c1f0079de41f777274aa470fa0ad422dc2bf",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Lorde",
+                "observed_at": "2026-10-25T13:58:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd-search_snippet",
+            "candidate_id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd",
+            "type": "search_snippet",
+            "value": "Ella Marija Lani Yelich-O'Connor (lahir 7 November 1996 ), dikenal dengan nama panggung Lorde (/\u02c8l\u0254\u02d0rd/), adalah penyanyi dan penulis lagu asal Selandia Baru.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lorde%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd-search_title",
+            "candidate_id": "web-a9928d62381d572ebc71ec4dd81ad692633bc39cf1acf288a97729d62865aacd",
+            "type": "search_title",
+            "value": "Lorde - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lorde%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5-page_text-excerpt-1298",
+            "candidate_id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5",
+            "type": "page_text",
+            "value": "Ella Marija Lani Yelich-O'Connor (born 7 November 1996), known professionally as Lorde ( / l \u0254\u02d0r d / LORD ), is a New Zealand singer-songwriter. An influential figure in alternative pop music, she is known for her unconventional production style and introspective songwriting.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "b3c4be47ad59c7cb5b66db2b15234a4a017d4e2c75f56f3fc1b2144c6e3d7169",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Lorde",
+                "observed_at": "2026-10-25T13:58:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5-page_title",
+            "candidate_id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5",
+            "type": "page_title",
+            "value": "Lorde - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "b3c4be47ad59c7cb5b66db2b15234a4a017d4e2c75f56f3fc1b2144c6e3d7169",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Lorde",
+                "observed_at": "2026-10-25T13:58:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5-search_snippet",
+            "candidate_id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5",
+            "type": "search_snippet",
+            "value": "Ella Marija Lani Yelich-O'Connor (born 7 November 1996), known professionally as Lorde is a New Zealand singer-songwriter. An influential figure in ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lorde%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5-search_title",
+            "candidate_id": "web-aa939a4b0c1cbde5949a7246ed8780f8e53105fd8e011a8c6d51ae9f1cfd85b5",
+            "type": "search_title",
+            "value": "Lorde - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Lorde%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "MrBeast",
+      "original_snapshot_sha256": "8fd715501f60b127a888ac4375e4d8a80b0cbe9a213f8c79e7c35187076a6621",
+      "expected": [
+        {
+          "candidate_id": "web-1c1056867ea49a9b7a6fa7d6ebdbbc9f53b9208cb3ffc84574ed8edda8ee3ba4",
+          "alias": "MrBeast",
+          "name": "Jimmy Donaldson"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "mrbeast",
+          "name": "MrBeast"
+        },
+        "candidates": [
+          {
+            "id": "web-1c1056867ea49a9b7a6fa7d6ebdbbc9f53b9208cb3ffc84574ed8edda8ee3ba4",
+            "display_name": null,
+            "profile_url": "https://www.imdb.com/name/nm10055663/",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-1c1056867ea49a9b7a6fa7d6ebdbbc9f53b9208cb3ffc84574ed8edda8ee3ba4-search_snippet",
+            "candidate_id": "web-1c1056867ea49a9b7a6fa7d6ebdbbc9f53b9208cb3ffc84574ed8edda8ee3ba4",
+            "type": "search_snippet",
+            "value": "Jimmy Donaldson, better known as MrBeast, is an American YouTuber. He is credited with pioneering a genre of YouTube videos that centers on expensive stunts ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22MrBeast%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-1c1056867ea49a9b7a6fa7d6ebdbbc9f53b9208cb3ffc84574ed8edda8ee3ba4-search_title",
+            "candidate_id": "web-1c1056867ea49a9b7a6fa7d6ebdbbc9f53b9208cb3ffc84574ed8edda8ee3ba4",
+            "type": "search_title",
+            "value": "MrBeast - IMDb",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22MrBeast%22&safesearch=0",
+                "observed_at": "2026-10-25T13:58:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Cak Lontong",
+      "original_snapshot_sha256": "c5f72544a248ba07fb1645887e4611174e7c7e33400d718d2b8b3c3a8eafecdf",
+      "expected": [
+        {
+          "candidate_id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7",
+          "alias": "Cak Lontong",
+          "name": "Lies Hartono"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "cak-lontong",
+          "name": "Cak Lontong"
+        },
+        "candidates": [
+          {
+            "id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Cak_Lontong",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7-page_title",
+            "candidate_id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7",
+            "type": "page_title",
+            "value": "Cak Lontong - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "df46d9f3202477c20e8b48f7d654051ba0f8a952ac40ee1956fb8077a11514ec",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Cak_Lontong",
+                "observed_at": "2026-10-25T13:59:00Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7-search_snippet",
+            "candidate_id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7",
+            "type": "search_snippet",
+            "value": "Lies Hartono, dikenal secara profesional dengan nama Cak Lontong (lahir 7 Oktober 1970 ), adalah pelawak tunggal, presenter, dan aktor berkebangsaan ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Cak+Lontong%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:00Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7-search_title",
+            "candidate_id": "web-a79cae3e993919eec82fd7c622c3784bc88801ba51daddca7620073510926ab7",
+            "type": "search_title",
+            "value": "Cak Lontong - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Cak+Lontong%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:00Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Sting",
+      "original_snapshot_sha256": "8a13eca914096005859a88c4d8a036b00c553acdf813a8934ce3a04de8eb7792",
+      "expected": [
+        {
+          "candidate_id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68",
+          "alias": "Sting",
+          "name": "Gordon Matthew Thomas Sumner"
+        },
+        {
+          "candidate_id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878",
+          "alias": "Sting",
+          "name": "Gordon Matthew Thomas Sumner"
+        },
+        {
+          "candidate_id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864",
+          "alias": "Sting",
+          "name": "Steve Borden"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "sting",
+          "name": "Sting"
+        },
+        "candidates": [
+          {
+            "id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Sting_(musisi)",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Sting_(musician)",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Sting_(pegulat)",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68-page_text-excerpt-1501",
+            "candidate_id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68",
+            "type": "page_text",
+            "value": "Gordon Matthew Thomas Sumner (lahir 2 Oktober 1951), yang dikenal sebagai Sting , adalah seorang musisi, aktivis, dan aktor Inggris. Dia adalah vokalis , penulis lagu utama dan bassis untuk band gelombang baru The Police dari tahun 1977 sampai perpisahan mereka pada tahun 1986. Ia memulai karier solonya pada tahun 1985 dan telah memasukkan unsur-unsur rock, jazz , reggae , klasik, new-age , dan worldbeat dalam musiknya. [ 1 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "9f937cf73da9d0bf962e833eef2f234669efb77107a1c50727404a051933c1c5",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Sting_(musisi)",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68-page_title",
+            "candidate_id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68",
+            "type": "page_title",
+            "value": "Sting (musisi) - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "9f937cf73da9d0bf962e833eef2f234669efb77107a1c50727404a051933c1c5",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Sting_(musisi)",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68-search_snippet",
+            "candidate_id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68",
+            "type": "search_snippet",
+            "value": "Gordon Matthew Thomas Sumner (lahir 2 Oktober 1951), yang dikenal sebagai Sting, adalah seorang musisi, aktivis, dan aktor Inggris.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Sting%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68-search_title",
+            "candidate_id": "web-0ac7bd0c65fdcaa26453e8631baa50bfbaf5cf0d356351f133c436a61f338d68",
+            "type": "search_title",
+            "value": "Sting (musisi) - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Sting%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864-page_text-excerpt-971",
+            "candidate_id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864",
+            "type": "page_text",
+            "value": "Steve Borden ( lahir 20 Maret 1959 ), lebih dikenal dengan nama ring Sting , adalah pegulat profesional Amerika dan mantan binaragawan, saat ini menandatangani kontrak dengan All Elite Wrestling (AEW) sebagai mentor Darby Allin . [ 7 ] Dia dianggap sebagai salah satu pegulat profesional terhebat sepanjang masa, [ 8 ] [ 9 ] yang telah memupuk warisan selama kariernya selama lima dekade. Sepanjang kariernya, ia memenangkan total lima belas kejuaraan dunia.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "f1a34aff04950a8789ff1242b54390df67e13ca6a5aca1ac56b01cad69886d93",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Sting_(pegulat)",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864-page_title",
+            "candidate_id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864",
+            "type": "page_title",
+            "value": "Sting (pegulat) - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "f1a34aff04950a8789ff1242b54390df67e13ca6a5aca1ac56b01cad69886d93",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Sting_(pegulat)",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864-search_snippet",
+            "candidate_id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864",
+            "type": "search_snippet",
+            "value": "Steve Borden (lahir 20 Maret 1959 ), lebih dikenal dengan nama ring Sting, adalah pegulat profesional Amerika dan mantan binaragawan, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Sting%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864-search_title",
+            "candidate_id": "web-4c322d6c37837f61d0bfc076fd6d8fc1ac3bd94f55b6decc2adc5c9f908bb864",
+            "type": "search_title",
+            "value": "Sting (pegulat) - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Sting%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878-page_text-excerpt-1743",
+            "candidate_id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878",
+            "type": "page_text",
+            "value": "Gordon Matthew Thomas Sumner (born 2 October 1951), known as Sting , is an English musician, songwriter, actor and activist. He was the lead vocalist , principal songwriter and bassist for the rock band the Police (1977\u20131984, 2007\u20132008). He began a solo career in 1985, after leaving the Police, and has included elements of rock, jazz , reggae , classical, new-age , and worldbeat in his music. [ 1 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "846281796c4a945a2b0bc0dc12b5fc09e8a228e40d3483748c074394c637c2a2",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Sting_(musician)",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878-page_title",
+            "candidate_id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878",
+            "type": "page_title",
+            "value": "Sting (musician) - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "846281796c4a945a2b0bc0dc12b5fc09e8a228e40d3483748c074394c637c2a2",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Sting_(musician)",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878-search_snippet",
+            "candidate_id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878",
+            "type": "search_snippet",
+            "value": "Gordon Matthew Thomas Sumner (born 2 October 1951), known as Sting, is an English musician, songwriter, actor and activist. He was the lead vocalist, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Sting%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878-search_title",
+            "candidate_id": "web-5b13a04527300a3f30e9f5c164e70140ea605af99fa90529bc31ff0544ede878",
+            "type": "search_title",
+            "value": "Sting (musician) - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Sting%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:07Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Banksy",
+      "original_snapshot_sha256": "ba32ce41fdb43cb74d9ce69bce76a48985b6e86c0e2fc97a716cfa6d7fefaa3a",
+      "expected": [],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "banksy",
+          "name": "Banksy"
+        },
+        "candidates": [
+          {
+            "id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Banksy",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c",
+            "display_name": "Banksy",
+            "profile_url": "https://www.instagram.com/banksy/",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-72ed66185a1030eef222466e525dd5780c4ef5b6465d199543870c68bb442161",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Banksy",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a",
+            "display_name": "Banksy",
+            "profile_url": "https://artsandculture.google.com/entity/banksy/m023b7b?hl=en",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-72ed66185a1030eef222466e525dd5780c4ef5b6465d199543870c68bb442161-page_title",
+            "candidate_id": "web-72ed66185a1030eef222466e525dd5780c4ef5b6465d199543870c68bb442161",
+            "type": "page_title",
+            "value": "Banksy - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "2eb30c52d9e522b6a9e3018eb6896c677badfc742de69b4ae67aa7bac0627e74",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Banksy",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-72ed66185a1030eef222466e525dd5780c4ef5b6465d199543870c68bb442161-search_snippet",
+            "candidate_id": "web-72ed66185a1030eef222466e525dd5780c4ef5b6465d199543870c68bb442161",
+            "type": "search_snippet",
+            "value": "Banksy adalah seorang seniman grafiti misterius asal Inggris yang membuat karya yang berunsur provokatif, satir dan politis di tempat umum.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-72ed66185a1030eef222466e525dd5780c4ef5b6465d199543870c68bb442161-search_title",
+            "candidate_id": "web-72ed66185a1030eef222466e525dd5780c4ef5b6465d199543870c68bb442161",
+            "type": "search_title",
+            "value": "Banksy - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c-page_description",
+            "candidate_id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c",
+            "type": "page_description",
+            "value": "14M Followers, 0 Following, 154 Posts - See Instagram photos and videos from Banksy (@banksy)",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "a189c0a21a1628abb3b5e84e2d98d1194270a78aedf36c708920967c714e595e",
+                "rule": "public-page-v6",
+                "url": "https://www.instagram.com/banksy/",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c-page_title",
+            "candidate_id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c",
+            "type": "page_title",
+            "value": "Banksy (@banksy) \u2022 Instagram photos and videos",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "a189c0a21a1628abb3b5e84e2d98d1194270a78aedf36c708920967c714e595e",
+                "rule": "public-page-v6",
+                "url": "https://www.instagram.com/banksy/",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c-search_snippet",
+            "candidate_id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c",
+            "type": "search_snippet",
+            "value": "14M followers \u00b7 0 following \u00b7 154 posts \u00b7 @banksy.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c-search_title",
+            "candidate_id": "web-9d130573971280b1275a59165b5d5831b42d7e2e5bef7f77e37404e6eb3a958c",
+            "type": "search_title",
+            "value": "Banksy (@banksy) \u2022 Instagram photos and videos",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291-page_title",
+            "candidate_id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291",
+            "type": "page_title",
+            "value": "Banksy - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "c4a2fdaaa2374f17e9a7b7fabb4dfe22c558cc404c5b35ae5b91174b17a95877",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Banksy",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291-search_snippet",
+            "candidate_id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291",
+            "type": "search_snippet",
+            "value": "Banksy is a pseudonymous England-based street artist, political activist, and film director. He has never publicly confirmed his identity.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291-search_snippet-2",
+            "candidate_id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291",
+            "type": "search_snippet",
+            "value": "Banksy's lawyer stated to Reuters that Banksy \"does not accept that many of the details contained within your enquiry are correct\". [266] According to The Sunday Times, Gunningham began employing the name Robin Banks, which eventually became Banksy.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "https://www.bing.com/search?format=rss&q=%22Banksy%22+biography+real+name",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291-search_title",
+            "candidate_id": "web-a75812a98b8b7c78c9720869ff341fc52953f27007e0149b84e1b5b22ea47291",
+            "type": "search_title",
+            "value": "Banksy - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a-page_description",
+            "candidate_id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a",
+            "type": "page_description",
+            "value": "Banksy is a pseudonymous England-based street artist, political activist, and film director whose real name and identity remain unconfirmed and the subject...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "dc00dd671a9f9780fe782cc1713abdd4f6aca8b41d1079c64f5ba16e101aeba7",
+                "rule": "public-page-v6",
+                "url": "https://artsandculture.google.com/entity/banksy/m023b7b?hl=en",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a-page_title",
+            "candidate_id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a",
+            "type": "page_title",
+            "value": "Banksy \u2014 Google Arts & Culture",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "dc00dd671a9f9780fe782cc1713abdd4f6aca8b41d1079c64f5ba16e101aeba7",
+                "rule": "public-page-v6",
+                "url": "https://artsandculture.google.com/entity/banksy/m023b7b?hl=en",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a-search_snippet",
+            "candidate_id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a",
+            "type": "search_snippet",
+            "value": "Banksy is a pseudonymous England-based street artist, political activist, and film director whose real name and identity remain unconfirmed and the subject ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a-search_title",
+            "candidate_id": "web-f2c986ab4e24b140325dced37b86eda9042de774833171976972161848aec69a",
+            "type": "search_title",
+            "value": "Banksy \u2014 Google Arts & Culture",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Banksy%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:13Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "IShowSpeed",
+      "original_snapshot_sha256": "72941e9627e3b48cb0e023c2b3e538e0de18fff701f7281e97b09b3244d472aa",
+      "expected": [
+        {
+          "candidate_id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1",
+          "alias": "IShowSpeed",
+          "name": "Darren Jason Watkins Jr."
+        },
+        {
+          "candidate_id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1",
+          "alias": "IShowSpeed",
+          "name": "Darren Jason Watkins Jr."
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "ishowspeed",
+          "name": "IShowSpeed"
+        },
+        "candidates": [
+          {
+            "id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/IShowSpeed",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/IShowSpeed",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1-page_text-excerpt-2536",
+            "candidate_id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1",
+            "type": "page_text",
+            "value": "Darren Jason Watkins Jr. (born January 21, 2005), better known as IShowSpeed or simply Speed , is an American influencer and online streamer . Known for his dramatic and energetic behavior he displays during his variety of live streams and in-real-life streams , he is regarded as one of the most popular entertainers and internet personalities in the world. [ 5 ] [ 6 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "b7b53709af81a44ea801d89495291cc53cf9eea2082fa51242df67d5e34aea3c",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/IShowSpeed",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1-page_title",
+            "candidate_id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1",
+            "type": "page_title",
+            "value": "IShowSpeed - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "b7b53709af81a44ea801d89495291cc53cf9eea2082fa51242df67d5e34aea3c",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/IShowSpeed",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1-search_snippet",
+            "candidate_id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1",
+            "type": "search_snippet",
+            "value": "Darren Jason Watkins Jr. (born January 21, 2005), better known as IShowSpeed or simply Speed, is an American influencer and online streamer.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22IShowSpeed%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1-search_title",
+            "candidate_id": "web-5d0002bc119a368d8b65e442d666d925bdad1bad878eb2206fafc7875eb335d1",
+            "type": "search_title",
+            "value": "IShowSpeed - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22IShowSpeed%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1-page_text-excerpt-2152",
+            "candidate_id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1",
+            "type": "page_text",
+            "value": "Darren Jason Watkins Jr. ( lahir 21 Januari 2005 ), yang lebih dikenal dengan nama IShowSpeed atau Speed , adalah seorang selebritas internet , streamer online , dan rapper asal Amerika Serikat . Ia dikenal karena siaran langsungnya yang beragam yang memperlihatkan perilaku dramatis dan energik, serta siaran IRL -nya di berbagai lokasi di seluruh dunia.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "79accddefdc02c7d011ef4cf7abcd73e84865200fb7db4f5f5df3e1daac847a3",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/IShowSpeed",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1-page_title",
+            "candidate_id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1",
+            "type": "page_title",
+            "value": "IShowSpeed - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "79accddefdc02c7d011ef4cf7abcd73e84865200fb7db4f5f5df3e1daac847a3",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/IShowSpeed",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1-search_snippet",
+            "candidate_id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1",
+            "type": "search_snippet",
+            "value": "Darren Jason Watkins Jr. (lahir 21 Januari 2005 ), yang lebih dikenal dengan nama IShowSpeed atau Speed, adalah seorang selebritas internet, streamer online ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22IShowSpeed%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1-search_title",
+            "candidate_id": "web-5f429e48e3f054befc0bcf1b0534827f77aea0359ec0a4b20c679282e46af3e1",
+            "type": "search_title",
+            "value": "IShowSpeed - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22IShowSpeed%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:18Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "PewDiePie",
+      "original_snapshot_sha256": "9bd545bb1615dd804cefe20ca7bc894a5131ebe141150b6fcd55d8340434956b",
+      "expected": [
+        {
+          "candidate_id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce",
+          "alias": "PewDiePie",
+          "name": "Felix Arvid Ulf Kjellberg"
+        },
+        {
+          "candidate_id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77",
+          "alias": "PewDiePie",
+          "name": "Felix Arvid Ulf Kjellberg"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "pewdiepie",
+          "name": "PewDiePie"
+        },
+        "candidates": [
+          {
+            "id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/PewDiePie",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77",
+            "display_name": null,
+            "profile_url": "https://open.spotify.com/intl-id/artist/1JOdUvDAzNy3L37rZ4Nigr",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce-page_title",
+            "candidate_id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce",
+            "type": "page_title",
+            "value": "PewDiePie - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "1941a5f076a4043947ed464405254ac779c40e8e2de8e0302317f80b23072cc3",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/PewDiePie",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce-search_snippet",
+            "candidate_id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce",
+            "type": "search_snippet",
+            "value": "Felix Arvid Ulf Kjellberg (born 24 October 1989), known online as PewDiePie, is a Swedish YouTuber. He is known for his gaming videos, satirical commentary, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22PewDiePie%22+biography+real+name&safesearch=0",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce-search_title",
+            "candidate_id": "web-65f923be60b705f558839a8e1e8fb928bf5caa807bfe9a6ec8825047ab4b88ce",
+            "type": "search_title",
+            "value": "PewDiePie - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22PewDiePie%22+biography+real+name&safesearch=0",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77-page_description",
+            "candidate_id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77",
+            "type": "page_description",
+            "value": "Artist \u00b7 151K monthly listeners.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "af6af68d550eddb321a1c5b3bec03610e8ecb410dd03d33d774da8079bdb8221",
+                "rule": "public-page-v6",
+                "url": "https://open.spotify.com/artist/1JOdUvDAzNy3L37rZ4Nigr",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77-page_text-excerpt-982",
+            "candidate_id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77",
+            "type": "page_text",
+            "value": "Felix Arvid Ulf Kjellberg, better known online as PewDiePie, is a Swedish YouTuber, comedian and gamer-commentator, best known for his YouTube video content, which mainly consists of Let's Play commentaries, vlogs and comedic formatted shows.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "af6af68d550eddb321a1c5b3bec03610e8ecb410dd03d33d774da8079bdb8221",
+                "rule": "public-page-v6",
+                "url": "https://open.spotify.com/artist/1JOdUvDAzNy3L37rZ4Nigr",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77-page_title",
+            "candidate_id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77",
+            "type": "page_title",
+            "value": "Listen to pewdiepie Songs | Spotify",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "af6af68d550eddb321a1c5b3bec03610e8ecb410dd03d33d774da8079bdb8221",
+                "rule": "public-page-v6",
+                "url": "https://open.spotify.com/artist/1JOdUvDAzNy3L37rZ4Nigr",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77-search_snippet",
+            "candidate_id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77",
+            "type": "search_snippet",
+            "value": "Dengarkan pewdiepie di Spotify. Artis \u00b7 152.1K pendengar bulanan ... pewdiepie. 152.106 pendengar bulanan. Ikuti. Populer. Bitch Lasagna. E.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22PewDiePie%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77-search_title",
+            "candidate_id": "web-7d6808e4498dc698c3e13ab7effbb11ee019ce13f64f70a2b7a912ef5ab3ac77",
+            "type": "search_title",
+            "value": "pewdiepie | Spotify",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22PewDiePie%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:22Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Rich Brian",
+      "original_snapshot_sha256": "6978f28e4a3cf2c8c86f6e30dd7b9b3fcddba20c505d838cad422349b50cc748",
+      "expected": [
+        {
+          "candidate_id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da",
+          "alias": "Rich Brian",
+          "name": "Brian Imanuel Soewarno"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "rich-brian",
+          "name": "Rich Brian"
+        },
+        "candidates": [
+          {
+            "id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Rich_Brian",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da-page_title",
+            "candidate_id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da",
+            "type": "page_title",
+            "value": "Rich Brian - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "93c171036e079c0e7eda59dd5c6ef00adf075672014b7598cc41ad7811785465",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Rich_Brian",
+                "observed_at": "2026-10-25T13:59:30Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da-search_snippet",
+            "candidate_id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da",
+            "type": "search_snippet",
+            "value": "Brian Imanuel Soewarno (born September 3, 1999), known professionally as Rich Brian (formerly Rich Chigga), is an Indonesian rapper and singer.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Rich+Brian%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:30Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da-search_title",
+            "candidate_id": "web-c9c5b1da082673d19c516d543bc096f004b4116399728e3ca1921cb4d9a012da",
+            "type": "search_title",
+            "value": "Rich Brian - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Rich+Brian%22&safesearch=0",
+                "observed_at": "2026-10-25T13:59:30Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Eminem",
+      "original_snapshot_sha256": "5b7acd2522d4bc7387dfdf2e1ed0b0f7d08598b74064ccb263def19d0970a365",
+      "expected": [
+        {
+          "candidate_id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267",
+          "alias": "Eminem",
+          "name": "Marshall Bruce Mathers III"
+        },
+        {
+          "candidate_id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a",
+          "alias": "Eminem",
+          "name": "Marshall Bruce Mathers III"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "eminem",
+          "name": "Eminem"
+        },
+        "candidates": [
+          {
+            "id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Eminem",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Eminem",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a-page_title",
+            "candidate_id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a",
+            "type": "page_title",
+            "value": "Eminem - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "2bb3f36e8478b35656b2d7edd0bd8e762bd88ed98a23d524d63e3d6a12fbe3e6",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Eminem",
+                "observed_at": "2026-10-25T14:04:33Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a-search_snippet",
+            "candidate_id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a",
+            "type": "search_snippet",
+            "value": "Marshall Bruce Mathers III (born October 17, 1972), known professionally as Eminem, is an American rapper, songwriter, record producer, and record executive ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Eminem%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:33Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a-search_title",
+            "candidate_id": "web-bfc6a0aef09888e6d0ee01b7789792ce137a834ee680dab46746d4af40beae9a",
+            "type": "search_title",
+            "value": "Eminem - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Eminem%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:33Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267-page_text-excerpt-2097",
+            "candidate_id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267",
+            "type": "page_text",
+            "value": "Marshall Bruce Mathers III (lahir 17 Oktober 1972), dikenal secara profesional sebagai Eminem (sering ditulis bergaya sebagai EMIN\u018eM ), adalah seorang rapper, penulis lagu, produser rekaman , eksekutif rekaman.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "5adad9933a2d0800cc9f8fd5ff7b87470c1659e252db30bb7970e30ab04fd470",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Eminem",
+                "observed_at": "2026-10-25T14:04:33Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267-page_title",
+            "candidate_id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267",
+            "type": "page_title",
+            "value": "Eminem - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "5adad9933a2d0800cc9f8fd5ff7b87470c1659e252db30bb7970e30ab04fd470",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Eminem",
+                "observed_at": "2026-10-25T14:04:33Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267-search_snippet",
+            "candidate_id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267",
+            "type": "search_snippet",
+            "value": "Marshall Bruce Mathers III (lahir 17 Oktober 1972), dikenal secara profesional sebagai Eminem (sering ditulis bergaya sebagai EMIN\u018eM), adalah seorang rapper, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Eminem%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:33Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267-search_title",
+            "candidate_id": "web-e7f206aafb11e6eee97166902e6dc0a4aa30a15097097517577453c7a0055267",
+            "type": "search_title",
+            "value": "Eminem - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Eminem%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:33Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Snoop Dogg",
+      "original_snapshot_sha256": "cb0d6b10a4ff6b31f4f10f3e4bad25a89b2d42d530b2ba45d68cce432ed10afe",
+      "expected": [
+        {
+          "candidate_id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e",
+          "alias": "Snoop Dogg",
+          "name": "Calvin Cordozar Broadus Jr."
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "snoop-dogg",
+          "name": "Snoop Dogg"
+        },
+        "candidates": [
+          {
+            "id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Snoop_Dogg",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e-page_text-excerpt-2146",
+            "candidate_id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e",
+            "type": "page_text",
+            "value": "Calvin Cordozar Broadus Jr. (born October 20, 1971), known professionally as Snoop Dogg , is an American rapper, singer, record producer, record executive, songwriter, and actor. A key figure in West Coast hip-hop , he helped define G-funk and gangsta rap , and is often regarded as one of the greatest rappers of all time. [ 5 ] [ 6 ] [ 7 ] Known for his signature drawled delivery and melodic flow, his lyrics frequently address social issues such as recreational drug use and gun violence . [ 8 ] [ 9 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "41b1f453d2bdef4160569cacc429f5660f3aa1739750d3448c708079248c1066",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Snoop_Dogg",
+                "observed_at": "2026-10-25T14:04:36Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e-page_title",
+            "candidate_id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e",
+            "type": "page_title",
+            "value": "Snoop Dogg - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "41b1f453d2bdef4160569cacc429f5660f3aa1739750d3448c708079248c1066",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Snoop_Dogg",
+                "observed_at": "2026-10-25T14:04:36Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e-search_snippet",
+            "candidate_id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e",
+            "type": "search_snippet",
+            "value": "Calvin Cordozar Broadus Jr. (born October 20, 1971), known professionally as Snoop Dogg, is an American rapper, singer, record producer, record executive, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Snoop+Dogg%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:36Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e-search_title",
+            "candidate_id": "web-3f7f843c7ee20f191fe467eed2a9f038a1806864ee15d332763cb516b2f49c4e",
+            "type": "search_title",
+            "value": "Snoop Dogg - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Snoop+Dogg%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:36Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Doja Cat",
+      "original_snapshot_sha256": "9c3c80a04922bb33a6f8ce6c1fc5583e29d415c93a7d8a74460865fa551a9079",
+      "expected": [
+        {
+          "candidate_id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab",
+          "alias": "Doja Cat",
+          "name": "Amala Ratna Zandile Dlamini"
+        },
+        {
+          "candidate_id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7",
+          "alias": "Doja Cat",
+          "name": "Amala Ratna Zandile Dlamini"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "doja-cat",
+          "name": "Doja Cat"
+        },
+        "candidates": [
+          {
+            "id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Doja_Cat",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Doja_Cat",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab-page_text-excerpt-1048",
+            "candidate_id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab",
+            "type": "page_text",
+            "value": "Amala Ratna Zandile Dlamini (born October 21, 1995), known professionally as Doja Cat ( / \u02c8 d o\u028a d \u0292 \u0259 / DOH -j\u0259 ), is an American rapper and singer-songwriter. Regarded as the \" Queen of Pop-Rap \", [ note 1 ] she is known for her musical versatility, live performance skills and humorous internet presence. Billboard named her \"one of the world's biggest pop stars \" and \"one of the defining pop stars of this era\", and Time listed her as one of the world's most influential people in 2023. [ 18 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "20514794129367c31f7cde9e5264984adc5eae40b249346279d51a634a5d2017",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Doja_Cat",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab-page_title",
+            "candidate_id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab",
+            "type": "page_title",
+            "value": "Doja Cat - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "20514794129367c31f7cde9e5264984adc5eae40b249346279d51a634a5d2017",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Doja_Cat",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab-search_snippet",
+            "candidate_id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab",
+            "type": "search_snippet",
+            "value": "Amala Ratna Zandile Dlamini (born October 21, 1995), known professionally as Doja Cat is an American rapper and singer-songwriter. Regarded as the \"Queen of ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Doja+Cat%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab-search_title",
+            "candidate_id": "web-c2a0ce6151bd9f1b84ecae231274d5f6570218eb60ffd04748ac487dc14d2eab",
+            "type": "search_title",
+            "value": "Doja Cat - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Doja+Cat%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7-page_text-excerpt-954",
+            "candidate_id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7",
+            "type": "page_text",
+            "value": "Amala Ratna Zandile Dlamini ( lahir 21 Oktober 1995 ) dikenal secara profesional sebagai Doja Cat ( / \u02c8 d o\u028a d \u0292 \u0259 / ), adalah seorang rapper, penyanyi, penulis lagu dan produser rekaman asal Amerika Serikat. Lahir dan dibesarkan di Los Angeles , California , ia mulai membuat dan merilis musik di SoundCloud saat remaja. Lagu \"So High\" menarik perhatian Kemosabe dan RCA Records , ia menandatangani kontrak rekaman dan merilis album mini debutnya, Purrr! pada tahun 2014.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "1aa139c5dc431866d615a63a14d77682dd034ba8ae5e06bc18e37d186a120475",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Doja_Cat",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7-page_title",
+            "candidate_id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7",
+            "type": "page_title",
+            "value": "Doja Cat - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "1aa139c5dc431866d615a63a14d77682dd034ba8ae5e06bc18e37d186a120475",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Doja_Cat",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7-search_snippet",
+            "candidate_id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7",
+            "type": "search_snippet",
+            "value": "Amala Ratna Zandile Dlamini (lahir 21 Oktober 1995 ) dikenal secara profesional sebagai Doja Cat (/\u02c8do\u028ad\u0292\u0259/), adalah seorang rapper, penyanyi, penulis lagu ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Doja+Cat%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7-search_title",
+            "candidate_id": "web-e684851f10d172bd8e81263140c649b047373c6dbe1007d54fa8ee15354597c7",
+            "type": "search_title",
+            "value": "Doja Cat - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Doja+Cat%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:43Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Bono",
+      "original_snapshot_sha256": "619b495b8043c0cb3f44d15e7e9d88ac02d751b35c4a6df3bc85609ab434fcef",
+      "expected": [
+        {
+          "candidate_id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf",
+          "alias": "Bono",
+          "name": "Paul David Hewson"
+        },
+        {
+          "candidate_id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a",
+          "alias": "Bono",
+          "name": "Yassine Bounou"
+        },
+        {
+          "candidate_id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060",
+          "alias": "Bono",
+          "name": "Paul David Hewson"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "bono",
+          "name": "Bono"
+        },
+        "candidates": [
+          {
+            "id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf",
+            "display_name": null,
+            "profile_url": "https://simple.wikipedia.org/wiki/Bono",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Yassine_Bounou",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Bono",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf-page_title",
+            "candidate_id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf",
+            "type": "page_title",
+            "value": "Bono - Simple English Wikipedia, the free encyclopedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "adcbe4732b7a8e43876cf6eab9172f74bd01da5d96a013f786c7914711681721",
+                "rule": "public-page-v6",
+                "url": "https://simple.wikipedia.org/wiki/Bono",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf-search_snippet",
+            "candidate_id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf",
+            "type": "search_snippet",
+            "value": "Paul David Hewson KBE (born 10 May 1960), known by his stage name Bono, is a man of Irish heritage who sings and writes songs.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bono%22+biography+real+name&safesearch=0",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf-search_title",
+            "candidate_id": "web-005ef5416b656060bea4d241764d04a51232877a1531f3e5a1774baed4c16daf",
+            "type": "search_title",
+            "value": "Bono - Simple English Wikipedia, the free encyclopedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bono%22+biography+real+name&safesearch=0",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060-page_text-excerpt-1534",
+            "candidate_id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060",
+            "type": "page_text",
+            "value": "Paul David Hewson (born 10 May 1960), known by the nickname Bono ( / \u02c8 b \u0252 n o\u028a / BON -oh ), is an Irish singer-songwriter and activist. [ 1 ] He is a founding member, the lead vocalist, and primary lyricist of the rock band U2 . Bono is known for his impassioned vocal style as well as his grandiose songwriting and performance style. His lyrics frequently include social and political themes, and religious imagery inspired by his Christian faith. [ 2 ] [ 3 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "92b099c25016591ea542046bfeb12f09cdb7b50faa5a364ebb117ada82cecadd",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Bono",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060-page_title",
+            "candidate_id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060",
+            "type": "page_title",
+            "value": "Bono - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "92b099c25016591ea542046bfeb12f09cdb7b50faa5a364ebb117ada82cecadd",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Bono",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060-search_snippet",
+            "candidate_id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060",
+            "type": "search_snippet",
+            "value": "He is a founding member, the lead vocalist, and primary lyricist of the rock band U2. Bono is known for his impassioned vocal style as well as his grandiose ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bono%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060-search_title",
+            "candidate_id": "web-023541ecb7055798cc9ff85b3b4c2b0fb92b4184d7e18c6088b4db3cd0dbb060",
+            "type": "search_title",
+            "value": "Bono - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bono%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a-page_text-excerpt-1546",
+            "candidate_id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a",
+            "type": "page_text",
+            "value": "Yassine Bounou (Arab: \u064a\u0627\u0633\u064a\u0646 \u0628\u0648\u0646\u0648; Bahasa Berber: \u2d62\u2d30\u2d59\u2d49\u2d4f \u2d31\u2d53\u2d4f\u2d53; lahir 5 April 1991 ), juga dikenal sebagai Bono , adalah pemain sepak bola profesional Maroko yang bermain sebagai penjaga gawang untuk klub Liga Profesional Saudi Al-Hilal dan tim nasional Maroko .",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "9b42d2b9810c9e0b0747fa6328beb99b232ea991fb0dbffcec772cfdb8fd9f1a",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Yassine_Bounou",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a-page_title",
+            "candidate_id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a",
+            "type": "page_title",
+            "value": "Yassine Bounou - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "9b42d2b9810c9e0b0747fa6328beb99b232ea991fb0dbffcec772cfdb8fd9f1a",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Yassine_Bounou",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a-search_snippet",
+            "candidate_id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a",
+            "type": "search_snippet",
+            "value": "Yassine Bounou (Arab: \u064a\u0627\u0633\u064a\u0646 \u0628\u0648\u0646\u0648; Bahasa Berber: \u2d62\u2d30\u2d59\u2d49\u2d4f \u2d31\u2d53\u2d4f\u2d53; lahir 5 April 1991 ), juga dikenal sebagai Bono, adalah pemain sepak bola profesional ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bono%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a-search_title",
+            "candidate_id": "web-47839106b22705ad599af62faf414e6c40e65635017a037ed94cb00b41b3310a",
+            "type": "search_title",
+            "value": "Yassine Bounou - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Bono%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:47Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Agnez Mo",
+      "original_snapshot_sha256": "18138ebcc9bdfc8ecc0e6719eb87ec991386afd2981c4b19468a7de67e2f7938",
+      "expected": [
+        {
+          "candidate_id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617",
+          "alias": "Agnez Mo",
+          "name": "Agnes Monica Muljoto"
+        },
+        {
+          "candidate_id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81",
+          "alias": "Agnez Mo",
+          "name": "Agnes Monica Muljoto"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "agnez-mo",
+          "name": "Agnez Mo"
+        },
+        "candidates": [
+          {
+            "id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Agnez_Mo",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81",
+            "display_name": null,
+            "profile_url": "https://www.youtube.com/@agnezmo/about",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81-page_description",
+            "candidate_id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81",
+            "type": "page_description",
+            "value": "DREAM, believe, and make it happen!",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "3436fe91c8a5f1ff97a11ff44623548a8707c2afc85d2a0398247635f01151cf",
+                "rule": "public-page-v6",
+                "url": "https://www.youtube.com/@agnezmo/about",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81-page_title",
+            "candidate_id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81",
+            "type": "page_title",
+            "value": "AGNEZ MO - YouTube",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "3436fe91c8a5f1ff97a11ff44623548a8707c2afc85d2a0398247635f01151cf",
+                "rule": "public-page-v6",
+                "url": "https://www.youtube.com/@agnezmo/about",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81-search_snippet",
+            "candidate_id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81",
+            "type": "search_snippet",
+            "value": "Agnes Monica Muljoto, known professionally as Agnez Mo, is an Indonesian singer, songwriter, and actress. Born in Jakarta, she started her career as a child ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Agnez+Mo%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81-search_title",
+            "candidate_id": "web-1de8ac53bbe0c2719d759bc02518239e30c766611a80984697f69b86f09e8b81",
+            "type": "search_title",
+            "value": "AGNEZ MO - YouTube",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Agnez+Mo%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617-page_text-excerpt-2095",
+            "candidate_id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617",
+            "type": "page_text",
+            "value": "Agnes Monica Muljoto (born 1 July 1986), known professionally as Agnez Mo (previously Agnes Monica ), is an Indonesian singer, songwriter, and actress. Born in Jakarta , she started her career as a child singer in the 1990s. She later transformed into an Indonesian pop icon of the 2000s and launched her international career in the mid-2010s.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "c26864ee8e365f53f5aae7e43ef36106e91b6b5593d5cd4223ceabc3fbc9b616",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Agnez_Mo",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617-page_title",
+            "candidate_id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617",
+            "type": "page_title",
+            "value": "Agnez Mo - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "c26864ee8e365f53f5aae7e43ef36106e91b6b5593d5cd4223ceabc3fbc9b616",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Agnez_Mo",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617-search_snippet",
+            "candidate_id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617",
+            "type": "search_snippet",
+            "value": "Agnes Monica Muljoto (born 1 July 1986), known professionally as Agnez Mo (previously Agnes Monica), is an Indonesian singer, songwriter, and actress.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Agnez+Mo%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617-search_title",
+            "candidate_id": "web-d9bdbc00fa7d2e065d4365dbbd43e1a962cf7755e3e58c8267ea8ac1b60ba617",
+            "type": "search_title",
+            "value": "Agnez Mo - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Agnez+Mo%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:53Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    },
+    {
+      "query": "Deddy Corbuzier",
+      "original_snapshot_sha256": "83932dadc553c2bdad0d2e461f2e8877983d01c7de8d3daf7ef45aeb8ca218e1",
+      "expected": [
+        {
+          "candidate_id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25",
+          "alias": "Deddy Corbuzier",
+          "name": "Deodatus Andreas Deddy Cahyadi Sundjojo"
+        },
+        {
+          "candidate_id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389",
+          "alias": "Deddy Corbuzier",
+          "name": "Deodatus Andreas Deddy Cahyadi Sunjoyo"
+        }
+      ],
+      "input": {
+        "schema_version": "1",
+        "target": {
+          "id": "deddy-corbuzier",
+          "name": "Deddy Corbuzier"
+        },
+        "candidates": [
+          {
+            "id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25",
+            "display_name": null,
+            "profile_url": "https://id.wikipedia.org/wiki/Deddy_Corbuzier",
+            "decision": "PENDING",
+            "confidence": 0
+          },
+          {
+            "id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389",
+            "display_name": null,
+            "profile_url": "https://en.wikipedia.org/wiki/Deddy_Corbuzier",
+            "decision": "PENDING",
+            "confidence": 0
+          }
+        ],
+        "evidence": [
+          {
+            "id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389-page_text-excerpt-1033",
+            "candidate_id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389",
+            "type": "page_text",
+            "value": "Deodatus Andreas Deddy Cahyadi Sunjoyo (born 28 December 1976 [ 1 ] ), commonly known as Deddy Corbuzier , is an Indonesian television presenter, actor, YouTuber , and former mentalist . [ 2 ] He is a recipient of the Merlin Award for \"World's Best Mentalist\" twice in a row. [ 3 ] Deddy made his debut on television in 1998 with Impresario 008 on RCTI . He did many publicity stunts with many famous magicians. As an actor, Deddy starred in The Mentalist (2011). Deddy also wrote, directed, and starred in the action film Triangle The Dark Side (2016) [ 4 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "99f8ffbaeb5899d3c3bebee82d1307cc6c5e01a13818e7e181ba4423e4c27d47",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Deddy_Corbuzier",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389-page_title",
+            "candidate_id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389",
+            "type": "page_title",
+            "value": "Deddy Corbuzier - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "99f8ffbaeb5899d3c3bebee82d1307cc6c5e01a13818e7e181ba4423e4c27d47",
+                "rule": "public-page-v6",
+                "url": "https://en.wikipedia.org/wiki/Deddy_Corbuzier",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389-search_snippet",
+            "candidate_id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389",
+            "type": "search_snippet",
+            "value": "Deddy Corbuzier ; Magician; presenter; mentalist \u00b7 YouTuber \u00b7 1998\u20132015 (as magician); 2000\u2013present (as presenter) \u00b7 Kalina Oktarani. \u200b. \u200b. ( m. 2005; div. 2013)\u200b.",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Deddy+Corbuzier%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389-search_title",
+            "candidate_id": "web-54f008519d4515ead6f841c2124691b15afae255b61c852619afd85727606389",
+            "type": "search_title",
+            "value": "Deddy Corbuzier - Wikipedia",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Deddy+Corbuzier%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25-page_text-excerpt-1229",
+            "candidate_id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25",
+            "type": "page_text",
+            "value": "Deodatus Andreas Deddy Cahyadi Sundjojo ( lahir 28 Desember 1976 ), yang dikenal secara profesional sebagai Deddy Corbuzier , adalah seorang YouTuber , podcaster , presenter , mentalis , dan aktor Indonesia yang kini menjabat sebagai Staf Khusus Menteri Pertahanan Republik Indonesia Sejak 11 Februari 2025. [ 3 ] [ 4 ]",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "300ee1baba81ef3228fae10b14d287be5232300ce11231679a0c25c5dac87ff8",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Deddy_Corbuzier",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25-page_title",
+            "candidate_id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25",
+            "type": "page_title",
+            "value": "Deddy Corbuzier - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "response_sha256": "300ee1baba81ef3228fae10b14d287be5232300ce11231679a0c25c5dac87ff8",
+                "rule": "public-page-v6",
+                "url": "https://id.wikipedia.org/wiki/Deddy_Corbuzier",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25-search_snippet",
+            "candidate_id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25",
+            "type": "search_snippet",
+            "value": "Deodatus Andreas Deddy Cahyadi Sundjojo (lahir 28 Desember 1976 ), yang dikenal secara profesional sebagai Deddy Corbuzier, adalah seorang YouTuber, ...",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Deddy+Corbuzier%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          },
+          {
+            "id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25-search_title",
+            "candidate_id": "web-e9f9c4d4250b5b7994ac9de923cc24dfb8a436e6defd2c209c8612514790bd25",
+            "type": "search_title",
+            "value": "Deddy Corbuzier - Wikipedia bahasa Indonesia, ensiklopedia bebas",
+            "status": "OBSERVED",
+            "confidence": 1,
+            "discoverability": 0.5,
+            "sources": [
+              {
+                "url": "http://127.0.0.1:8888/search?categories=general&format=json&q=%22Deddy+Corbuzier%22&safesearch=0",
+                "observed_at": "2026-10-25T14:04:56Z",
+                "collector": "web/github_experimental_v1"
+              }
+            ]
+          }
+        ],
+        "coverage": []
+      }
+    }
+  ]
+}

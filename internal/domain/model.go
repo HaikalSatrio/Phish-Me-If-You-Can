@@ -91,6 +91,7 @@ type Coverage struct {
 }
 
 type Case struct {
+	NameClaims      []NameClaim         `json:"name_claims,omitempty"`
 	IdentityReviews []IdentityReview    `json:"identity_reviews,omitempty"`
 	Relations       []Relation          `json:"relations,omitempty"`
 	Extraction      []ExtractionRun     `json:"extraction,omitempty"`
@@ -101,6 +102,19 @@ type Case struct {
 	Candidates      []Candidate         `json:"candidates"`
 	Evidence        []Evidence          `json:"evidence"`
 	Coverage        []Coverage          `json:"coverage"`
+}
+
+// NameClaim records an explicit public name relationship, not account ownership.
+type NameClaim struct {
+	ID          string `json:"id"`
+	CandidateID string `json:"candidate_id"`
+	Alias       string `json:"alias"`
+	Name        string `json:"name"`
+	Kind        string `json:"kind"`
+	EvidenceID  string `json:"evidence_id"`
+	Quote       string `json:"quote"`
+	Method      string `json:"method"`
+	Status      string `json:"status"`
 }
 
 // Relation is an unverified statement about a subject, not an identity decision.

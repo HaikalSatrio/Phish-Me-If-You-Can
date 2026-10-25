@@ -40,6 +40,7 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 		}
 	}
 	c.Relations = nil
+	c.NameClaims = nil
 	c.Extraction = nil
 	for i := range c.Evidence {
 		e := &c.Evidence[i]
@@ -86,7 +87,20 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 			}
 		}
 		asOf := time.Now().UTC()
+		names := publicNames(subject, *p, docs)
+		c.NameClaims = append(c.NameClaims, names...)
 		relations := extract.Relations(subject, docs, asOf)
+		// Alternate subjects are used only within the document that explicitly names them.
+		for _, claim := range names {
+			if strings.EqualFold(claim.Name, subject) {
+				continue
+			}
+			for _, doc := range docs {
+				if doc.ID == claim.EvidenceID {
+					relations = append(relations, extract.Relations(claim.Name, []extract.Document{doc}, asOf)...)
+				}
+			}
+		}
 		relations = append(relations, extract.BoundProfileRelations(subject, p.ProfileURL, docs, asOf)...)
 		encoded, _ := json.Marshal(docs)
 		trace := domain.ExtractionRun{CandidateID: p.ID, Version: extract.RelationVersion, Mode: "rules", Status: "SUCCESS", ObservedAt: asOf.Format(time.RFC3339), InputSHA256: fmt.Sprintf("%x", sha256.Sum256(encoded)), Accepted: len(relations)}

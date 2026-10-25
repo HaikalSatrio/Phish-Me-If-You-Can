@@ -12,6 +12,7 @@ import (
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/collector"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/identity"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/search"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/storage"
 )
@@ -213,6 +214,9 @@ func printCandidates(c domain.Case) {
 	if len(c.Candidates) == 0 {
 		fmt.Println("No candidate profiles collected. Check source status before drawing conclusions.")
 	}
+	for _, ambiguity := range identity.NameAmbiguities(c) {
+		fmt.Printf("Public name review: %q is associated with %q. Check possible namesakes or spelling variants; no single name selected.\n", ambiguity.Alias, ambiguity.Names)
+	}
 	for _, p := range c.Candidates {
 		if p.DiscoveryBasis != "" {
 			fmt.Printf("Discovery: %s | linked from=%q | identity needs review\n", p.DiscoveryBasis, p.LinkedFrom)
@@ -253,6 +257,7 @@ func printCandidates(c domain.Case) {
 			}
 		}
 		fmt.Printf("\n%s | user=%q name=%q decision=%s\n  URL: %q\n  Company: %q%s Role: %q%s Location: %q\n  Matches: %q\n  Contradictions: %q\n  Missing: %q\n", p.ID, p.Username, p.DisplayName, p.Decision, p.ProfileURL, p.Company, companyNote, p.Role, roleNote, p.Location, p.Matches, p.Contradictions, p.Missing)
+		printPublicNames(os.Stdout, identity.NameCards(c, p.ID))
 		if len(p.CompanyAlternatives) > 0 {
 			fmt.Printf("  Company alternatives (audit): %q\n", p.CompanyAlternatives)
 		}

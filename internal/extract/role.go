@@ -8,6 +8,12 @@ import (
 )
 
 var roleWords = map[string]bool{
+	"streamer": true, "youtuber": true, "influencer": true, "rapper": true,
+	"singer": true, "songwriter": true, "musician": true, "comedian": true,
+	"actor": true, "actress": true, "penyanyi": true, "musisi": true,
+	"komedian": true, "pelawak": true, "aktor": true, "aktris": true,
+	"singer-songwriter": true, "penyanyi-penulis": true, "wrestler": true, "pegulat": true, "selebritas": true,
+	"footballer": true, "athlete": true, "atlet": true, "pemain": true, "pesepakbola": true,
 	"activist": true, "aktivis": true, "advocate": true, "blogger": true, "bloger": true, "entrepreneur": true, "mentor": true, "pegiat": true, "fellow": true,
 	"accountant": true, "administrator": true, "advisor": true, "adviser": true,
 	"akuntan": true, "analis": true, "analyst": true, "apoteker": true,

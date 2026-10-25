@@ -1,0 +1,569 @@
+{
+  "date_utc": "2026-10-25",
+  "local_date": "2026-10-26",
+  "base_commit": "f2ecb763ddd239bcfff42f654d04cafdbc7814ef",
+  "working_tree_modified": true,
+  "relation_version": "relations-v9",
+  "name_version": "public-names-v1",
+  "changed_go_source_sha256": "1ff74ba71f7d3bfbbec487a4ee0b80b868d056e637c2a03d181ff510ccb99e60",
+  "changed_go_files": [
+    "cmd/pmiyc/challenge.go",
+    "cmd/pmiyc/names_test.go",
+    "cmd/pmiyc/profile.go",
+    "cmd/pmiyc/search.go",
+    "internal/collector/bing.go",
+    "internal/collector/biography.go",
+    "internal/collector/biography_test.go",
+    "internal/collector/collector.go",
+    "internal/collector/discovery.go",
+    "internal/collector/expansion.go",
+    "internal/domain/model.go",
+    "internal/dossier/dossier.go",
+    "internal/dossier/names_test.go",
+    "internal/enrich/enrich.go",
+    "internal/enrich/name_snapshots_test.go",
+    "internal/enrich/names.go",
+    "internal/enrich/names_test.go",
+    "internal/evidence/names.go",
+    "internal/evidence/normalize.go",
+    "internal/extract/occupation.go",
+    "internal/extract/occupation_test.go",
+    "internal/extract/relations.go",
+    "internal/extract/role.go",
+    "internal/extract/role_english.go",
+    "internal/identity/names.go",
+    "internal/identity/names_test.go",
+    "internal/identity/questions.go",
+    "internal/identity/review.go",
+    "internal/personname/claims.go",
+    "internal/personname/claims_test.go"
+  ],
+  "binary_sha256": "c38ed20f7afcc82c74e43bd10ce44479d9d90ff26387d917652ffec66b875e71",
+  "fixture_sha256": "2812875a0be3f005fc0594240e6e8f274d424602e4b9bd3ccb959ad186f28b28",
+  "scope": "Public source-claim regression and live retrieval observations. Not independently labeled identity accuracy. First-pass outputs were inspected and used for subsequent corrections.",
+  "checks": {
+    "go_test_all": "PASS",
+    "go_vet_all": "PASS",
+    "build": "PASS",
+    "passing_packages": 13,
+    "positive_name_examples": 32,
+    "negative_name_examples": 24,
+    "public_snapshot_cases": 17,
+    "fuzz": {
+      "status": "PASS",
+      "requested_seconds": 20,
+      "executions": 11650,
+      "workers": 2,
+      "invariant": "Each accepted name and quote is a literal source span, bound to the supplied subject. Does not establish source truth."
+    }
+  },
+  "prior_extraction_benchmark": {
+    "cases": 24,
+    "completed": 24,
+    "claims": {
+      "true_positive": 14,
+      "false_positive": 0,
+      "false_negative": 2,
+      "precision": 1,
+      "recall": 0.875
+    },
+    "role": {
+      "true_positive": 12,
+      "false_positive": 0,
+      "false_negative": 1,
+      "precision": 1,
+      "recall": 0.9230769230769231
+    },
+    "company": {
+      "true_positive": 11,
+      "false_positive": 0,
+      "false_negative": 1,
+      "precision": 1,
+      "recall": 0.9166666666666666
+    },
+    "education": {
+      "true_positive": 1,
+      "false_positive": 0,
+      "false_negative": 1,
+      "precision": 1,
+      "recall": 0.5
+    },
+    "negative_cases": 11,
+    "correct_abstentions": 11,
+    "missed_positive_cases": 2,
+    "unrequested_confirmations": 0,
+    "model_success": 0,
+    "model_failed": 0,
+    "model_skipped": 0,
+    "model_status_counts": {},
+    "rejected_proposals": 0,
+    "duration_ms": 21
+  },
+  "live_runs": [
+    {
+      "query": "Lady Gaga",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "15037f01a3e2bfef808f1451d69456f7faca3909fde2ae54c3fa90025124b8f3",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Stefani Joanne Angelina Germanotta"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Lady Gaga",
+          "name": "Stefani Joanne Angelina Germanotta",
+          "candidate_url": "https://en.wikipedia.org/wiki/Lady_Gaga",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Lady Gaga",
+          "name": "Stefani Joanne Angelina Germanotta",
+          "candidate_url": "https://id.wikipedia.org/wiki/Lady_Gaga",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Bruno Mars",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "6ef559cbd02bc61aecd9715b14b5eca92092d54559362bca837a108bbe845894",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Peter Gene Hernandez"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Bruno Mars",
+          "name": "Peter Gene Hernandez",
+          "candidate_url": "https://en.wikipedia.org/wiki/Bruno_Mars",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Bruno Mars",
+          "name": "Peter Eugene Hernandez",
+          "candidate_url": "https://id.wikipedia.org/wiki/Bruno_Mars",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "The Weeknd",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "e6437b8298e053ea0968842ee538edd048d3e8f1022cedafcdaa3e18c74bd9d7",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Abel Tesfaye"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "the Weeknd",
+          "name": "Abel Tesfaye",
+          "candidate_url": "https://en.wikipedia.org/wiki/The_Weeknd",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Lorde",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "c2a6676c9d423c82da382756d172a7dcd2e5c5b54c2fe22851620559b86f976d",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Ella Marija Lani Yelich-O'Connor"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Lorde",
+          "name": "Ella Marija Lani Yelich-O'Connor",
+          "candidate_url": "https://en.wikipedia.org/wiki/Lorde",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Lorde",
+          "name": "Ella Marija Lani Yelich-O'Connor",
+          "candidate_url": "https://id.wikipedia.org/wiki/Lorde",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "MrBeast",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "8fd715501f60b127a888ac4375e4d8a80b0cbe9a213f8c79e7c35187076a6621",
+      "search_status": "PARTIAL",
+      "requests": 5,
+      "first_pass_names": [
+        "Jimmy Donaldson"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "MrBeast",
+          "name": "Jimmy Donaldson",
+          "candidate_url": "https://www.imdb.com/name/nm10055663/",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Cak Lontong",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "c5f72544a248ba07fb1645887e4611174e7c7e33400d718d2b8b3c3a8eafecdf",
+      "search_status": "PARTIAL",
+      "requests": 7,
+      "first_pass_names": [],
+      "final_source_assertions": [
+        {
+          "alias": "Cak Lontong",
+          "name": "Lies Hartono",
+          "candidate_url": "https://id.wikipedia.org/wiki/Cak_Lontong",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Sting",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "8a13eca914096005859a88c4d8a036b00c553acdf813a8934ce3a04de8eb7792",
+      "search_status": "PARTIAL",
+      "requests": 5,
+      "first_pass_names": [
+        "Gordon Matthew Thomas Sumner"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Sting",
+          "name": "Gordon Matthew Thomas Sumner",
+          "candidate_url": "https://id.wikipedia.org/wiki/Sting_(musisi)",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Sting",
+          "name": "Gordon Matthew Thomas Sumner",
+          "candidate_url": "https://en.wikipedia.org/wiki/Sting_(musician)",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Sting",
+          "name": "Steve Borden",
+          "candidate_url": "https://id.wikipedia.org/wiki/Sting_(pegulat)",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Banksy",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "ba32ce41fdb43cb74d9ce69bce76a48985b6e86c0e2fc97a716cfa6d7fefaa3a",
+      "search_status": "PARTIAL",
+      "requests": 8,
+      "first_pass_names": [],
+      "final_source_assertions": [],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "IShowSpeed",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "72941e9627e3b48cb0e023c2b3e538e0de18fff701f7281e97b09b3244d472aa",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Darren Jason Watkins Jr."
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "IShowSpeed",
+          "name": "Darren Jason Watkins Jr.",
+          "candidate_url": "https://id.wikipedia.org/wiki/IShowSpeed",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "IShowSpeed",
+          "name": "Darren Jason Watkins Jr.",
+          "candidate_url": "https://en.wikipedia.org/wiki/IShowSpeed",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "PewDiePie",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "9bd545bb1615dd804cefe20ca7bc894a5131ebe141150b6fcd55d8340434956b",
+      "search_status": "PARTIAL",
+      "requests": 8,
+      "first_pass_names": [
+        "Felix Arvid Ulf Kjellberg"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "PewDiePie",
+          "name": "Felix Arvid Ulf Kjellberg",
+          "candidate_url": "https://en.wikipedia.org/wiki/PewDiePie",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "PewDiePie",
+          "name": "Felix Arvid Ulf Kjellberg",
+          "candidate_url": "https://open.spotify.com/intl-id/artist/1JOdUvDAzNy3L37rZ4Nigr",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Rich Brian",
+      "phase": "initial_eleven",
+      "snapshot_sha256": "6978f28e4a3cf2c8c86f6e30dd7b9b3fcddba20c505d838cad422349b50cc748",
+      "search_status": "PARTIAL",
+      "requests": 8,
+      "first_pass_names": [],
+      "final_source_assertions": [
+        {
+          "alias": "Rich Brian",
+          "name": "Brian Imanuel Soewarno",
+          "candidate_url": "https://en.wikipedia.org/wiki/Rich_Brian",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Eminem",
+      "phase": "additional_six",
+      "snapshot_sha256": "5b7acd2522d4bc7387dfdf2e1ed0b0f7d08598b74064ccb263def19d0970a365",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Marshall Bruce Mathers III"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Eminem",
+          "name": "Marshall Bruce Mathers III",
+          "candidate_url": "https://id.wikipedia.org/wiki/Eminem",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Eminem",
+          "name": "Marshall Bruce Mathers III",
+          "candidate_url": "https://en.wikipedia.org/wiki/Eminem",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Snoop Dogg",
+      "phase": "additional_six",
+      "snapshot_sha256": "cb0d6b10a4ff6b31f4f10f3e4bad25a89b2d42d530b2ba45d68cce432ed10afe",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Calvin Cordozar Broadus Jr."
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Snoop Dogg",
+          "name": "Calvin Cordozar Broadus Jr.",
+          "candidate_url": "https://en.wikipedia.org/wiki/Snoop_Dogg",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Doja Cat",
+      "phase": "additional_six",
+      "snapshot_sha256": "9c3c80a04922bb33a6f8ce6c1fc5583e29d415c93a7d8a74460865fa551a9079",
+      "search_status": "PARTIAL",
+      "requests": 5,
+      "first_pass_names": [
+        "Amala Ratna Zandile Dlamini"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Doja Cat",
+          "name": "Amala Ratna Zandile Dlamini",
+          "candidate_url": "https://en.wikipedia.org/wiki/Doja_Cat",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Doja Cat",
+          "name": "Amala Ratna Zandile Dlamini",
+          "candidate_url": "https://id.wikipedia.org/wiki/Doja_Cat",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Bono",
+      "phase": "additional_six",
+      "snapshot_sha256": "619b495b8043c0cb3f44d15e7e9d88ac02d751b35c4a6df3bc85609ab434fcef",
+      "search_status": "PARTIAL",
+      "requests": 7,
+      "first_pass_names": [
+        "Paul David Hewson KBE"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Bono",
+          "name": "Paul David Hewson",
+          "candidate_url": "https://simple.wikipedia.org/wiki/Bono",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Bono",
+          "name": "Yassine Bounou",
+          "candidate_url": "https://id.wikipedia.org/wiki/Yassine_Bounou",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Bono",
+          "name": "Paul David Hewson",
+          "candidate_url": "https://en.wikipedia.org/wiki/Bono",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Agnez Mo",
+      "phase": "additional_six",
+      "snapshot_sha256": "18138ebcc9bdfc8ecc0e6719eb87ec991386afd2981c4b19468a7de67e2f7938",
+      "search_status": "PARTIAL",
+      "requests": 5,
+      "first_pass_names": [
+        "Agnes Monica Muljoto"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Agnez Mo",
+          "name": "Agnes Monica Muljoto",
+          "candidate_url": "https://en.wikipedia.org/wiki/Agnez_Mo",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Agnez Mo",
+          "name": "Agnes Monica Muljoto",
+          "candidate_url": "https://www.youtube.com/@agnezmo/about",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    },
+    {
+      "query": "Deddy Corbuzier",
+      "phase": "additional_six",
+      "snapshot_sha256": "83932dadc553c2bdad0d2e461f2e8877983d01c7de8d3daf7ef45aeb8ca218e1",
+      "search_status": "PARTIAL",
+      "requests": 6,
+      "first_pass_names": [
+        "Deodatus Andreas Deddy Cahyadi Sundjojo",
+        "Deodatus Andreas Deddy Cahyadi Sunjoyo"
+      ],
+      "final_source_assertions": [
+        {
+          "alias": "Deddy Corbuzier",
+          "name": "Deodatus Andreas Deddy Cahyadi Sundjojo",
+          "candidate_url": "https://id.wikipedia.org/wiki/Deddy_Corbuzier",
+          "status": "UNVERIFIED"
+        },
+        {
+          "alias": "Deddy Corbuzier",
+          "name": "Deodatus Andreas Deddy Cahyadi Sunjoyo",
+          "candidate_url": "https://en.wikipedia.org/wiki/Deddy_Corbuzier",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "unrequested_identity_confirmations": 0
+    }
+  ],
+  "ollama_same_input_checks": [
+    {
+      "query": "bruno-mars",
+      "hybrid_snapshot_sha256": "23a1c432304bf30e41c919a6a932bc38927d09481a1c36ebd40499039147931c",
+      "model": "qwen2.5:7b",
+      "model_digests": [
+        "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      ],
+      "document_hashes_equal": true,
+      "name_claims_equal": true,
+      "model_status_counts": {
+        "EMPTY": 2,
+        "REJECTED_ALL": 1,
+        "SUCCESS": 1
+      },
+      "pending_model_relationships": 1
+    },
+    {
+      "query": "cak-lontong",
+      "hybrid_snapshot_sha256": "c34420789ad9ce3cafa5b4355ca01a04326b0c313a89268e49483e7b2e0efeb8",
+      "model": "qwen2.5:7b",
+      "model_digests": [
+        "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      ],
+      "document_hashes_equal": true,
+      "name_claims_equal": true,
+      "model_status_counts": {
+        "SUCCESS": 1,
+        "EMPTY": 3,
+        "PARTIAL": 1
+      },
+      "pending_model_relationships": 4
+    },
+    {
+      "query": "lorde",
+      "hybrid_snapshot_sha256": "8ac7737f73de176f582baf147fc68dea0540218e217c8461a86d27861db3fded",
+      "model": "qwen2.5:7b",
+      "model_digests": [
+        "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      ],
+      "document_hashes_equal": true,
+      "name_claims_equal": true,
+      "model_status_counts": {
+        "SUCCESS": 2,
+        "EMPTY": 2
+      },
+      "pending_model_relationships": 2
+    },
+    {
+      "query": "rich-brian",
+      "hybrid_snapshot_sha256": "c5c8c75ced1d382c110222a78007ce5b97e3457b38c859d024ad19c8e9ace4bc",
+      "model": "qwen2.5:7b",
+      "model_digests": [
+        "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      ],
+      "document_hashes_equal": true,
+      "name_claims_equal": true,
+      "model_status_counts": {
+        "REJECTED_ALL": 3,
+        "EMPTY": 1
+      },
+      "pending_model_relationships": 0
+    }
+  ],
+  "fresh_cli_smoke": {
+    "query": "Rich Brian",
+    "status": "PARTIAL",
+    "requests": 5,
+    "names": [
+      "Brian Imanuel Soewarno"
+    ],
+    "roles": [
+      "Indonesian rapper",
+      "Indonesian rapper; singer"
+    ]
+  }
+}

@@ -10,6 +10,8 @@ Laporan hanya memakai kandidat dengan keputusan `CONFIRM`. Kandidat `UNSURE`, `P
 
 Nama input pencarian disajikan terpisah dari nama yang diamati pada sumber. Field profil terstruktur seperti workplace, role, website, dan location tetap ditampilkan dengan provenance. Pekerjaan, pendidikan, profesi, serta hubungan lain dikelompokkan terpisah. Klaim identik dapat mempunyai beberapa referensi, tetapi jumlah sumber tidak dianggap bukti independen atau kenaikan confidence.
 
+`public_names` menampilkan hubungan nama panggung dan nama publik dari kandidat terkonfirmasi dengan kutipan dan sumber. Ini terpisah dari `observed_names` pada profil dan tidak memilih satu nama legal secara otomatis. Perbedaan nama untuk alias yang sama menghasilkan `PUBLIC_NAME_VARIANTS`. Lihat [ekstraksi nama publik](PUBLIC-NAMES.md).
+
 Setiap klaim mempertahankan kandidat asal, subjek yang tertulis, ID hubungan, metode, keputusan review, kutipan literal, sumber, dan periode. Bukti judul profil dan bukti isi ditampilkan terpisah bila atribusi memerlukan keduanya. Hubungan yang ditolak tidak dipakai; ID-nya tetap tercatat. Usulan Ollama yang belum diterima berada di `pending_relations`; setelah `review-relation ... -decision ACCEPT`, usulan dapat bergabung dengan kelompok klaim sumber. Statusnya tetap belum terverifikasi.
 
 Laporan menandai beberapa employer yang disebut dalam headline atau klaim present-tense, serta employer yang muncul dalam klaim historis dan klaim present-tense/headline. Penanda ini meminta pemeriksaan periode. Orang dapat bekerja di beberapa tempat atau kembali ke employer lama; laporan tidak memilih salah satu atau menyatakan sumber pasti bertentangan.

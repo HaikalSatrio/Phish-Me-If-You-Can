@@ -191,12 +191,16 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 		}
 	}
 	research := q.Budget >= 8 && (len(q.Accounts) > 0 || q.URL != "" || q.Username != "")
+	biography := q.Budget >= 8 && q.Limit >= 3 && !research && q.Platform == "" && strings.TrimSpace(q.Name) != ""
 	if research {
 		d.followResearchLinks(ctx, q, &r, attempted, seen, 3)
 	}
 	reserve := 0
 	if research {
 		reserve = min(6, (q.Budget-r.Requests)/2)
+	}
+	if biography {
+		reserve = 2
 	}
 	for providerIndex, provider := range d.providers {
 		for _, query := range discoveryQueries(q) {
@@ -208,11 +212,11 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 			}
 			next := query
 			next.Budget -= r.Requests + reserve
-			if research {
+			if research || biography {
 				next.Budget = min(2, next.Budget)
 			}
 			next.Limit = q.Limit - len(r.Profiles)
-			if research && q.Limit > 2 {
+			if (research || biography) && q.Limit > 2 {
 				next.Limit--
 			}
 			if next.Budget < 1 || next.Limit < 1 {
@@ -243,6 +247,9 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 				r.Profiles = append(r.Profiles, profile)
 			}
 		}
+	}
+	if biography {
+		d.findBiography(ctx, q, &r, seen, unavailable)
 	}
 	if len(r.Profiles) > 0 {
 		status = "SUCCESS"

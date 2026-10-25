@@ -23,6 +23,9 @@ func searchPhrases(q Query) []string {
 		return nil
 	}
 	base := quoteTerm(primary)
+	if q.Purpose == "biography" {
+		return []string{base + " biography real name"}
+	}
 	company := sanitizeTerm(q.Company)
 	location := sanitizeTerm(q.Location)
 	phrases := []string{base}
