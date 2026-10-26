@@ -126,3 +126,8 @@ API adapters are tested with mocked HTTP responses. No live Brave or Google API 
 - https://api-dashboard.search.brave.com/app/documentation/web-search/get-started
 - https://docs.bsky.app/
 - https://pkg.go.dev/golang.org/x/net/html
+## Diagnosing an empty web collection
+
+When no candidate is collected and a source reports `FAILED` or `BLOCKED`, an empty fallback must not turn that attempt into successful empty coverage. Web discovery preserves the failure status; the CLI saves diagnostics and returns a nonzero exit code. A missing Wikipedia article only describes that exact-title lookup. Biography expansion does not repeat the same Wikipedia title request.
+
+A running local SearXNG service does not establish that its upstream engines work. Inspect `unresponsive_engines` and container logs. A TLS hostname mismatch means the received certificate does not identify the requested host; investigate DNS and the network path before changing certificate trust. Do not disable TLS verification. Rate-limited engines require their cooldown; increasing the request budget does not repair them. With no collected text, local model extraction has no source evidence to process.

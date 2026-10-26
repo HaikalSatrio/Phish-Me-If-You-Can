@@ -8,6 +8,22 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 )
 
+func TestEmptyFallbackDoesNotHideFailedDiscovery(t *testing.T) {
+	for _, failed := range []string{"FAILED", "BLOCKED", "EMPTY"} {
+		index := &anchorPage{response: func(q Query) Result {
+			return Result{Status: failed, Requests: 1, Events: []Event{{"index:web", failed, "source result"}}}
+		}}
+		fallback := &anchorPage{response: func(q Query) Result {
+			return Result{Status: "EMPTY", Requests: 1, Events: []Event{{"wikipedia:title", "EMPTY", "no article"}}}
+		}}
+		d := Discovery{providers: []Collector{index, fallback}}
+		r := d.Collect(context.Background(), Query{Name: "Mira Solis", Limit: 5, Budget: 7})
+		if r.Status != failed || len(r.Profiles) != 0 {
+			t.Fatalf("source failure masked by empty fallback: %+v", r)
+		}
+	}
+}
+
 func TestScopedAccountSearchRejectsOtherOwnersMentions(t *testing.T) {
 	q := Query{Name: "Mira", Username: "mira_art", Platform: "instagram"}
 	for _, raw := range []string{"https://instagram.com/other/", "https://instagram.com/other/reel/123", "https://instagram.com/p/123"} {

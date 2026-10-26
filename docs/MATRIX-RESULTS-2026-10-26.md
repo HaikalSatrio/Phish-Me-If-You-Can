@@ -74,7 +74,7 @@ Next evaluation should use a separately labeled corpus that includes less promin
 | --- | --- |
 | Corpus | `26bca8b7691cec556e9f3a6dac246798f5b99dd288a6679378b51fc23f9db046` |
 | Frozen primary executable | `3a883f1019e14a2770c5eb7ca3a06edf4a27cbabb2f8e9e8aa193324364ed2b6` |
-| Final executable in `bin/pmiyc.exe` | `649c32c18f2eacc3af3a62d3a61d5f483d7ea863c7238ed7ff04d7ebb561be65` |
+| Post-audit executable evaluated in this report | `649c32c18f2eacc3af3a62d3a61d5f483d7ea863c7238ed7ff04d7ebb561be65` |
 | Qwen2.5:7b | `845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e` |
 
 Full collection provenance, configuration and runner hashes are in the primary report. The post-audit artifact links to that report by hash and keeps the later evaluation separate.

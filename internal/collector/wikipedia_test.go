@@ -25,6 +25,18 @@ func TestWikipediaBoundedReferenceFallback(t *testing.T) {
 	}
 }
 
+func TestWikipediaDoesNotRepeatExactTitleForBiography(t *testing.T) {
+	w := NewWikipedia(time.Second)
+	w.client = &http.Client{Transport: roundTripFunc(func(req *http.Request) (*http.Response, error) {
+		t.Fatal("biography query must not repeat the identical title request")
+		return nil, nil
+	})}
+	r := w.Collect(context.Background(), Query{Name: "Mira Solis", Purpose: "biography", Budget: 1, Limit: 1})
+	if r.Status != "NOT_CHECKED" || r.Requests != 0 || len(r.Events) != 0 {
+		t.Fatalf("unsupported query consumed requests: %+v", r)
+	}
+}
+
 func TestWikipediaAbstainsOnMissingAmbiguousOrUnsafeArticles(t *testing.T) {
 	for _, body := range []string{
 		`{"query":{"pages":[{"ns":0,"missing":true}]}}`,

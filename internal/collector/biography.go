@@ -22,6 +22,9 @@ func (d *Discovery) findBiography(ctx context.Context, q Query, r *Result, seen 
 		}
 		query := Query{Name: q.Name, Purpose: "biography", Budget: 1, Limit: q.Limit - len(r.Profiles)}
 		part := provider.Collect(ctx, query)
+		if part.Status == "NOT_CHECKED" && part.Requests == 0 && len(part.Events) == 0 && len(part.Profiles) == 0 {
+			continue
+		}
 		r.Requests += part.Requests
 		r.Events = append(r.Events, part.Events...)
 		unavailable[i] = operationalFailure(part)

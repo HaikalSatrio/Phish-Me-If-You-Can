@@ -295,6 +295,17 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 	d.followResearchLinks(ctx, q, &r, attempted, seen, 4)
 	if len(r.Profiles) > 0 {
 		r.Status = "SUCCESS"
+	} else {
+		// An empty fallback cannot establish absence when another source failed.
+		for _, event := range r.Events {
+			if event.Status == "BLOCKED" {
+				r.Status = "BLOCKED"
+				break
+			}
+			if event.Status == "FAILED" {
+				r.Status = "FAILED"
+			}
+		}
 	}
 	return r
 }

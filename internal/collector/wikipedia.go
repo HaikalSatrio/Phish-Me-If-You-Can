@@ -19,7 +19,7 @@ func NewWikipedia(timeout time.Duration) *Wikipedia { return &Wikipedia{publicCl
 
 func (w *Wikipedia) Collect(ctx context.Context, q Query) Result {
 	r := Result{Status: "NOT_CHECKED", Incomplete: true}
-	if strings.TrimSpace(q.Name) == "" || q.Username != "" || q.Platform != "" || q.Budget < 1 || q.Limit < 1 {
+	if strings.TrimSpace(q.Name) == "" || q.Username != "" || q.Platform != "" || q.Purpose != "" || q.Budget < 1 || q.Limit < 1 {
 		return r
 	}
 	if strings.ContainsAny(q.Name, "|:#") {
