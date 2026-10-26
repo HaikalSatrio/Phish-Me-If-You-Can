@@ -8,6 +8,8 @@ import (
 )
 
 var roleWords = map[string]bool{
+	"chef": true, "restaurateur": true, "historian": true, "author": true, "poet": true,
+	"presenter": true, "producer": true, "dancer": true, "player": true,
 	"streamer": true, "youtuber": true, "influencer": true, "rapper": true,
 	"singer": true, "songwriter": true, "musician": true, "comedian": true,
 	"actor": true, "actress": true, "penyanyi": true, "musisi": true,

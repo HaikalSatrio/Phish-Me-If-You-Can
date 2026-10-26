@@ -161,7 +161,7 @@ func runSearch(args []string) error {
 	fmt.Printf("Saved project: %s\nStatus: %s\nRequests used: %d/%d\n", path, project.Search.Status, project.Search.RequestsUsed, cfg.RequestBudget)
 	fmt.Printf("Collected: %d candidates, %d observations\n", len(project.Candidates), len(project.Evidence))
 	if provider == "web" {
-		fmt.Println("Source: public account/URL clues, linked biographies, SearXNG/DuckDuckGo/Bing, and bounded follow-up name searches. No API key required.")
+		fmt.Println("Source: public account/URL clues, linked biographies, SearXNG/DuckDuckGo/Bing, Wikipedia title fallback, and bounded follow-up name searches. No API key required.")
 		if cfg.SearXNGURL != "" {
 			fmt.Println("Configured SearXNG service is tried before the public search fallbacks.")
 		} else {

@@ -90,6 +90,8 @@ Lihat ID, kutipan, metode, dan status review dengan `candidates`, lalu buat snap
 
 ## Batas dan evaluasi
 
+Versi `relations-v11` menangani penanda sitasi pada pembuka biografi, tanda kurung bertingkat, serta batas klausa dan periode profesi. Label antarmuka seperti `Player profile` dan kata kerja seperti `plays as` tidak dianggap pekerjaan. Deskripsi setelah `known for` tidak menjadi perusahaan, dan proposal pendidikan memerlukan pernyataan studi atau kualifikasi. Pengikatan `article-binding-v1` dapat memakai judul dan pembuka artikel Wikipedia yang sama untuk nama dengan tambahan komponen; kedua referensi kutipan disimpan dan diperiksa ulang. Ini tidak menggabungkan profil, menyimpulkan alias sembarang, atau memverifikasi nama legal. Lihat [hasil evaluasi 200 nama internasional](MATRIX-RESULTS-2026-10-26.md).
+
 Pendidikan tersedia sebagai `candidates[].education_claims` dengan referensi hubungan dan periode. Perusahaan tetap khusus hubungan employment. Nama yang diamati pada halaman kandidat menjadi subjek ekstraksi sebelum nama pencarian, sehingga input nama depan dapat diperkaya dari nama lengkap yang benar-benar tercantum pada sumber. Klaim dari kandidat lain tidak dipindahkan ke akun awal. Lihat [alur penelusuran bertahap](ITERATIVE-RESEARCH.md).
 
 - Aturan prosa terutama mencakup Indonesia dan Inggris. Pengurangan tebakan meningkatkan abstention; beberapa judul profil yang dulu menghasilkan field sekarang hanya tersimpan sebagai observasi.

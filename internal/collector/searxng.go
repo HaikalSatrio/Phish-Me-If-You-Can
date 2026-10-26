@@ -200,6 +200,26 @@ func (s *SearXNG) Collect(ctx context.Context, q Query) Result {
 				r.Events = append(r.Events, Event{op, "FAILED", "Expected bounded SearXNG JSON response; enable JSON output"})
 				return r
 			}
+			if len(data.Results) == 0 && len(data.Unresponsive) > 0 {
+				details := []string{}
+				for _, raw := range data.Unresponsive {
+					var pair []string
+					if json.Unmarshal(raw, &pair) == nil && len(pair) >= 2 {
+						detail := []rune(strings.Join(strings.Fields(pair[0]+": "+pair[1]), " "))
+						details = append(details, string(detail[:min(180, len(detail))]))
+					}
+					if len(details) == 5 {
+						break
+					}
+				}
+				r.Events = append(r.Events, Event{op, "FAILED", "Upstream engines unavailable and no results returned; retry after the provider cooldown or repair the source configuration: " + strings.Join(details, "; ")})
+				if len(r.Profiles) > 0 {
+					r.Status = "SUCCESS"
+					rankResults(r.Profiles, q)
+					r.Profiles = r.Profiles[:min(q.Limit, len(r.Profiles))]
+				}
+				return r
+			}
 			parsedAny = true
 			added := 0
 			for _, item := range data.Results {

@@ -12,12 +12,22 @@ var possessiveRole = regexp.MustCompile(`^(.{2,100}?)['\x{2019}]s\s+(.+)$`)
 var organizationalLeadership = regexp.MustCompile(`(?i)\b(?:ceo|cfo|cto|coo|founder|co-founder|cofounder|owner|president|pendiri|pemilik)\b`)
 var clauseContinuation = regexp.MustCompile(`(?i)\s+(?:and|dan)\s+(?:serves|sits|works|is|was|has|oleh|dikenal|menjabat)\b`)
 
-func primaryRoleClause(body string) string {
+func primaryClause(body string) string {
+	if i := regexp.MustCompile(`(?i)\s+(?:(?:best\s+)?known|renowned|famous|recognized)\s+for\s+`).FindStringIndex(body); i != nil {
+		body = body[:i[0]]
+	}
+	if i := regexp.MustCompile(`(?i)\s+(?:who|whose|yang)\s+`).FindStringIndex(body); i != nil {
+		body = body[:i[0]]
+	}
 	if i := clauseContinuation.FindStringIndex(body); i != nil {
 		body = body[:i[0]]
 	}
+	return body
+}
+
+func primaryRoleClause(body string) string {
 	// Strip dates before descriptive commas so month-first dates remain intact.
-	return literalField(body)
+	return literalField(primaryClause(body))
 }
 
 // Attributive titles keep the organization, role and full name in one source span.

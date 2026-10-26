@@ -12,7 +12,7 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/personname"
 )
 
-const RelationVersion = "relations-v9"
+const RelationVersion = "relations-v11"
 
 type Document struct {
 	ID   string `json:"id"`
@@ -37,6 +37,7 @@ var relationSeparator = regexp.MustCompile(`(?i)\s+(?:at|for|di|pada)\s+`)
 var publicOffice = regexp.MustCompile(`(?i)^(?:(?:the|a|an|seorang|mantan|former|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|ke-?\d+|\d+(?:st|nd|rd|th))\s+)*(?:presiden(?:t)?|wakil presiden|vice president|governor|gubernur|mayor|wali kota|walikota|menteri|minister|prime minister|perdana menteri)\b`)
 var negatedRelation = regexp.MustCompile(`(?i)\b(?:not|never|denied|denies|allegedly|rumored|rumoured|reportedly|might|could|would|bukan|tidak|dikabarkan|diduga|akan|jika|if)\b|\b(?:may|will)\s+(?:be|work|serve|join|become)\b`)
 var aliasClause = regexp.MustCompile(`(?i)^,\s*(?:also known as|known as|dikenal sebagai)\s+[^,;.!?]{1,80},\s*`)
+var leadingCitation = regexp.MustCompile(`^\s*(?:\[\s*(?:[a-z]|\d{1,3}|note\s+\d{1,2})\s*\]\s*)+`)
 
 func compact(s string) string { return strings.Join(strings.Fields(s), " ") }
 
@@ -81,7 +82,25 @@ func literalField(s string) string {
 	if loc := strings.Index(s, ","); loc >= 0 {
 		s = s[:loc]
 	}
-	s = strings.Trim(s, " .,:;()")
+	s = strings.Trim(s, " .,:;")
+	if strings.HasPrefix(s, "(") && strings.HasSuffix(s, ")") {
+		depth, wraps := 0, true
+		for i, r := range s {
+			if r == '(' {
+				depth++
+			}
+			if r == ')' {
+				depth--
+			}
+			if depth == 0 && i < len(s)-1 {
+				wraps = false
+				break
+			}
+		}
+		if wraps {
+			s = strings.TrimSpace(s[1 : len(s)-1])
+		}
+	}
 	return s
 }
 
@@ -99,7 +118,7 @@ func validLiteral(s string, maxWords int) bool {
 }
 
 func literalRole(s string) bool {
-	if !validRoleValue(s) {
+	if interfaceRole.MatchString(s) || !validRoleValue(s) {
 		return false
 	}
 	if publicOffice.MatchString(s) {
@@ -133,18 +152,36 @@ func subjectPrefix(quote, subject string) (string, bool) {
 	for i := range parts {
 		parts[i] = regexp.QuoteMeta(parts[i])
 	}
-	re := regexp.MustCompile(`(?i)^` + strings.Join(parts, `\s+`) + `(?:\s+|,\s*)`)
+	re := regexp.MustCompile(`(?i)^` + strings.Join(parts, `\s+`) + `(?:\s+|,\s*|\[)`)
 	idx := re.FindStringIndex(quote)
 	if idx == nil {
 		return "", false
 	}
 	// Retain the comma for the explicitly scoped alias form.
 	rest := strings.TrimSpace(quote[idx[1]:])
+	if strings.HasSuffix(quote[:idx[1]], "[") {
+		rest = "[" + rest
+	}
+	rest = leadingCitation.ReplaceAllString(rest, "")
 	if strings.HasPrefix(rest, "(") {
-		if end := strings.Index(rest, ")"); end > 0 && end < 220 {
-			rest = strings.TrimSpace(rest[end+1:])
+		depth := 0
+		for end, r := range rest {
+			if end > 400 {
+				break
+			}
+			if r == '(' {
+				depth++
+			}
+			if r == ')' {
+				depth--
+			}
+			if depth == 0 {
+				rest = strings.TrimSpace(rest[end+1:])
+				break
+			}
 		}
 	}
+	rest = leadingCitation.ReplaceAllString(rest, "")
 	if strings.HasSuffix(strings.TrimSpace(quote[:idx[1]]), ",") {
 		rest = ", " + rest
 	}
@@ -173,14 +210,8 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 			if !ok {
 				continue
 			}
-			temporalText := quote
-			for _, claim := range personname.Find(subject, quote) {
-				if personname.Equal(claim.Name, subject) && claim.Kind == "known_as" && strings.HasPrefix(quote, claim.Quote) {
-					// Former aliases and birth dates do not date a person's occupation.
-					temporalText = rest
-					break
-				}
-			}
+			// Birth annotations, alias history, and subordinate clauses do not date this role.
+			temporalText := leadingPeriod.FindString(quote) + primaryClause(rest)
 			r := domain.Relation{Subject: subject, EvidenceID: doc.ID, Quote: quote, Method: RelationVersion, Status: "UNVERIFIED", Temporal: "unknown"}
 			// Non-employment relations must never populate the company summary.
 			lower := strings.ToLower(rest)
@@ -223,6 +254,14 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 			}
 			if r.Kind == "occupation" {
 				r.Role = occupationField(r.Role)
+				// A later profession's former status does not date the first occupation.
+				if comma := strings.Index(temporalText, ","); comma >= 0 && pastTense.MatchString(temporalText[comma:]) && !leadingPeriod.MatchString(quote) && !periodRange.MatchString(temporalText) && !betweenRange.MatchString(temporalText) && !periodStart.MatchString(temporalText) && !periodEnd.MatchString(temporalText) {
+					verb := ""
+					if m := relationVerb.FindStringSubmatch(rest); len(m) > 0 {
+						verb = m[1]
+					}
+					r.StartYear, r.EndYear, r.Temporal = temporal(temporalText[:comma], verb, asOf)
+				}
 				if !literalRole(r.Role) {
 					if parts := occupationParts(r.Role); len(parts) > 1 {
 						for _, part := range parts {
@@ -235,6 +274,9 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 						continue
 					}
 				}
+			}
+			if r.Kind == "employment" {
+				r.Organization = sportsTeamField(r.Role, r.Organization)
 			}
 			if r.Role != "" && !literalRole(r.Role) || r.Organization != "" && !validLiteral(r.Organization, 14) {
 				continue

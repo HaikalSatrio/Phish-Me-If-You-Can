@@ -322,8 +322,28 @@ func Normalize(c domain.Case) (domain.Case, error) {
 					break
 				}
 			}
-			if err := extract.ValidateProfileBinding(*r, raw, extract.Document{ID: e.ID, Type: e.Type, Text: e.Value}, extract.Document{ID: title.ID, Type: title.Type, Text: title.Value}); err != nil {
-				return c, fmt.Errorf("invalid bound relation %s: %w", r.ID, err)
+			bodyDoc := extract.Document{ID: e.ID, Type: e.Type, Text: e.Value}
+			titleDoc := extract.Document{ID: title.ID, Type: title.Type, Text: title.Value}
+			var bindingErr error
+			if r.Method == extract.ArticleBindingVersion {
+				asOf := time.Now().UTC()
+				if len(e.Sources) > 0 {
+					asOf, _ = time.Parse(time.RFC3339, e.Sources[0].ObservedAt)
+				}
+				for _, run := range c.Extraction {
+					if run.CandidateID == r.CandidateID && run.Mode == "rules" {
+						if extractedAt, err := time.Parse(time.RFC3339, run.ObservedAt); err == nil {
+							asOf = extractedAt
+						}
+						break
+					}
+				}
+				bindingErr = extract.ValidateArticleBinding(*r, raw, bodyDoc, titleDoc, asOf)
+			} else {
+				bindingErr = extract.ValidateProfileBinding(*r, raw, bodyDoc, titleDoc)
+			}
+			if bindingErr != nil {
+				return c, fmt.Errorf("invalid bound relation %s: %w", r.ID, bindingErr)
 			}
 		}
 		previousTime := time.Time{}

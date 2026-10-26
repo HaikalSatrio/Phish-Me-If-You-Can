@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | auto | Known username | GitHub, DEV Community, and Bluesky public profile APIs | No required key; default for new username searches |
 | direct | Known username | Site-specific public HTML profile rules | No API key or browser; GitHub and DEV Community only |
-| web | Name, username, account clues, or public URL | Supplied page/account hints, then SearXNG, DuckDuckGo HTML and Bing RSS; then destination pages | No API key or browser |
+| web | Name, username, account clues, or public URL | Supplied page/account hints, SearXNG, DuckDuckGo HTML, Bing RSS, and English Wikipedia title fallback; then destination pages | No API key or browser |
 | duckduckgo / bing | Name or username | One public search index, without destination fetches | No API key or browser |
 | searxng | Name or username | Configured SearXNG JSON search, without destination fetches | Operator-run service; see local setup below |
 | google | Name or username | Local browser renders the public search page | Installed Chrome, Chromium, or Edge; no API key |
@@ -40,6 +40,8 @@ The index phase tries SearXNG at `http://127.0.0.1:8888`, or the configured `sea
 Search output includes targeted follow-up questions. `pmiyc next -input data/result.json` recomputes them without network access. Optional `-out data/questions.json` writes structured questions, candidate cards, and affected IDs without modifying the snapshot. `challenge -input data/result.json -out data/reviewed.json` prompts for identity decisions and a reason. Add `-interactive` to a new search to run this step after collection. Employment proposals use `review-relation`; missing public sources use another search. No identity or relationship is automatically accepted. See [identity review](IDENTITY-REVIEW.md).
 
 Search endpoints can ignore terms or site filters and may be unavailable on a network. HTTP 200 alone is not success. Unrelated results are rejected and a response without usable matches is EMPTY or FAILED (depending on the provider), not proof of no public exposure. A successful search remains PARTIAL because index coverage is incomplete. See VALIDATION.md for observed successes and failures.
+
+An empty SearXNG response with unavailable upstream engines is FAILED, with bounded diagnostics for rate limits or connection problems. The same failed provider is not retried by later research steps in that collection. The Wikipedia fallback performs one exact-title public API request, follows source title redirects, and excludes missing and disambiguation pages. It is English-only and does not cover people without articles. Platform-scoped handles require the matching account path; third-party mentions remain available through unscoped research. Account clues also retain a general name query for mononyms. See the [international matrix](MATRIX-EVALUATION.md) for coverage and limitations.
 
 Without `-out`, each run creates a new snapshot. A failed or blocked collection with no candidates saves diagnostics and exits nonzero. The CLI prints provider events and observed values as well as errors. Long page text and links have a 400-character CLI preview; the saved JSON contains the full bounded observations. Google remains separately selectable.
 

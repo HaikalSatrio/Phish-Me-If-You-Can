@@ -102,6 +102,7 @@ func Run(ctx context.Context, input domain.Case, cfg extract.Config) (domain.Cas
 			}
 		}
 		relations = append(relations, extract.BoundProfileRelations(subject, p.ProfileURL, docs, asOf)...)
+		relations = append(relations, extract.BoundArticleRelations(subject, p.ProfileURL, docs, asOf)...)
 		encoded, _ := json.Marshal(docs)
 		trace := domain.ExtractionRun{CandidateID: p.ID, Version: extract.RelationVersion, Mode: "rules", Status: "SUCCESS", ObservedAt: asOf.Format(time.RFC3339), InputSHA256: fmt.Sprintf("%x", sha256.Sum256(encoded)), Accepted: len(relations)}
 		if len(relations) == 0 {

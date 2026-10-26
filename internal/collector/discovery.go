@@ -145,7 +145,7 @@ type Discovery struct {
 
 func NewDiscovery(timeout time.Duration) *Discovery {
 	local, _ := NewSearXNG("http://127.0.0.1:8888", timeout)
-	return &Discovery{[]Collector{local, NewDuckDuckGo(timeout), NewBing(timeout)}, NewPage(timeout)}
+	return &Discovery{[]Collector{local, NewDuckDuckGo(timeout), NewBing(timeout), NewWikipedia(timeout)}, NewPage(timeout)}
 }
 
 func (d *Discovery) Collect(ctx context.Context, q Query) Result {
@@ -191,15 +191,15 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 		}
 	}
 	research := q.Budget >= 8 && (len(q.Accounts) > 0 || q.URL != "" || q.Username != "")
-	biography := q.Budget >= 8 && q.Limit >= 3 && !research && q.Platform == "" && strings.TrimSpace(q.Name) != ""
-	if research {
+	biography := q.Budget >= 8 && q.Limit >= 3 && q.Platform == "" && strings.TrimSpace(q.Name) != ""
+	if research && strings.TrimSpace(q.Name) == "" {
 		d.followResearchLinks(ctx, q, &r, attempted, seen, 3)
 	}
 	reserve := 0
 	if research {
 		reserve = min(6, (q.Budget-r.Requests)/2)
 	}
-	if biography {
+	if biography && !research {
 		reserve = 2
 	}
 	for providerIndex, provider := range d.providers {
@@ -218,6 +218,9 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 			next.Limit = q.Limit - len(r.Profiles)
 			if (research || biography) && q.Limit > 2 {
 				next.Limit--
+			}
+			if len(q.Accounts) > 0 && q.Name != "" && next.Username != "" {
+				next.Limit = min(1, next.Limit)
 			}
 			if next.Budget < 1 || next.Limit < 1 {
 				break

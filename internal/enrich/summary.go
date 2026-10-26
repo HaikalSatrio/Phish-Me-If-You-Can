@@ -33,7 +33,7 @@ func summaryRelation(r domain.Relation) bool {
 	if r.Status != "UNVERIFIED" || domain.RelationDecision(r) == "REJECT" {
 		return false
 	}
-	return domain.RelationDecision(r) == "ACCEPT" || r.Method == extract.RelationVersion || r.Method == "jsonld/"+extract.RelationVersion || r.Method == extract.ProfileBindingVersion
+	return domain.RelationDecision(r) == "ACCEPT" || r.Method == extract.RelationVersion || r.Method == "jsonld/"+extract.RelationVersion || r.Method == extract.ProfileBindingVersion || r.Method == extract.ArticleBindingVersion
 }
 
 func summaryKey(value string) string {

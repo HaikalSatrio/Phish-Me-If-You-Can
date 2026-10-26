@@ -1,0 +1,6862 @@
+{
+  "version": "public-matrix-v1",
+  "created_at": "2026-10-25T20:33:05.658090+00:00",
+  "seed_sha256": "5407988233526ed4a13d4a6b08820efd262f1e29a4b6b9ce5bd99ad172dfe8b8",
+  "limitations": [
+    "Publicly documented people with usable account statements are overrepresented.",
+    "Wikidata statements are reference clues, not verified ownership or current employment.",
+    "Reference names and article URLs measure retrieval agreement, not identity truth.",
+    "Role and employer precision require a separate source-level audit."
+  ],
+  "excluded_seeds": [
+    {
+      "seed": "Mitchell Hashimoto",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Scott Hanselman",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Sarah Drasner",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Addy Osmani",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Sindre Sorhus",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Rich Harris (programmer)",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Una Kravets",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Kent C. Dodds",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Wes Bos",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "Cassidy Williams",
+      "reason": "no Wikidata entity from article"
+    },
+    {
+      "seed": "LiSA (Japanese musician)",
+      "reason": "entity is not an explicitly recorded person"
+    },
+    {
+      "seed": "Tarkan",
+      "reason": "entity is not an explicitly recorded person"
+    },
+    {
+      "seed": "Yuna (singer)",
+      "reason": "entity is not an explicitly recorded person"
+    },
+    {
+      "seed": "Keanu Reeves",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Brad Pitt",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Scarlett Johansson",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Emma Stone",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Denzel Washington",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Alicia Vikander",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Tilda Swinton",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Cillian Murphy",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Dev Patel",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Tony Leung Chiu-wai",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Andy Lau",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Song Kang-ho",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Ichiro Suzuki",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Donald Knuth",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Leslie Lamport",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Barbara Liskov",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Margaret Hamilton (software engineer)",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Yoshua Bengio",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Jeremy Howard",
+      "reason": "entity is not an explicitly recorded person"
+    },
+    {
+      "seed": "Evan You",
+      "reason": "entity is not an explicitly recorded person"
+    },
+    {
+      "seed": "Dan Abramov",
+      "reason": "entity is not an explicitly recorded person"
+    },
+    {
+      "seed": "Han Kang",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Le\u00efla Slimani",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Alain Ducasse",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Anthony Horowitz",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Martha Nussbaum",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Cal Newport",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Sal Khan",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Grant Sanderson",
+      "reason": "entity is not an explicitly recorded person"
+    },
+    {
+      "seed": "Derek Muller",
+      "reason": "no usable non-deprecated account statement"
+    },
+    {
+      "seed": "Sandi Toksvig",
+      "reason": "no usable non-deprecated account statement"
+    }
+  ],
+  "cases": [
+    {
+      "id": "Q14752155",
+      "name": "Pedro Pascal",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Pedro_Pascal",
+      "reference_entity": "https://www.wikidata.org/wiki/Q14752155",
+      "reference_names": [
+        "Jos\u00e9 Pedro Balmaceda Pascal",
+        "Pedro Pascal"
+      ],
+      "reference_description": "Chilean and American actor (born 1975)",
+      "country_ids": [
+        "Q298",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q33999",
+        "Q47492700"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "pascalispunk",
+          "property": "P2003",
+          "statement_id": "Q14752155$83366946-44f4-26b4-11c6-61eea9825d14",
+          "source": "https://www.wikidata.org/wiki/Q14752155#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q1861917",
+      "name": "Riz Ahmed",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Riz_Ahmed",
+      "reference_entity": "https://www.wikidata.org/wiki/Q1861917",
+      "reference_names": [
+        "Ridwan Ahmed",
+        "Riz Ahmed",
+        "Riz MC",
+        "Rizwan Ahmed"
+      ],
+      "reference_description": "British actor and rapper (born 1982)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q15253558",
+        "Q177220",
+        "Q2252262",
+        "Q2405480",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "rizmc",
+          "property": "P2013",
+          "statement_id": "Q1861917$78220d98-41a1-d0fa-a6a8-da7bf9de9e61",
+          "source": "https://www.wikidata.org/wiki/Q1861917#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q294647",
+      "name": "Mads Mikkelsen",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Mads_Mikkelsen",
+      "reference_entity": "https://www.wikidata.org/wiki/Q294647",
+      "reference_names": [
+        "Mads Dittmann Mikkelsen",
+        "Mads Mikkelsen"
+      ],
+      "reference_description": "Danish actor (born 1965)",
+      "country_ids": [
+        "Q756617"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q16947675",
+        "Q2405480",
+        "Q33999",
+        "Q5716684"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "theofficialmads",
+          "property": "P2003",
+          "statement_id": "Q294647$0EC1FCB8-ECBF-4B5D-ACC3-97AA30120BDA",
+          "source": "https://www.wikidata.org/wiki/Q294647#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q313044",
+      "name": "Diego Luna",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Diego_Luna",
+      "reference_entity": "https://www.wikidata.org/wiki/Q313044",
+      "reference_names": [
+        "Diego Luna"
+      ],
+      "reference_description": "Mexican actor (1979-)",
+      "country_ids": [
+        "Q96"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q2526255",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q578109"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "diegoluna_",
+          "property": "P2002",
+          "statement_id": "Q313044$C9D62C16-5040-4D01-89F2-C90F42C562B2",
+          "source": "https://www.wikidata.org/wiki/Q313044#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q357387",
+      "name": "Omar Sy",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Omar_Sy",
+      "reference_entity": "https://www.wikidata.org/wiki/Q357387",
+      "reference_names": [
+        "Omar Sy"
+      ],
+      "reference_description": "A French film actor of Mauritanian origin (born 1978)",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q245068",
+        "Q28389",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "OmarSy.fans",
+          "property": "P2013",
+          "statement_id": "Q357387$a42c2459-46bc-8a0f-f1cc-6e1f63336318",
+          "source": "https://www.wikidata.org/wiki/Q357387#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q36970",
+      "name": "Jackie Chan",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Jackie_Chan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q36970",
+      "reference_names": [
+        "Chen Lung",
+        "Chen Yuan Lung",
+        "Chen Yuan-lung",
+        "Chen Yuen Lung",
+        "Jackie Chan",
+        "Jacky Chan",
+        "Kong-sang Chan",
+        "Kung-Fu Master",
+        "Lung Cheng",
+        "Pao Pao",
+        "Sing Lung",
+        "Y'uen Lo",
+        "Yuan Lung Chen",
+        "Yuan-Lou Chen",
+        "Yuen Lung Chen",
+        "\u9673\u6e2f\u751f"
+      ],
+      "reference_description": "Hong Kong actor and martial artist (born 1954)",
+      "country_ids": [
+        "Q148",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q13382533",
+        "Q245068",
+        "Q2490358",
+        "Q2526255",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q465501",
+        "Q6665249"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "jackie",
+          "property": "P2013",
+          "statement_id": "Q36970$9748ea54-4d1b-20ab-052c-49e55fd2ac90",
+          "source": "https://www.wikidata.org/wiki/Q36970#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q3840847",
+      "name": "Lupita Nyong'o",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Lupita_Nyong%27o",
+      "reference_entity": "https://www.wikidata.org/wiki/Q3840847",
+      "reference_names": [
+        "Lupita Amondi Nyong'o",
+        "Lupita Nyong'o"
+      ],
+      "reference_description": "Mexican-Kenyan actress and film director (born 1983)",
+      "country_ids": [
+        "Q114",
+        "Q96"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q2526255",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "LupitaNyongo",
+          "property": "P2013",
+          "statement_id": "Q3840847$54CD855E-E778-4EF9-83FA-EDBE9C7B2169",
+          "source": "https://www.wikidata.org/wiki/Q3840847#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q41548",
+      "name": "Antonio Banderas",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Antonio_Banderas",
+      "reference_entity": "https://www.wikidata.org/wiki/Q41548",
+      "reference_names": [
+        "Antonio Banderas",
+        "Jos\u00e9 Antonio Dom\u00ednguez Banderas"
+      ],
+      "reference_description": "Spanish actor",
+      "country_ids": [
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q2526255",
+        "Q3282637",
+        "Q33999",
+        "Q3455803"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "AntonioBanderas",
+          "property": "P2013",
+          "statement_id": "Q41548$81484BFB-A7FA-442F-A75C-65A1D53CC874",
+          "source": "https://www.wikidata.org/wiki/Q41548#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q463860",
+      "name": "Ricardo Dar\u00edn",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Ricardo_Dar%C3%ADn",
+      "reference_entity": "https://www.wikidata.org/wiki/Q463860",
+      "reference_names": [
+        "Ricardo Alberto Dar\u00edn",
+        "Ricardo Darin",
+        "Ricardo Dar\u00edn"
+      ],
+      "reference_description": "Argentine actor",
+      "country_ids": [
+        "Q29",
+        "Q414"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q2526255",
+        "Q28389",
+        "Q33999",
+        "Q3455803"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "BombitaDarin",
+          "property": "P2002",
+          "statement_id": "Q463860$2fffcfaf-459a-4ac1-2b39-d96f58433e9e",
+          "source": "https://www.wikidata.org/wiki/Q463860#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q8927",
+      "name": "Marion Cotillard",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Marion_Cotillard",
+      "reference_entity": "https://www.wikidata.org/wiki/Q8927",
+      "reference_names": [
+        "Marion Cotillard"
+      ],
+      "reference_description": "French actress and model (born 1975)",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q177220",
+        "Q2259451",
+        "Q33999",
+        "Q3578589"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "marioncotillard",
+          "property": "P2003",
+          "statement_id": "Q8927$C7030CC8-494F-4930-A645-A7399DC8F877",
+          "source": "https://www.wikidata.org/wiki/Q8927#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q9535",
+      "name": "Shah Rukh Khan",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Shah_Rukh_Khan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q9535",
+      "reference_names": [
+        "Bollywood Badshah",
+        "King Khan",
+        "King of Bollywood",
+        "King of romance",
+        "SRK",
+        "Shah Rukh Khan",
+        "Shahrukh Khan",
+        "Shahrukh Meer Taj Mohamed Khan"
+      ],
+      "reference_description": "Indian actor, producer and television personality",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q5716684",
+        "Q578109",
+        "Q639669",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "iamsrk",
+          "property": "P2003",
+          "statement_id": "Q9535$797EF116-4E46-46B2-9625-D3770BA8F4DE",
+          "source": "https://www.wikidata.org/wiki/Q9535#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q151892",
+      "name": "Ariana Grande",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Ariana_Grande",
+      "reference_entity": "https://www.wikidata.org/wiki/Q151892",
+      "reference_names": [
+        "Ariana Grande",
+        "Ariana Grande-Butera"
+      ],
+      "reference_description": "American singer, songwriter, and actress (born 1993)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q102277154",
+        "Q10798782",
+        "Q10800557",
+        "Q177220",
+        "Q2405480",
+        "Q33999",
+        "Q4610556",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "arianagrande",
+          "property": "P2013",
+          "statement_id": "Q151892$0502EBF0-30C6-4A37-B9D0-F802FC9B00A1",
+          "source": "https://www.wikidata.org/wiki/Q151892#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q16234484",
+      "name": "Davido",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Davido",
+      "reference_entity": "https://www.wikidata.org/wiki/Q16234484",
+      "reference_names": [
+        "David Adedeji Adeleke",
+        "David Adeleke",
+        "Davido",
+        "OBO"
+      ],
+      "reference_description": "Nigerian singer",
+      "country_ids": [
+        "Q1033",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q183945",
+        "Q483501",
+        "Q488205",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "davido",
+          "property": "P2003",
+          "statement_id": "Q16234484$3F9D8558-1302-41D2-BCEC-6BB6CF78B3AE",
+          "source": "https://www.wikidata.org/wiki/Q16234484#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q2050788",
+      "name": "Shreya Ghoshal",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Shreya_Ghoshal",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2050788",
+      "reference_names": [
+        "Indian singer",
+        "Shreya Ghoshal"
+      ],
+      "reference_description": "Indian playback singer",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q33999",
+        "Q36834",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "shreyaghoshal",
+          "property": "P2003",
+          "statement_id": "Q2050788$49561A4E-423C-485C-9E2D-5B8F01332390",
+          "source": "https://www.wikidata.org/wiki/Q2050788#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q210734",
+      "name": "Youssou N\u2019Dour",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Youssou_N%27Dour",
+      "reference_entity": "https://www.wikidata.org/wiki/Q210734",
+      "reference_names": [
+        "Youssou N'Dour",
+        "Youssou Ndour",
+        "Youssou N\u2019Dour",
+        "Youssou'n'Dour",
+        "Yuusu Nduur"
+      ],
+      "reference_description": "Senegalese singer, composer and politician (born 1959)",
+      "country_ids": [
+        "Q1041"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q488205",
+        "Q82955",
+        "Q83307"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "youssoundourofficiel",
+          "property": "P2013",
+          "statement_id": "Q210734$446BE5C9-205B-410F-9CC1-582D94B93F9B",
+          "source": "https://www.wikidata.org/wiki/Q210734#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q28843759",
+      "name": "Rosal\u00eda",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Rosal%C3%ADa",
+      "reference_entity": "https://www.wikidata.org/wiki/Q28843759",
+      "reference_names": [
+        "Rosal\u00eda",
+        "Rosal\u00eda Vila Tobella"
+      ],
+      "reference_description": "Spanish singer-songwriter (born 1992)",
+      "country_ids": [
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q36834",
+        "Q488205",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "rosalia.vt",
+          "property": "P2003",
+          "statement_id": "Q28843759$18b45969-4d0c-0acb-0854-4fd820b0d64f",
+          "source": "https://www.wikidata.org/wiki/Q28843759#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q37793136",
+      "name": "Aya Nakamura",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Aya_Nakamura",
+      "reference_entity": "https://www.wikidata.org/wiki/Q37793136",
+      "reference_names": [
+        "Aya Coco Danioko",
+        "Aya Danioko",
+        "Aya Danioko (aya Nakamura",
+        "Aya Nakamura"
+      ],
+      "reference_description": "Malian-French singer (born 1995)",
+      "country_ids": [
+        "Q142",
+        "Q912"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "ayanakamuraa",
+          "property": "P2002",
+          "statement_id": "Q37793136$ef5de7d9-4c68-dbcb-6a4d-7a51f4d611e5",
+          "source": "https://www.wikidata.org/wiki/Q37793136#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q42493",
+      "name": "Katy Perry",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Katy_Perry",
+      "reference_entity": "https://www.wikidata.org/wiki/Q42493",
+      "reference_names": [
+        "Katheryn Brand",
+        "Katheryn Elizabeth Hudson",
+        "Katheryn Elizabeth Hudson Perry",
+        "Katheryn Hudson",
+        "Katheryn Perry",
+        "Katy Hudson",
+        "Katy Perry",
+        "Keti Perri",
+        "Kety Perry"
+      ],
+      "reference_description": "American singer",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q131524",
+        "Q177220",
+        "Q2405480",
+        "Q33999",
+        "Q36834",
+        "Q43845",
+        "Q5716684",
+        "Q60723829",
+        "Q639669",
+        "Q67175841",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "katyperry",
+          "property": "P2002",
+          "statement_id": "Q42493$36AA7273-326E-4017-B4C1-AF9B097D2D11",
+          "source": "https://www.wikidata.org/wiki/Q42493#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q101090706",
+      "name": "Kelsey Hightower",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Kelsey_Hightower",
+      "reference_entity": "https://www.wikidata.org/wiki/Q101090706",
+      "reference_names": [
+        "Kelsey Hightower"
+      ],
+      "reference_description": "Software engineer, developer advocate, and speaker",
+      "country_ids": [],
+      "occupation_ids": [
+        "Q105687895",
+        "Q1568338",
+        "Q5482740"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "kelseyhightower",
+          "property": "P2037",
+          "statement_id": "Q101090706$8886c4ac-4f84-5d07-e55e-237f4d8cb56e",
+          "source": "https://www.wikidata.org/wiki/Q101090706#P2037"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q24088544",
+      "name": "Mark Rober",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Mark_Rober",
+      "reference_entity": "https://www.wikidata.org/wiki/Q24088544",
+      "reference_names": [
+        "Mark Braxton Rober",
+        "Mark Rober"
+      ],
+      "reference_description": "American YouTuber, engineer and inventor",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q118371929",
+        "Q15143191",
+        "Q17125263",
+        "Q1906857",
+        "Q205375"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "markrober",
+          "property": "P2003",
+          "statement_id": "Q24088544$208921D0-6D7B-4086-8BE6-50AD37DA1800",
+          "source": "https://www.wikidata.org/wiki/Q24088544#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q305177",
+      "name": "Jensen Huang",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Jensen_Huang",
+      "reference_entity": "https://www.wikidata.org/wiki/Q305177",
+      "reference_names": [
+        "Jen-hsun Jensen Huang",
+        "Jensen Huang"
+      ],
+      "reference_description": "American entrepreneur and businessman; co-founder and CEO of Nvidia",
+      "country_ids": [
+        "Q30",
+        "Q865"
+      ],
+      "occupation_ids": [
+        "Q131524",
+        "Q1326886",
+        "Q2462658",
+        "Q43845",
+        "Q4479442",
+        "Q484876",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "JensenHuang",
+          "property": "P2002",
+          "statement_id": "Q305177$b651809a-4243-f5d2-e2e1-53619631e879",
+          "source": "https://www.wikidata.org/wiki/Q305177#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q34253",
+      "name": "Linus Torvalds",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Linus_Torvalds",
+      "reference_entity": "https://www.wikidata.org/wiki/Q34253",
+      "reference_names": [
+        "Linus Benedict Torvalds",
+        "Linus Torvalds"
+      ],
+      "reference_description": "Finnish software engineer (born 1969)",
+      "country_ids": [
+        "Q30",
+        "Q33"
+      ],
+      "occupation_ids": [
+        "Q183888",
+        "Q205375",
+        "Q36180",
+        "Q43845",
+        "Q5482740",
+        "Q81096",
+        "Q8246794",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "torvalds",
+          "property": "P2037",
+          "statement_id": "Q34253$d113f2b5-4352-7294-dec8-018f7038c4e8",
+          "source": "https://www.wikidata.org/wiki/Q34253#P2037"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q92743",
+      "name": "Vint Cerf",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Vint_Cerf",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92743",
+      "reference_names": [
+        "Cerf",
+        "Cerf V",
+        "Cerf V.",
+        "Cerf V. G.",
+        "Cerf VG",
+        "V Cerf",
+        "V G Cerf",
+        "V. Cerf",
+        "V. G. Cerf",
+        "Vint Cerf",
+        "Vint G. Cerf",
+        "Vinton Cerf",
+        "Vinton G Cerf",
+        "Vinton G. Cerf",
+        "Vinton Gray Cerf"
+      ],
+      "reference_description": "American computer scientist (born 1943)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q139648",
+        "Q1622272",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "vgcerf",
+          "property": "P2002",
+          "statement_id": "Q92743$3FC91267-A4D2-4558-A72C-15E23C9D72C0",
+          "source": "https://www.wikidata.org/wiki/Q92743#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q1426",
+      "name": "Roger Federer",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Roger_Federer",
+      "reference_entity": "https://www.wikidata.org/wiki/Q1426",
+      "reference_names": [
+        "Roger Federer"
+      ],
+      "reference_description": "Swiss tennis player (born 1981)",
+      "country_ids": [
+        "Q258",
+        "Q39"
+      ],
+      "occupation_ids": [
+        "Q10833314"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "rogerfederer",
+          "property": "P2003",
+          "statement_id": "Q1426$32455568-93E9-41FB-B995-7D7F4CA79915",
+          "source": "https://www.wikidata.org/wiki/Q1426#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q142794",
+      "name": "Neymar",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Neymar",
+      "reference_entity": "https://www.wikidata.org/wiki/Q142794",
+      "reference_names": [
+        "Neymar",
+        "Neymar Jr.",
+        "Neymar Junior",
+        "Neymar J\u00fanior",
+        "Neymar da Silva Santos Junior",
+        "Neymar da Silva Santos J\u00fanior"
+      ],
+      "reference_description": "Brazilian footballer (born 1992)",
+      "country_ids": [
+        "Q155"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "neymarjr",
+          "property": "P2002",
+          "statement_id": "Q142794$E8E02E7D-78B2-4525-81CB-7641FA63A45E",
+          "source": "https://www.wikidata.org/wiki/Q142794#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q1912",
+      "name": "Karim Benzema",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Karim_Benzema",
+      "reference_entity": "https://www.wikidata.org/wiki/Q1912",
+      "reference_names": [
+        "Karim Benzema",
+        "Karim Mostafa Benzema"
+      ],
+      "reference_description": "French footballer (born 1987)",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "karimbenzema",
+          "property": "P2003",
+          "statement_id": "Q1912$849DA809-F96A-407C-B96F-F86597EBC493",
+          "source": "https://www.wikidata.org/wiki/Q1912#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q19844712",
+      "name": "Luka Don\u010di\u0107",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Luka_Don%C4%8Di%C4%87",
+      "reference_entity": "https://www.wikidata.org/wiki/Q19844712",
+      "reference_names": [
+        "Luka Doncic",
+        "Luka Don\u010di\u0107"
+      ],
+      "reference_description": "Slovenian basketball player (born 1999)",
+      "country_ids": [
+        "Q215"
+      ],
+      "occupation_ids": [
+        "Q3665646"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "luka7doncic",
+          "property": "P2002",
+          "statement_id": "Q19844712$9E654C5B-3C2F-44F2-8FE9-3317857C4EDF",
+          "source": "https://www.wikidata.org/wiki/Q19844712#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q233510",
+      "name": "Alex Morgan",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Alex_Morgan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q233510",
+      "reference_names": [
+        "Alex Morgan",
+        "Alexandra Morgan Carrasco",
+        "Alexandra Patricia Morgan"
+      ],
+      "reference_description": "American soccer player",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q215536",
+        "Q36180",
+        "Q6625963",
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "alexmorgan13",
+          "property": "P2003",
+          "statement_id": "Q233510$A12B7C11-ACF4-4DD5-895C-67ADF0CBDEA9",
+          "source": "https://www.wikidata.org/wiki/Q233510#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q290212",
+      "name": "Ons Jabeur",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Ons_Jabeur",
+      "reference_entity": "https://www.wikidata.org/wiki/Q290212",
+      "reference_names": [
+        "Ons Jabeur",
+        "\u0623\u0646\u0633 \u062c\u0627\u0628\u0631"
+      ],
+      "reference_description": "Tunisian tennis player",
+      "country_ids": [
+        "Q948"
+      ],
+      "occupation_ids": [
+        "Q10833314"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "onsjabeur",
+          "property": "P2003",
+          "statement_id": "Q290212$44bbc900-421d-c73b-80fb-39ae2742fb1d",
+          "source": "https://www.wikidata.org/wiki/Q290212#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q439722",
+      "name": "Son Heung-min",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Son_Heung-min",
+      "reference_entity": "https://www.wikidata.org/wiki/Q439722",
+      "reference_names": [
+        "Heung-Min Son",
+        "Heung-min Son",
+        "Son Heung-min"
+      ],
+      "reference_description": "South Korean association football player (born 1992)",
+      "country_ids": [
+        "Q884"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "hm_son7",
+          "property": "P2003",
+          "statement_id": "Q439722$61EC2D4B-5F54-40B9-9AA6-7BA3D3CA558B",
+          "source": "https://www.wikidata.org/wiki/Q439722#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q483837",
+      "name": "Luka Modri\u0107",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Luka_Modri%C4%87",
+      "reference_entity": "https://www.wikidata.org/wiki/Q483837",
+      "reference_names": [
+        "Luka Modric",
+        "Luka Modri\u0107"
+      ],
+      "reference_description": "Croatian footballer (born 1985)",
+      "country_ids": [
+        "Q224"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "ModricLuka10",
+          "property": "P2013",
+          "statement_id": "Q483837$B4F7D325-4AAC-4085-85DE-61348E8AA7CD",
+          "source": "https://www.wikidata.org/wiki/Q483837#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q85518537",
+      "name": "Carlos Alcaraz",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Carlos_Alcaraz",
+      "reference_entity": "https://www.wikidata.org/wiki/Q85518537",
+      "reference_names": [
+        "Carlos Alcaraz",
+        "Carlos Alcaraz Garfia"
+      ],
+      "reference_description": "Spanish tennis player (born 2003)",
+      "country_ids": [
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q10833314"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "carlitosalcarazz",
+          "property": "P2003",
+          "statement_id": "Q85518537$765170B5-A6C5-4827-8CBA-70384278D8D5",
+          "source": "https://www.wikidata.org/wiki/Q85518537#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q14712273",
+      "name": "Adam Grant",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Adam_Grant",
+      "reference_entity": "https://www.wikidata.org/wiki/Q14712273",
+      "reference_names": [
+        "Adam Grant"
+      ],
+      "reference_description": "American organizational psychologist (b. 1981)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q122759479",
+        "Q1622272",
+        "Q212980",
+        "Q36180"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "AdamMGrant",
+          "property": "P2013",
+          "statement_id": "Q14712273$14775298-465f-490e-997a-cb4a862c25f3",
+          "source": "https://www.wikidata.org/wiki/Q14712273#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q15280",
+      "name": "Gordon Ramsay",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Gordon_Ramsay",
+      "reference_entity": "https://www.wikidata.org/wiki/Q15280",
+      "reference_names": [
+        "Gordon J. Ramsay",
+        "Gordon James Ramsay",
+        "Gordon Ramsay"
+      ],
+      "reference_description": "British chef, restaurateur, and television personality (born 1966)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q10689386",
+        "Q156839",
+        "Q17125263",
+        "Q3427922",
+        "Q3499072",
+        "Q36180",
+        "Q43845",
+        "Q578109",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "gordonramsay",
+          "property": "P2013",
+          "statement_id": "Q15280$58081a98-4c38-a044-71bd-15debbe67ee2",
+          "source": "https://www.wikidata.org/wiki/Q15280#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q183337",
+      "name": "David Attenborough",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/David_Attenborough",
+      "reference_entity": "https://www.wikidata.org/wiki/Q183337",
+      "reference_names": [
+        "David Attenborough",
+        "David Frederick Attenborough",
+        "Sir David Attenborough",
+        "Sir David Frederick Attenborough"
+      ],
+      "reference_description": "British broadcaster and naturalist (born 1926)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q12368980",
+        "Q15143191",
+        "Q18805",
+        "Q2059704",
+        "Q28389",
+        "Q3282637",
+        "Q3578589",
+        "Q36180",
+        "Q578109",
+        "Q69423232",
+        "Q73306227",
+        "Q755070",
+        "Q864503",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "davidattenborough",
+          "property": "P2003",
+          "statement_id": "Q183337$8adb5fbd-48c8-7f9e-582c-7c407986184c",
+          "source": "https://www.wikidata.org/wiki/Q183337#P2003"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q2484404",
+      "name": "Yuval Noah Harari",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Yuval_Noah_Harari",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2484404",
+      "reference_names": [
+        "Yuval N. Harari",
+        "Yuval Noah Harari",
+        "\u05d9\u05d5\u05d1\u05dc \u05e0\u05d7 \u05d4\u05e8\u05e8\u05d9"
+      ],
+      "reference_description": "Israeli historian and author of popular science bestsellers",
+      "country_ids": [
+        "Q801"
+      ],
+      "occupation_ids": [
+        "Q112972705",
+        "Q1493121",
+        "Q1622272",
+        "Q201788",
+        "Q3332711",
+        "Q36180",
+        "Q4964182"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "Prof.Yuval.Noah.Harari",
+          "property": "P2013",
+          "statement_id": "Q2484404$a44b265d-49bc-8181-278b-d91f6d616f6d",
+          "source": "https://www.wikidata.org/wiki/Q2484404#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q272855",
+      "name": "Kazuo Ishiguro",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Kazuo_Ishiguro",
+      "reference_entity": "https://www.wikidata.org/wiki/Q272855",
+      "reference_names": [
+        "Ishiguro Kazuo",
+        "Kazuo Ishiguro",
+        "Sir Kazuo Ishiguro"
+      ],
+      "reference_description": "British novelist (born 1954)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q18844224",
+        "Q28389",
+        "Q36180",
+        "Q482980",
+        "Q6625963",
+        "Q753110",
+        "Q822146"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "KazuoIshiguro",
+          "property": "P2013",
+          "statement_id": "Q272855$B3FB090C-7299-472F-A0AC-D54202A0E6F0",
+          "source": "https://www.wikidata.org/wiki/Q272855#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q457608",
+      "name": "Brandon Sanderson",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Brandon_Sanderson",
+      "reference_entity": "https://www.wikidata.org/wiki/Q457608",
+      "reference_names": [
+        "Brandon Sanderson"
+      ],
+      "reference_description": "American fantasy writer (born 1975)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q15949613",
+        "Q36180",
+        "Q37226",
+        "Q482980",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "BrandSanderson",
+          "property": "P2002",
+          "statement_id": "Q457608$a723a401-4530-d403-a066-f98ec529e968",
+          "source": "https://www.wikidata.org/wiki/Q457608#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q52369134",
+      "name": "Amanda Gorman",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Amanda_Gorman",
+      "reference_entity": "https://www.wikidata.org/wiki/Q52369134",
+      "reference_names": [
+        "Amanda Gorman",
+        "Amanda S. C. Gorman"
+      ],
+      "reference_description": "American poet and activist (born 1998)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q11499147",
+        "Q15253558",
+        "Q15980158",
+        "Q49757"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "TheAmandaGorman",
+          "property": "P2002",
+          "statement_id": "Q52369134$72bfaaf7-46de-d23f-023b-8bc715a8cc76",
+          "source": "https://www.wikidata.org/wiki/Q52369134#P2002"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q56434717",
+      "name": "Greta Thunberg",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Greta_Thunberg",
+      "reference_entity": "https://www.wikidata.org/wiki/Q56434717",
+      "reference_names": [
+        "Greta Ernman Thunberg",
+        "Greta Thunberg",
+        "Greta Tintin Eleonora Ernman Thunberg"
+      ],
+      "reference_description": "Swedish climate protection activist (born 2003)",
+      "country_ids": [
+        "Q34"
+      ],
+      "occupation_ids": [
+        "Q15253558",
+        "Q15839134",
+        "Q3578589",
+        "Q482980"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "gretathunbergsweden",
+          "property": "P2013",
+          "statement_id": "Q56434717$49aad879-4b04-4da2-5648-b2bf408fbd0e",
+          "source": "https://www.wikidata.org/wiki/Q56434717#P2013"
+        }
+      ],
+      "split": "development"
+    },
+    {
+      "id": "Q134895",
+      "name": "Javier Bardem",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Javier_Bardem",
+      "reference_entity": "https://www.wikidata.org/wiki/Q134895",
+      "reference_names": [
+        "Javier Bardem",
+        "Javier \u00c1ngel Encinas Bardem"
+      ],
+      "reference_description": "Spanish actor (born 1969)",
+      "country_ids": [
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q3282637",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "bardemantarctic",
+          "property": "P2003",
+          "statement_id": "Q134895$667C2158-A327-4853-9105-0366B1129146",
+          "source": "https://www.wikidata.org/wiki/Q134895#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q150903",
+      "name": "Gong Li",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Gong_Li",
+      "reference_entity": "https://www.wikidata.org/wiki/Q150903",
+      "reference_names": [
+        "Gong Li",
+        "Li Gong"
+      ],
+      "reference_description": "Chinese-Singaporean actress",
+      "country_ids": [
+        "Q334"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "officialgongli",
+          "property": "P2003",
+          "statement_id": "Q150903$21765313-5B18-4030-B252-5BB1651740FB",
+          "source": "https://www.wikidata.org/wiki/Q150903#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q158957",
+      "name": "Priyanka Chopra",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Priyanka_Chopra",
+      "reference_entity": "https://www.wikidata.org/wiki/Q158957",
+      "reference_names": [
+        "Priyanka Chopra",
+        "Priyanka Chopra Jonas"
+      ],
+      "reference_description": "Indian actress (born 1982)",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q177220",
+        "Q18581305",
+        "Q3282637",
+        "Q3357567",
+        "Q33999",
+        "Q4610556"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "priyankachopra",
+          "property": "P2003",
+          "statement_id": "Q158957$22BC9E4D-03FB-47FF-B01C-0164D58A2B4B",
+          "source": "https://www.wikidata.org/wiki/Q158957#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q159178",
+      "name": "Deepika Padukone",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Deepika_Padukone",
+      "reference_entity": "https://www.wikidata.org/wiki/Q159178",
+      "reference_names": [
+        "Deepika Padukone",
+        "Deepika Padukone Singh"
+      ],
+      "reference_description": "Indian actress",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q33999",
+        "Q4610556"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "DeepikaPadukone",
+          "property": "P2013",
+          "statement_id": "Q159178$4EC27B2B-8954-4E5F-887E-879A4BDC0687",
+          "source": "https://www.wikidata.org/wiki/Q159178#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q179576",
+      "name": "Gael Garc\u00eda Bernal",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Gael_Garc%C3%ADa_Bernal",
+      "reference_entity": "https://www.wikidata.org/wiki/Q179576",
+      "reference_names": [
+        "Gael Garc\u00eda Bernal"
+      ],
+      "reference_description": "Mexican actor and producer",
+      "country_ids": [
+        "Q30",
+        "Q96"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2526255",
+        "Q28389",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "gaelgarciab",
+          "property": "P2003",
+          "statement_id": "Q179576$F10B5647-84BE-41A2-A662-9CE383C545D8",
+          "source": "https://www.wikidata.org/wiki/Q179576#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q189489",
+      "name": "Zendaya",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Zendaya",
+      "reference_entity": "https://www.wikidata.org/wiki/Q189489",
+      "reference_names": [
+        "Zendaya",
+        "Zendaya Maree Stoermer Coleman"
+      ],
+      "reference_description": "American actress and singer (born 1996)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q177220",
+        "Q2405480",
+        "Q3357567",
+        "Q5716684"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "zendaya",
+          "property": "P2003",
+          "statement_id": "Q189489$CE028F12-D5BA-4B3B-BA22-C7B0AAA9FFF5",
+          "source": "https://www.wikidata.org/wiki/Q189489#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q189490",
+      "name": "Jennifer Lawrence",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Jennifer_Lawrence",
+      "reference_entity": "https://www.wikidata.org/wiki/Q189490",
+      "reference_names": [
+        "JLaw",
+        "Jennifer Lawrence",
+        "Jennifer Lawrence Maroney",
+        "Jennifer Shrader Lawrence"
+      ],
+      "reference_description": "American actress and producer (born 1990)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2405480",
+        "Q2526255",
+        "Q3282637",
+        "Q33999",
+        "Q69423232"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "jlaw",
+          "property": "P2003",
+          "statement_id": "Q189490$7B565320-D004-4730-BED0-D0DD39FBA723",
+          "source": "https://www.wikidata.org/wiki/Q189490#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q214289",
+      "name": "Michelle Yeoh",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Michelle_Yeoh",
+      "reference_entity": "https://www.wikidata.org/wiki/Q214289",
+      "reference_names": [
+        "Michelle Khan",
+        "Michelle Yeoh",
+        "Michelle Yeoh Choo Kheng",
+        "Michelle Yeoh Choo-Kheng",
+        "Michelle Yeoh Chu-Kheng",
+        "Tan Sri Michelle Yeoh",
+        "Yang Ziqiong",
+        "Yeoh"
+      ],
+      "reference_description": "Malaysian actress (born 1962)",
+      "country_ids": [
+        "Q833"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q18581305",
+        "Q3282637",
+        "Q33999",
+        "Q4610556"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "yeoh2016",
+          "property": "P2013",
+          "statement_id": "Q214289$0D4F9BC8-98E9-4F94-89D1-0455071C0725",
+          "source": "https://www.wikidata.org/wiki/Q214289#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q2263",
+      "name": "Tom Hanks",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Tom_Hanks",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2263",
+      "reference_names": [
+        "Thomas Hanks",
+        "Thomas Jeffrey Hanks",
+        "Tom Hanks"
+      ],
+      "reference_description": "American actor and film producer (born 1956)",
+      "country_ids": [
+        "Q30",
+        "Q41"
+      ],
+      "occupation_ids": [
+        "Q1053574",
+        "Q10798782",
+        "Q10800557",
+        "Q15949613",
+        "Q2059704",
+        "Q22343421",
+        "Q2259451",
+        "Q2405480",
+        "Q245068",
+        "Q2526255",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q3455803",
+        "Q36180",
+        "Q36834",
+        "Q47541952",
+        "Q578109",
+        "Q639669",
+        "Q69423232",
+        "Q947873",
+        "Q948329"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "TomHanks",
+          "property": "P2013",
+          "statement_id": "Q2263$0D712739-C46D-4798-B2BF-F50383FAFD57",
+          "source": "https://www.wikidata.org/wiki/Q2263#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q228603",
+      "name": "Saoirse Ronan",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Saoirse_Ronan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q228603",
+      "reference_names": [
+        "Saoirse Ronan",
+        "Saoirse Una Ronan"
+      ],
+      "reference_description": "Irish-American actress (born 1994)",
+      "country_ids": [
+        "Q27",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q1053574",
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "saoirse_ronan",
+          "property": "P2002",
+          "statement_id": "Q228603$A3E28398-8554-430E-B9C2-A054309468DB",
+          "source": "https://www.wikidata.org/wiki/Q228603#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q229181",
+      "name": "Viola Davis",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Viola_Davis",
+      "reference_entity": "https://www.wikidata.org/wiki/Q229181",
+      "reference_names": [
+        "Viola Davis"
+      ],
+      "reference_description": "American actress and producer (born 1965)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q33999",
+        "Q578109"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "violadavis",
+          "property": "P2002",
+          "statement_id": "Q229181$0F6FD5A3-8E0F-4DEA-B867-9266F059C967",
+          "source": "https://www.wikidata.org/wiki/Q229181#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q231096",
+      "name": "L\u00e9a Seydoux",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/L%C3%A9a_Seydoux",
+      "reference_entity": "https://www.wikidata.org/wiki/Q231096",
+      "reference_names": [
+        "L\u00e9a H\u00e9l\u00e8ne Seydoux Fornier de Clausonne",
+        "L\u00e9a Seydoux"
+      ],
+      "reference_description": "French actress (born 1985)",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q33999",
+        "Q4610556"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "leaseydouxofficial",
+          "property": "P2013",
+          "statement_id": "Q231096$DF22496A-63F9-4D25-93F6-2AA77284BF2C",
+          "source": "https://www.wikidata.org/wiki/Q231096#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q233619",
+      "name": "Hrithik Roshan",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Hrithik_Roshan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q233619",
+      "reference_names": [
+        "Hrithik Roshan",
+        "Hrithik Roshan Nagrath"
+      ],
+      "reference_description": "Indian actor (born 1974)",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q33999",
+        "Q5716684"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "hrithikroshan",
+          "property": "P2003",
+          "statement_id": "Q233619$9B8844E8-5023-4739-ABA9-480D17A5B718",
+          "source": "https://www.wikidata.org/wiki/Q233619#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q311723",
+      "name": "Donnie Yen",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Donnie_Yen",
+      "reference_entity": "https://www.wikidata.org/wiki/Q311723",
+      "reference_names": [
+        "Donnie Yen",
+        "Donnie Yen Ji-dan",
+        "Yen Chi-Tan"
+      ],
+      "reference_description": "Hong Kong actor, film director and martial artist (born 1963)",
+      "country_ids": [
+        "Q1054923",
+        "Q148"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q11124885",
+        "Q13382533",
+        "Q2490358",
+        "Q2526255",
+        "Q3282637",
+        "Q33999",
+        "Q388513",
+        "Q465501",
+        "Q47541952",
+        "Q6665249",
+        "Q9017214"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "donnieyen.asia",
+          "property": "P2013",
+          "statement_id": "Q311723$2CDC1392-A217-498D-8D4C-213F6047E4F7",
+          "source": "https://www.wikidata.org/wiki/Q311723#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q335455",
+      "name": "Fernanda Montenegro",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Fernanda_Montenegro",
+      "reference_entity": "https://www.wikidata.org/wiki/Q335455",
+      "reference_names": [
+        "Arlette Pinheiro Esteves Silva",
+        "Fernanda Montenegro"
+      ],
+      "reference_description": "Brazilian actress and writer",
+      "country_ids": [
+        "Q155"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "fernandamontenegrooficial",
+          "property": "P2013",
+          "statement_id": "Q335455$5d39f26c-40ff-223d-3e9b-603e8074612f",
+          "source": "https://www.wikidata.org/wiki/Q335455#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q336788",
+      "name": "Oscar Isaac",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Oscar_Isaac",
+      "reference_entity": "https://www.wikidata.org/wiki/Q336788",
+      "reference_names": [
+        "Oscar Isaac",
+        "Oscar Isaac Hern\u00e1ndez Estrada",
+        "\u00d3scar Isaac",
+        "\u00d3scar Isaac Hern\u00e1ndez Estrada"
+      ],
+      "reference_description": "Guatemalan-American actor",
+      "country_ids": [
+        "Q30",
+        "Q774"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q177220",
+        "Q2259451",
+        "Q33999",
+        "Q639669",
+        "Q855091"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "OfficialOscarIsaacPage",
+          "property": "P2013",
+          "statement_id": "Q336788$41c9e107-4b01-df65-032f-007519eca990",
+          "source": "https://www.wikidata.org/wiki/Q336788#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q37079",
+      "name": "Tom Cruise",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Tom_Cruise",
+      "reference_entity": "https://www.wikidata.org/wiki/Q37079",
+      "reference_names": [
+        "Thomas Cruise Mapother IV",
+        "Tom Cruise"
+      ],
+      "reference_description": "American actor and film producer (born 1962)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q2095549",
+        "Q2526255",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q3455803",
+        "Q36180",
+        "Q465501",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "tomcruise",
+          "property": "P2003",
+          "statement_id": "Q37079$57b3d416-4291-7aec-2afb-b074abc3f995",
+          "source": "https://www.wikidata.org/wiki/Q37079#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q37876",
+      "name": "Natalie Portman",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Natalie_Portman",
+      "reference_entity": "https://www.wikidata.org/wiki/Q37876",
+      "reference_names": [
+        "Nat",
+        "Natalie Herschlag",
+        "Natalie Hershlag",
+        "Natalie Portman",
+        "Neta-Lee Herschlag",
+        "\u05e0\u05d8\u05e2-\u05dc\u05d9 \u05d4\u05e8\u05e9\u05dc\u05d2"
+      ],
+      "reference_description": "Israeli-American actress (born 1981)",
+      "country_ids": [
+        "Q30",
+        "Q801"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q2526255",
+        "Q28389",
+        "Q3282637",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "natalieportman",
+          "property": "P2003",
+          "statement_id": "Q37876$a36e511d-4959-5f31-73fc-6d66e6fcf6c2",
+          "source": "https://www.wikidata.org/wiki/Q37876#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q381074",
+      "name": "Fan Bingbing",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Fan_Bingbing",
+      "reference_entity": "https://www.wikidata.org/wiki/Q381074",
+      "reference_names": [
+        "Bingbing Fan",
+        "Fan Bingbing",
+        "F\u00e0n B\u012bngb\u012bng"
+      ],
+      "reference_description": "Chinese actress",
+      "country_ids": [
+        "Q148"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q177220",
+        "Q28389",
+        "Q33999",
+        "Q4610556",
+        "Q578109"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "bingbingfan0916",
+          "property": "P2013",
+          "statement_id": "Q381074$0F12404F-EA1A-4A1D-B4F3-6881EA10A659",
+          "source": "https://www.wikidata.org/wiki/Q381074#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q38111",
+      "name": "Leonardo DiCaprio",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Leonardo_DiCaprio",
+      "reference_entity": "https://www.wikidata.org/wiki/Q38111",
+      "reference_names": [
+        "Leonardo DiCaprio",
+        "Leonardo Wilhelm DiCaprio"
+      ],
+      "reference_description": "American actor and producer (born 1974)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2259451",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q3578589"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "LeonardoDiCaprio",
+          "property": "P2013",
+          "statement_id": "Q38111$C434C194-BE1B-43F9-8DF4-0DB56BAC2DDA",
+          "source": "https://www.wikidata.org/wiki/Q38111#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q39476",
+      "name": "Emma Watson",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Emma_Watson",
+      "reference_entity": "https://www.wikidata.org/wiki/Q39476",
+      "reference_names": [
+        "Emma Charlotte Duerre Watson",
+        "Emma Watson"
+      ],
+      "reference_description": "English actress (born 1990)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q15253558",
+        "Q2259451",
+        "Q2405480",
+        "Q2526255",
+        "Q3357567",
+        "Q33999",
+        "Q4610556",
+        "Q970153"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "emmawatson",
+          "property": "P2003",
+          "statement_id": "Q39476$D1BE6765-777D-4FAF-A385-007B7CE1A920",
+          "source": "https://www.wikidata.org/wiki/Q39476#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q39666",
+      "name": "Pen\u00e9lope Cruz",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Pen%C3%A9lope_Cruz",
+      "reference_entity": "https://www.wikidata.org/wiki/Q39666",
+      "reference_names": [
+        "Penelope Cruz Sanchez",
+        "Pen\u00e9lope Cruz",
+        "Pen\u00e9lope Cruz S\u00e1nchez"
+      ],
+      "reference_description": "Spanish actress (born 1974)",
+      "country_ids": [
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q13590141",
+        "Q2405480",
+        "Q2526255",
+        "Q33231",
+        "Q33999",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "PenelopeCruzOfficial",
+          "property": "P2013",
+          "statement_id": "Q39666$BB870ED6-A213-4C24-9A80-C54503CF414B",
+          "source": "https://www.wikidata.org/wiki/Q39666#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q4725343",
+      "name": "Alia Bhatt",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Alia_Bhatt",
+      "reference_entity": "https://www.wikidata.org/wiki/Q4725343",
+      "reference_names": [
+        "Alia Bhatt",
+        "Alia Bhatt Kapoor",
+        "Alia Kapoor"
+      ],
+      "reference_description": "British actress",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q177220",
+        "Q4610556"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "aliaa08",
+          "property": "P2002",
+          "statement_id": "Q4725343$9F2C74E1-2D95-4EAA-8296-1B7E5D554053",
+          "source": "https://www.wikidata.org/wiki/Q4725343#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q48337",
+      "name": "Morgan Freeman",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Morgan_Freeman",
+      "reference_entity": "https://www.wikidata.org/wiki/Q48337",
+      "reference_names": [
+        "Morgan Freeman"
+      ],
+      "reference_description": "American actor and producer (born 1937)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2095549",
+        "Q2259451",
+        "Q2405480",
+        "Q2526255",
+        "Q3282637",
+        "Q33999",
+        "Q3455803",
+        "Q47541952",
+        "Q578109",
+        "Q852389",
+        "Q947873",
+        "Q948329"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "morganfreeman",
+          "property": "P2003",
+          "statement_id": "Q48337$7981218b-4004-528a-e14d-4768a1008a59",
+          "source": "https://www.wikidata.org/wiki/Q48337#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q491318",
+      "name": "Lee Jung-jae",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Lee_Jung-jae",
+      "reference_entity": "https://www.wikidata.org/wiki/Q491318",
+      "reference_names": [
+        "I Chong-jae",
+        "I Ch\u014fng-jae",
+        "I Jeong-jae",
+        "Jung Jae Lee",
+        "Lee Jeong-jae",
+        "Lee Jung-jae"
+      ],
+      "reference_description": "South Korean actor and businessman (born 1972)",
+      "country_ids": [
+        "Q884"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q2526255",
+        "Q33999",
+        "Q97859751"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "from_jjlee",
+          "property": "P2003",
+          "statement_id": "Q491318$0e2385cc-4d1f-fd29-5851-8a6b2f139da1",
+          "source": "https://www.wikidata.org/wiki/Q491318#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q698173",
+      "name": "Ana de Armas",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Ana_de_Armas",
+      "reference_entity": "https://www.wikidata.org/wiki/Q698173",
+      "reference_names": [
+        "Ana Celia de Armas Caso",
+        "Ana de Armas"
+      ],
+      "reference_description": "Cuban-Spanish actress and model (born 1988)",
+      "country_ids": [
+        "Q241",
+        "Q29",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q33999",
+        "Q4610556"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "ana_d_armas",
+          "property": "P2003",
+          "statement_id": "Q698173$ff58c636-4ad4-9a16-d94a-53304a05ac2c",
+          "source": "https://www.wikidata.org/wiki/Q698173#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q922503",
+      "name": "Wagner Moura",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Wagner_Moura",
+      "reference_entity": "https://www.wikidata.org/wiki/Q922503",
+      "reference_names": [
+        "Wagner Mani\u00e7oba de Moura",
+        "Wagner Moura"
+      ],
+      "reference_description": "Brazilian actor (born 1976)",
+      "country_ids": [
+        "Q155"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q1930187",
+        "Q2259451",
+        "Q2526255",
+        "Q28389",
+        "Q33999"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "wagnermouraa_",
+          "property": "P2003",
+          "statement_id": "Q922503$870FB866-5BF4-48A9-AE3D-5A5FF905028B",
+          "source": "https://www.wikidata.org/wiki/Q922503#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q9543",
+      "name": "Salman Khan",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Salman_Khan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q9543",
+      "reference_names": [
+        "Abdul Rashid Salim Gujjar Salman Khan",
+        "Salman Khan"
+      ],
+      "reference_description": "Indian actor and producer (born 1965)",
+      "country_ids": [
+        "Q145",
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q177220",
+        "Q2405480",
+        "Q3282637",
+        "Q33999",
+        "Q578109",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "BeingSalmanKhan",
+          "property": "P2002",
+          "statement_id": "Q9543$8ECFFA40-3FEE-4AE2-B0F2-2BCCF87DAC93",
+          "source": "https://www.wikidata.org/wiki/Q9543#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q9557",
+      "name": "Aamir Khan",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Aamir_Khan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q9557",
+      "reference_names": [
+        "Aamir",
+        "Aamir Hussain Khan",
+        "Aamir Khan",
+        "Mohammed Aamir Hussain Khan"
+      ],
+      "reference_description": "Indian actor",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q2526255",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q47541952",
+        "Q639669",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "aamirkhan.com",
+          "property": "P2013",
+          "statement_id": "Q9557$E6358670-00F6-49FF-88FB-828B405C9399",
+          "source": "https://www.wikidata.org/wiki/Q9557#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q9570",
+      "name": "Amitabh Bachchan",
+      "category": "acting",
+      "reference_article": "https://en.wikipedia.org/wiki/Amitabh_Bachchan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q9570",
+      "reference_names": [
+        "Amitabh Bachchan",
+        "Big B"
+      ],
+      "reference_description": "Indian film actor (born 1942)",
+      "country_ids": [
+        "Q145",
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q177220",
+        "Q3282637",
+        "Q33999",
+        "Q36180"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "AmitabhBachchan",
+          "property": "P2013",
+          "statement_id": "Q9570$3bace44c-4619-5237-4c8f-167b349fd110",
+          "source": "https://www.wikidata.org/wiki/Q9570#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q108560",
+      "name": "A. R. Rahman",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/A._R._Rahman",
+      "reference_entity": "https://www.wikidata.org/wiki/Q108560",
+      "reference_names": [
+        "A. R. Rahman",
+        "A. S. Dileep Kumar",
+        "Allah Rakha Rahman",
+        "Allahrakka Rahman",
+        "Dileep Kumar Rajagopala"
+      ],
+      "reference_description": "Indian composer and musician",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q1198887",
+        "Q131524",
+        "Q1327329",
+        "Q1415090",
+        "Q177220",
+        "Q183945",
+        "Q2526255",
+        "Q3282637",
+        "Q36834",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "arrahman",
+          "property": "P2003",
+          "statement_id": "Q108560$755e51db-40c8-2b3c-dce3-bdc1381b4f54",
+          "source": "https://www.wikidata.org/wiki/Q108560#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q130798",
+      "name": "Kendrick Lamar",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Kendrick_Lamar",
+      "reference_entity": "https://www.wikidata.org/wiki/Q130798",
+      "reference_names": [
+        "Kendrick Lamar",
+        "Kendrick Lamar Duckworth"
+      ],
+      "reference_description": "American rapper and songwriter (born 1987)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q2252262",
+        "Q36834",
+        "Q60723829",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "kendricklamar",
+          "property": "P2013",
+          "statement_id": "Q130798$A9039560-423A-4AA9-8DFB-A70EFA19F54C",
+          "source": "https://www.wikidata.org/wiki/Q130798#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q13476301",
+      "name": "Anitta",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Anitta_(singer)",
+      "reference_entity": "https://www.wikidata.org/wiki/Q13476301",
+      "reference_names": [
+        "Anitta",
+        "Anitta (singer)",
+        "Larissa de Macedo Machado"
+      ],
+      "reference_description": "Brazilian singer, songwriter, dancer and actress",
+      "country_ids": [
+        "Q155"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q33999",
+        "Q5716684",
+        "Q753110",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "anitta",
+          "property": "P2003",
+          "statement_id": "Q13476301$187EACB6-A4F3-4E8C-820F-E0185BD32159",
+          "source": "https://www.wikidata.org/wiki/Q13476301#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q15838567",
+      "name": "Rahim Redcar",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Rahim_Redcar",
+      "reference_entity": "https://www.wikidata.org/wiki/Q15838567",
+      "reference_names": [
+        "Chris & the Queens",
+        "Chris and the Queens",
+        "Christine & the Queens",
+        "H\u00e9lo\u00efse Ad\u00e9la\u00efde Letissier",
+        "H\u00e9lo\u00efse Letissier",
+        "Rahim C Redcar",
+        "Rahim Redcar",
+        "Redcar"
+      ],
+      "reference_description": "French singer and songwriter",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q13235160",
+        "Q177220",
+        "Q183945",
+        "Q36834",
+        "Q486748",
+        "Q488205",
+        "Q55960555",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "queenschristine",
+          "property": "P2002",
+          "statement_id": "Q15838567$4AB8C5D4-1155-43F2-8CA4-F2E32F764FAE",
+          "source": "https://www.wikidata.org/wiki/Q15838567#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q16233663",
+      "name": "Wizkid",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Wizkid",
+      "reference_entity": "https://www.wikidata.org/wiki/Q16233663",
+      "reference_names": [
+        "Ayodeji Ibrahim Balogun",
+        "Big Wiz",
+        "Lil Prinz",
+        "Machala",
+        "Starboy",
+        "Wizkid"
+      ],
+      "reference_description": "Nigerian singer and songwriter (born 1990)",
+      "country_ids": [
+        "Q1033"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "wizkidmusic",
+          "property": "P2013",
+          "statement_id": "Q16233663$15AE52D3-8A5B-4197-B1F7-9F17B6BC68F6",
+          "source": "https://www.wikidata.org/wiki/Q16233663#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q167850",
+      "name": "Zaz",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Zaz_(singer)",
+      "reference_entity": "https://www.wikidata.org/wiki/Q167850",
+      "reference_names": [
+        "Isabelle Geffroy",
+        "Isabelle Geffroy.",
+        "Zaz",
+        "Zaz (singer)"
+      ],
+      "reference_description": "French singer",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q13391399",
+        "Q488205",
+        "Q55960555",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "zazofficial",
+          "property": "P2013",
+          "statement_id": "Q167850$6A17A772-2754-465D-9149-57CC645FF036",
+          "source": "https://www.wikidata.org/wiki/Q167850#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q17198340",
+      "name": "Shawn Mendes",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Shawn_Mendes",
+      "reference_entity": "https://www.wikidata.org/wiki/Q17198340",
+      "reference_names": [
+        "Shawn Mendes",
+        "Shawn Peter Raul Mendes"
+      ],
+      "reference_description": "Canadian singer",
+      "country_ids": [
+        "Q16"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q36834",
+        "Q486748",
+        "Q753110",
+        "Q855091"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "ShawnMendes",
+          "property": "P2002",
+          "statement_id": "Q17198340$63AED970-79E5-41C2-B0AC-1DFD6FCDED64",
+          "source": "https://www.wikidata.org/wiki/Q17198340#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q17305712",
+      "name": "Burna Boy",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Burna_Boy",
+      "reference_entity": "https://www.wikidata.org/wiki/Q17305712",
+      "reference_names": [
+        "African Giant",
+        "Burna Boy",
+        "Burnaboy",
+        "Damini Ebunoluwa Ogulu",
+        "Oluwa Burna"
+      ],
+      "reference_description": "Nigerian singer and songwriter (born 1991)",
+      "country_ids": [
+        "Q1033"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "burnaboy",
+          "property": "P2002",
+          "statement_id": "Q17305712$4490775d-4834-a1bf-ae79-a81fd3668f29",
+          "source": "https://www.wikidata.org/wiki/Q17305712#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q17517186",
+      "name": "Maluma",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Maluma",
+      "reference_entity": "https://www.wikidata.org/wiki/Q17517186",
+      "reference_names": [
+        "Juan Luis Londo\u00f1o Arias",
+        "Maluma"
+      ],
+      "reference_description": "Colombian singer",
+      "country_ids": [
+        "Q739"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q2252262",
+        "Q33999",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "MALUMAMUSIK",
+          "property": "P2013",
+          "statement_id": "Q17517186$ce22f2d0-4af3-4f27-6f1f-88d337f37218",
+          "source": "https://www.wikidata.org/wiki/Q17517186#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q21621919",
+      "name": "Post Malone",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Post_Malone",
+      "reference_entity": "https://www.wikidata.org/wiki/Q21621919",
+      "reference_names": [
+        "Austin Richard Post",
+        "Post Malone"
+      ],
+      "reference_description": "American singer and rapper (born 1995)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q2252262",
+        "Q33999",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "PostMalone",
+          "property": "P2002",
+          "statement_id": "Q21621919$59E179E5-6367-4B79-AE5B-D8C21A08F06E",
+          "source": "https://www.wikidata.org/wiki/Q21621919#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q21914464",
+      "name": "Dua Lipa",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Dua_Lipa",
+      "reference_entity": "https://www.wikidata.org/wiki/Q21914464",
+      "reference_names": [
+        "Dua Lipa"
+      ],
+      "reference_description": "British singer-songwriter",
+      "country_ids": [
+        "Q1246",
+        "Q145",
+        "Q222"
+      ],
+      "occupation_ids": [
+        "Q15077007",
+        "Q177220",
+        "Q3282637",
+        "Q33999",
+        "Q3501317",
+        "Q36834",
+        "Q4610556",
+        "Q60723829",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "DuaLipa",
+          "property": "P2013",
+          "statement_id": "Q21914464$E928ADB0-1CEE-4137-9DFB-987C570CF90C",
+          "source": "https://www.wikidata.org/wiki/Q21914464#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q22001324",
+      "name": "Karol G",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Karol_G",
+      "reference_entity": "https://www.wikidata.org/wiki/Q22001324",
+      "reference_names": [
+        "Carolina Giraldo Navarro",
+        "Karol G"
+      ],
+      "reference_description": "Colombian singer and songwriter",
+      "country_ids": [
+        "Q739"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q488205"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "karolg",
+          "property": "P2003",
+          "statement_id": "Q22001324$31e95134-438c-44fb-7fb1-ccda1101dfea",
+          "source": "https://www.wikidata.org/wiki/Q22001324#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q231276",
+      "name": "Angelique Kidjo",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Ang%C3%A9lique_Kidjo",
+      "reference_entity": "https://www.wikidata.org/wiki/Q231276",
+      "reference_names": [
+        "Angelique Kidjo",
+        "Ang\u00e9lique Kidjo",
+        "Ang\u00e9lique Kpasseloko",
+        "Ang\u00e9lique Kpasseloko Hinto Hounsinou Kandjo Manta Zogbin Kidjo",
+        "Carmen Kidjo"
+      ],
+      "reference_description": "Beninese-French world music singer (born 1960)",
+      "country_ids": [
+        "Q142",
+        "Q962"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q2490358",
+        "Q33999",
+        "Q36180",
+        "Q36834",
+        "Q488205",
+        "Q55960555",
+        "Q639669",
+        "Q66314404"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "angeliquekidjo",
+          "property": "P2013",
+          "statement_id": "Q231276$48167198-1568-4413-8CAF-49BA5A95CC62",
+          "source": "https://www.wikidata.org/wiki/Q231276#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q23215",
+      "name": "Adele",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Adele",
+      "reference_entity": "https://www.wikidata.org/wiki/Q23215",
+      "reference_names": [
+        "Adele",
+        "Adele Adkins",
+        "Adele Laurie Blue Adkins"
+      ],
+      "reference_description": "English singer-songwriter (born 1988)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q36834",
+        "Q488205",
+        "Q55960555",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "Adele",
+          "property": "P2002",
+          "statement_id": "Q23215$E787ECF0-D257-411E-ACC6-1F5780298128",
+          "source": "https://www.wikidata.org/wiki/Q23215#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q26876",
+      "name": "Taylor Swift",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Taylor_Swift",
+      "reference_entity": "https://www.wikidata.org/wiki/Q26876",
+      "reference_names": [
+        "Taylor Alison Swift",
+        "Taylor Swift"
+      ],
+      "reference_description": "American singer-songwriter (born 1989)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q36834",
+        "Q488205",
+        "Q639669",
+        "Q822146"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "taylorswift",
+          "property": "P2003",
+          "statement_id": "Q26876$9490313B-B6FA-4B67-9937-1CA355E72BFF",
+          "source": "https://www.wikidata.org/wiki/Q26876#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q2722933",
+      "name": "Sunidhi Chauhan",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Sunidhi_Chauhan",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2722933",
+      "reference_names": [
+        "Nidhi Chauhan",
+        "Sunidhi Chauhan"
+      ],
+      "reference_description": "Indian playback singer",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q1755412"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "SunidhiChauhan5",
+          "property": "P2002",
+          "statement_id": "Q2722933$4559F96B-10D3-4A18-B547-568599DC3690",
+          "source": "https://www.wikidata.org/wiki/Q2722933#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q29564107",
+      "name": "Billie Eilish",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Billie_Eilish",
+      "reference_entity": "https://www.wikidata.org/wiki/Q29564107",
+      "reference_names": [
+        "Billie Eilish",
+        "Billie Eilish Pirate Baird O'Connell"
+      ],
+      "reference_description": "American singer-songwriter (born 2001)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q3455803",
+        "Q36834",
+        "Q488205",
+        "Q5716684"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "billieeilish",
+          "property": "P2002",
+          "statement_id": "Q29564107$1bbc4dfb-4077-fa3d-81ea-801cbbb77bef",
+          "source": "https://www.wikidata.org/wiki/Q29564107#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q313318",
+      "name": "Salif Keita",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Salif_Keita",
+      "reference_entity": "https://www.wikidata.org/wiki/Q313318",
+      "reference_names": [
+        "Salif Keita"
+      ],
+      "reference_description": "Malian singer-songwriter, referred to as the \"Golden Voice of Africa\".",
+      "country_ids": [
+        "Q912"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "SalifKeita",
+          "property": "P2002",
+          "statement_id": "Q313318$34EF5C7D-B485-4672-BB60-48B842C24D8D",
+          "source": "https://www.wikidata.org/wiki/Q313318#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q313453",
+      "name": "Stromae",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Stromae",
+      "reference_entity": "https://www.wikidata.org/wiki/Q313453",
+      "reference_names": [
+        "Stromae"
+      ],
+      "reference_description": "Belgian singer and songwriter",
+      "country_ids": [
+        "Q31"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q2252262",
+        "Q3501317",
+        "Q36834",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "stromae",
+          "property": "P2003",
+          "statement_id": "Q313453$BD9E212D-DC37-4232-B1DC-DDF6347FF3F4",
+          "source": "https://www.wikidata.org/wiki/Q313453#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q33240",
+      "name": "Drake",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Drake_(musician)",
+      "reference_entity": "https://www.wikidata.org/wiki/Q33240",
+      "reference_names": [
+        "Aubrey Drake Graham",
+        "Drake",
+        "Drake (musician)"
+      ],
+      "reference_description": "Canadian-American rapper, singer-songwriter, and actor (born 1986)",
+      "country_ids": [
+        "Q16",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q10800557",
+        "Q131524",
+        "Q177220",
+        "Q2252262",
+        "Q2405480",
+        "Q33999",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "Drake",
+          "property": "P2013",
+          "statement_id": "Q33240$937A3E1A-9DCA-406B-AAC2-7E759F77151D",
+          "source": "https://www.wikidata.org/wiki/Q33240#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q34086",
+      "name": "Justin Bieber",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Justin_Bieber",
+      "reference_entity": "https://www.wikidata.org/wiki/Q34086",
+      "reference_names": [
+        "Justin Bieber",
+        "Justin Drew Bieber"
+      ],
+      "reference_description": "Canadian singer-songwriter (born 1994)",
+      "country_ids": [
+        "Q16"
+      ],
+      "occupation_ids": [
+        "Q17502714",
+        "Q177220",
+        "Q488205",
+        "Q578109",
+        "Q639669",
+        "Q753110",
+        "Q855091"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "lilbieber",
+          "property": "P2003",
+          "statement_id": "Q34086$db99de46-4c91-14af-f110-c4d00cfbf25f",
+          "source": "https://www.wikidata.org/wiki/Q34086#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q34424",
+      "name": "Shakira",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Shakira",
+      "reference_entity": "https://www.wikidata.org/wiki/Q34424",
+      "reference_names": [
+        "Shakira",
+        "Shakira Isabel Mebarak Ripoll"
+      ],
+      "reference_description": "Colombian singer-songwriter (born 1977)",
+      "country_ids": [
+        "Q29",
+        "Q739"
+      ],
+      "occupation_ids": [
+        "Q102277154",
+        "Q12362622",
+        "Q13235160",
+        "Q177220",
+        "Q2405480",
+        "Q2490358",
+        "Q33999",
+        "Q36834",
+        "Q639669",
+        "Q855091"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "shakira",
+          "property": "P2002",
+          "statement_id": "Q34424$84F1D9F4-F1E1-4D13-9020-15009C74CE52",
+          "source": "https://www.wikidata.org/wiki/Q34424#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q36153",
+      "name": "Beyonc\u00e9",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Beyonc%C3%A9",
+      "reference_entity": "https://www.wikidata.org/wiki/Q36153",
+      "reference_names": [
+        "Beyonce Giselle Knowles",
+        "Beyonc\u00e9",
+        "Beyonc\u00e9 Giselle Knowles Carter",
+        "Harmonies by the Hive",
+        "Queen B",
+        "Queen Bey",
+        "Third Ward Trill"
+      ],
+      "reference_description": "American singer-songwriter (born 1981)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q33999",
+        "Q36834",
+        "Q43845",
+        "Q5716684",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "Beyonce",
+          "property": "P2002",
+          "statement_id": "Q36153$7CFCD522-C8A9-4A93-BD50-4FED78B743D1",
+          "source": "https://www.wikidata.org/wiki/Q36153#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q3626966",
+      "name": "Harry Styles",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Harry_Styles",
+      "reference_entity": "https://www.wikidata.org/wiki/Q3626966",
+      "reference_names": [
+        "Harry Edward Styles",
+        "Harry Styles"
+      ],
+      "reference_description": "English singer, songwriter and actor",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q15253558",
+        "Q22336956",
+        "Q33999",
+        "Q488205",
+        "Q60723829",
+        "Q639669",
+        "Q753110",
+        "Q855091"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "Harry_Styles",
+          "property": "P2002",
+          "statement_id": "Q3626966$AAF58916-64DC-4185-87F1-F96D1B25BE9F",
+          "source": "https://www.wikidata.org/wiki/Q3626966#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q36844",
+      "name": "Rihanna",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Rihanna",
+      "reference_entity": "https://www.wikidata.org/wiki/Q36844",
+      "reference_names": [
+        "Rihanna",
+        "Robyn Rihanna Fenty"
+      ],
+      "reference_description": "Barbadian singer (born 1988)",
+      "country_ids": [
+        "Q244"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q2405480",
+        "Q33999",
+        "Q43845",
+        "Q60723829",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "badgalriri",
+          "property": "P2003",
+          "statement_id": "Q36844$26005D4C-1D50-4764-8757-61AAE9F8ECFE",
+          "source": "https://www.wikidata.org/wiki/Q36844#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q4235",
+      "name": "Miley Cyrus",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Miley_Cyrus",
+      "reference_entity": "https://www.wikidata.org/wiki/Q4235",
+      "reference_names": [
+        "Destiny Hope Cyrus",
+        "Miley Cyrus",
+        "Miley Ray Cyrus"
+      ],
+      "reference_description": "American singer, actress, and television personality (born 1992)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q102277154",
+        "Q10798782",
+        "Q10800557",
+        "Q177220",
+        "Q2405480",
+        "Q33999",
+        "Q36834",
+        "Q488205",
+        "Q578109",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "miley",
+          "property": "P2013",
+          "statement_id": "Q4235$ABFC90E8-FE98-4D6D-ACCC-9741AD27AD68",
+          "source": "https://www.wikidata.org/wiki/Q4235#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q44333953",
+      "name": "Bad Bunny",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Bad_Bunny",
+      "reference_entity": "https://www.wikidata.org/wiki/Q44333953",
+      "reference_names": [
+        "Bad Bunny",
+        "Benito Antonio Mart\u00ednez Ocasio"
+      ],
+      "reference_description": "Puerto Rican rapper, singer, and record producer (born 1994)",
+      "country_ids": [
+        "Q1183",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q2252262",
+        "Q33999",
+        "Q36834",
+        "Q639669",
+        "Q753110",
+        "Q822146"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "badbunnypr",
+          "property": "P2003",
+          "statement_id": "Q44333953$9DF4C78B-E734-44F8-9F9D-4A134BCE1043",
+          "source": "https://www.wikidata.org/wiki/Q44333953#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q470898",
+      "name": "Sonu Nigam",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Sonu_Nigam",
+      "reference_entity": "https://www.wikidata.org/wiki/Q470898",
+      "reference_names": [
+        "Lord of Chords",
+        "Sonu Nigam"
+      ],
+      "reference_description": "Indian singer",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q10800557",
+        "Q177220",
+        "Q33999",
+        "Q36834",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "SonuNigamSpace",
+          "property": "P2013",
+          "statement_id": "Q470898$c9e19a0f-43ac-d192-07ee-feef584be43c",
+          "source": "https://www.wikidata.org/wiki/Q470898#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q47447",
+      "name": "Ed Sheeran",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Ed_Sheeran",
+      "reference_entity": "https://www.wikidata.org/wiki/Q47447",
+      "reference_names": [
+        "Ed Sheeran",
+        "Edward Christopher Sheeran"
+      ],
+      "reference_description": "English singer-songwriter (born 1991)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q33999",
+        "Q36834",
+        "Q488205",
+        "Q639669",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "teddysphotos",
+          "property": "P2003",
+          "statement_id": "Q47447$D3FEFA56-1499-4ADF-B80A-0D634D3223F8",
+          "source": "https://www.wikidata.org/wiki/Q47447#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q4790608",
+      "name": "Arijit Singh",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Arijit_Singh",
+      "reference_entity": "https://www.wikidata.org/wiki/Q4790608",
+      "reference_names": [
+        "Arijit Singh",
+        "King of Playback Singing"
+      ],
+      "reference_description": "Indian playback singer",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q1755412",
+        "Q177220"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "arijitsingh",
+          "property": "P2002",
+          "statement_id": "Q4790608$80F6C0C1-4130-43FD-AE6C-E6038EBF57AC",
+          "source": "https://www.wikidata.org/wiki/Q4790608#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q6024866",
+      "name": "Indila",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Indila",
+      "reference_entity": "https://www.wikidata.org/wiki/Q6024866",
+      "reference_names": [
+        "Adila Sedra\u00efa",
+        "Indila"
+      ],
+      "reference_description": "French singer and songwriter",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q13235160",
+        "Q177220",
+        "Q36834",
+        "Q488205",
+        "Q60723829",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "off.indila",
+          "property": "P2003",
+          "statement_id": "Q6024866$6190ea38-4f2d-65dd-768f-86348190a839",
+          "source": "https://www.wikidata.org/wiki/Q6024866#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q7810465",
+      "name": "Tiwa Savage",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Tiwa_Savage",
+      "reference_entity": "https://www.wikidata.org/wiki/Q7810465",
+      "reference_names": [
+        "Tiwa",
+        "Tiwa Savage",
+        "Tiwatope Savage-Balogun"
+      ],
+      "reference_description": "Nigerian singer, songwriter, and actress",
+      "country_ids": [
+        "Q1033",
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q33999",
+        "Q488205",
+        "Q639669"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "TiwaSavage",
+          "property": "P2002",
+          "statement_id": "Q7810465$F3184CAA-9C4D-4F23-9F3C-5D66D8620127",
+          "source": "https://www.wikidata.org/wiki/Q7810465#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q83287",
+      "name": "Selena Gomez",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/Selena_Gomez",
+      "reference_entity": "https://www.wikidata.org/wiki/Q83287",
+      "reference_names": [
+        "Selena Gomez",
+        "Selena Marie Gomez"
+      ],
+      "reference_description": "American singer and actress (born 1992)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q1414443",
+        "Q183945",
+        "Q2405480",
+        "Q33999",
+        "Q3501317",
+        "Q43845",
+        "Q4610556",
+        "Q488205",
+        "Q60723829",
+        "Q639669",
+        "Q970153"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "selenagomez",
+          "property": "P2003",
+          "statement_id": "Q83287$20172dc7-41e5-998c-4a80-2d3e7923ab7c",
+          "source": "https://www.wikidata.org/wiki/Q83287#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q966845",
+      "name": "J Balvin",
+      "category": "music",
+      "reference_article": "https://en.wikipedia.org/wiki/J_Balvin",
+      "reference_entity": "https://www.wikidata.org/wiki/Q966845",
+      "reference_names": [
+        "J Balvin",
+        "J. Balvin",
+        "Jos\u00e9 \u00c1lvaro Osorio Balv\u00edn"
+      ],
+      "reference_description": "Colombian singer",
+      "country_ids": [
+        "Q739"
+      ],
+      "occupation_ids": [
+        "Q177220",
+        "Q183945",
+        "Q2252262",
+        "Q3243461",
+        "Q753110"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "JBalvinOficial",
+          "property": "P2013",
+          "statement_id": "Q966845$92abcd99-41b2-f4ae-3978-6276275efd87",
+          "source": "https://www.wikidata.org/wiki/Q966845#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q11755",
+      "name": "Daphne Koller",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Daphne_Koller",
+      "reference_entity": "https://www.wikidata.org/wiki/Q11755",
+      "reference_names": [
+        "Daphne Koller"
+      ],
+      "reference_description": "Israeli-American computer scientist",
+      "country_ids": [
+        "Q30",
+        "Q801"
+      ],
+      "occupation_ids": [
+        "Q15976092",
+        "Q1622272",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "DaphneKoller",
+          "property": "P2002",
+          "statement_id": "Q11755$ad88183a-4369-7a3d-8311-9971d1942d16",
+          "source": "https://www.wikidata.org/wiki/Q11755#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q15994958",
+      "name": "Marques Brownlee",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Marques_Brownlee",
+      "reference_entity": "https://www.wikidata.org/wiki/Q15994958",
+      "reference_names": [
+        "MKBHD",
+        "Marques Brownlee",
+        "Marques Keith Brownlee"
+      ],
+      "reference_description": "American technology reviewer, YouTuber and Internet personality",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q17125263",
+        "Q578109"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "MKBHD",
+          "property": "P2002",
+          "statement_id": "Q15994958$CD2ADC63-5B26-4E1A-B4EE-970996C02A2F",
+          "source": "https://www.wikidata.org/wiki/Q15994958#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q18207172",
+      "name": "Lisa Su",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Lisa_Su",
+      "reference_entity": "https://www.wikidata.org/wiki/Q18207172",
+      "reference_names": [
+        "Dr. Lisa Su",
+        "Lisa Su",
+        "Lisa T. Su",
+        "Lisa Tzwu-Fang Su"
+      ],
+      "reference_description": "American business executive and electrical engineer",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q131524",
+        "Q1326886",
+        "Q484876"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "LisaSu",
+          "property": "P2002",
+          "statement_id": "Q18207172$833017e8-4013-cb4d-d604-bfd9dd73f0b5",
+          "source": "https://www.wikidata.org/wiki/Q18207172#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q18638030",
+      "name": "Lea Verou",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Lea_Verou",
+      "reference_entity": "https://www.wikidata.org/wiki/Q18638030",
+      "reference_names": [
+        "Lea Verou"
+      ],
+      "reference_description": "Greek web developer",
+      "country_ids": [
+        "Q41"
+      ],
+      "occupation_ids": [
+        "Q5482740",
+        "Q6859454",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "LeaVerou",
+          "property": "P2037",
+          "statement_id": "Q18638030$7860809f-4ab7-38b3-6092-9615bebf658c",
+          "source": "https://www.wikidata.org/wiki/Q18638030#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q18686107",
+      "name": "Fei-Fei Li",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Fei-Fei_Li",
+      "reference_entity": "https://www.wikidata.org/wiki/Q18686107",
+      "reference_names": [
+        "Fei Fei Li",
+        "Fei-Fei Li",
+        "Feifei Li",
+        "L. Fei-Fei",
+        "Li Fei-Fei"
+      ],
+      "reference_description": "American computer scientist",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q1622272",
+        "Q82594",
+        "Q901"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "drfeifei",
+          "property": "P2002",
+          "statement_id": "Q18686107$61bc9038-49aa-0985-3e38-f7e10dbfc2bc",
+          "source": "https://www.wikidata.org/wiki/Q18686107#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q23304510",
+      "name": "Simone Giertz",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Simone_Giertz",
+      "reference_entity": "https://www.wikidata.org/wiki/Q23304510",
+      "reference_names": [
+        "Simone Giertz",
+        "Simone Luna Louise S\u00f6derlund Giertz"
+      ],
+      "reference_description": "Swedish inventor and maker",
+      "country_ids": [
+        "Q34"
+      ],
+      "occupation_ids": [
+        "Q17125263",
+        "Q3437279",
+        "Q4110598",
+        "Q578109",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "simonegiertz",
+          "property": "P2013",
+          "statement_id": "Q23304510$fc091a3a-4517-e5c8-2250-a1405c8cb978",
+          "source": "https://www.wikidata.org/wiki/Q23304510#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q265852",
+      "name": "Tim Cook",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Tim_Cook",
+      "reference_entity": "https://www.wikidata.org/wiki/Q265852",
+      "reference_names": [
+        "Tim Apple",
+        "Tim Cook",
+        "Timothy Donald Cook"
+      ],
+      "reference_description": "American business executive, former Apple executive chairman",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q13590141",
+        "Q2462658",
+        "Q43845",
+        "Q484876",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "tim_cook",
+          "property": "P2002",
+          "statement_id": "Q265852$EA278DE2-0349-461A-9F14-375537566EB1",
+          "source": "https://www.wikidata.org/wiki/Q265852#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q26703063",
+      "name": "Ian Goodfellow",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Ian_Goodfellow",
+      "reference_entity": "https://www.wikidata.org/wiki/Q26703063",
+      "reference_names": [
+        "Ian Goodfellow"
+      ],
+      "reference_description": "American scientist, author",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q1265807",
+        "Q15976092",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "goodfeli",
+          "property": "P2037",
+          "statement_id": "Q26703063$8fe48983-429f-7c52-8c07-1b52473df662",
+          "source": "https://www.wikidata.org/wiki/Q26703063#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q2846695",
+      "name": "Andrew Y. Ng",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Andrew_Ng",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2846695",
+      "reference_names": [
+        "Andrew Ng",
+        "Andrew Y Ng",
+        "Andrew Y. Ng",
+        "Andrew Yan-Tak Ng"
+      ],
+      "reference_description": "American artificial intelligence researcher",
+      "country_ids": [
+        "Q145",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q131524",
+        "Q15976092",
+        "Q1622272",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "andrew.ng.96",
+          "property": "P2013",
+          "statement_id": "Q2846695$06874bc2-4d80-252c-e24b-5c0400283377",
+          "source": "https://www.wikidata.org/wiki/Q2846695#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q2964778",
+      "name": "Chris Lattner",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Chris_Lattner",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2964778",
+      "reference_names": [
+        "Chris Arthur Lattner",
+        "Chris Lattner",
+        "Christopher Arthur Lattner"
+      ],
+      "reference_description": "American software developer",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "lattner",
+          "property": "P2037",
+          "statement_id": "Q2964778$697d2851-4f5f-1aba-29c4-232ffa033526",
+          "source": "https://www.wikidata.org/wiki/Q2964778#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q3022141",
+      "name": "Demis Hassabis",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Demis_Hassabis",
+      "reference_entity": "https://www.wikidata.org/wiki/Q3022141",
+      "reference_names": [
+        "Demis Hassabis",
+        "Hassabis",
+        "Sir Demis Hassabis"
+      ],
+      "reference_description": "British artificial intelligence researcher (born 1976)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q10873124",
+        "Q131524",
+        "Q133253419",
+        "Q15295720",
+        "Q15976092",
+        "Q183888",
+        "Q29169143",
+        "Q43845",
+        "Q58287519",
+        "Q6337803",
+        "Q81096",
+        "Q82594",
+        "Q863368"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "demishassabis",
+          "property": "P2002",
+          "statement_id": "Q3022141$1381a250-4922-073f-105d-e7ae0532f200",
+          "source": "https://www.wikidata.org/wiki/Q3022141#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q30942",
+      "name": "Guido van Rossum",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Guido_van_Rossum",
+      "reference_entity": "https://www.wikidata.org/wiki/Q30942",
+      "reference_names": [
+        "Guido van Rossum",
+        "gvanrossum"
+      ],
+      "reference_description": "Dutch programmer and creator of Python",
+      "country_ids": [
+        "Q29999"
+      ],
+      "occupation_ids": [
+        "Q183888",
+        "Q36180",
+        "Q5482740",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "gvanrossum",
+          "property": "P2037",
+          "statement_id": "Q30942$E360B14B-1328-487D-9DA7-6E989A613158",
+          "source": "https://www.wikidata.org/wiki/Q30942#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q316544",
+      "name": "Anders Hejlsberg",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Anders_Hejlsberg",
+      "reference_entity": "https://www.wikidata.org/wiki/Q316544",
+      "reference_names": [
+        "Anders Hejlsberg"
+      ],
+      "reference_description": "Danish software engineer (born 1960)",
+      "country_ids": [
+        "Q756617"
+      ],
+      "occupation_ids": [
+        "Q5482740",
+        "Q7663860",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "ahejlsberg",
+          "property": "P2037",
+          "statement_id": "Q316544$07003b0c-4bac-1613-cde2-710d2055813e",
+          "source": "https://www.wikidata.org/wiki/Q316544#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q3571662",
+      "name": "Yann LeCun",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Yann_LeCun",
+      "reference_entity": "https://www.wikidata.org/wiki/Q3571662",
+      "reference_names": [
+        "LeCun",
+        "Y LeCun",
+        "Y. Le Cun",
+        "Y. LeCun",
+        "YL Cun",
+        "Yann A. LeCun",
+        "Yann Andre Le Cun",
+        "Yann Andre LeCun",
+        "Yann Andr\u00e9 Le Cun",
+        "Yann Andr\u00e9 LeCun",
+        "Yann L. Cun",
+        "Yann LeCun"
+      ],
+      "reference_description": "American-French computer scientist (born 1960)",
+      "country_ids": [
+        "Q142",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q121594",
+        "Q1326886",
+        "Q15976092",
+        "Q1709010",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "ylecun",
+          "property": "P2002",
+          "statement_id": "Q3571662$bb9a13e0-41f5-6411-8183-ecad882950c8",
+          "source": "https://www.wikidata.org/wiki/Q3571662#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q50495366",
+      "name": "Fran\u00e7ois Chollet",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Fran%C3%A7ois_Chollet",
+      "reference_entity": "https://www.wikidata.org/wiki/Q50495366",
+      "reference_names": [
+        "Fran\u00e7ois Chollet"
+      ],
+      "reference_description": "French machine learning researcher",
+      "country_ids": [
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q183888",
+        "Q29169143",
+        "Q5482740",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "fchollet",
+          "property": "P2037",
+          "statement_id": "Q50495366$a5d362c0-43fa-3eea-07c7-82ffbfa33b97",
+          "source": "https://www.wikidata.org/wiki/Q50495366#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q55183",
+      "name": "Susan Wojcicki",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Susan_Wojcicki",
+      "reference_entity": "https://www.wikidata.org/wiki/Q55183",
+      "reference_names": [
+        "Susan Wojcicki"
+      ],
+      "reference_description": "American business executive (1968\u20132024)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q2462658",
+        "Q43845"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "susan.wojcicki",
+          "property": "P2013",
+          "statement_id": "Q55183$5250d31c-4643-eb6c-5fe6-dfc3d73ab302",
+          "source": "https://www.wikidata.org/wiki/Q55183#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q56037405",
+      "name": "Andrej Karpathy",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Andrej_Karpathy",
+      "reference_entity": "https://www.wikidata.org/wiki/Q56037405",
+      "reference_names": [
+        "Andrej Karpathy"
+      ],
+      "reference_description": "Slovakian-Canadian AI researcher (born 1986)",
+      "country_ids": [
+        "Q16",
+        "Q214"
+      ],
+      "occupation_ids": [
+        "Q15976092",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "karpathy",
+          "property": "P2037",
+          "statement_id": "Q56037405$dcc40b72-410b-5d64-b50e-52e932bf00eb",
+          "source": "https://www.wikidata.org/wiki/Q56037405#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q6173703",
+      "name": "Jeff Dean",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Jeff_Dean",
+      "reference_entity": "https://www.wikidata.org/wiki/Q6173703",
+      "reference_names": [
+        "J. Dean",
+        "Jeff Dean",
+        "Jeffrey Adgate Dean"
+      ],
+      "reference_description": "American computer scientist",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q15976092",
+        "Q1709010",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "jeffdean",
+          "property": "P2002",
+          "statement_id": "Q6173703$b4f3f509-4160-c931-4b11-f3fb05c489d6",
+          "source": "https://www.wikidata.org/wiki/Q6173703#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q7426870",
+      "name": "Satya Nadella",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Satya_Nadella",
+      "reference_entity": "https://www.wikidata.org/wiki/Q7426870",
+      "reference_names": [
+        "Bukkapuram Nadella Satyanarayana",
+        "Satya Nadella"
+      ],
+      "reference_description": "Indian-American business executive and CEO of Microsoft",
+      "country_ids": [
+        "Q30",
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q131524",
+        "Q1327627",
+        "Q2462658",
+        "Q484876",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "satyanadella",
+          "property": "P2002",
+          "statement_id": "Q7426870$E43F8827-E42C-47FB-BF39-B4CB81D08E98",
+          "source": "https://www.wikidata.org/wiki/Q7426870#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q74894",
+      "name": "Martin Fowler",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Martin_Fowler_(software_engineer)",
+      "reference_entity": "https://www.wikidata.org/wiki/Q74894",
+      "reference_names": [
+        "Martin Fowler",
+        "Martin Fowler (software engineer)"
+      ],
+      "reference_description": "British programmer",
+      "country_ids": [
+        "Q145",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q20031249",
+        "Q36180",
+        "Q5482740",
+        "Q8246794",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "martinfowler",
+          "property": "P2002",
+          "statement_id": "Q74894$bb0e23ec-4e9b-8de4-664e-b5e684bac3fb",
+          "source": "https://www.wikidata.org/wiki/Q74894#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q7520062",
+      "name": "Simon Willison",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Simon_Willison",
+      "reference_entity": "https://www.wikidata.org/wiki/Q7520062",
+      "reference_names": [
+        "Simon Willison"
+      ],
+      "reference_description": "British computer programmer",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q5482740",
+        "Q81096"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "simonw",
+          "property": "P2037",
+          "statement_id": "Q7520062$9BD950C0-EB52-41AD-A6C7-2ACEA842D8F5",
+          "source": "https://www.wikidata.org/wiki/Q7520062#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q7558",
+      "name": "Radia Perlman",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Radia_Perlman",
+      "reference_entity": "https://www.wikidata.org/wiki/Q7558",
+      "reference_names": [
+        "Radia Joy Perlman",
+        "Radia Perlman"
+      ],
+      "reference_description": "American software designer and network engineer (born 1951)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q12246069",
+        "Q170790",
+        "Q183888",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "radiaperlman",
+          "property": "P2002",
+          "statement_id": "Q7558$6bc3aaac-4717-d689-44ba-9d5f1f6d06de",
+          "source": "https://www.wikidata.org/wiki/Q7558#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q80",
+      "name": "Tim Berners-Lee",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Tim_Berners-Lee",
+      "reference_entity": "https://www.wikidata.org/wiki/Q80",
+      "reference_names": [
+        "Sir Timothy John Berners-Lee",
+        "Tim Berners-Lee",
+        "TimBL",
+        "Timothy John Berners-Lee"
+      ],
+      "reference_description": "English computer scientist (born 1955)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q1622272",
+        "Q169470",
+        "Q205375",
+        "Q482980",
+        "Q5482740",
+        "Q6859454",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "timbl",
+          "property": "P2037",
+          "statement_id": "Q80$79e77e2e-4106-d52a-0c94-b7132e7d7a1d",
+          "source": "https://www.wikidata.org/wiki/Q80#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q92620",
+      "name": "Bjarne Stroustrup",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Bjarne_Stroustrup",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92620",
+      "reference_names": [
+        "Bjarne Stroustrup"
+      ],
+      "reference_description": "Danish computer scientist, creator of C++ (born 1950)",
+      "country_ids": [
+        "Q30",
+        "Q756617"
+      ],
+      "occupation_ids": [
+        "Q1622272",
+        "Q36180",
+        "Q5482740",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "BjarneStroustrup",
+          "property": "P2037",
+          "statement_id": "Q92620$adaf58e1-4b38-b4ee-8f71-f741c43875f9",
+          "source": "https://www.wikidata.org/wiki/Q92620#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q92622",
+      "name": "James Gosling",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/James_Gosling",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92622",
+      "reference_names": [
+        "James Arthur Gosling",
+        "James Gosling"
+      ],
+      "reference_description": "Canadian computer scientist",
+      "country_ids": [
+        "Q16"
+      ],
+      "occupation_ids": [
+        "Q205375",
+        "Q36180",
+        "Q5482740",
+        "Q8246794",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "errcraft",
+          "property": "P2002",
+          "statement_id": "Q92622$A5F7A6A3-4FA7-4E77-B320-E07A9B06161D",
+          "source": "https://www.wikidata.org/wiki/Q92622#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q92648",
+      "name": "Brendan Eich",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Brendan_Eich",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92648",
+      "reference_names": [
+        "Brendan Eich",
+        "Brendan O. Eich"
+      ],
+      "reference_description": "American computer programmer and technology executive",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q5287861",
+        "Q5482740",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "BrendanEich",
+          "property": "P2037",
+          "statement_id": "Q92648$f91ee114-408e-480f-0fb3-1e5a3a33114b",
+          "source": "https://www.wikidata.org/wiki/Q92648#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q92738",
+      "name": "Kent Beck",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Kent_Beck",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92738",
+      "reference_names": [
+        "Kent Beck"
+      ],
+      "reference_description": "American software engineer",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q1709010",
+        "Q183888",
+        "Q36180",
+        "Q5482740",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "KentBeckProgrammer",
+          "property": "P2013",
+          "statement_id": "Q92738$A731A3F1-19DC-4C47-9E92-AEED14C8CD82",
+          "source": "https://www.wikidata.org/wiki/Q92738#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q92748",
+      "name": "Yukihiro Matsumoto",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Yukihiro_Matsumoto",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92748",
+      "reference_names": [
+        "Matsumoto Yukihiro",
+        "Matz",
+        "Yukihiro \"Matz\" Matsumoto",
+        "Yukihiro Matsumoto",
+        "matz"
+      ],
+      "reference_description": "Japanese computer scientist who created the Ruby programming language",
+      "country_ids": [
+        "Q17"
+      ],
+      "occupation_ids": [
+        "Q5482740",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "matz",
+          "property": "P2037",
+          "statement_id": "Q92748$dbb9fe87-424b-1505-af6a-60b69ea600e2",
+          "source": "https://www.wikidata.org/wiki/Q92748#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q92768",
+      "name": "Rasmus Lerdorf",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Rasmus_Lerdorf",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92768",
+      "reference_names": [
+        "Rasmus Jay Lerdorf",
+        "Rasmus LLerdorf",
+        "Rasmus Lerdorf"
+      ],
+      "reference_description": "Danish programmer and creator of PHP",
+      "country_ids": [
+        "Q756617"
+      ],
+      "occupation_ids": [
+        "Q5482740",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "rasmus",
+          "property": "P2002",
+          "statement_id": "Q92768$367966a8-a48e-4295-a0aa-8cc644c406c2",
+          "source": "https://www.wikidata.org/wiki/Q92768#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q92894",
+      "name": "Geoffrey Hinton",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Geoffrey_Hinton",
+      "reference_entity": "https://www.wikidata.org/wiki/Q92894",
+      "reference_names": [
+        "G. E. Hinton",
+        "Geoff Hinton",
+        "Geoffrey Hinton"
+      ],
+      "reference_description": "British-Canadian computer scientist and psychologist",
+      "country_ids": [
+        "Q145",
+        "Q16"
+      ],
+      "occupation_ids": [
+        "Q15976092",
+        "Q1622272",
+        "Q212980",
+        "Q6337803",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "geoffreyhinton",
+          "property": "P2002",
+          "statement_id": "Q92894$24A32AE7-026B-4ACB-8B93-2DC636AC9035",
+          "source": "https://www.wikidata.org/wiki/Q92894#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q93010",
+      "name": "Robert Cecil Martin",
+      "category": "science_technology",
+      "reference_article": "https://en.wikipedia.org/wiki/Robert_C._Martin",
+      "reference_entity": "https://www.wikidata.org/wiki/Q93010",
+      "reference_names": [
+        "Robert C. Martin",
+        "Robert Cecil Martin",
+        "Robert Martin",
+        "Uncle Bob"
+      ],
+      "reference_description": "American software consultant (b. 1952)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q183888",
+        "Q36180",
+        "Q81096",
+        "Q82594"
+      ],
+      "accounts": [
+        {
+          "platform": "github",
+          "username": "unclebob",
+          "property": "P2037",
+          "statement_id": "Q93010$1406988c-4062-5c36-3c82-a6882478fafc",
+          "source": "https://www.wikidata.org/wiki/Q93010#P2037"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q10132",
+      "name": "Rafael Nadal",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Rafael_Nadal",
+      "reference_entity": "https://www.wikidata.org/wiki/Q10132",
+      "reference_names": [
+        "Rafael Nadal",
+        "Rafael Nadal i Parera"
+      ],
+      "reference_description": "Spanish tennis player (born 1986)",
+      "country_ids": [
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q4610556"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "RafaelNadal",
+          "property": "P2002",
+          "statement_id": "Q10132$62EAD925-E881-4A4D-81A1-9118F6DBBC61",
+          "source": "https://www.wikidata.org/wiki/Q10132#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q11459",
+      "name": "Serena Williams",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Serena_Williams",
+      "reference_entity": "https://www.wikidata.org/wiki/Q11459",
+      "reference_names": [
+        "Serena Jameka Williams",
+        "Serena Slam",
+        "Serena Williams"
+      ],
+      "reference_description": "American tennis player (born 1981)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10833314",
+        "Q18814623",
+        "Q2066131",
+        "Q33999",
+        "Q36180",
+        "Q43845",
+        "Q5322166"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "SerenaWilliams",
+          "property": "P2013",
+          "statement_id": "Q11459$1654083C-507C-4F9A-807D-850EEEA760E7",
+          "source": "https://www.wikidata.org/wiki/Q11459#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q11571",
+      "name": "Cristiano Ronaldo",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "reference_entity": "https://www.wikidata.org/wiki/Q11571",
+      "reference_names": [
+        "CR7",
+        "Cristiano Ronaldo",
+        "Cristiano Ronaldo dos Santos Aveiro"
+      ],
+      "reference_description": "Portuguese association football player (born 1985)",
+      "country_ids": [
+        "Q45"
+      ],
+      "occupation_ids": [
+        "Q2066131",
+        "Q33999",
+        "Q4610556",
+        "Q5436768",
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "Cristiano",
+          "property": "P2002",
+          "statement_id": "Q11571$6784C0D5-F1B4-4702-807C-F1434FD4483F",
+          "source": "https://www.wikidata.org/wiki/Q11571#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q11578",
+      "name": "Venus Williams",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Venus_Williams",
+      "reference_entity": "https://www.wikidata.org/wiki/Q11578",
+      "reference_names": [
+        "Venus Ebony Starr Williams",
+        "Venus Williams"
+      ],
+      "reference_description": "American tennis player (born 1980)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10833314",
+        "Q131524",
+        "Q36180"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "VenusWilliams",
+          "property": "P2013",
+          "statement_id": "Q11578$CF95743F-EDAC-4EB4-B1A4-A774D2106F84",
+          "source": "https://www.wikidata.org/wiki/Q11578#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q129118",
+      "name": "Ada Hegerberg",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Ada_Hegerberg",
+      "reference_entity": "https://www.wikidata.org/wiki/Q129118",
+      "reference_names": [
+        "Ada Hegerberg",
+        "Ada Martine Stolsmo Hegerberg"
+      ],
+      "reference_description": "Norwegian footballer",
+      "country_ids": [
+        "Q20"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "ahegerberg",
+          "property": "P2003",
+          "statement_id": "Q129118$fd2e6e4d-4064-80f0-27b6-f6439f695003",
+          "source": "https://www.wikidata.org/wiki/Q129118#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q133903",
+      "name": "Virgil van Dijk",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
+      "reference_entity": "https://www.wikidata.org/wiki/Q133903",
+      "reference_names": [
+        "Virgil van Dijk"
+      ],
+      "reference_description": "Dutch association football player (born 1991)",
+      "country_ids": [
+        "Q29999"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "VirgilvDijk",
+          "property": "P2002",
+          "statement_id": "Q133903$fd567f82-4d02-10b8-087b-21aaf3667158",
+          "source": "https://www.wikidata.org/wiki/Q133903#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q1354960",
+      "name": "Mohamed Salah",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Mohamed_Salah",
+      "reference_entity": "https://www.wikidata.org/wiki/Q1354960",
+      "reference_names": [
+        "Mo Salah",
+        "Mohamed Salah",
+        "Mohamed Salah Hamed Mahrous Ghaly",
+        "\u0645\u062d\u0645\u062f \u0635\u0644\u0627\u062d \u062d\u0627\u0645\u062f \u0645\u062d\u0631\u0648\u0633 \u063a\u0627\u0644\u064a"
+      ],
+      "reference_description": "Egyptian association football player (born 1992)",
+      "country_ids": [
+        "Q79"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "MoSalah",
+          "property": "P2002",
+          "statement_id": "Q1354960$3fef065b-42ba-7619-28ff-72636592a235",
+          "source": "https://www.wikidata.org/wiki/Q1354960#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q151269",
+      "name": "Robert Lewandowski",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Robert_Lewandowski",
+      "reference_entity": "https://www.wikidata.org/wiki/Q151269",
+      "reference_names": [
+        "Robert Lewandowski"
+      ],
+      "reference_description": "Polish association football player (born 1988)",
+      "country_ids": [
+        "Q36"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "_rl9",
+          "property": "P2003",
+          "statement_id": "Q151269$8a8d004c-462a-15ef-1e7a-aa4f5dc8550a",
+          "source": "https://www.wikidata.org/wiki/Q151269#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q17281073",
+      "name": "Nikola Joki\u0107",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Nikola_Joki%C4%87",
+      "reference_entity": "https://www.wikidata.org/wiki/Q17281073",
+      "reference_names": [
+        "Nikola Joki\u0107",
+        "The Serbian King",
+        "the Joker"
+      ],
+      "reference_description": "Serbian basketball player (born 1995)",
+      "country_ids": [
+        "Q403"
+      ],
+      "occupation_ids": [
+        "Q3665646"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "VMarinkovicOfficial",
+          "property": "P2013",
+          "statement_id": "Q17281073$36BBCF0A-1567-479C-88CE-2F4618E5875A",
+          "source": "https://www.wikidata.org/wiki/Q17281073#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q17466583",
+      "name": "Naomi Osaka",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Naomi_Osaka",
+      "reference_entity": "https://www.wikidata.org/wiki/Q17466583",
+      "reference_names": [
+        "Naomi Osaka",
+        "Naomi \u014csaka",
+        "Osaka Naomi",
+        "\u5927\u5742 \u306a\u304a\u307f"
+      ],
+      "reference_description": "Japanese tennis player (born 1997)",
+      "country_ids": [
+        "Q17"
+      ],
+      "occupation_ids": [
+        "Q10833314"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "naomiosaka",
+          "property": "P2003",
+          "statement_id": "Q17466583$7f66e9a0-4cef-f493-573c-128b0b6fe268",
+          "source": "https://www.wikidata.org/wiki/Q17466583#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q209942",
+      "name": "Sadio Man\u00e9",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9",
+      "reference_entity": "https://www.wikidata.org/wiki/Q209942",
+      "reference_names": [
+        "Sadio Mane",
+        "Sadio Man\u00e9"
+      ],
+      "reference_description": "Senegalese footballer (born 1992)",
+      "country_ids": [],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "SadioManeLFC10",
+          "property": "P2013",
+          "statement_id": "Q209942$2f654c51-456e-ed3f-73f8-8ad03993a83b",
+          "source": "https://www.wikidata.org/wiki/Q209942#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q213854",
+      "name": "Virat Kohli",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Virat_Kohli",
+      "reference_entity": "https://www.wikidata.org/wiki/Q213854",
+      "reference_names": [
+        "Virat Kohli"
+      ],
+      "reference_description": "Indian cricket player",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q12299841"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "virat.kohli",
+          "property": "P2013",
+          "statement_id": "Q213854$3564883A-A042-4494-B187-522CBD05814B",
+          "source": "https://www.wikidata.org/wiki/Q213854#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q21621995",
+      "name": "Kylian Mbapp\u00e9",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9",
+      "reference_entity": "https://www.wikidata.org/wiki/Q21621995",
+      "reference_names": [
+        "Kylian Mbappe",
+        "Kylian Mbappe Lottin",
+        "Kylian Mbapp\u00e9",
+        "Kylian Mbapp\u00e9 Lottin"
+      ],
+      "reference_description": "French footballer (born 1998)",
+      "country_ids": [
+        "Q1009",
+        "Q142"
+      ],
+      "occupation_ids": [
+        "Q2066131",
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "kylianmbappeofficiel",
+          "property": "P2013",
+          "statement_id": "Q21621995$ddb60f82-4097-e3c5-5431-d0432805584c",
+          "source": "https://www.wikidata.org/wiki/Q21621995#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q228616",
+      "name": "Marta",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Marta_(footballer)",
+      "reference_entity": "https://www.wikidata.org/wiki/Q228616",
+      "reference_names": [
+        "Marta",
+        "Marta (footballer)",
+        "Marta Vieira da Silva"
+      ],
+      "reference_description": "Brazilian footballer (born 1986)",
+      "country_ids": [
+        "Q155"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "martavsilva10",
+          "property": "P2003",
+          "statement_id": "Q228616$78D80E21-4C5B-43EE-AA6B-911E20C59591",
+          "source": "https://www.wikidata.org/wiki/Q228616#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q260725",
+      "name": "Megan Rapinoe",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Megan_Rapinoe",
+      "reference_entity": "https://www.wikidata.org/wiki/Q260725",
+      "reference_names": [
+        "Megan Anna Rapinoe",
+        "Megan Rapinoe",
+        "Pinoe"
+      ],
+      "reference_description": "American soccer player (born 1985)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q131524",
+        "Q33999",
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "mPinoe",
+          "property": "P2013",
+          "statement_id": "Q260725$E4E8A7CE-38A5-44E6-99E1-00630BFC2E05",
+          "source": "https://www.wikidata.org/wiki/Q260725#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q26840238",
+      "name": "Iga \u015awi\u0105tek",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Iga_%C5%9Awi%C4%85tek",
+      "reference_entity": "https://www.wikidata.org/wiki/Q26840238",
+      "reference_names": [
+        "Iga Natalia \u015awi\u0105tek",
+        "Iga Swiatek",
+        "Iga \u015awi\u0105tek"
+      ],
+      "reference_description": "Polish tennis player (born 2001)",
+      "country_ids": [
+        "Q36"
+      ],
+      "occupation_ids": [
+        "Q10833314"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "iga_swiatek",
+          "property": "P2002",
+          "statement_id": "Q26840238$661ab2e9-43a2-8c6f-d258-c9fa5ab20930",
+          "source": "https://www.wikidata.org/wiki/Q26840238#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q27995553",
+      "name": "Aitana Bonmat\u00ed",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Aitana_Bonmat%C3%AD",
+      "reference_entity": "https://www.wikidata.org/wiki/Q27995553",
+      "reference_names": [
+        "Aitana Bonmat\u00ed",
+        "Aitana Bonmat\u00ed Conca",
+        "Aitana Bonmat\u00ed Guidonet",
+        "Aitana Bonmat\u00ed i Conca"
+      ],
+      "reference_description": "Spanish football player",
+      "country_ids": [
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "AitanaBonmati",
+          "property": "P2013",
+          "statement_id": "Q27995553$D203267E-DF9A-4FCC-9645-BF72C2B22048",
+          "source": "https://www.wikidata.org/wiki/Q27995553#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q28967995",
+      "name": "Erling Haaland",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Erling_Haaland",
+      "reference_entity": "https://www.wikidata.org/wiki/Q28967995",
+      "reference_names": [
+        "Erling Braut Haaland",
+        "Erling Braut H\u00e5land",
+        "Erling Haaland",
+        "Erling H\u00e5land"
+      ],
+      "reference_description": "Norwegian footballer (born 2000)",
+      "country_ids": [
+        "Q20"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "erling",
+          "property": "P2003",
+          "statement_id": "Q28967995$59739473-42a7-299c-f18a-4d9950d6ce06",
+          "source": "https://www.wikidata.org/wiki/Q28967995#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q28973866",
+      "name": "Vin\u00edcius J\u00fanior",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior",
+      "reference_entity": "https://www.wikidata.org/wiki/Q28973866",
+      "reference_names": [
+        "Vini Jr.",
+        "Vin\u00edcius Jos\u00e9 Paix\u00e3o de Oliveira J\u00fanior",
+        "Vin\u00edcius J\u00fanior"
+      ],
+      "reference_description": "Brazilian association football player (born 2000)",
+      "country_ids": [
+        "Q155",
+        "Q29"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "viniiciusjunior11",
+          "property": "P2013",
+          "statement_id": "Q28973866$858852b6-4a47-eaee-a40c-b239c7bfb2c9",
+          "source": "https://www.wikidata.org/wiki/Q28973866#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q352159",
+      "name": "Stephen Curry",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Stephen_Curry",
+      "reference_entity": "https://www.wikidata.org/wiki/Q352159",
+      "reference_names": [
+        "Steph Curry",
+        "Stephen Curry",
+        "Wardell Curry",
+        "Wardell Stephen \"Steph\" Curry II",
+        "Wardell Stephen Curry II"
+      ],
+      "reference_description": "American basketball player (born 1988)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q36180",
+        "Q3665646"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "stephencurry30",
+          "property": "P2003",
+          "statement_id": "Q352159$4619F24D-29AB-44CC-A164-6119ABE90BE0",
+          "source": "https://www.wikidata.org/wiki/Q352159#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q357984",
+      "name": "Kevin De Bruyne",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "reference_entity": "https://www.wikidata.org/wiki/Q357984",
+      "reference_names": [
+        "Kevin De Bruyne"
+      ],
+      "reference_description": "Belgian association football player (born 1991)",
+      "country_ids": [
+        "Q31"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "KevinDeBruyne",
+          "property": "P2013",
+          "statement_id": "Q357984$904b6a5e-4e13-7c1a-f6ac-b6b7bec666a9",
+          "source": "https://www.wikidata.org/wiki/Q357984#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q36159",
+      "name": "LeBron James",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/LeBron_James",
+      "reference_entity": "https://www.wikidata.org/wiki/Q36159",
+      "reference_names": [
+        "LeBron James"
+      ],
+      "reference_description": "American basketball player (born 1984)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10798782",
+        "Q28389",
+        "Q3665646"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "kingjames",
+          "property": "P2003",
+          "statement_id": "Q36159$866f427e-42b2-5a0b-be97-47a7a831bec4",
+          "source": "https://www.wikidata.org/wiki/Q36159#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q39263365",
+      "name": "Coco Gauff",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Coco_Gauff",
+      "reference_entity": "https://www.wikidata.org/wiki/Q39263365",
+      "reference_names": [
+        "Coco Gauff",
+        "Cori Dionne Gauff",
+        "Cori Gauff",
+        "Gauff"
+      ],
+      "reference_description": "American tennis player (born 2004)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q10833314"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "cocogauff",
+          "property": "P2003",
+          "statement_id": "Q39263365$f4d0eb50-4b9e-cac1-9326-b4033324fde0",
+          "source": "https://www.wikidata.org/wiki/Q39263365#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q4391858",
+      "name": "Shohei Ohtani",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Shohei_Ohtani",
+      "reference_entity": "https://www.wikidata.org/wiki/Q4391858",
+      "reference_names": [
+        "Babe Ruth of Japan",
+        "Japan's Babe Ruth",
+        "Japanese Babe Ruth",
+        "OHTANI Shohei",
+        "OTANI Shohei",
+        "Ootani Shouhei",
+        "Shohei Ohtani",
+        "Shohei Otani",
+        "Shotime",
+        "Shouhei Ootani",
+        "Sh\u014dhei \u014ctani",
+        "\u014cTANI Sh\u014dhei"
+      ],
+      "reference_description": "Japanese professional baseball player",
+      "country_ids": [
+        "Q17"
+      ],
+      "occupation_ids": [
+        "Q10871364"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "shoheiohtani",
+          "property": "P2003",
+          "statement_id": "Q4391858$e5eb62e6-4916-9070-958f-3f53f7e1a8f7",
+          "source": "https://www.wikidata.org/wiki/Q4391858#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q470774",
+      "name": "MS Dhoni",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/MS_Dhoni",
+      "reference_entity": "https://www.wikidata.org/wiki/Q470774",
+      "reference_names": [
+        "MS Dhoni"
+      ],
+      "reference_description": "Indian cricket player (born 1981)",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q12299841"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "MSDhoni",
+          "property": "P2002",
+          "statement_id": "Q470774$65BF2F14-EA3A-4F28-ADC8-A37BBBC2BC7C",
+          "source": "https://www.wikidata.org/wiki/Q470774#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q4837515",
+      "name": "Mohammad Babar Azam",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Babar_Azam",
+      "reference_entity": "https://www.wikidata.org/wiki/Q4837515",
+      "reference_names": [
+        "Babar Azam",
+        "Mohammad Babar Azam"
+      ],
+      "reference_description": "Pakistani cricketer",
+      "country_ids": [
+        "Q843"
+      ],
+      "occupation_ids": [
+        "Q12299841"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "MBabarAzamPakistan",
+          "property": "P2013",
+          "statement_id": "Q4837515$782e9efb-4f3d-6462-dc48-219e49174c30",
+          "source": "https://www.wikidata.org/wiki/Q4837515#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q5812",
+      "name": "Novak Djokovic",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Novak_Djokovic",
+      "reference_entity": "https://www.wikidata.org/wiki/Q5812",
+      "reference_names": [
+        "Novak Djokovic"
+      ],
+      "reference_description": "Serbian tennis player (born 1987)",
+      "country_ids": [
+        "Q403"
+      ],
+      "occupation_ids": [
+        "Q10833314"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "djokovic.official",
+          "property": "P2013",
+          "statement_id": "Q5812$271d7db6-4ce8-5293-6343-561825ecb036",
+          "source": "https://www.wikidata.org/wiki/Q5812#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q58590",
+      "name": "Yao Ming",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Yao_Ming",
+      "reference_entity": "https://www.wikidata.org/wiki/Q58590",
+      "reference_names": [
+        "Ming Yao",
+        "Yao Ming"
+      ],
+      "reference_description": "Chinese basketball player (born 1980)",
+      "country_ids": [
+        "Q148"
+      ],
+      "occupation_ids": [
+        "Q131524",
+        "Q18814623",
+        "Q3665646"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "yao",
+          "property": "P2003",
+          "statement_id": "Q58590$ACFE26C2-2DD1-4998-98E4-1FA8B03C5E13",
+          "source": "https://www.wikidata.org/wiki/Q58590#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q615",
+      "name": "Lionel Messi",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Lionel_Messi",
+      "reference_entity": "https://www.wikidata.org/wiki/Q615",
+      "reference_names": [
+        "Lionel Andr\u00e9s Messi Cuccitini",
+        "Lionel Messi"
+      ],
+      "reference_description": "Argentine association football player (born 1987)",
+      "country_ids": [
+        "Q29",
+        "Q38",
+        "Q414"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "LeoMessi",
+          "property": "P2013",
+          "statement_id": "Q615$E4635BE3-5D00-4A28-88A0-B02E9FBD73D3",
+          "source": "https://www.wikidata.org/wiki/Q615#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q8991894",
+      "name": "Giannis Antetokounmpo",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Giannis_Antetokounmpo",
+      "reference_entity": "https://www.wikidata.org/wiki/Q8991894",
+      "reference_names": [
+        "Akumpo",
+        "Anteto",
+        "Giannis Adetokunbo",
+        "Giannis Antetokounmpo",
+        "Giannis Sina Ougko Antetokounmpo",
+        "Giannis Sina Ugo Antetokounmpo",
+        "Greek Freak",
+        "Yannis Antetokounmpo",
+        "\u0393\u03b9\u03ac\u03bd\u03bd\u03b7\u03c2 \u03a3\u03af\u03bd\u03b1-\u039f\u03cd\u03b3\u03ba\u03bf \u0391\u03bd\u03c4\u03b5\u03c4\u03bf\u03ba\u03bf\u03cd\u03bd\u03bc\u03c0\u03bf"
+      ],
+      "reference_description": "Nigerian-Greek basketball player (born 1994)",
+      "country_ids": [
+        "Q1033",
+        "Q41"
+      ],
+      "occupation_ids": [
+        "Q3665646"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "giannis_an34",
+          "property": "P2003",
+          "statement_id": "Q8991894$3FA70BE6-927E-4FA2-801C-F922B4D08F1F",
+          "source": "https://www.wikidata.org/wiki/Q8991894#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q919634",
+      "name": "Sam Kerr",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Sam_Kerr",
+      "reference_entity": "https://www.wikidata.org/wiki/Q919634",
+      "reference_names": [
+        "Sam Kerr",
+        "Sam kerr",
+        "Samantha Kerr",
+        "Samantha May Kerr"
+      ],
+      "reference_description": "Australian soccer player",
+      "country_ids": [
+        "Q408"
+      ],
+      "occupation_ids": [
+        "Q937857"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "samanthakerr20",
+          "property": "P2003",
+          "statement_id": "Q919634$ecc69412-4c55-8526-fe94-5da7be9638ff",
+          "source": "https://www.wikidata.org/wiki/Q919634#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q9488",
+      "name": "Sachin Tendulkar",
+      "category": "sport",
+      "reference_article": "https://en.wikipedia.org/wiki/Sachin_Tendulkar",
+      "reference_entity": "https://www.wikidata.org/wiki/Q9488",
+      "reference_names": [
+        "Sachin Tendulkar"
+      ],
+      "reference_description": "Indian cricket player (born 1973)",
+      "country_ids": [
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q12299841",
+        "Q82955"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "sachin_rt",
+          "property": "P2002",
+          "statement_id": "Q9488$C277DC1B-737C-4A18-9C71-7AB7154F63D9",
+          "source": "https://www.wikidata.org/wiki/Q9488#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q12881",
+      "name": "Paulo Coelho",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Paulo_Coelho",
+      "reference_entity": "https://www.wikidata.org/wiki/Q12881",
+      "reference_names": [
+        "Paulo Coelho",
+        "Paulo Coelho De Souza"
+      ],
+      "reference_description": "Brazilian lyricist and novelist (born 1947)",
+      "country_ids": [
+        "Q155"
+      ],
+      "occupation_ids": [
+        "Q1209498",
+        "Q18844224",
+        "Q1930187",
+        "Q36180",
+        "Q36834",
+        "Q6625963",
+        "Q753110",
+        "Q822146"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "paulocoelho",
+          "property": "P2002",
+          "statement_id": "Q12881$49C51A38-64FA-4C14-A820-6B3F3EFFFFFD",
+          "source": "https://www.wikidata.org/wiki/Q12881#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q134798",
+      "name": "Haruki Murakami",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Haruki_Murakami",
+      "reference_entity": "https://www.wikidata.org/wiki/Q134798",
+      "reference_names": [
+        "Haruki Murakami",
+        "Murakami Haruki"
+      ],
+      "reference_description": "Japanese writer (born 1949)",
+      "country_ids": [
+        "Q17"
+      ],
+      "occupation_ids": [
+        "Q11513337",
+        "Q11774202",
+        "Q12144794",
+        "Q14467526",
+        "Q15949613",
+        "Q1622272",
+        "Q18844224",
+        "Q333634",
+        "Q36180",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "harukimurakamiauthor",
+          "property": "P2013",
+          "statement_id": "Q134798$5f9398a7-49e2-1599-a340-3e845722e971",
+          "source": "https://www.wikidata.org/wiki/Q134798#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q16202911",
+      "name": "Roxane Gay",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Roxane_Gay",
+      "reference_entity": "https://www.wikidata.org/wiki/Q16202911",
+      "reference_names": [
+        "Roxane Gay",
+        "Roxanne Gay"
+      ],
+      "reference_description": "American writer",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q11774202",
+        "Q11892507",
+        "Q1607826",
+        "Q1622272",
+        "Q1930187",
+        "Q36180",
+        "Q4263842",
+        "Q462390",
+        "Q6625963",
+        "Q876864"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "rgay",
+          "property": "P2002",
+          "statement_id": "Q16202911$E0B92D88-850C-49B0-8175-5675191B56D7",
+          "source": "https://www.wikidata.org/wiki/Q16202911#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q181677",
+      "name": "George R. R. Martin",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/George_R._R._Martin",
+      "reference_entity": "https://www.wikidata.org/wiki/Q181677",
+      "reference_names": [
+        "George Martin",
+        "George R. Martin",
+        "George R. R. Martin",
+        "George Raymond Martin"
+      ],
+      "reference_description": "American writer and television producer (born 1948)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q12144794",
+        "Q13235160",
+        "Q15949613",
+        "Q18844224",
+        "Q28389",
+        "Q3282637",
+        "Q36180",
+        "Q5434338",
+        "Q578109",
+        "Q6625963",
+        "Q73306227",
+        "Q8246794",
+        "Q876864"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "georgerrmartinofficial",
+          "property": "P2013",
+          "statement_id": "Q181677$F7508A3B-2B14-4F01-8FBD-B5EFD9F931D5",
+          "source": "https://www.wikidata.org/wiki/Q181677#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q183492",
+      "name": "Margaret Atwood",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Margaret_Atwood",
+      "reference_entity": "https://www.wikidata.org/wiki/Q183492",
+      "reference_names": [
+        "Margaret Atwood",
+        "Margaret Eleanor Atwood",
+        "Marqaret Etvud"
+      ],
+      "reference_description": "Canadian poet, novelist, literary critic, essayist, teacher, environmental activist, p\u00e9pini\u00e9riste and inventor (born 1939)",
+      "country_ids": [
+        "Q16"
+      ],
+      "occupation_ids": [
+        "Q11774202",
+        "Q1231865",
+        "Q15980158",
+        "Q18844224",
+        "Q205375",
+        "Q3578589",
+        "Q36180",
+        "Q4263842",
+        "Q49757",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "MargaretAtwoodAuthor",
+          "property": "P2013",
+          "statement_id": "Q183492$0c47f162-4791-9781-a98c-8308b4e32c5f",
+          "source": "https://www.wikidata.org/wiki/Q183492#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q18355929",
+      "name": "Ocean Vuong",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Ocean_Vuong",
+      "reference_entity": "https://www.wikidata.org/wiki/Q18355929",
+      "reference_names": [
+        "Ocean Vuong",
+        "V\u01b0\u01a1ng Qu\u1ed1c Vinh"
+      ],
+      "reference_description": "Vietnamese American poet, essayist and novelist (born 1988)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q11774202",
+        "Q1607826",
+        "Q1622272",
+        "Q36180",
+        "Q49757"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "ocean_vuong",
+          "property": "P2003",
+          "statement_id": "Q18355929$4f65b5fd-4402-2cf4-fd14-61682fac3849",
+          "source": "https://www.wikidata.org/wiki/Q18355929#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q184746",
+      "name": "Jane Goodall",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Jane_Goodall",
+      "reference_entity": "https://www.wikidata.org/wiki/Q184746",
+      "reference_names": [
+        "Baroness Jane van Lawick-Goodall",
+        "Dame Jane Goodall",
+        "Dame Jane Morris Goodall",
+        "Jane Goodall",
+        "Valerie Jane Morris-Goodall"
+      ],
+      "reference_description": "English primatologist and anthropologist (1934\u20132025)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q15253558",
+        "Q1622272",
+        "Q16825962",
+        "Q16831721",
+        "Q18814623",
+        "Q36180",
+        "Q4773904",
+        "Q864503"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "JaneGoodallInst",
+          "property": "P2002",
+          "statement_id": "Q184746$2b962a38-47b1-1f67-8d23-e1304424f3b5",
+          "source": "https://www.wikidata.org/wiki/Q184746#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q190051",
+      "name": "Jamie Oliver",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Jamie_Oliver",
+      "reference_entity": "https://www.wikidata.org/wiki/Q190051",
+      "reference_names": [
+        "James Oliver",
+        "James Trevor Oliver",
+        "Jamie Olive Oil",
+        "Jamie Oliver",
+        "Jamie Trevor Oliver",
+        "Mr. Chilli Jam"
+      ],
+      "reference_description": "British chef and media personality",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q15253558",
+        "Q156839",
+        "Q15980158",
+        "Q17125263",
+        "Q27431213",
+        "Q3427922",
+        "Q3499072",
+        "Q483501",
+        "Q4853732",
+        "Q578109",
+        "Q8246794",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "jamieoliver",
+          "property": "P2013",
+          "statement_id": "Q190051$8D50C0E9-44F1-4402-BD1F-935DEBAA27E5",
+          "source": "https://www.wikidata.org/wiki/Q190051#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q19662918",
+      "name": "Rupi Kaur",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Rupi_Kaur",
+      "reference_entity": "https://www.wikidata.org/wiki/Q19662918",
+      "reference_names": [
+        "Rupi Kaur"
+      ],
+      "reference_description": "Canadian poet",
+      "country_ids": [
+        "Q16"
+      ],
+      "occupation_ids": [
+        "Q1318187",
+        "Q15296811",
+        "Q36180",
+        "Q49757",
+        "Q644687"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "rupikaur_",
+          "property": "P2003",
+          "statement_id": "Q19662918$d218a131-487a-eb03-46c2-c4da2a4eb726",
+          "source": "https://www.wikidata.org/wiki/Q19662918#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q210059",
+      "name": "Neil Gaiman",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Neil_Gaiman",
+      "reference_entity": "https://www.wikidata.org/wiki/Q210059",
+      "reference_names": [
+        "Gaiman, Neil Richard MacKinnon",
+        "N. Gaiman",
+        "N. R. Gaiman",
+        "Neil Gaiman",
+        "Neil Richard Gaiman"
+      ],
+      "reference_description": "English writer (born 1960)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q11892507",
+        "Q18844224",
+        "Q1930187",
+        "Q2526255",
+        "Q28389",
+        "Q3282637",
+        "Q33999",
+        "Q36180",
+        "Q49757",
+        "Q6625963",
+        "Q73306227",
+        "Q8246794",
+        "Q852389"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "neilhimself",
+          "property": "P2003",
+          "statement_id": "Q210059$40A98F5D-80B7-4F92-90B7-F5FBA22D0918",
+          "source": "https://www.wikidata.org/wiki/Q210059#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q211290",
+      "name": "Massimo Bottura",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Massimo_Bottura",
+      "reference_entity": "https://www.wikidata.org/wiki/Q211290",
+      "reference_names": [
+        "Massimo Bottura"
+      ],
+      "reference_description": "Italian chef",
+      "country_ids": [
+        "Q38"
+      ],
+      "occupation_ids": [
+        "Q156839",
+        "Q3427922",
+        "Q3499072"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "massimobottura",
+          "property": "P2002",
+          "statement_id": "Q211290$36096a3c-4861-e317-12e4-bcb7be2b328d",
+          "source": "https://www.wikidata.org/wiki/Q211290#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q212730",
+      "name": "Steven Pinker",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Steven_Pinker",
+      "reference_entity": "https://www.wikidata.org/wiki/Q212730",
+      "reference_names": [
+        "Dr. Steven Pinker",
+        "Pinker, Steven",
+        "Steven Arthur Pinker",
+        "Steven Pinker"
+      ],
+      "reference_description": "Canadian-American cognitive psychologist, linguist, and author, an advocate of evolutionary psychology and the computational theory of the mind",
+      "country_ids": [
+        "Q16",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q115736435",
+        "Q14467526",
+        "Q14565186",
+        "Q15980158",
+        "Q1622272",
+        "Q212980",
+        "Q4773904",
+        "Q482980",
+        "Q4964182",
+        "Q84320739"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "sapinker",
+          "property": "P2002",
+          "statement_id": "Q212730$83015698-8DDF-42A1-A71C-114F0D52267F",
+          "source": "https://www.wikidata.org/wiki/Q212730#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q230141",
+      "name": "Chimamanda Ngozi Adichie",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Chimamanda_Ngozi_Adichie",
+      "reference_entity": "https://www.wikidata.org/wiki/Q230141",
+      "reference_names": [
+        "Adichie",
+        "Chimamanda Adichie",
+        "Chimamanda Ngozi Adichie",
+        "Ngozi Adichie",
+        "Ngozi Grace Adichie"
+      ],
+      "reference_description": "Nigerian writer (born 1977)",
+      "country_ids": [
+        "Q1033"
+      ],
+      "occupation_ids": [
+        "Q140197632",
+        "Q156839",
+        "Q15949613",
+        "Q15980158",
+        "Q1930187",
+        "Q36180",
+        "Q49757",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "chimamandaadichie",
+          "property": "P2013",
+          "statement_id": "Q230141$E86F15B3-080D-4B50-81CA-68E00D66CD6E",
+          "source": "https://www.wikidata.org/wiki/Q230141#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q23657278",
+      "name": "Hannah Fry",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Hannah_Fry",
+      "reference_entity": "https://www.wikidata.org/wiki/Q23657278",
+      "reference_names": [
+        "Hannah Fry"
+      ],
+      "reference_description": "British mathematician and TV presenter (1984-)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q13590141",
+        "Q15143191",
+        "Q1622272",
+        "Q170790",
+        "Q20856740",
+        "Q901",
+        "Q9379869",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "FryRsquared",
+          "property": "P2002",
+          "statement_id": "Q23657278$e28d60f8-4198-9bd1-73b8-9338daa84267",
+          "source": "https://www.wikidata.org/wiki/Q23657278#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q241248",
+      "name": "Orhan Pamuk",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Orhan_Pamuk",
+      "reference_entity": "https://www.wikidata.org/wiki/Q241248",
+      "reference_names": [
+        "Ferit Orhan Pamuk",
+        "Orhan Ferit Pamuk",
+        "Orhan Pamuk",
+        "Pamuk"
+      ],
+      "reference_description": "Turkish novelist, academic and Nobel laureate (born 1952)",
+      "country_ids": [
+        "Q43"
+      ],
+      "occupation_ids": [
+        "Q11774202",
+        "Q1930187",
+        "Q28389",
+        "Q3400985",
+        "Q36180",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "OrhanPamukAuthor",
+          "property": "P2013",
+          "statement_id": "Q241248$13417691-45b7-5cdf-5e58-eb06e0d727b5",
+          "source": "https://www.wikidata.org/wiki/Q241248#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q2427544",
+      "name": "N. K. Jemisin",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/N._K._Jemisin",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2427544",
+      "reference_names": [
+        "N. K. Jemisin"
+      ],
+      "reference_description": "American science fiction and fantasy writer",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q18844224",
+        "Q2419397",
+        "Q36180",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "nkjemisin",
+          "property": "P2002",
+          "statement_id": "Q2427544$0b342434-45a9-0389-98e6-646d05f74334",
+          "source": "https://www.wikidata.org/wiki/Q2427544#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q2619019",
+      "name": "Bill Nye",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Bill_Nye",
+      "reference_entity": "https://www.wikidata.org/wiki/Q2619019",
+      "reference_names": [
+        "Bill Nye",
+        "Bill Nye the Science Guy",
+        "The Science Guy",
+        "William S. Nye",
+        "William Sanford \"Bill\" Nye"
+      ],
+      "reference_description": "American science educator, comedian, television host, actor, writer, scientist and mechanical engineer",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q15143191",
+        "Q33999",
+        "Q36180",
+        "Q44508716",
+        "Q81096",
+        "Q901",
+        "Q974144"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "billnye",
+          "property": "P2003",
+          "statement_id": "Q2619019$29928420-472e-7644-2895-6dc08d09cb4f",
+          "source": "https://www.wikidata.org/wiki/Q2619019#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q264724",
+      "name": "Nigella Lawson",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Nigella_Lawson",
+      "reference_entity": "https://www.wikidata.org/wiki/Q264724",
+      "reference_names": [
+        "Hon. Nigella Lucy Lawson",
+        "Nigella Lawson",
+        "Nigella Lucy Lawson"
+      ],
+      "reference_description": "English food writer and television cook (born 1960)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q156839",
+        "Q1930187",
+        "Q36180",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "NigellaLawson",
+          "property": "P2013",
+          "statement_id": "Q264724$F29795CE-10D2-4B16-BD47-742C8B84FBF7",
+          "source": "https://www.wikidata.org/wiki/Q264724#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q270739",
+      "name": "Elif \u015eafak",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Elif_Shafak",
+      "reference_entity": "https://www.wikidata.org/wiki/Q270739",
+      "reference_names": [
+        "Elif Bilgin Shafaq",
+        "Elif Shafak",
+        "Elif \u015eafak"
+      ],
+      "reference_description": "Turkish writer (born 1971)",
+      "country_ids": [
+        "Q43"
+      ],
+      "occupation_ids": [
+        "Q1930187",
+        "Q36180",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "shafakelif",
+          "property": "P2003",
+          "statement_id": "Q270739$f3d692f5-4066-69d3-59e3-fec6a120df60",
+          "source": "https://www.wikidata.org/wiki/Q270739#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q310903",
+      "name": "Neil deGrasse Tyson",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Neil_deGrasse_Tyson",
+      "reference_entity": "https://www.wikidata.org/wiki/Q310903",
+      "reference_names": [
+        "Dr. Neil deGrasse Tyson",
+        "Neil Tyson",
+        "Neil deGrasse Tyson"
+      ],
+      "reference_description": "American astrophysicist and science communicator",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q11063",
+        "Q1412961",
+        "Q15143191",
+        "Q15980158",
+        "Q169470",
+        "Q2998308",
+        "Q33999",
+        "Q37226",
+        "Q3745071",
+        "Q482980",
+        "Q4964182",
+        "Q752129"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "neiltyson",
+          "property": "P2002",
+          "statement_id": "Q310903$F8958B8E-0592-4FF3-BACB-A504EFDBE85D",
+          "source": "https://www.wikidata.org/wiki/Q310903#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q31213305",
+      "name": "Ibram X. Kendi",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Ibram_X._Kendi",
+      "reference_entity": "https://www.wikidata.org/wiki/Q31213305",
+      "reference_names": [
+        "IX Kendi",
+        "Ibram H. Rogers",
+        "Ibram Henry Rogers",
+        "Ibram Rogers",
+        "Ibram X. Kendi",
+        "Ibram Xolani Kendi"
+      ],
+      "reference_description": "American author and historian",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q15980158",
+        "Q1607826",
+        "Q1622272",
+        "Q1930187",
+        "Q201788",
+        "Q3400985",
+        "Q36180"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "ibramxk",
+          "property": "P2003",
+          "statement_id": "Q31213305$b24d16ae-49c9-f7e1-47cc-af166fffcd33",
+          "source": "https://www.wikidata.org/wiki/Q31213305#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q32732",
+      "name": "Malala Yousafzai",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Malala_Yousafzai",
+      "reference_entity": "https://www.wikidata.org/wiki/Q32732",
+      "reference_names": [
+        "Malala Yousafzai"
+      ],
+      "reference_description": "Pakistani children's education activist",
+      "country_ids": [
+        "Q843"
+      ],
+      "occupation_ids": [
+        "Q11774156",
+        "Q1476215",
+        "Q15253558",
+        "Q28692502",
+        "Q36180",
+        "Q8246794"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "malala",
+          "property": "P2003",
+          "statement_id": "Q32732$511ab210-41e3-fad3-59bf-83693a8d9514",
+          "source": "https://www.wikidata.org/wiki/Q32732#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q3751091",
+      "name": "Jos\u00e9 Andr\u00e9s",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Jos%C3%A9_Andr%C3%A9s",
+      "reference_entity": "https://www.wikidata.org/wiki/Q3751091",
+      "reference_names": [
+        "Jose Andres",
+        "Jose Ramon Andres Puerta",
+        "Jos\u00e9 Andr\u00e9s",
+        "Jos\u00e9 Ram\u00f3n Andr\u00e9s Puerta",
+        "Jos\u00e9 Ram\u00f3n Andr\u00e9s-Puerta"
+      ],
+      "reference_description": "Spanish-American chef and restaurateur",
+      "country_ids": [
+        "Q29",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q156839",
+        "Q3427922",
+        "Q3499072"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "chefjoseandres",
+          "property": "P2013",
+          "statement_id": "Q3751091$32BAF0ED-5928-4343-8995-38588D98C0FF",
+          "source": "https://www.wikidata.org/wiki/Q3751091#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q3877423",
+      "name": "Nnedi Okorafor",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Nnedi_Okorafor",
+      "reference_entity": "https://www.wikidata.org/wiki/Q3877423",
+      "reference_names": [
+        "Nnedi Okafor",
+        "Nnedi Okorafor",
+        "Nnedi Okorafor-Mbachu",
+        "Nnedimma Nkemdili Okorafor"
+      ],
+      "reference_description": "Nigerian-American writer of fantasy, science fiction, and comics (born 1974)",
+      "country_ids": [
+        "Q1033",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q11892507",
+        "Q18844224",
+        "Q36180",
+        "Q4853732",
+        "Q6625963",
+        "Q974144"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "nnediokorafor",
+          "property": "P2003",
+          "statement_id": "Q3877423$CF0F4EDC-CE37-4A09-B826-C2844CA50C97",
+          "source": "https://www.wikidata.org/wiki/Q3877423#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q44306",
+      "name": "Salman Rushdie",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Salman_Rushdie",
+      "reference_entity": "https://www.wikidata.org/wiki/Q44306",
+      "reference_names": [
+        "Salman Rushdie",
+        "\u0627\u062d\u0645\u062f \u0633\u0644\u0645\u0627\u0646 \u0631\u064f\u0634\u062f\u06cc"
+      ],
+      "reference_description": "Indian-born English and American novelist (born 1947)",
+      "country_ids": [
+        "Q145",
+        "Q30",
+        "Q668"
+      ],
+      "occupation_ids": [
+        "Q11774202",
+        "Q28389",
+        "Q33999",
+        "Q36180",
+        "Q482980",
+        "Q4853732",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "salmanrushdie",
+          "property": "P2002",
+          "statement_id": "Q44306$A953FB5D-D635-46F8-84BF-0B0F8543C44B",
+          "source": "https://www.wikidata.org/wiki/Q44306#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q458403",
+      "name": "Mary Beard",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Mary_Beard",
+      "reference_entity": "https://www.wikidata.org/wiki/Q458403",
+      "reference_names": [
+        "Dame Winifred Mary Beard",
+        "Mary Beard"
+      ],
+      "reference_description": "English classicist (born 1955)",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q1622272",
+        "Q16267607",
+        "Q17488357",
+        "Q201788",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "wmarybeard",
+          "property": "P2002",
+          "statement_id": "Q458403$327e513e-4980-5184-f2e1-19b182e40d8e",
+          "source": "https://www.wikidata.org/wiki/Q458403#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q463581",
+      "name": "Brian Cox",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Brian_Cox_(physicist)",
+      "reference_entity": "https://www.wikidata.org/wiki/Q463581",
+      "reference_names": [
+        "Brian Cox",
+        "Brian Cox (physicist)",
+        "Brian E. Cox",
+        "Brian Edward Cox"
+      ],
+      "reference_description": "English physicist and musician",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q1075651",
+        "Q10798782",
+        "Q10800557",
+        "Q11063",
+        "Q1622272",
+        "Q169470",
+        "Q2405480",
+        "Q3282637",
+        "Q639669",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "ProfessorBrianCox",
+          "property": "P2013",
+          "statement_id": "Q463581$09E6BA7E-12DC-4BA4-90C3-CEF84E4623B0",
+          "source": "https://www.wikidata.org/wiki/Q463581#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q486882",
+      "name": "Michio Kaku",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Michio_Kaku",
+      "reference_entity": "https://www.wikidata.org/wiki/Q486882",
+      "reference_names": [
+        "Michio Kaku"
+      ],
+      "reference_description": "U.S.-American theoretical physicist, futurist and author (1947-)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q112972705",
+        "Q15143191",
+        "Q15980158",
+        "Q1622272",
+        "Q169470",
+        "Q19350898",
+        "Q2722764",
+        "Q3745071",
+        "Q44508716",
+        "Q846430"
+      ],
+      "accounts": [
+        {
+          "platform": "facebook",
+          "username": "michiokaku",
+          "property": "P2013",
+          "statement_id": "Q486882$41E3805C-3BA7-4B0C-8E7B-8CAC030C7F22",
+          "source": "https://www.wikidata.org/wiki/Q486882#P2013"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q4961808",
+      "name": "Bren\u00e9 Brown",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Bren%C3%A9_Brown",
+      "reference_entity": "https://www.wikidata.org/wiki/Q4961808",
+      "reference_names": [
+        "Brene Brown",
+        "Bren\u00e9 Brown"
+      ],
+      "reference_description": "American writer and professor",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q11774202",
+        "Q15077007",
+        "Q36180",
+        "Q482980",
+        "Q7019111",
+        "Q901"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "brenebrown",
+          "property": "P2003",
+          "statement_id": "Q4961808$66DF216D-8C2F-4D76-A42A-DCEB9F593AFF",
+          "source": "https://www.wikidata.org/wiki/Q4961808#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q509662",
+      "name": "Colson Whitehead",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Colson_Whitehead",
+      "reference_entity": "https://www.wikidata.org/wiki/Q509662",
+      "reference_names": [
+        "Arch Colson Chipp Whitehead",
+        "Colson Whitehead"
+      ],
+      "reference_description": "American novelist (born 1969)",
+      "country_ids": [
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q1930187",
+        "Q36180",
+        "Q4263842",
+        "Q482980",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "colsonwhitehead",
+          "property": "P2002",
+          "statement_id": "Q509662$c0bbfc99-4534-474e-d85e-60020e016f50",
+          "source": "https://www.wikidata.org/wiki/Q509662#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q7328202",
+      "name": "Richard Osman",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Richard_Osman",
+      "reference_entity": "https://www.wikidata.org/wiki/Q7328202",
+      "reference_names": [
+        "Richard Osman"
+      ],
+      "reference_description": "English television presenter, producer, writer and comedian",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q13590141",
+        "Q2059704",
+        "Q245068",
+        "Q36180",
+        "Q482980",
+        "Q578109",
+        "Q667982",
+        "Q947873"
+      ],
+      "accounts": [
+        {
+          "platform": "instagram",
+          "username": "misterosman",
+          "property": "P2003",
+          "statement_id": "Q7328202$74E895D1-0652-432C-8D9A-A38BBA21C9E6",
+          "source": "https://www.wikidata.org/wiki/Q7328202#P2003"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q8056413",
+      "name": "Yotam Ottolenghi",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Yotam_Ottolenghi",
+      "reference_entity": "https://www.wikidata.org/wiki/Q8056413",
+      "reference_names": [
+        "Yotam Assaf Ottolenghi",
+        "Yotam Ottolenghi"
+      ],
+      "reference_description": "Israeli-born chef, cookery writer and restaurant owner",
+      "country_ids": [
+        "Q145"
+      ],
+      "occupation_ids": [
+        "Q156839",
+        "Q27431213",
+        "Q27658988",
+        "Q36180"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "ottolenghi",
+          "property": "P2002",
+          "statement_id": "Q8056413$E3307DB0-C3FD-4DA0-A7D5-84231E2594BB",
+          "source": "https://www.wikidata.org/wiki/Q8056413#P2002"
+        }
+      ],
+      "split": "heldout"
+    },
+    {
+      "id": "Q83566",
+      "name": "Isabel Allende",
+      "category": "writing_public_education",
+      "reference_article": "https://en.wikipedia.org/wiki/Isabel_Allende",
+      "reference_entity": "https://www.wikidata.org/wiki/Q83566",
+      "reference_names": [
+        "Isabel Allende",
+        "Isabel Allende Llona"
+      ],
+      "reference_description": "Chilean writer (born 1942)",
+      "country_ids": [
+        "Q298",
+        "Q30"
+      ],
+      "occupation_ids": [
+        "Q1930187",
+        "Q2405480",
+        "Q28389",
+        "Q36180",
+        "Q4853732",
+        "Q6625963"
+      ],
+      "accounts": [
+        {
+          "platform": "x",
+          "username": "isabelallende",
+          "property": "P2002",
+          "statement_id": "Q83566$98B5523C-1F84-4446-AD2B-439567DB88B8",
+          "source": "https://www.wikidata.org/wiki/Q83566#P2002"
+        }
+      ],
+      "split": "heldout"
+    }
+  ]
+}

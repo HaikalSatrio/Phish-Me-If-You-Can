@@ -1,0 +1,801 @@
+id,name,split,category,account_platform,mode,snapshot_sha256,collection_status,requests,candidates,observations,reference_article_seen,role_candidates,company_candidates,education_candidates,relations,model_proposals,name_claims,name_reference_agreements,model_statuses,model_errors,model_rejected,grounding_reference_errors,unexpected_identity_decisions
+Q14752155,Pedro Pascal,development,acting,instagram,web-rules,7bd491990673c7f483a61518753fd24ab4af5038359bb618401b9bd5dbbb8654,PARTIAL,5,4,26,True,1,0,0,3,0,2,2,{},{},0,0,0
+Q14752155,Pedro Pascal,development,acting,instagram,web-ollama,9e01fbd681a59adc6b7c02a929fa0c9c9fc2f07693a1d60eccc763573ed1300c,PARTIAL,5,4,26,True,1,0,0,4,1,2,2,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q14752155,Pedro Pascal,development,acting,instagram,account-rules,ae4046c55b7cf9669cfde21d765d8349736f87cd0b7cd1c89d5c975824bc0a45,PARTIAL,12,4,28,True,1,0,0,3,0,2,2,{},{},0,0,0
+Q14752155,Pedro Pascal,development,acting,instagram,account-ollama,7b487dcd8d2e3b95e6cbe81bf2ae0977ae3c90dfc2c485cf66eacab427b27726,PARTIAL,12,4,28,True,1,0,0,4,1,2,2,"{""EMPTY"": 3, ""SUCCESS"": 1}",{},0,0,0
+Q1861917,Riz Ahmed,development,acting,facebook,web-rules,3a57f0ca0b31b3d782aa2cc0ae6cf2686d48b31b4076cde950a059686560a0e8,PARTIAL,5,4,24,True,1,0,0,7,0,2,2,{},{},0,0,0
+Q1861917,Riz Ahmed,development,acting,facebook,web-ollama,005b5e0d87f5959b418c6eb7848375d43397f8885186915fce30b3f3fef6544e,PARTIAL,5,4,24,True,1,0,0,7,0,2,2,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q1861917,Riz Ahmed,development,acting,facebook,account-rules,cf651a79e72469f14ba0fe667762f831bd3d9e3e2a55c580eb3e293dd6ad506d,PARTIAL,10,5,31,True,0,0,0,0,0,2,2,{},{},0,0,0
+Q1861917,Riz Ahmed,development,acting,facebook,account-ollama,863921e181e7e83a60e70570c548fcdd9dde272c0c73d69219f5f15fec4f6063,PARTIAL,10,5,31,True,0,0,0,0,0,2,2,"{""EMPTY"": 2, ""REJECTED_ALL"": 2, ""SKIPPED"": 1}",{},2,0,0
+Q294647,Mads Mikkelsen,development,acting,instagram,web-rules,206d307a05c04fe0646afebf0b3849700cf326ffd86314e64f0b5b6a85de10de,PARTIAL,7,5,23,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q294647,Mads Mikkelsen,development,acting,instagram,web-ollama,c9f9455ee7525e16d3901784a46f04821bcb783afe8b0a2e42b0cc38f8c47032,PARTIAL,7,5,23,True,0,0,0,0,0,0,0,"{""EMPTY"": 4, ""REJECTED_ALL"": 1}",{},1,0,0
+Q294647,Mads Mikkelsen,development,acting,instagram,account-rules,d44568141f5f4e263a8c319ceac519dbb64a8383365985d02ff05f0cb2eb9d8d,PARTIAL,15,5,34,True,2,0,1,5,0,0,0,{},{},0,0,0
+Q294647,Mads Mikkelsen,development,acting,instagram,account-ollama,3711c8102bc048d0e0cafe68a745819d0b791a8e711f2b7c2e59abb45c2aad9b,PARTIAL,15,5,34,True,2,0,1,5,0,0,0,"{""EMPTY"": 2, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},3,0,0
+Q313044,Diego Luna,development,acting,x,web-rules,db94797f67c17a5781bfd20e3bc6d0fc250b75857148861b1c645795fb3c175c,PARTIAL,9,4,22,True,2,0,0,3,0,0,0,{},{},0,0,0
+Q313044,Diego Luna,development,acting,x,web-ollama,9dfda430173bf5f07ea4d91251ed6bf232d34b2ffb206167d1c76f0a6c4af6ec,PARTIAL,9,4,22,True,2,0,0,3,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q313044,Diego Luna,development,acting,x,account-rules,dde0e4bdecd49c7c51ec9be421f08f8f2fa4438d1884845599370bc4b2e4cf27,PARTIAL,13,5,27,True,2,0,0,3,0,0,0,{},{},0,0,0
+Q313044,Diego Luna,development,acting,x,account-ollama,4078c805ae51489d1b4cb86da98e3b352eacb0b305b9d3d7374fa82ff9c04298,PARTIAL,13,5,27,True,2,0,0,3,0,0,0,"{""EMPTY"": 4, ""REJECTED_ALL"": 1}",{},1,0,0
+Q357387,Omar Sy,development,acting,facebook,web-rules,5c16bbe0307422d614e59229b530a90e5f892c5479539a97d5335686f4098b4d,PARTIAL,9,4,20,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q357387,Omar Sy,development,acting,facebook,web-ollama,3a6a779edbe8d840eced3690240714b4d2aa55145a032b77c704cc2726d37629,PARTIAL,9,4,20,True,1,0,0,4,1,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SUCCESS"": 1}",{},2,0,0
+Q357387,Omar Sy,development,acting,facebook,account-rules,16c0fdfdd4d2af014cabb76317c0316c72858ab3af98be98c148fc01ca00c821,PARTIAL,12,4,26,True,1,0,0,5,0,0,0,{},{},0,0,0
+Q357387,Omar Sy,development,acting,facebook,account-ollama,ee71fb1deb948cc1bb9293905edc6223d76e60e3f68e6fadbe828ec918aec7ee,PARTIAL,12,4,26,True,1,0,0,6,1,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SUCCESS"": 1}",{},2,0,0
+Q36970,Jackie Chan,development,acting,facebook,web-rules,3a744c9af2bb177ce491860629528fdd9efcf568708f66e1ffa2c705ba90b4dd,PARTIAL,7,5,27,True,2,0,0,4,0,2,0,{},{},0,0,0
+Q36970,Jackie Chan,development,acting,facebook,web-ollama,3649c6949463d19d8da6bf8a1dadbb92608336f60d3f8a26f44f6e25cf66696f,PARTIAL,7,5,27,True,2,0,0,4,0,2,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 4}",{},5,0,0
+Q36970,Jackie Chan,development,acting,facebook,account-rules,74cc309e2f669b173d4af05a8f864a85551b9ad97f17128dd6e240e722506137,PARTIAL,9,5,26,True,1,0,0,2,0,1,0,{},{},0,0,0
+Q36970,Jackie Chan,development,acting,facebook,account-ollama,ba637ca9861003f5d0491cd2ba27dcaf588d39bc045bb21252d82338c72ddc70,PARTIAL,9,5,26,True,1,0,0,2,0,1,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 2}",{},3,0,0
+Q3840847,Lupita Nyong'o,development,acting,facebook,web-rules,da01206269d24ebbdaf2912764cfedb797173b61323a778366dbae7d22f4dcdd,PARTIAL,9,4,29,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q3840847,Lupita Nyong'o,development,acting,facebook,web-ollama,c1d77cdfa0053b8916c09c5c521bf9018447e0616c97f04cac505dd7bb8a6c01,PARTIAL,9,4,29,True,1,0,0,3,1,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q3840847,Lupita Nyong'o,development,acting,facebook,account-rules,1560217ba5b824c3f82c3e84623974883980bfa36363642bcccc7f404a96e97f,PARTIAL,13,5,30,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q3840847,Lupita Nyong'o,development,acting,facebook,account-ollama,76d7faf180c6ee40fb7047f9e6cdb90e1ccf71c867a3e975eba7b91212d4e338,PARTIAL,13,5,30,True,1,0,0,1,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 2}",{},2,0,0
+Q41548,Antonio Banderas,development,acting,facebook,web-rules,23620d89a7c952d1a634640cd3d82537ed8ca283a3463f7c3c054173c870dc7e,PARTIAL,5,4,21,True,2,0,0,2,0,2,0,{},{},0,0,0
+Q41548,Antonio Banderas,development,acting,facebook,web-ollama,f8971c68f43b7194d63908cac6e6a88a1244cb9e7a88bf77a471dcbdaeca9483,PARTIAL,5,4,21,True,2,0,0,2,0,2,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q41548,Antonio Banderas,development,acting,facebook,account-rules,641bed1ccac2391a8a19aa9e56ab77b3e8da5e744e0b2230aba4dbacebabbff0,PARTIAL,13,4,21,True,1,0,0,1,0,1,0,{},{},0,0,0
+Q41548,Antonio Banderas,development,acting,facebook,account-ollama,392c8ecddf085a83621827a45049dcd448b9ff075989297a3c9c6c7132d105a4,PARTIAL,13,4,21,True,1,0,0,2,1,1,0,"{""EMPTY"": 2, ""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},2,0,0
+Q463860,Ricardo Darín,development,acting,x,web-rules,339f013591ba52b0d80fb60b7baa3d8e732ae143d9139019f2b5f39dc0b50b57,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q463860,Ricardo Darín,development,acting,x,web-ollama,bc27b6fcbcb427ac87c80a90d4cd56b4669b8b22e77eacd0ab87dcb53cad7a0a,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q463860,Ricardo Darín,development,acting,x,account-rules,0090af675193a95d848f427a59275a426ec9f844702c1a7514cb1a97fd3a0859,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q463860,Ricardo Darín,development,acting,x,account-ollama,7c4f0bdc23cdb47a8f945ca1a6b2b8d12011f06a63b41d407d80f170be770a4f,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},1,0,0
+Q8927,Marion Cotillard,development,acting,instagram,web-rules,16873086a0fd026c4c8d4e3d422482afaf6829d668fe5461dac2e101e5405799,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q8927,Marion Cotillard,development,acting,instagram,web-ollama,10eda3939bf3992961509e31dd5b59f9e8e49300d6f48353ce3f333c3137ebc4,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q8927,Marion Cotillard,development,acting,instagram,account-rules,fafa18d82db0b4f054420119d79abc3ee5c32503d128800fe1ce3957e30423e7,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q8927,Marion Cotillard,development,acting,instagram,account-ollama,5160df12e98701f55ec44bd7a20793f88155f35e5a71d176a9d50cc56b72a855,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,"{""PARTIAL"": 1, ""SKIPPED"": 1}",{},1,0,0
+Q9535,Shah Rukh Khan,development,acting,instagram,web-rules,ad912c9ed18992ee056d3b7d2d7fcd885c96410314e3429876b395efb326695e,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q9535,Shah Rukh Khan,development,acting,instagram,web-ollama,12ad5426779ff4f1d9300243adc7a066981adfa84e7021c80a33e8d547489578,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q9535,Shah Rukh Khan,development,acting,instagram,account-rules,da06c430ada214d509cf0314e70f7bdb73cec883fe6a1ff1e4ffbcf230e3facd,PARTIAL,11,3,19,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q9535,Shah Rukh Khan,development,acting,instagram,account-ollama,7a05465a899c86bcd0d020217ff4bf158a76375fa22324bea5e3b7cea774a629,PARTIAL,11,3,19,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2}",{},2,0,0
+Q151892,Ariana Grande,development,music,facebook,web-rules,66f964acacb44cbd6fe460944b3283373ba677544019410d4041c20f83b42107,PARTIAL,9,4,23,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q151892,Ariana Grande,development,music,facebook,web-ollama,5110b8f50c669477c6a4d19210f158229341f37962cf680a495d1252330e8133,PARTIAL,9,4,23,True,1,0,0,1,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},2,0,0
+Q151892,Ariana Grande,development,music,facebook,account-rules,a3009ef633e3a0e3ac89afe535ab6e6abfa44698ef54a9cc3bda639dc44095c8,PARTIAL,12,4,23,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q151892,Ariana Grande,development,music,facebook,account-ollama,e62871a2e3f4011e1aba9bd663178b30e10d6f796e36607bb70d22e9170da5d1,PARTIAL,12,4,23,True,1,0,0,1,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},2,0,0
+Q16234484,Davido,development,music,instagram,web-rules,754b7b6bb33a1d64530e6168f29d24ab2f840dd543fab688edac11fd6c6ecffd,PARTIAL,5,1,4,True,1,0,0,3,0,2,2,{},{},0,0,0
+Q16234484,Davido,development,music,instagram,web-ollama,cd1959243ba7ea625a158bac81700cae5a93bc05ec5a46c80a277e2124ac86d8,PARTIAL,5,1,4,True,1,0,0,3,0,2,2,"{""REJECTED_ALL"": 1}",{},12,0,0
+Q16234484,Davido,development,music,instagram,account-rules,7ba45690232fadaee6d7460e91fbc6254195ab27a2fd3cfdfecdc4f3b91490aa,PARTIAL,8,2,7,True,1,0,0,3,0,2,2,{},{},0,0,0
+Q16234484,Davido,development,music,instagram,account-ollama,4bda505201698b74f70b98ad4bd8b95cc54f3ca3f0e26f09dcd75af05bc4d6d4,PARTIAL,8,2,7,True,1,0,0,3,0,2,2,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},9,0,0
+Q2050788,Shreya Ghoshal,development,music,instagram,web-rules,24944dafa583aa1c22880e4bcf9de5208754c5129b42643ecb1a09877513260b,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q2050788,Shreya Ghoshal,development,music,instagram,web-ollama,19b17e394b638154cb584fba2003c6b3b1a331f48579c7163345d6dfbba0589c,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},2,0,0
+Q2050788,Shreya Ghoshal,development,music,instagram,account-rules,dd79d98a9fbafc4892bc708add926078e55ee5dd321ab2dffbd511aa60984201,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q2050788,Shreya Ghoshal,development,music,instagram,account-ollama,7d945b57ed7685d503e2a2a1a8c63d56d432798446a8f7c0d7f8e379c2c8e4eb,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},2,0,0
+Q210734,Youssou N’Dour,development,music,facebook,web-rules,d0cdf9937e38b2e1fb0cd5febbc171e7502bda1f29d3fcbfff8d64c7674548d7,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q210734,Youssou N’Dour,development,music,facebook,web-ollama,bc42580d29fb5fbadc59911c976b48f08162eb6ce5e1f44686cdd7aa3887f557,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""SKIPPED"": 1}",{},0,0,0
+Q210734,Youssou N’Dour,development,music,facebook,account-rules,e2afb0f1679aa2d386bb1808c4fe61c112e5a3877e7445bc5456e0a96eb06f8f,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q210734,Youssou N’Dour,development,music,facebook,account-ollama,5d7f7a8660834fcfe4e5166eea4e7809937c89d776fe88d0c0b4a5ca13a88453,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""SKIPPED"": 1}",{},0,0,0
+Q28843759,Rosalía,development,music,instagram,web-rules,4eb33067ea73b94fecf8d5e7f0cdb39ca8b628eb4ce1ab1f17f95f85c62de13f,PARTIAL,5,1,4,True,0,0,0,0,0,1,1,{},{},0,0,0
+Q28843759,Rosalía,development,music,instagram,web-ollama,f255f4c5df4fa467e37dd6de205ee307fbc84ccc049d9db22ae028d8e7c55473,PARTIAL,5,1,4,True,0,0,0,0,0,1,1,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q28843759,Rosalía,development,music,instagram,account-rules,1cde380d434f83ff6ea9b6c0d0c2f14e6cef5b125aad4aa8a6f25341ad15b3d9,PARTIAL,8,2,9,True,0,0,0,0,0,1,1,{},{},0,0,0
+Q28843759,Rosalía,development,music,instagram,account-ollama,8246ad896390126d7380982c1aca0576118a7b76f590551c3bf680ad35d87eb8,PARTIAL,8,2,9,True,0,0,0,0,0,1,1,"{""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},1,0,0
+Q37793136,Aya Nakamura,development,music,x,web-rules,6a0a4b77f2fbe82deb3ace95a475dedef1aecd8d666d87f9bd6390dec53c9674,PARTIAL,5,1,4,True,0,0,0,1,0,2,2,{},{},0,0,0
+Q37793136,Aya Nakamura,development,music,x,web-ollama,703a34625d3d83ef7818a573602ca8ca8ff84450034f7ad2221cc77a7f7df4c2,PARTIAL,5,1,4,True,0,0,0,2,1,2,2,"{""PARTIAL"": 1}",{},1,0,0
+Q37793136,Aya Nakamura,development,music,x,account-rules,6d3f26c7c730fb51b6641640e2000ca87bf661ec44fecd46709607e91dce74cc,PARTIAL,8,2,8,True,0,0,0,1,0,2,2,{},{},0,0,0
+Q37793136,Aya Nakamura,development,music,x,account-ollama,41df298758bdbeab6978bcca087124017685a47f92674d992af04d437a202c65,PARTIAL,8,2,8,True,0,0,0,2,1,2,2,"{""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},2,0,0
+Q42493,Katy Perry,development,music,x,web-rules,f7604ed47c9a4890a51433311459a9d2bc7002931965c73ce3f473935cfc37de,PARTIAL,10,4,25,True,1,0,0,1,0,1,1,{},{},0,0,0
+Q42493,Katy Perry,development,music,x,web-ollama,f593a0cdc71384c3562325f08caade9eb7cec5ff3bc38dc5e9ff34fbac0c64f0,PARTIAL,10,4,25,True,1,0,0,1,0,1,1,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q42493,Katy Perry,development,music,x,account-rules,8ad56b873fc1f96f42ac572ba4c0034aee5cb216777d63477057ce622b25771b,PARTIAL,11,4,22,True,1,0,0,1,0,1,1,{},{},0,0,0
+Q42493,Katy Perry,development,music,x,account-ollama,f2f4d767c8ce5608bd6e905ed9d0100cdad00fea65cb1ce05a3b317cd8ea8212,PARTIAL,11,4,22,True,1,0,0,1,0,1,1,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q101090706,Kelsey Hightower,development,science_technology,github,web-rules,501b11466340a180288b55f2ddba01795a1cf288bf10fced7b65e342531bd36b,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q101090706,Kelsey Hightower,development,science_technology,github,web-ollama,8e3a994e59a135583075c192ee397adbc432f439e5f4a259720add7f772fbcb4,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},4,0,0
+Q101090706,Kelsey Hightower,development,science_technology,github,account-rules,79671f5c56e8ba0f6c2dcdc260685e40feac1a7b7ac7f2b53fbd39a6ac7b502a,PARTIAL,11,3,13,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q101090706,Kelsey Hightower,development,science_technology,github,account-ollama,c248a93efcf2336802218dda6742070aa44d61caa491aa147107cb234ad76875,PARTIAL,11,3,13,True,1,0,0,2,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1}",{},4,0,0
+Q24088544,Mark Rober,development,science_technology,instagram,web-rules,bb4174f3bf8e87746232da31101ec982a8c211e29e18a5ff378f2880ad91560b,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q24088544,Mark Rober,development,science_technology,instagram,web-ollama,41e5c2ad58fd6ce21e935e629bc714dfcf6f9c95c60c745970b4a3952f2cb295,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q24088544,Mark Rober,development,science_technology,instagram,account-rules,380fa468c73d2eb18b66d4698f4a385285eed77d27b5947b31083fcb6566a933,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q24088544,Mark Rober,development,science_technology,instagram,account-ollama,2c8e4aa021a3b2f0bf9fc556859d5fcd5796caa3913febd6c94dda10f1896f82,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q305177,Jensen Huang,development,science_technology,x,web-rules,667500562ad369fc5ca60fc23dacdc565105e18044789ac8340dae554b547885,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q305177,Jensen Huang,development,science_technology,x,web-ollama,6f7cf00355a0a8b82d08364348016495f7ba84f63a3b00afea2b996fd973794a,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q305177,Jensen Huang,development,science_technology,x,account-rules,2c29355502e9744f57583ba9a201366aadc617c31c8e9b80e1f3b684d3691db9,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q305177,Jensen Huang,development,science_technology,x,account-ollama,c41f76121e3346c137505337a2e051852cbb1dc17f1410033d7e1c479d14571c,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q34253,Linus Torvalds,development,science_technology,github,web-rules,2c61128ce4e71d35ead0f233a1a244d8c8b066a1e651bd01064af112fa87d631,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q34253,Linus Torvalds,development,science_technology,github,web-ollama,a9d82b70a970b895778931d2fffe38ba4f0b786f0d7d5d46217cdbf3898bd491,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q34253,Linus Torvalds,development,science_technology,github,account-rules,ae017f3756898735b8c978790c80ff52bbad84a817617ceabfeb31f5ec8ffa2a,PARTIAL,10,2,9,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q34253,Linus Torvalds,development,science_technology,github,account-ollama,2c7988f83dbcbb5f3cb4cb67f941e541e0452c613980ae02cfdf7b70a21e4abd,PARTIAL,10,2,9,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q92743,Vint Cerf,development,science_technology,x,web-rules,b45b84265415740b751030ae733acb1ddcdbdad7d89f4c092db8f180a0c59866,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q92743,Vint Cerf,development,science_technology,x,web-ollama,4c74792a03fcdb20d5e34b7c7d3ab80ecb69cf2011c2efc2865c257d59cb558f,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q92743,Vint Cerf,development,science_technology,x,account-rules,f53d9e6bfc453527a1be20a4d8374a5c2ca2ed4ea51174e8b1a115713bd3076d,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q92743,Vint Cerf,development,science_technology,x,account-ollama,6a63466e8e3748253b4ed9a3d2b77a62cbbf26783fa5289435f0069dc7d9b701,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q1426,Roger Federer,development,sport,instagram,web-rules,dab1002a51d3b8a490b46b163ee7a711a4f77111c51a37fafdac272dbd47d058,PARTIAL,7,1,2,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q1426,Roger Federer,development,sport,instagram,web-ollama,b3aba78e9f50dc2cdde98c57da48e644d3856f57ed391147449f24ff09cddb8c,PARTIAL,7,1,2,True,0,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q1426,Roger Federer,development,sport,instagram,account-rules,0d5e3a8dd9279a37ba02a1141121809b0bb3a386503aef8b5177b1a4e5d33a21,PARTIAL,10,2,5,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q1426,Roger Federer,development,sport,instagram,account-ollama,c1e307a7c94500d5363359a361c392f46e1e651c1d0bebd904773e870e9fde17,PARTIAL,10,2,5,True,0,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q142794,Neymar,development,sport,x,web-rules,9f31e3088044d838143b1441c213d21a87f9589d925cff35df5e4553d84a78ff,PARTIAL,5,1,2,True,1,0,0,1,0,1,1,{},{},0,0,0
+Q142794,Neymar,development,sport,x,web-ollama,26bc882a5c13efe13b6df555ec5ab5800ea5ab384334195cfafb8462b829136b,PARTIAL,5,1,2,True,1,0,0,1,0,1,1,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q142794,Neymar,development,sport,x,account-rules,cf89ddd71f8481d43e4511e4b9ba39148b365732594114dfda238c0c1cf7c76e,PARTIAL,8,2,6,True,1,0,0,1,0,1,1,{},{},0,0,0
+Q142794,Neymar,development,sport,x,account-ollama,16757db9d1c25f8925f821b6a594aed8e7d4edc54406a3e51042c39a43065802,PARTIAL,8,2,6,True,1,0,0,1,0,1,1,"{""REJECTED_ALL"": 2}",{},2,0,0
+Q1912,Karim Benzema,development,sport,instagram,web-rules,2648338d1225a4abcfa3bebb5adba75d3c7cd93f72c933bb9a561bee7efce275,PARTIAL,9,4,22,True,2,0,0,2,0,0,0,{},{},0,0,0
+Q1912,Karim Benzema,development,sport,instagram,web-ollama,433c1e05b0d41e35f2bdf8a8186895b8c70dfeb118cf2c243c404664a5cccddc,PARTIAL,9,4,22,True,2,0,0,2,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},6,0,0
+Q1912,Karim Benzema,development,sport,instagram,account-rules,2a9a09a297e477ac6b8f4cfb80a7160ed46188d16f50991e9eba728c3bbd591b,PARTIAL,11,4,19,True,2,0,0,2,0,0,0,{},{},0,0,0
+Q1912,Karim Benzema,development,sport,instagram,account-ollama,6e6e9a104139ea5592ed1d0ed44d85faf021798fce955658f56df3e068f035a3,PARTIAL,11,4,19,True,2,0,0,2,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q19844712,Luka Dončić,development,sport,x,web-rules,de20bb6505f228d8fa3f56fc51ee73c82c0283a9f6e0fa9606cf4486e20e1c6d,PARTIAL,7,1,4,True,1,1,0,2,0,0,0,{},{},0,0,0
+Q19844712,Luka Dončić,development,sport,x,web-ollama,1ff3f620eb5ff39c5992ef0050984a7846d7752303f97cee0c2fcf08120e99b5,PARTIAL,7,1,4,True,1,1,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q19844712,Luka Dončić,development,sport,x,account-rules,d31b08235fd8fc88fed083a8b1e2cbb1d56766a79fa92a72407137d29a081bb3,PARTIAL,10,1,4,True,1,1,0,2,0,0,0,{},{},0,0,0
+Q19844712,Luka Dončić,development,sport,x,account-ollama,38395a4a5b02fc79c1171793bdac941a7e01daac84be3dfac5c3293a57a9b359,PARTIAL,10,1,4,True,1,1,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q233510,Alex Morgan,development,sport,instagram,web-rules,aa4abddd866bd903683c37c7a71ccf90d4072f3383c6127019fb8e760772c400,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q233510,Alex Morgan,development,sport,instagram,web-ollama,c042ee900ff94c88fe86d6fb027ebf1133819e0b3f477a10279b805e0a889bea,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q233510,Alex Morgan,development,sport,instagram,account-rules,f674194524b6d7cbbb0d96c905cee052fae23aef9b44e4b0b779d75e57d8ccae,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q233510,Alex Morgan,development,sport,instagram,account-ollama,f6c6f26aca431b7190af35c82ced3586f8cf81b732b80b85936b7c345b5c3f27,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q290212,Ons Jabeur,development,sport,instagram,web-rules,8c7a015c276ed0f15cf9eb44376a1b026f6dc9b70fe9bbed9e1e7bc2b2331c4a,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q290212,Ons Jabeur,development,sport,instagram,web-ollama,ac4c0f0f813bf7889797580f75233230724f92c1debff40e6c41d3c32092164f,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q290212,Ons Jabeur,development,sport,instagram,account-rules,e409be988506f06570eb824823940dce9f4e0ae269dc1575a093d0267eb27d60,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q290212,Ons Jabeur,development,sport,instagram,account-ollama,6f4922db64421641e0979a6508c3473f69059948a437918e44a2f1ab22d6df71,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},2,0,0
+Q439722,Son Heung-min,development,sport,instagram,web-rules,1abdb01663ae3b72d981dd5d7fc0376f15201e3373a6f5eeecd1fc366b878de8,PARTIAL,7,1,4,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q439722,Son Heung-min,development,sport,instagram,web-ollama,477c8047b92832c06ed46af95a44d4d6d596d7666a8c0de473c10eeea3e6af3b,PARTIAL,7,1,4,True,1,0,0,4,1,0,0,"{""PARTIAL"": 1}",{},1,0,0
+Q439722,Son Heung-min,development,sport,instagram,account-rules,38584f1b663f0bd44eaaa7a0ed18be74acf926fa17d24dff5878055160c1c9e5,PARTIAL,11,4,19,True,1,0,0,4,0,0,0,{},{},0,0,0
+Q439722,Son Heung-min,development,sport,instagram,account-ollama,20fe1d59d0bb5e66b0d05b793b642b005677a0122f3d59b6ba0e779e826471e6,PARTIAL,11,4,19,True,1,0,0,4,0,0,0,"{""REJECTED_ALL"": 2, ""SKIPPED"": 2}",{},4,0,0
+Q483837,Luka Modrić,development,sport,facebook,web-rules,20050ba8c1140e2d9f703726553ecbaa50171c3836764cfbe9fada397c5eecd8,PARTIAL,9,4,20,True,2,0,0,4,0,0,0,{},{},0,0,0
+Q483837,Luka Modrić,development,sport,facebook,web-ollama,559c30eab229dbc62b65a70ac9b1d66ba2e4a1d621680a90533add61c69e258c,PARTIAL,9,4,20,True,2,0,0,4,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},14,0,0
+Q483837,Luka Modrić,development,sport,facebook,account-rules,e4aa2db178a232895b7f22eddf709e0d8e040c447a9f9967f86edfe731a893c1,PARTIAL,12,4,20,True,2,0,0,4,0,0,0,{},{},0,0,0
+Q483837,Luka Modrić,development,sport,facebook,account-ollama,c0e9f5994ed80f31f62a6f487af3b6d65d906a8df52f4148ebc1b3150a604ed2,PARTIAL,12,4,20,True,2,0,0,4,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},14,0,0
+Q85518537,Carlos Alcaraz,development,sport,instagram,web-rules,bdb066567d66cbce081b73e4142dde269df312b78eaaa9f6a4245e682b43c60a,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q85518537,Carlos Alcaraz,development,sport,instagram,web-ollama,54f9478944bd72af4871f6b2fa8cf599561b9ef9a05b4f8ed580cfd36fa11078,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q85518537,Carlos Alcaraz,development,sport,instagram,account-rules,b289042e370f6a09d4aeb50a6c6da6bde264569c8ce1d4d8319580f34fee971b,PARTIAL,12,2,7,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q85518537,Carlos Alcaraz,development,sport,instagram,account-ollama,6041dde9b031c30d3e4a208cc01ae7bdf4d9519c7a56a24a0d27178d95bf380f,PARTIAL,12,2,7,True,1,0,0,2,1,0,0,"{""EMPTY"": 1, ""SUCCESS"": 1}",{},0,0,0
+Q14712273,Adam Grant,development,writing_public_education,facebook,web-rules,5d43e71b70e0738442caf1a1df873a623af5a2fd662dd413f626a52feb3376fb,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q14712273,Adam Grant,development,writing_public_education,facebook,web-ollama,a6f0dccf67babee4488f90875585453d69bfe0f3035429b9c752cac485399da9,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q14712273,Adam Grant,development,writing_public_education,facebook,account-rules,8c7ab667bad372db285cb1ca240bc5324695df676d64e1d4b83fa2d9c003681b,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q14712273,Adam Grant,development,writing_public_education,facebook,account-ollama,d34363bb4399fb2a702eeb9f6d4f3da0721451628b99f35c6b2e453c788c7594,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q15280,Gordon Ramsay,development,writing_public_education,facebook,web-rules,8300847a140244c3d2962697e435215b2553d297766167b5205e80e921a3bc1b,PARTIAL,10,4,20,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q15280,Gordon Ramsay,development,writing_public_education,facebook,web-ollama,240557ea5c8f5608672b555d06842d458d99ee09c626e34c83afc44006f3a737,PARTIAL,10,4,20,True,1,0,0,1,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},12,0,0
+Q15280,Gordon Ramsay,development,writing_public_education,facebook,account-rules,29b0830e9fe39f4852659f88ea453f66a7cf25a3a02ebc3b7e5881636d89c468,PARTIAL,13,4,20,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q15280,Gordon Ramsay,development,writing_public_education,facebook,account-ollama,1448ee89e900fbc1d282ccf13936894baedaada8fbea9fd16312992dd91dd74d,PARTIAL,13,4,20,True,1,0,0,1,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},12,0,0
+Q183337,David Attenborough,development,writing_public_education,instagram,web-rules,6bce661768dfa261b467b4645dc5778c2ce9ed5274abca77d51c195f376b01de,PARTIAL,12,5,21,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q183337,David Attenborough,development,writing_public_education,instagram,web-ollama,6f59f773b98c7f20fd591954b943bbc9ecdfd9ec4ee4be3c2a2d9ed655772025,PARTIAL,12,5,21,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""SKIPPED"": 4}",{},0,0,0
+Q183337,David Attenborough,development,writing_public_education,instagram,account-rules,5b6fed87c4f45934ffec3403b9a46cead56879a7a34e6bab8c6f1003b59f313e,PARTIAL,15,5,20,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q183337,David Attenborough,development,writing_public_education,instagram,account-ollama,4fa0010f7653d0a20023e9aabdd0d9804e4627f23a9c382073ec49c319e3ce11,PARTIAL,15,5,20,True,0,0,0,1,1,0,0,"{""EMPTY"": 2, ""SKIPPED"": 2, ""SUCCESS"": 1}",{},0,0,0
+Q2484404,Yuval Noah Harari,development,writing_public_education,facebook,web-rules,f9b42a2420dfcf062be55356d25f48c862d932c86e183025bacc6cd7625b1e3c,PARTIAL,9,4,29,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2484404,Yuval Noah Harari,development,writing_public_education,facebook,web-ollama,aa94ce84a40d650df0e0f72bb7d8f585d69633236578af36be14d47b607278d0,PARTIAL,9,4,29,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 4}",{},9,0,0
+Q2484404,Yuval Noah Harari,development,writing_public_education,facebook,account-rules,11192799318de76b583720121ce5fa340c65fa1f5b9607ec064d5def84c9818c,PARTIAL,12,4,29,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2484404,Yuval Noah Harari,development,writing_public_education,facebook,account-ollama,501c6f2ddbe8c0423ac057e8e26972ea3af9a7dc466ef2db75d8f733bc23d7a7,PARTIAL,12,4,29,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 4}",{},9,0,0
+Q272855,Kazuo Ishiguro,development,writing_public_education,facebook,web-rules,4aeb9652b9290fded9dde9b38d829e07ed245546647a1fa24b85b879bbd38827,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q272855,Kazuo Ishiguro,development,writing_public_education,facebook,web-ollama,ea4318c4e14dc022a5b75a098317a2ede72d0e20685edb67c35a61fa4b78ddc8,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q272855,Kazuo Ishiguro,development,writing_public_education,facebook,account-rules,671dd9a1164c0143cc8ae849ac167b8c2ecb50579e077d106efc406ede05af32,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q272855,Kazuo Ishiguro,development,writing_public_education,facebook,account-ollama,98cd157854535f38b852dbf6f63d50fa7aba2dabf89a2f5995c183749b521da8,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q457608,Brandon Sanderson,development,writing_public_education,x,web-rules,9a2b769babb8b25165a5ac8c69eca41082c25dee36cc9612ca9c0127f1e77dc1,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q457608,Brandon Sanderson,development,writing_public_education,x,web-ollama,60da17924c5498156df032e4ac9ef811a4a12b240ed132f7a0099e85625b809c,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q457608,Brandon Sanderson,development,writing_public_education,x,account-rules,e414732ab315af90c7af268a56c4b145f440c9a8842d32ca1648ac907e372df5,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q457608,Brandon Sanderson,development,writing_public_education,x,account-ollama,e3f22ee32bb4f94face5710a856441c27565dba95183bc183011b67f8a3db21b,PARTIAL,10,2,8,True,1,0,0,2,1,0,0,"{""EMPTY"": 1, ""SUCCESS"": 1}",{},0,0,0
+Q52369134,Amanda Gorman,development,writing_public_education,x,web-rules,86a8bf281f0023f2b1dca83c8481796b0e4bfcb1b83c1c615d4a2bcafbd5285e,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q52369134,Amanda Gorman,development,writing_public_education,x,web-ollama,c01bbba6f23aaf9fa1610ec5a317d7e485015c843a86411872469ed644ba4db0,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q52369134,Amanda Gorman,development,writing_public_education,x,account-rules,0cd3912e21d429a57a8291d4712f764ff3111d287d9880b7c3fb9fc7ee01ef3f,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q52369134,Amanda Gorman,development,writing_public_education,x,account-ollama,4ed5a327177d640c7f240ce3d867dd40ec729f65e42364046f7bcbea668e3ffd,PARTIAL,10,2,8,True,1,0,0,2,1,0,0,"{""EMPTY"": 1, ""SUCCESS"": 1}",{},0,0,0
+Q56434717,Greta Thunberg,development,writing_public_education,facebook,web-rules,267473a6c32d0cd8fc7bccfb6e175a1ef66dc8e214875965ed9408c95f7453b7,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q56434717,Greta Thunberg,development,writing_public_education,facebook,web-ollama,aedb9e237d5102bfe9e6dd550a6b1f5f28808bcd5181e5453fa5418bc186b02c,PARTIAL,9,4,22,True,1,0,0,2,1,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q56434717,Greta Thunberg,development,writing_public_education,facebook,account-rules,b7cd63b86262c330922862c0a526650519ec9b83956b406eab5e29941a80d6db,PARTIAL,12,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q56434717,Greta Thunberg,development,writing_public_education,facebook,account-ollama,35e1487a153248c875a1edd0e8e22dd523063dd98d1073023cc445897fe74e82,PARTIAL,12,4,22,True,1,0,0,2,1,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q134895,Javier Bardem,heldout,acting,instagram,web-rules,b4362317b4ed34ddfc7d607513810cddf76b480a40146d7f4fe52088a1952b01,PARTIAL,9,4,23,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q134895,Javier Bardem,heldout,acting,instagram,web-ollama,17377ddd9c846d4ea2fae38915774e72322012fffa128a573abfeaa7d1b8d673,PARTIAL,9,4,23,True,1,0,0,1,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q134895,Javier Bardem,heldout,acting,instagram,account-rules,3e9b26e7a8da32bcc1d9bde6a3462440f868970e626d58191243ab45455dcdb9,PARTIAL,11,4,20,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q134895,Javier Bardem,heldout,acting,instagram,account-ollama,902839062a39a86130d57782aa300178736d3a2621d3ebc2b3bd225c45b76e94,PARTIAL,11,4,20,True,1,0,0,1,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q150903,Gong Li,heldout,acting,instagram,web-rules,58848882a2ad0134247230b2c25c96c5c642ad63813f9aac0dd4ed3f4c8301ac,PARTIAL,7,1,4,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q150903,Gong Li,heldout,acting,instagram,web-ollama,59cb0a37d60ef3d929b465a4906b9538e0f6efe0a7acffe9ae281fe78e0de7c9,PARTIAL,7,1,4,True,1,0,0,3,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q150903,Gong Li,heldout,acting,instagram,account-rules,36c350a9b4de51d56b44bf0c2232e608d3cdaa7c8c62665cfccedd4b001522fa,PARTIAL,12,2,7,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q150903,Gong Li,heldout,acting,instagram,account-ollama,d776a610915d86333c01ebcd846b0c2f935f36b3d3abcb5f6df59e70301c7bd0,PARTIAL,12,2,7,True,1,0,0,3,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q158957,Priyanka Chopra,heldout,acting,instagram,web-rules,e1aaf42f90159c6dcde9621a8e60feba77cb06d4cd33a31a3c0be07a5cf9c617,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q158957,Priyanka Chopra,heldout,acting,instagram,web-ollama,6a778c600712490d7cd3d48b0ce0ad98e41dc2ab22a1834b74128f2a9bb26533,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q158957,Priyanka Chopra,heldout,acting,instagram,account-rules,03a7d807db28bb3e0e86554e5b70ea6944966d4acfaa1efa91c823708ff4de04,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q158957,Priyanka Chopra,heldout,acting,instagram,account-ollama,39cbde71105b7c8b96481e5ee0b59824d072655a19c552a1489b95e7793c6ed5,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q159178,Deepika Padukone,heldout,acting,facebook,web-rules,5141c120ad86b89956680e5d98b3340d6b7313fd938619d9f7096567a6e47d10,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q159178,Deepika Padukone,heldout,acting,facebook,web-ollama,c99c758e7c862bf0307f60ed7c10c2d17362217f0c9fd6cc6af91188efc42c91,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q159178,Deepika Padukone,heldout,acting,facebook,account-rules,6e2a56d14f32e423b3068ffe5cefe9c9fdc34fc320ff52368381fe5d32dbf804,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q159178,Deepika Padukone,heldout,acting,facebook,account-ollama,20cf3df324c9ad2c1e5741397d820c1181b573732a7b2423cf486ef6b106167c,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q179576,Gael García Bernal,heldout,acting,instagram,web-rules,2aa58d68291fbf5b7512ef9873dc4208cd49b4839a4f678202bfcdf3e63944eb,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q179576,Gael García Bernal,heldout,acting,instagram,web-ollama,e2f9215476965c981cfd4f59c275e3c9b582af264fef0f255543e60418401f3f,PARTIAL,7,1,4,True,0,0,0,1,1,0,0,"{""PARTIAL"": 1}",{},1,0,0
+Q179576,Gael García Bernal,heldout,acting,instagram,account-rules,cfb9fd7c4ba817ee63e2a0f45b5c74b92fdc53c182dec2e4680faacf754a3823,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q179576,Gael García Bernal,heldout,acting,instagram,account-ollama,7d93701e5e0cc0ca0e3f0549ffef79cc49fe5256476a317f4f312de7f687749a,PARTIAL,10,2,7,True,0,0,0,1,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1}",{},1,0,0
+Q189489,Zendaya,heldout,acting,instagram,web-rules,4d725b081acaea1d3c500546b5ca372fb9a6b11a1f192f78992557d19ce9f6c8,PARTIAL,9,4,27,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q189489,Zendaya,heldout,acting,instagram,web-ollama,914879a639c2e2d07607937f0fcaf3b22d20a17196f4c6d4622b9874da3629c4,PARTIAL,9,4,27,True,0,0,0,2,1,0,0,"{""EMPTY"": 2, ""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},18,0,0
+Q189489,Zendaya,heldout,acting,instagram,account-rules,2bdb3eb47a216fac29dc724c641908356d6472565f7c260b6337529c8e93b482,PARTIAL,11,3,19,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q189489,Zendaya,heldout,acting,instagram,account-ollama,0fe86ac5621372d843c384f8dc7f603f2c76384a43010558c50c0ada228e0f30,PARTIAL,11,3,19,True,0,0,0,2,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},17,0,0
+Q189490,Jennifer Lawrence,heldout,acting,instagram,web-rules,fcbbb61b4cfe4ec147d4adfb32893070879d671b242f0a127ded07ad8905e0a3,PARTIAL,9,4,22,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q189490,Jennifer Lawrence,heldout,acting,instagram,web-ollama,12fd70179dfc4d0bc45c1e888c67e1351e0b2d00919d1c2a08baafd1a984b42a,PARTIAL,9,4,22,True,1,0,0,2,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},3,0,0
+Q189490,Jennifer Lawrence,heldout,acting,instagram,account-rules,836d9b47f204f2106855affdf6fd08250f2a51d91c1da58643f05b52771922d8,PARTIAL,11,3,16,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q189490,Jennifer Lawrence,heldout,acting,instagram,account-ollama,03c90c2a1d9ce9af98e3146fa4362b2ba024aafe4741699657d864fbb7ca956e,PARTIAL,11,3,16,True,1,0,0,2,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1}",{},3,0,0
+Q214289,Michelle Yeoh,heldout,acting,facebook,web-rules,94f3e9e547b7be3cbba9b6d8b6d6b20acf9ace182d8e2df66f749493760bfd56,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q214289,Michelle Yeoh,heldout,acting,facebook,web-ollama,92f7603e9c16caa7413d42973723695239efd3689e8a76c9ebe753ff694d0c01,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q214289,Michelle Yeoh,heldout,acting,facebook,account-rules,126310334738b0256a90dbd0174a20d0208fdd8494a0d101f32aaf70944ee95b,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q214289,Michelle Yeoh,heldout,acting,facebook,account-ollama,f508cd615c7bc155785062f1e31fd614f6bffec398c12c8599d14d6ebf5a795b,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q2263,Tom Hanks,heldout,acting,facebook,web-rules,a0ddf4a30f49cef01706b7daa1537823e659d0eb3df77242fa5e0b14e0e024b1,PARTIAL,9,4,22,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q2263,Tom Hanks,heldout,acting,facebook,web-ollama,81a19b911618927fee7121bff77d96f05202566887e8ffef42c4d743952f167d,PARTIAL,9,4,22,True,0,0,0,1,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q2263,Tom Hanks,heldout,acting,facebook,account-rules,4f9648998205b4f032076d4959bc56ce3bb291353f3145de281395cf1bc8377f,PARTIAL,12,4,22,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q2263,Tom Hanks,heldout,acting,facebook,account-ollama,70e86960d2ab8ed613b3a22ca8742f82e1b86166e497a1bb9d54fe4d78b7dfbd,PARTIAL,12,4,22,True,0,0,0,1,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q228603,Saoirse Ronan,heldout,acting,x,web-rules,798891fedde69e0a225c22db148f95db7029e345a1a1b73a010345c735479dd0,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q228603,Saoirse Ronan,heldout,acting,x,web-ollama,32924013c1f91f9fb8687d0942664bc6577906a7f0008a33e647e6ef0c2158a5,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q228603,Saoirse Ronan,heldout,acting,x,account-rules,fc7d8f0af3ae25b7230967fd97c06587f188b0b99557dec32e7d2482698495c4,PARTIAL,11,4,20,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q228603,Saoirse Ronan,heldout,acting,x,account-ollama,e7ce273528c9b6095577b3e5179deadc6b02ed3a6c72dee1acdb5fc5651b1563,PARTIAL,11,4,20,True,1,0,0,1,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q229181,Viola Davis,heldout,acting,x,web-rules,969eb83d861d40810abb376a709ad780594f6777a1f6ddb6dbdef15bcfc0fad7,PARTIAL,9,4,19,True,2,1,0,2,0,0,0,{},{},0,0,0
+Q229181,Viola Davis,heldout,acting,x,web-ollama,2ef56303f6c69deac00737a1557289a77ecab718f7fbbb4ae01047eb2d7018a8,PARTIAL,9,4,19,True,2,1,0,2,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q229181,Viola Davis,heldout,acting,x,account-rules,e87e8912a33d0f646a67c13050111da48b6a8496876803353849b9d48e5ad3c9,PARTIAL,11,4,20,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q229181,Viola Davis,heldout,acting,x,account-ollama,725aeb252a6aaca894967fa235c5282826d3cd3d2ac9f4e11262c46dc897d344,PARTIAL,11,4,20,True,1,0,0,2,1,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q231096,Léa Seydoux,heldout,acting,facebook,web-rules,01edc33d649dfd5577eed4cd2d2566b45c2a97720120d0ef69f05eeaef4f6450,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q231096,Léa Seydoux,heldout,acting,facebook,web-ollama,23a5daa76f533fd3dd569f702c8f7f6636d946e357b516f168c479f6b69001d3,PARTIAL,9,4,22,True,1,0,0,2,1,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q231096,Léa Seydoux,heldout,acting,facebook,account-rules,f8d5a5d6eb142d9765f65ba272c59d93f1fb4c10b159165c050347d377a095e3,PARTIAL,14,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q231096,Léa Seydoux,heldout,acting,facebook,account-ollama,9fe0089b88f8ca2549b468dd67faa51e8455f3f970d53bea147232ec4364c1a9,PARTIAL,14,4,22,True,1,0,0,2,1,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q233619,Hrithik Roshan,heldout,acting,instagram,web-rules,f2849e4940447af1ba66979bc219c57c9933d7c2924ca881cbfcea9ef0404eb9,PARTIAL,9,4,22,True,1,0,0,2,0,1,0,{},{},0,0,0
+Q233619,Hrithik Roshan,heldout,acting,instagram,web-ollama,9936ee6b13babc8a3298f4f24651f333837401b71a82213006ed432d5bf0fdcb,PARTIAL,9,4,22,True,1,0,0,2,0,1,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q233619,Hrithik Roshan,heldout,acting,instagram,account-rules,d3ab14f59da91a28b5bc6fa10daf43692dab5e87c827179072de230e5f705eb5,PARTIAL,9,3,19,True,1,0,0,2,0,1,0,{},{},0,0,0
+Q233619,Hrithik Roshan,heldout,acting,instagram,account-ollama,1d5d3943257e8c0ced216f8eccf3381bb63c4d598e30e86027c848c070cb85a6,PARTIAL,9,3,19,True,1,0,0,2,0,1,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2}",{},2,0,0
+Q311723,Donnie Yen,heldout,acting,facebook,web-rules,3aa39ee8db4b4cd5b1f8a8b3fdb3a8557d880dd9aca9d35837a0ee6f6a0d66bf,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q311723,Donnie Yen,heldout,acting,facebook,web-ollama,be0f436f768550b7d7b4b8fa82b4fab02add1a8604e91ff3655e22e3a0603ec6,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q311723,Donnie Yen,heldout,acting,facebook,account-rules,23b8b28be400fe3fcccf09af9742b2ffd9e04c48b822e33a8f24a5afac8d1dbd,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q311723,Donnie Yen,heldout,acting,facebook,account-ollama,5847ab87c6c48bfda3ba9d139bf527d7ae4159d4fd8bdbd649b60b2df3eccfc0,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q335455,Fernanda Montenegro,heldout,acting,facebook,web-rules,5d653806b63633766435b2a1509839f2b5ab5ecf2125206cd4163a7996408b09,PARTIAL,5,1,4,True,1,0,0,2,0,2,0,{},{},0,0,0
+Q335455,Fernanda Montenegro,heldout,acting,facebook,web-ollama,0be9b32a51379972c9fdea83d70f58ffb782fd375b22d95a7e3b751b88f83ab0,PARTIAL,5,1,4,True,1,0,0,3,1,2,0,"{""PARTIAL"": 1}",{},2,0,0
+Q335455,Fernanda Montenegro,heldout,acting,facebook,account-rules,26eceb59c4a92abcb7cd9c4e37e3109cb7b70084bd3a7403c04ad6c61d2f5bb9,PARTIAL,8,1,4,True,1,0,0,2,0,2,0,{},{},0,0,0
+Q335455,Fernanda Montenegro,heldout,acting,facebook,account-ollama,0266b5d29a3023c3de68145798b0077b0e9315473c784951292612e58bd96352,PARTIAL,8,1,4,True,1,0,0,2,0,2,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q336788,Oscar Isaac,heldout,acting,facebook,web-rules,1972889a7d9a48d21511058f5f94c59d7711a7a2ebf45660f86a2ba682b4df7d,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q336788,Oscar Isaac,heldout,acting,facebook,web-ollama,fd6cc3f155cc8196dc6238417fbf66b10f30469269f711d41b27f654afb2557e,PARTIAL,9,4,22,True,0,0,0,1,1,0,0,"{""EMPTY"": 3, ""SUCCESS"": 1}",{},0,0,0
+Q336788,Oscar Isaac,heldout,acting,facebook,account-rules,626981c30d16f2e6713a083128eb2d65c8f56f66f65cb4e8978871755a93ac9c,PARTIAL,12,4,22,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q336788,Oscar Isaac,heldout,acting,facebook,account-ollama,ad86c5bd64bd4d9c325d5ae4aec94138bbfcca30df52e84115fa80818a302efe,PARTIAL,12,4,22,True,0,0,0,1,1,0,0,"{""EMPTY"": 3, ""SUCCESS"": 1}",{},0,0,0
+Q37079,Tom Cruise,heldout,acting,instagram,web-rules,a3d3ea885bcdf6868b318ec7ec8609f403b43d2bfc10cd8b46549c5353cc8c46,PARTIAL,5,1,4,True,0,0,0,0,0,2,2,{},{},0,0,0
+Q37079,Tom Cruise,heldout,acting,instagram,web-ollama,478c50308d6474a9d9c27fe027b8b98dcbc9990d7257cf7b136ac84e4f8d00e9,PARTIAL,5,1,4,True,0,0,0,0,0,2,2,"{""EMPTY"": 1}",{},0,0,0
+Q37079,Tom Cruise,heldout,acting,instagram,account-rules,b8e53b3e6a2ff53115497ee00034226d3bd0b7d81fe903b0861d580aad41198c,PARTIAL,8,2,7,True,0,0,0,0,0,2,2,{},{},0,0,0
+Q37079,Tom Cruise,heldout,acting,instagram,account-ollama,af770082b4f934818d42be5b54eed641f9836caf41f889eeb4bd812515b345b4,PARTIAL,8,2,7,True,0,0,0,0,0,2,2,"{""EMPTY"": 2}",{},0,0,0
+Q37876,Natalie Portman,heldout,acting,instagram,web-rules,81321cf14bcf8f4c48847074bab8406a4fd0eb949bf5a9de407cc3e754f0a16e,PARTIAL,9,4,22,True,0,0,0,0,0,1,1,{},{},0,0,0
+Q37876,Natalie Portman,heldout,acting,instagram,web-ollama,6abaefe6a90e476c68fe18a3dc9cf2793d9e0cd896bf59b925a4c2c6238b819a,PARTIAL,9,4,22,True,0,0,0,0,0,1,1,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q37876,Natalie Portman,heldout,acting,instagram,account-rules,e554aebf68b8e065da8a00d1aa44b7e8c03e38431e3007058702ddb156ef1fb4,PARTIAL,9,3,16,True,0,0,0,0,0,1,1,{},{},0,0,0
+Q37876,Natalie Portman,heldout,acting,instagram,account-ollama,a6ad88c8118f9b7f3543fa8e33ee099ff1d4f3d873a5a50f12b518a38db7654f,PARTIAL,9,3,16,True,0,0,0,0,0,1,1,"{""EMPTY"": 2, ""REJECTED_ALL"": 1}",{},1,0,0
+Q381074,Fan Bingbing,heldout,acting,facebook,web-rules,a721ab0d7bee7b228ae982ea0d11f0c0065ece1d58a9449884ca6218c5d62583,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q381074,Fan Bingbing,heldout,acting,facebook,web-ollama,d1e7305ab1243945a105ad11f68289d9aa2b9748e72d74fecd4436ddaf09ad8d,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q381074,Fan Bingbing,heldout,acting,facebook,account-rules,d3ce4a5715b01a9a02503001ecf5bb16aa6b3f1ef2ab5c638faff95b8adcc80f,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q381074,Fan Bingbing,heldout,acting,facebook,account-ollama,e6a498d2e4f2c9dcc53213940bdb9d74c8ba7bf9ecc418a9be852279968a59b7,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q38111,Leonardo DiCaprio,heldout,acting,facebook,web-rules,948a85c5da0ee8e33e0a76aa125fb1974dfd8972fe9509760ab470405c25bf78,PARTIAL,9,4,22,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q38111,Leonardo DiCaprio,heldout,acting,facebook,web-ollama,078b37f1e2556210c49fe3c927088ed7290fe0eddd16666eb35ccc005396bde2,PARTIAL,9,4,22,True,1,0,0,3,1,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SUCCESS"": 1}",{},4,0,0
+Q38111,Leonardo DiCaprio,heldout,acting,facebook,account-rules,703a7d1c67705453976f1d760469a2a4d360ecf5fa8ba7f3ab2fdf62d3a271d7,PARTIAL,12,4,22,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q38111,Leonardo DiCaprio,heldout,acting,facebook,account-ollama,dce6d68144148bc2008f7990b66d667ca1fbbbbd380d6347cab6d476ead08b4e,PARTIAL,12,4,22,True,1,0,0,3,1,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SUCCESS"": 1}",{},5,0,0
+Q39476,Emma Watson,heldout,acting,instagram,web-rules,d074adfdd9f833cb63bcdb18b695277fa30e955745e1a7dea99cc2e7c182ba2d,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q39476,Emma Watson,heldout,acting,instagram,web-ollama,e4a8ab36ce478b6c12fd57e44a6dff125ea8483e22337eb92cc3e7f6aa42c9c8,PARTIAL,9,4,22,True,1,0,0,3,2,0,0,"{""EMPTY"": 2, ""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},2,0,0
+Q39476,Emma Watson,heldout,acting,instagram,account-rules,97c8b301980397f84bfc6eebdf9ef4dfa73bc8c52f2bbcfb8286e3d1a3c71826,PARTIAL,11,3,19,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q39476,Emma Watson,heldout,acting,instagram,account-ollama,1235d5ec5e7d28e8b70ecfc9237de4982f7d1754ae58d18713ee2c695b16d52f,PARTIAL,11,3,19,True,1,0,0,1,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1}",{},1,0,0
+Q39666,Penélope Cruz,heldout,acting,facebook,web-rules,6baa0863dfd36236e448b71cdbc79a59491234017d32ba1ca673b1f96bcb2c64,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q39666,Penélope Cruz,heldout,acting,facebook,web-ollama,afd2a6b65a75db80d53d78ce72523bd63e3549e9c5a0dc47798c12813acd5754,PARTIAL,7,1,4,True,1,0,0,2,1,0,0,"{""PARTIAL"": 1}",{},1,0,0
+Q39666,Penélope Cruz,heldout,acting,facebook,account-rules,42d06d283bdf728efbcacbc56d758b767f4269da184d7872d27cd1d12fef3259,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q39666,Penélope Cruz,heldout,acting,facebook,account-ollama,f92e8dca85ac52f261a9267f33ac0967bd25f681e589ea7ca034511e3d7693c6,PARTIAL,10,1,4,True,1,0,0,2,1,0,0,"{""PARTIAL"": 1}",{},1,0,0
+Q4725343,Alia Bhatt,heldout,acting,x,web-rules,67b25710bb0f0d785f14e31a92c855625d0d7774d1e9d6e3761ecd2059162eff,PARTIAL,8,2,13,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q4725343,Alia Bhatt,heldout,acting,x,web-ollama,8e78646540f487e761d576447206a24ae758ffb48652cc1c3c78dcb01581f31c,PARTIAL,8,2,13,True,1,0,0,4,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1}",{},1,0,0
+Q4725343,Alia Bhatt,heldout,acting,x,account-rules,8d582c12f1e504da2971c15b48b63c0d469e3784566d7faec0ea9d28159ed86d,PARTIAL,11,3,17,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q4725343,Alia Bhatt,heldout,acting,x,account-ollama,48a36cbdbd90a92666cf8ada99138ab441b676d33062afe3ee64845eef27a140,PARTIAL,11,3,17,True,1,0,0,4,1,0,0,"{""EMPTY"": 2, ""PARTIAL"": 1}",{},1,0,0
+Q48337,Morgan Freeman,heldout,acting,instagram,web-rules,7caeb1c1ebf13b93f192dd79a00791d2c5113b2cdb5f551e7ca9ae4b43c61f75,PARTIAL,9,4,22,True,2,0,0,5,0,0,0,{},{},0,0,0
+Q48337,Morgan Freeman,heldout,acting,instagram,web-ollama,6f62994a352dfe83098fdd38405fd4080dca0d3dbfd1ed7f390304d4a53317e8,PARTIAL,9,4,22,True,2,0,0,5,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},4,0,0
+Q48337,Morgan Freeman,heldout,acting,instagram,account-rules,bc1efae839a83785c388d9f80ec085c255fe6934dad39523d5f0dfa9a5c4386b,PARTIAL,11,4,19,True,2,0,0,5,0,0,0,{},{},0,0,0
+Q48337,Morgan Freeman,heldout,acting,instagram,account-ollama,f18963755a39390f518627a4d44a21d7b555dbf7f1fad86664261bf1457196ef,PARTIAL,11,4,19,True,2,0,0,5,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},4,0,0
+Q491318,Lee Jung-jae,heldout,acting,instagram,web-rules,592ae547f4ea25f525aa0a634a8851052ee8a169f4284a31fe980ec9cb8f1ade,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q491318,Lee Jung-jae,heldout,acting,instagram,web-ollama,62721ae8a2979cead84f4299d697215a53b12cd54ff1d60e80afb1e2144f56d1,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q491318,Lee Jung-jae,heldout,acting,instagram,account-rules,a6657c4631b2f84e6d93509b580ecfb9294b4fcfeb0a3dee2e2a8323e029ac70,PARTIAL,12,2,7,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q491318,Lee Jung-jae,heldout,acting,instagram,account-ollama,af9295ae870d245d3eb769428048a7b7bb8884d182cba21b4c325a1fc8f2f503,PARTIAL,12,2,7,True,1,0,0,2,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q698173,Ana de Armas,heldout,acting,instagram,web-rules,c1a89e6c097e6ac09cf9d36a2281a919c27f6a9b3e0790785e3d7eeffea39891,PARTIAL,9,4,22,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q698173,Ana de Armas,heldout,acting,instagram,web-ollama,56c73d6d258c6b1a066af5e9968b2eae1f0c9d5da39104ca1f0f427159149a1d,PARTIAL,9,4,22,True,0,0,0,2,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},4,0,0
+Q698173,Ana de Armas,heldout,acting,instagram,account-rules,c54423e24e3d8adfbbd126b11ab68cb09f357b6f5fad8821326c2afaab700331,PARTIAL,11,4,18,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q698173,Ana de Armas,heldout,acting,instagram,account-ollama,8cc61a1bee61272efd2e2a03dd33cd457451c98d0f9ad30c505b86f3195c4de3,PARTIAL,11,4,18,True,0,0,0,2,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},3,0,0
+Q922503,Wagner Moura,heldout,acting,instagram,web-rules,308a3a941f6c020d748889c248312698c5bc32e508a077dec49d43c05dfc3032,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q922503,Wagner Moura,heldout,acting,instagram,web-ollama,c43ff2869fed48980b4d64d222b3225365b8839c481ec4b7e969884a7c97502b,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q922503,Wagner Moura,heldout,acting,instagram,account-rules,993db38e6812fdbe359fab58663fbab2e8ee97ebcd30fb8e3d0b1c06ae1efba2,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q922503,Wagner Moura,heldout,acting,instagram,account-ollama,870835c18ff7154eee91b5e66e9ab650318c4bb0770c54fa04f7c63944229c31,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q9543,Salman Khan,heldout,acting,x,web-rules,e98bd4f8d3909b17f268dfc75824de0bedb5c9c7ba5197f4734ffcfddbc3b324,PARTIAL,9,4,22,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q9543,Salman Khan,heldout,acting,x,web-ollama,f639b0011607b2a774cbd7354200f1950c426ebd0691c9fbc5fb30a3da173a4c,PARTIAL,9,4,22,True,1,0,0,3,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q9543,Salman Khan,heldout,acting,x,account-rules,bb02dc74191f443944d4c1662aa08abbf0fd7e8aa7624fc5bfd2025529714178,PARTIAL,11,4,23,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q9543,Salman Khan,heldout,acting,x,account-ollama,171d93dccd672caa1abd24329d2bd648ed6384d65fcfe3fab8a2e44b00085c15,PARTIAL,11,4,23,True,1,0,0,4,1,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SUCCESS"": 1}",{},2,0,0
+Q9557,Aamir Khan,heldout,acting,facebook,web-rules,1e4d704675460504daf9bc1125ebbc1c1c696a05dc7566fc6f866bac3e1630ac,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q9557,Aamir Khan,heldout,acting,facebook,web-ollama,7a28ef8f1681f39b5be1d6e666bcbe96569ee5aa2847290b49dca34668482c9f,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},4,0,0
+Q9557,Aamir Khan,heldout,acting,facebook,account-rules,446a1b0ae39d3cdc8e9f0249e214d87577616d87de3ffbd8f2f0e670fb5ab6bb,PARTIAL,12,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q9557,Aamir Khan,heldout,acting,facebook,account-ollama,34c9a80bc9e4ca2a49eef55681ee378ef866259614719e3100df9360b2a36e04,PARTIAL,12,4,22,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},4,0,0
+Q9570,Amitabh Bachchan,heldout,acting,facebook,web-rules,d186f73b319fea30edbd96784b15cddb325072ac5754ecd9390967bf0e1cbdb2,PARTIAL,9,4,28,True,1,0,0,4,0,0,0,{},{},0,0,0
+Q9570,Amitabh Bachchan,heldout,acting,facebook,web-ollama,3b77cec9af71a9ec4e152ec06f81bd55c56a583a4e205a791a9a23eeeafd71f6,PARTIAL,9,4,28,True,1,0,0,4,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},6,0,0
+Q9570,Amitabh Bachchan,heldout,acting,facebook,account-rules,ceccdaded14b3f6f288d301fcdd58cfb1a1a5554ed33678c0b0a6071157702ca,PARTIAL,13,4,28,True,1,0,0,4,0,0,0,{},{},0,0,0
+Q9570,Amitabh Bachchan,heldout,acting,facebook,account-ollama,5fe715d3f22b8734d9bb074526d9e9df67a031da67a32d0fc7194a31f1f5b2a5,PARTIAL,13,4,28,True,1,0,0,4,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},6,0,0
+Q108560,A. R. Rahman,heldout,music,instagram,web-rules,8da2ff423e966d4e8184adb0eacf9baf59497eba75992f61d698378294a10cf7,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q108560,A. R. Rahman,heldout,music,instagram,web-ollama,98614aaac6b121b269609720f82021ae10c123124519d06d5b3f4976558ff15f,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q108560,A. R. Rahman,heldout,music,instagram,account-rules,faf80c6ae22e3c28f2fc7a592e4325a3b2e37fed86c7cac0950c7f40a03329b0,PARTIAL,11,4,19,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q108560,A. R. Rahman,heldout,music,instagram,account-ollama,976c77d7c3cb5fc9a68b1085e0b70824e26ddc9816b5c27af8d9a1e58d06bf6f,PARTIAL,11,4,19,True,0,0,0,0,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q130798,Kendrick Lamar,heldout,music,facebook,web-rules,342eac52dee543fd6fc11f25b5549c0297185df909e9b137c3c85b81b3f2a73c,PARTIAL,7,4,23,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q130798,Kendrick Lamar,heldout,music,facebook,web-ollama,42de202f6a86bd2390cc07b52975c7421d817eee63e0bf8027e0c0a78d0661c5,PARTIAL,7,4,23,True,1,0,0,2,0,2,2,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},3,0,0
+Q130798,Kendrick Lamar,heldout,music,facebook,account-rules,8267b67fd871999b62ad82a49e7de8ad549616beb4791485ed3d6a855e60d6ea,PARTIAL,10,4,23,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q130798,Kendrick Lamar,heldout,music,facebook,account-ollama,ea3bed5c9c59918d9870e4948dbb3897d121d349cf96cfdd043475e9859239ea,PARTIAL,10,4,23,True,1,0,0,2,0,2,2,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},3,0,0
+Q13476301,Anitta,heldout,music,instagram,web-rules,ccc9105b24953d7f24ae5aabf777446cb6cc2974590ae78c2a1f8626d453aa67,PARTIAL,7,4,15,True,2,0,0,2,0,1,1,{},{},0,0,0
+Q13476301,Anitta,heldout,music,instagram,web-ollama,7f55f091b246935c693db90dd577b00ef9923d880017cb30a0ecfed2f040a8c0,PARTIAL,7,4,15,True,2,0,0,2,0,1,1,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},2,0,0
+Q13476301,Anitta,heldout,music,instagram,account-rules,b5c566b38aaf139d825bd4c54d1cfed8c2d2a9e616ce65f374b8e9cb8cef2105,PARTIAL,10,4,19,True,2,0,0,2,0,1,1,{},{},0,0,0
+Q13476301,Anitta,heldout,music,instagram,account-ollama,355eaa488887aea6a5cb3a64f2fee64106e01bc37219780c1518f0db4fff678d,PARTIAL,10,4,19,True,2,0,0,2,0,1,1,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},2,0,0
+Q15838567,Rahim Redcar,heldout,music,x,web-rules,5ccab82a98776aa30a74559e3ecccc8118651bf922e0b4af8603bc26d4be190e,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q15838567,Rahim Redcar,heldout,music,x,web-ollama,294e1db16913a460c077142d1419489212e3ac887ad90984f3269f53d109ad02,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q15838567,Rahim Redcar,heldout,music,x,account-rules,f27162f62ac70ff1cc12c641faa5273fe5799dc588f1ff21ee48eddc69751081,PARTIAL,10,2,8,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q15838567,Rahim Redcar,heldout,music,x,account-ollama,35eb3b23d1a7b07b1df493ec9a78ff489afc8485883df091152b3301bf9cd36d,PARTIAL,10,2,8,True,1,0,0,2,0,0,0,"{""EMPTY"": 1, ""SKIPPED"": 1}",{},0,0,0
+Q16233663,Wizkid,heldout,music,facebook,web-rules,b12b11e1209635fc541970235d48da1b39778e1d0251f3b6aeafe18884d6e001,PARTIAL,5,1,4,True,1,0,0,2,0,1,1,{},{},0,0,0
+Q16233663,Wizkid,heldout,music,facebook,web-ollama,1e94ece382287d30637847203d1c7ad378a735c7edce81cce5e1befbe703a579,PARTIAL,5,1,4,True,1,0,0,2,0,1,1,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q16233663,Wizkid,heldout,music,facebook,account-rules,c2508cc1a02d641026e9ab800a7297ec4587c36a9f56f398d0b1bb570240cc33,PARTIAL,8,1,4,True,1,0,0,2,0,1,1,{},{},0,0,0
+Q16233663,Wizkid,heldout,music,facebook,account-ollama,183913cf43b4d29fd348ff7bc09c0eef93cbf69af74ed1f2096d67f7bde10621,PARTIAL,8,1,4,True,1,0,0,2,0,1,1,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q167850,Zaz,heldout,music,facebook,web-rules,12843fc9ad9081ca3f5d32a1b6adf00a804599dcb5ef9e063366731da94b9088,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q167850,Zaz,heldout,music,facebook,web-ollama,12843fc9ad9081ca3f5d32a1b6adf00a804599dcb5ef9e063366731da94b9088,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q167850,Zaz,heldout,music,facebook,account-rules,a9d328bfd34707f046ea81dd162079c28a29a38420247957516b421efa184e8c,PARTIAL,9,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q167850,Zaz,heldout,music,facebook,account-ollama,a9d328bfd34707f046ea81dd162079c28a29a38420247957516b421efa184e8c,PARTIAL,9,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q17198340,Shawn Mendes,heldout,music,x,web-rules,09f5fb975b65fb3e572a41b8492c6cfe8d1c4582a4f141309d6337601a18dee0,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q17198340,Shawn Mendes,heldout,music,x,web-ollama,e1171c93b9d81ce600ed2d038154d8215b45c551830267a6f2017563d1afafa3,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q17198340,Shawn Mendes,heldout,music,x,account-rules,25c4f02dc2a460f556348efa82f61dbd2a2ea83928786125d106d1182f6a6bfe,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q17198340,Shawn Mendes,heldout,music,x,account-ollama,7486974eecabda47a061250eb3fd6e000d02619e0f8a34075767ff6d2e84f706,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q17305712,Burna Boy,heldout,music,x,web-rules,8dd0f912a4998e1568fdb6cb3b7464dcf2030c0cd72b1021db0fb27558ef81b8,PARTIAL,5,1,4,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q17305712,Burna Boy,heldout,music,x,web-ollama,6d347f5cfdff3af611534ccfe4955af159df3707f848863c0fbd40acca96260f,PARTIAL,5,1,4,True,1,0,0,4,2,2,2,"{""PARTIAL"": 1}",{},10,0,0
+Q17305712,Burna Boy,heldout,music,x,account-rules,3c34dab06b518892f1b99351faa035730f72a0526b13522969e6bb0f04caacef,PARTIAL,8,2,8,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q17305712,Burna Boy,heldout,music,x,account-ollama,adf36775ed1344c4530fbd508c15b94487305123fd65095b001f9fa56fb914e1,PARTIAL,8,2,8,True,1,0,0,4,2,2,2,"{""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},11,0,0
+Q17517186,Maluma,heldout,music,facebook,web-rules,6474d738d6a7b72b857f1cb55e386b3e29a88c84312c77f670fb5ae44441c5a6,PARTIAL,5,1,4,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q17517186,Maluma,heldout,music,facebook,web-ollama,fc7f90950135069ae33eb465177267e135ed6656f5a008a9626f22a5ae32ed5d,PARTIAL,5,1,4,True,1,0,0,2,0,2,2,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q17517186,Maluma,heldout,music,facebook,account-rules,f7316e15a5ad595558890c15a22b8c58628a5e77608817fdc805db33ac53157d,PARTIAL,8,1,4,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q17517186,Maluma,heldout,music,facebook,account-ollama,7dc1092abaa14306da36770b050b9e5f1f61aafcf8f95eb19d611f878f6e1575,PARTIAL,8,1,4,True,1,0,0,2,0,2,2,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q21621919,Post Malone,heldout,music,x,web-rules,c18411ac506a0e64df281036368f19e99a3d12b41a15a73d32bf45711abe58b1,PARTIAL,7,4,22,True,1,0,0,3,0,3,3,{},{},0,0,0
+Q21621919,Post Malone,heldout,music,x,web-ollama,9e9a65229cfe86833898eb23143917d13ac4a5428d9175e88e1761543385d14b,PARTIAL,7,4,22,True,1,0,0,3,0,3,3,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q21621919,Post Malone,heldout,music,x,account-rules,3f766abb7b7f6dc61e85ef021c6e66b716cfceefac7528438b546edd6b10cb8d,PARTIAL,9,4,23,True,1,0,0,3,0,3,3,{},{},0,0,0
+Q21621919,Post Malone,heldout,music,x,account-ollama,afd21a38dd25ee296ee0cf1180f8677b4fbbf3c1da787b85221b4d2ea0dfcc5a,PARTIAL,9,4,23,True,1,0,0,3,0,3,3,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q21914464,Dua Lipa,heldout,music,facebook,web-rules,727ab5135cccbc6a938f166fc276b71bf40f075007f838eaa8692f6cf6d0024d,PARTIAL,7,1,4,True,1,0,0,4,0,0,0,{},{},0,0,0
+Q21914464,Dua Lipa,heldout,music,facebook,web-ollama,816aa5cb8c19f2bb76325b0e93b61d33e516b7971582429c91087623761b706b,PARTIAL,7,1,4,True,1,0,0,4,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q21914464,Dua Lipa,heldout,music,facebook,account-rules,5f2920296b69decd7f8fb4d02e529ae80549d738edf99044c75d9e1a4a42ef20,PARTIAL,10,1,4,True,1,0,0,4,0,0,0,{},{},0,0,0
+Q21914464,Dua Lipa,heldout,music,facebook,account-ollama,8c5e012048521953da55003e5e614e84964cae50fb2feeea87fd8b797f77b292,PARTIAL,10,1,4,True,1,0,0,4,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q22001324,Karol G,heldout,music,instagram,web-rules,4b84218236ac0fad18c14633213b23aeb9fcddc1d86ffd709bd8e43db143a99f,PARTIAL,7,4,21,True,2,0,0,3,0,3,3,{},{},0,0,0
+Q22001324,Karol G,heldout,music,instagram,web-ollama,5d988a854fca33e82b2419531aa847a54ef4216a90c965116093d56476e3ce04,PARTIAL,7,4,21,True,2,0,0,4,1,3,3,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q22001324,Karol G,heldout,music,instagram,account-rules,d93da1c27c7390a79d47b2563a4f6c72fc1e21882f0af314df210ee6d6c7e0f2,PARTIAL,9,4,18,True,2,0,0,3,0,3,3,{},{},0,0,0
+Q22001324,Karol G,heldout,music,instagram,account-ollama,6548ac6fc3eb9951fe2b62a4d78c2cf292e97622da71e69cad17b23af26009cd,PARTIAL,9,4,18,True,2,0,0,4,1,3,3,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q231276,Angelique Kidjo,heldout,music,facebook,web-rules,6ae90d256f81bf534dc9aa7f889af4242a3458f1707ddf29e1c9fc442d3a5a4b,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q231276,Angelique Kidjo,heldout,music,facebook,web-ollama,2f7cb107a660d4ec63578ab8338b3594d39422b018c1422fd5210a440027eaae,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""SKIPPED"": 1}",{},0,0,0
+Q231276,Angelique Kidjo,heldout,music,facebook,account-rules,d754729a31ddaff4afbaac8f83e16de626be0e8656401fe576f859f21e998f60,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q231276,Angelique Kidjo,heldout,music,facebook,account-ollama,08e6b5858070c2f1106e09a323961663cbafeb5a3d231ff74e71c5d362489470,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,"{""SKIPPED"": 2}",{},0,0,0
+Q23215,Adele,heldout,music,x,web-rules,686e8d51479c22ca744ef516560bad9234fbac89388d698e2c9083b27bffb151,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q23215,Adele,heldout,music,x,web-ollama,c6d7cd8216aa6462e19be0a416d8cb7e02e9ca301516406a809ddc5f65f70ea4,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},8,0,0
+Q23215,Adele,heldout,music,x,account-rules,8cc46014920045e711474e0a98858521b0fe3d59b42b25bf744cbf37d27cab8d,PARTIAL,11,4,20,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q23215,Adele,heldout,music,x,account-ollama,337040822358dcbdd4f7c615dd274abcab3ce4f7bec119ce9a94763d53243757,PARTIAL,11,4,20,True,0,0,0,0,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},4,0,0
+Q26876,Taylor Swift,heldout,music,instagram,web-rules,08fc85369e7bc5b7d0deba0245a694604e8dab97a689586b4c63091c54781333,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q26876,Taylor Swift,heldout,music,instagram,web-ollama,c214c61a18f31ab1042a4d4448958d49ddb5763a1455af82a42b15a09c6ef624,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q26876,Taylor Swift,heldout,music,instagram,account-rules,d31ec53085dd1c2d5842eb8c0f1c77ab2e78d89c11166f279e1fa70735027128,PARTIAL,11,3,11,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q26876,Taylor Swift,heldout,music,instagram,account-ollama,d03c3d854320b403d177ec9c25e85e316b093f44232df18b6b91ea2ca4e2059e,PARTIAL,11,3,11,True,1,0,0,1,0,0,0,"{""EMPTY"": 3}",{},0,0,0
+Q2722933,Sunidhi Chauhan,heldout,music,x,web-rules,c829044e857a5c4953e54a4db5ba809859ff477ebb5e2327e3860edbfa07b612,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q2722933,Sunidhi Chauhan,heldout,music,x,web-ollama,7c5f2cb177c255b493bf8a4994bfe0daefb79ef5898560e4d751907b93c3fa2c,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q2722933,Sunidhi Chauhan,heldout,music,x,account-rules,9575af08d352f6180688d8724c585404199fd2d77c16d808bbdef1789c85a05f,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q2722933,Sunidhi Chauhan,heldout,music,x,account-ollama,7e398439345eb67a5494ca165141e70003b1c034fe3ae130495a840f68efaff8,PARTIAL,10,2,8,True,1,0,0,2,1,0,0,"{""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q29564107,Billie Eilish,heldout,music,x,web-rules,2de0c4ddd7c999df12f0b3da9fb3b48c041bc7c76c113844e6aaf818f518f9dc,PARTIAL,9,5,29,True,0,0,0,0,0,3,3,{},{},0,0,0
+Q29564107,Billie Eilish,heldout,music,x,web-ollama,2f79bfd7b07570983ded9f93293ca9db9f2bf92220d2f780dc329b90e0f02722,PARTIAL,9,5,29,True,0,0,0,0,0,3,3,"{""EMPTY"": 5}",{},0,0,0
+Q29564107,Billie Eilish,heldout,music,x,account-rules,eeec198a9b2c4b36cd9737b69680d0ab51e1b8cae194e9302f2312aff963dc55,PARTIAL,11,5,30,True,0,0,0,0,0,3,3,{},{},0,0,0
+Q29564107,Billie Eilish,heldout,music,x,account-ollama,03e777be6331b6a8beb9d5acb025d33bcad84b9bb75adee6f9a71e048192a5f9,PARTIAL,11,5,30,True,0,0,0,0,0,3,3,"{""EMPTY"": 4, ""REJECTED_ALL"": 1}",{},1,0,0
+Q313318,Salif Keita,heldout,music,x,web-rules,6f45e4f7a5ed12d5649db6cc71370ef664936159e12e1d26f6a43db7cafe4120,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q313318,Salif Keita,heldout,music,x,web-ollama,fec855a858c459d795424c4ada48d6575d0e3a82c4c3ecd92981ff04d6a691ea,PARTIAL,7,1,4,True,0,0,0,2,2,0,0,"{""PARTIAL"": 1}",{},2,0,0
+Q313318,Salif Keita,heldout,music,x,account-rules,a7beefc09a2df9a0d4cabf1e41b385c9aeff584121b37231ae18d146b2062eb5,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q313318,Salif Keita,heldout,music,x,account-ollama,b80c83d9f6e7783e2c2d072428c19c2bdfb29bb7bfa6e3e4af320e77c4b472eb,PARTIAL,10,2,8,True,0,0,0,3,3,0,0,"{""PARTIAL"": 1, ""SUCCESS"": 1}",{},2,0,0
+Q313453,Stromae,heldout,music,instagram,web-rules,85fb0dedd9ab9bb458b4f291b6b91da2145d0c576be63b4bff1b6b065b5aac9a,PARTIAL,5,1,4,True,1,0,0,1,0,1,0,{},{},0,0,0
+Q313453,Stromae,heldout,music,instagram,web-ollama,05286be904df1eae9e9d0f040ac904cfe7268a60af8079d6fe4de3c5f8fdd2ca,PARTIAL,5,1,4,True,1,0,0,1,0,1,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q313453,Stromae,heldout,music,instagram,account-rules,7fceaaa2165f2ef1747336911bce71c4b3dd4794045c6744ec305e0e10655618,PARTIAL,8,2,7,True,1,0,0,1,0,1,0,{},{},0,0,0
+Q313453,Stromae,heldout,music,instagram,account-ollama,e61dfb2659be4e00deaae272d7659a0ac12c63c1b4c619f591fad8d0ff5f340c,PARTIAL,8,2,7,True,1,0,0,1,0,1,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q33240,Drake,heldout,music,facebook,web-rules,d785dc61eaca700dfe83dc04b09de8a0472d50fae8dfd713ab64695f07d6ed43,PARTIAL,9,4,24,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q33240,Drake,heldout,music,facebook,web-ollama,01001aaa1948fe38c0d359184c64b5b9d89f55a3c9eff3de7326c3133073b26f,PARTIAL,9,4,24,True,1,0,0,1,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q33240,Drake,heldout,music,facebook,account-rules,b69d5a0182789a98099e8ee282ddfb6a98a2e201dbc043d9526b3f80ba9b4865,PARTIAL,12,5,26,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q33240,Drake,heldout,music,facebook,account-ollama,880ea3d83cd182f4498bb8c411ca82159d39cadfb11ac7498b0a3cd30a261f22,PARTIAL,12,5,26,True,1,0,0,1,0,0,0,"{""EMPTY"": 4, ""REJECTED_ALL"": 1}",{},1,0,0
+Q34086,Justin Bieber,heldout,music,instagram,web-rules,dfdc8af8a338b26812fb40fe5c5775bba6a962dfc0771ace2f212fd043d3b650,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q34086,Justin Bieber,heldout,music,instagram,web-ollama,0e6df86cf41232d0dd0f3bb47de92cfffc06b554e9020b2eae7a55a0480ffe40,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q34086,Justin Bieber,heldout,music,instagram,account-rules,8f35c19239fd39fdd02da66c2191cb53978e726da3c8229d21b85861800d4988,PARTIAL,11,3,17,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q34086,Justin Bieber,heldout,music,instagram,account-ollama,b47b6eccbebc2639d67aa67b8d819cfd331cd6de0105db9e7f4ca37ba1f0fb18,PARTIAL,11,3,17,True,1,0,0,1,0,0,0,"{""EMPTY"": 3}",{},0,0,0
+Q34424,Shakira,heldout,music,x,web-rules,9c7baad56c7d00e08231c1b41e27fc333839bf30fb4f09ce189d15e98d050a29,PARTIAL,7,4,23,True,1,0,0,1,0,1,1,{},{},0,0,0
+Q34424,Shakira,heldout,music,x,web-ollama,d031324f8067cbb4dbf2570330b20b34f4a65c917ae08336071ec31c07717a6b,PARTIAL,7,4,23,True,1,0,0,1,0,1,1,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q34424,Shakira,heldout,music,x,account-rules,037bc7eb3e24bd9bd36b5b2409d7d2fdc65edbf9a4a5c91356f1994eb1720675,PARTIAL,9,4,20,True,1,0,0,1,0,1,1,{},{},0,0,0
+Q34424,Shakira,heldout,music,x,account-ollama,3aca34c01792ff1737a408932d356b293a04a052ee85cf0dbd401cfb253190f8,PARTIAL,9,4,20,True,1,0,0,1,0,1,1,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q36153,Beyoncé,heldout,music,x,web-rules,967c9c223c3193a3b0914102c2dea70ac21a23533a8fe397c96f7ef8aa7e2179,PARTIAL,7,1,2,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q36153,Beyoncé,heldout,music,x,web-ollama,1044ac8f5b9f021276c774076d02b74f21ab00964095a974d49145e16438a9de,PARTIAL,7,1,2,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q36153,Beyoncé,heldout,music,x,account-rules,674fc72b27ce796307c3e79902f4e5479260af3c034c8e789938a24a89e21ae5,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q36153,Beyoncé,heldout,music,x,account-ollama,84ed25a49c85fb44bbc2fd781288b9194b985eea9aff696693396e1610cf7f60,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},3,0,0
+Q3626966,Harry Styles,heldout,music,x,web-rules,4576cdf908bb522817a18daa21f08a6e1681fd45950af3f6f3ea8811b654606e,PARTIAL,9,4,24,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q3626966,Harry Styles,heldout,music,x,web-ollama,1ee618c23367c2c1fefadd94201d7695370e1e766803bf2852ce8f5932972f15,PARTIAL,9,4,24,True,1,0,0,1,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q3626966,Harry Styles,heldout,music,x,account-rules,c709177b3b8bb7e723bd4d60b16959d78d29242f34e542ed1764ff52ea24b66f,PARTIAL,11,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q3626966,Harry Styles,heldout,music,x,account-ollama,c5de8c3aabfc4f8a9e0b4d637dd0a4b32b717947d2375e2567d15cd10963272b,PARTIAL,11,4,22,True,1,0,0,1,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q36844,Rihanna,heldout,music,instagram,web-rules,40213cd93a7ad56b12c269bc061f84ce30d6da4b8482d34e8281eab2674531ba,PARTIAL,9,4,24,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q36844,Rihanna,heldout,music,instagram,web-ollama,f56e2f0ca5e52c84c9998fd3c140bc6131e5533867fabce4ae9299c222464639,PARTIAL,9,4,24,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},13,0,0
+Q36844,Rihanna,heldout,music,instagram,account-rules,ea627c04d611da2c14aec16960b0db47d104907eeb8c30b6e027f1cb9071b567,PARTIAL,11,4,18,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q36844,Rihanna,heldout,music,instagram,account-ollama,33b4ee85d34f1d036a926f492f0d6a254f81fc2cb4a8159e50d20f32a7d2cb4c,PARTIAL,11,4,18,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SKIPPED"": 1}",{},13,0,0
+Q4235,Miley Cyrus,heldout,music,facebook,web-rules,df106be18bdce3a8c7bc23b9e00dd0e9f31594dfef6496381b5fbda452215fcd,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q4235,Miley Cyrus,heldout,music,facebook,web-ollama,64b1ab24210ae5120828f1d469a9779645fbc81f18d63cc2469160a3ba244eb6,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q4235,Miley Cyrus,heldout,music,facebook,account-rules,5a0d67e8acd66fe37e96a4979842a44de0c914adc57cc28066c6165f2e5ec728,PARTIAL,11,2,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q4235,Miley Cyrus,heldout,music,facebook,account-ollama,96c7fe627aff3b47bdd20afabb46668a5b026c3c3cfc8f4fd07b66abe3ff581b,PARTIAL,11,2,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""SKIPPED"": 1}",{},0,0,0
+Q44333953,Bad Bunny,heldout,music,instagram,web-rules,338bfae5d4268617b847b657c9842475503fe2bd84be0b897fdf7b969032abad,PARTIAL,8,5,31,True,2,0,0,3,0,3,3,{},{},0,0,0
+Q44333953,Bad Bunny,heldout,music,instagram,web-ollama,e27127ee4db8ad7d462a56b4ef01c9bf21e1a177543d4c09f6052e08a3ec083f,PARTIAL,8,5,31,True,2,0,0,3,0,3,3,"{""EMPTY"": 3, ""REJECTED_ALL"": 2}",{},19,0,0
+Q44333953,Bad Bunny,heldout,music,instagram,account-rules,ad96287cf4d7bb407f03469f6264534b73768e9f96d66309e3cd2e6b81181215,PARTIAL,11,4,23,True,2,0,0,3,0,3,3,{},{},0,0,0
+Q44333953,Bad Bunny,heldout,music,instagram,account-ollama,3beb920b3b18bb69030e48c9157e3f1d79211fa150e7bbffd40c021580e6f050,PARTIAL,11,4,23,True,2,0,0,3,0,3,3,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},18,0,0
+Q470898,Sonu Nigam,heldout,music,facebook,web-rules,0f5cf92d036f006d2522a3a3e1f2dca67143bae23b5291f8cbae246a57f9db6b,PARTIAL,9,4,30,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q470898,Sonu Nigam,heldout,music,facebook,web-ollama,f1108ba76b186ca0573eb20ef86d5b8ca70cca2e9c6b3eaae5799213fdb76409,PARTIAL,9,4,30,True,1,0,0,2,0,0,0,"{""EMPTY"": 2, ""FAILED"": 1, ""REJECTED_ALL"": 1}","{""TIMEOUT"": 1}",1,0,0
+Q470898,Sonu Nigam,heldout,music,facebook,account-rules,bf567c36c6cc92ad70296d7576a8678430c6f76153e9fc708d6b9d80a4caf414,PARTIAL,12,4,30,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q470898,Sonu Nigam,heldout,music,facebook,account-ollama,7b9fce232f361f592e15979e411911aa69d910f3180378df9985a21d47789bc1,PARTIAL,12,4,30,True,1,0,0,2,0,0,0,"{""EMPTY"": 2, ""FAILED"": 1, ""REJECTED_ALL"": 1}","{""TIMEOUT"": 1}",1,0,0
+Q47447,Ed Sheeran,heldout,music,instagram,web-rules,edb6bfd48adddc385f326a6bf53f7d5b9340d69e77426efeafe66f5326408757,PARTIAL,9,4,19,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q47447,Ed Sheeran,heldout,music,instagram,web-ollama,3a4fe92f84f1e4c2fb8177c90a9fdb9a77caa9679fc9be200c34fbb504171048,PARTIAL,9,4,19,True,0,0,0,1,1,0,0,"{""EMPTY"": 3, ""SUCCESS"": 1}",{},0,0,0
+Q47447,Ed Sheeran,heldout,music,instagram,account-rules,dae91bf894970fddb99a609e7f7713f14625f2bb6faf7ae69dd97b7d98c85359,PARTIAL,11,4,16,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q47447,Ed Sheeran,heldout,music,instagram,account-ollama,af36434a4ed6cd4f5568332e869dbc45edbe2d4c7d3fcea4649fe010eae1ddfa,PARTIAL,11,4,16,True,0,0,0,0,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q4790608,Arijit Singh,heldout,music,x,web-rules,51961c508c769280538b259b3db02007b5d399ec97e3efb472d71d0266ce7c00,PARTIAL,9,4,27,True,2,0,0,4,0,0,0,{},{},0,0,0
+Q4790608,Arijit Singh,heldout,music,x,web-ollama,c517a505daa4289a5ff9635cf6a1894d4ec0ff181134727b469555792d842362,PARTIAL,9,4,27,True,2,0,0,4,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},2,0,0
+Q4790608,Arijit Singh,heldout,music,x,account-rules,a0758436555864f9b33ca28ecaf8ba78ee31bd842867723d89225f43178d0b7a,PARTIAL,11,4,25,True,2,0,0,4,0,0,0,{},{},0,0,0
+Q4790608,Arijit Singh,heldout,music,x,account-ollama,61b949d92460bee49f7018260aa8f39d3c6eec022529c1d5c92530f8c5dc22d8,PARTIAL,11,4,25,True,2,0,0,4,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q6024866,Indila,heldout,music,instagram,web-rules,e8361e6153b90a0a1fb4d1a22887d14ae7831ce55755bde7b51c791e487f2548,PARTIAL,7,4,26,True,2,0,0,3,0,3,3,{},{},0,0,0
+Q6024866,Indila,heldout,music,instagram,web-ollama,5125202a08082ec0d4221b59f3b208950dd57529abd1432822bad84bf69d3bf2,PARTIAL,7,4,26,True,2,0,0,3,0,3,3,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q6024866,Indila,heldout,music,instagram,account-rules,4c4ce5493cba5193b7f65a0a89e62ecc5c4075bf668bbdb51d36bc03535d6309,PARTIAL,9,4,21,True,2,0,0,3,0,3,3,{},{},0,0,0
+Q6024866,Indila,heldout,music,instagram,account-ollama,298f1f6bbed8cad7261d92caa7300efbadfddc9bcf124a0957ab59e37e16643f,PARTIAL,9,4,21,True,2,0,0,3,0,3,3,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q7810465,Tiwa Savage,heldout,music,x,web-rules,78176bf13baedba856c663552e795bd42c3270b2c3d90ba5ff1160933cdcadd6,PARTIAL,5,1,4,True,1,0,0,1,0,1,0,{},{},0,0,0
+Q7810465,Tiwa Savage,heldout,music,x,web-ollama,65b4c9c358f7660234ec8e3f0de7fb61b3f1d7e155148398afd02b9905169a80,PARTIAL,5,1,4,True,1,0,0,1,0,1,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q7810465,Tiwa Savage,heldout,music,x,account-rules,32bf91e1b89570f72761d23f1b3f0732e2671df6b0b79fef01e9f10b799fb882,PARTIAL,8,2,8,True,1,0,0,1,0,1,0,{},{},0,0,0
+Q7810465,Tiwa Savage,heldout,music,x,account-ollama,746cf4092f6c5886463a208e8b4a8f757eba3291b65cc88670eda5f7280e1018,PARTIAL,8,2,8,True,1,0,0,2,1,1,0,"{""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},2,0,0
+Q83287,Selena Gomez,heldout,music,instagram,web-rules,a4be8b912f45d46ee5d8232f9c2d3f51c699894a5f98eb04298f6747419eae58,PARTIAL,9,4,20,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q83287,Selena Gomez,heldout,music,instagram,web-ollama,b5d8176e8e0c7c170377b87fd059dbe03e40eaaf22836f31fda3cc2e718cda06,PARTIAL,9,4,20,True,1,0,0,2,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},13,0,0
+Q83287,Selena Gomez,heldout,music,instagram,account-rules,00659e6b23cb7c7dadaadfe06a167f9702fcb82186bb9129d6bf0ca61456c4ea,PARTIAL,11,3,17,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q83287,Selena Gomez,heldout,music,instagram,account-ollama,2839803c210e69ee2224544fff953f2c648e53bf643a2166a732b00c7456eb3d,PARTIAL,11,3,17,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2}",{},12,0,0
+Q966845,J Balvin,heldout,music,facebook,web-rules,0d1b74f4bd612ad9390f4db20bf84c3935888e22a0fa9d55f7c57d1e6fa67415,PARTIAL,5,1,4,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q966845,J Balvin,heldout,music,facebook,web-ollama,8c165ff53bf7cd7b41da3b164e48c1258c4c26481280efe17eb8a5b213f5efb0,PARTIAL,5,1,4,True,1,0,0,3,1,2,2,"{""PARTIAL"": 1}",{},1,0,0
+Q966845,J Balvin,heldout,music,facebook,account-rules,e6e50276e740b331ce17ffbefbb0f285765b8cab5b0339056c863b52164dfd65,PARTIAL,8,1,4,True,1,0,0,2,0,2,2,{},{},0,0,0
+Q966845,J Balvin,heldout,music,facebook,account-ollama,ea9b2fe29202562716b25ebd0de92edebff12a80ab04d4d8288888f0ccd370b4,PARTIAL,8,1,4,True,1,0,0,3,1,2,2,"{""PARTIAL"": 1}",{},1,0,0
+Q11755,Daphne Koller,heldout,science_technology,x,web-rules,3b03934dd2726fb54d52ca1d602455048aac4883f7685920fc172b9144e6bede,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q11755,Daphne Koller,heldout,science_technology,x,web-ollama,0145fffc0c966d858cfcf283a23f7630236807cef10f04f649c4ced4022834f2,PARTIAL,7,1,4,True,1,0,0,4,2,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q11755,Daphne Koller,heldout,science_technology,x,account-rules,ef1f37d6b8155b6e45f7a6df1ed407e7d92a27e5b6dc622b58a8c0778002cdfd,PARTIAL,10,2,8,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q11755,Daphne Koller,heldout,science_technology,x,account-ollama,f259f7e56abb3d9b7ec7c14c5f9caa54c93ade64a51b038bfbbcf44d6d8952f6,PARTIAL,10,2,8,True,1,0,0,8,6,0,0,"{""SUCCESS"": 2}",{},0,0,0
+Q15994958,Marques Brownlee,heldout,science_technology,x,web-rules,8ed7109a1e6afb019f0190b97a07ec2281018c6eb3b9072de9a157515e55f092,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q15994958,Marques Brownlee,heldout,science_technology,x,web-ollama,7560d262cb4dc4374a2acce518d36f0178c5114c472aead3ba7f36e42e3c947e,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q15994958,Marques Brownlee,heldout,science_technology,x,account-rules,9babb007d8d6f4d5477f643e583b66a37f2391a58f495291ed23b017abcbbbad,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q15994958,Marques Brownlee,heldout,science_technology,x,account-ollama,0fcd6f95f0560b94e20ace7b1b25f662ba17a9e797c1a73fa68a0c6e8bc1c393,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 2}",{},2,0,0
+Q18207172,Lisa Su,heldout,science_technology,x,web-rules,28e9314dc3e32b63d49ae2a808603b288e15a2f4e43810f4dc3b3de976491cf1,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q18207172,Lisa Su,heldout,science_technology,x,web-ollama,e10b65a3df5339055d92981f3df6cb7049c6a46b46dd64bba2764ed7bc104bef,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q18207172,Lisa Su,heldout,science_technology,x,account-rules,066eb965375fefb5222dc59df91e6a3ed8edd3364751aca226bcee0eda5e180b,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q18207172,Lisa Su,heldout,science_technology,x,account-ollama,18860a692daab358f2b91f2e8586f3f027ec5d938b67fde28ada71790114421f,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q18638030,Lea Verou,heldout,science_technology,github,web-rules,0fe9982f3abd48f19942e000a1da809263ab978f31a2b7d8e778c9722ffb6e79,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q18638030,Lea Verou,heldout,science_technology,github,web-ollama,8999792cd76f4d1cadf5ff96a58152e821f5975171cd108e920362ad981e550a,PARTIAL,7,1,4,True,1,0,0,5,3,0,0,"{""PARTIAL"": 1}",{},5,0,0
+Q18638030,Lea Verou,heldout,science_technology,github,account-rules,10ab56a4914c66f1e705fd8e01e38330de6481ada9fb547632039117fca78beb,PARTIAL,16,5,20,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q18638030,Lea Verou,heldout,science_technology,github,account-ollama,b73f68de6cb836d8817c5ad7968626fa0a4d61f12fee0202831f7770eeb27d8e,PARTIAL,16,5,20,True,1,0,0,2,0,0,0,"{""EMPTY"": 4, ""REJECTED_ALL"": 1}",{},1,0,0
+Q18686107,Fei-Fei Li,heldout,science_technology,x,web-rules,7545f73ddb252720b88a8dc8220cb18b347513df0998f4fcda7acc4e3b89f725,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q18686107,Fei-Fei Li,heldout,science_technology,x,web-ollama,fcbcf029460ec60630def965d00d6db11ddd3dc4202e04402c3974148930fb65,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q18686107,Fei-Fei Li,heldout,science_technology,x,account-rules,7128129e407bb4b73533858214dbec1234156d5229f91ad17b72a67b3dfe8dd8,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q18686107,Fei-Fei Li,heldout,science_technology,x,account-ollama,0b1bea372eb13b62216c999cc780abbc74e1112c9492fcaf372f8eb8d3e720fb,PARTIAL,10,2,8,True,0,0,0,1,1,0,0,"{""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},3,0,0
+Q23304510,Simone Giertz,heldout,science_technology,facebook,web-rules,fd805c8d35625d8ebab84323553a7adfd0ee3880214c14fbdc410678060769f3,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q23304510,Simone Giertz,heldout,science_technology,facebook,web-ollama,730aba9f4cfbb64ea18d66a1a5a221ba2af2473cc8b32e174306d20f40bf6c8e,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q23304510,Simone Giertz,heldout,science_technology,facebook,account-rules,9f43d7a2c4165f40bba202d61cfe78c116263d3d32b3181773306b706818499a,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q23304510,Simone Giertz,heldout,science_technology,facebook,account-ollama,cfcc0d747d285494166ff0502d23012d369ceec418de8637d708993b703586bd,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q265852,Tim Cook,heldout,science_technology,x,web-rules,97c0bc5a44dca118ca7dca16e94a0ec6e91c2b2999e534a2857b17f6d3e7ccef,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q265852,Tim Cook,heldout,science_technology,x,web-ollama,ed2e16350eecf9ba536a764493599796e07baa6adeb9795896f15473f3d11bd2,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q265852,Tim Cook,heldout,science_technology,x,account-rules,d39149546c90d22b871ebbf9748c66cd5a7b8e221d99d21aab26a5a4f9812b73,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q265852,Tim Cook,heldout,science_technology,x,account-ollama,a23acfe118a43e746a64428e77ac56d2a5eb7c6a8193113f2463492dd644d0df,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q26703063,Ian Goodfellow,heldout,science_technology,github,web-rules,2efdc916a709a439e485fe33eb8a47f959b5436c1e18d6c8f1a008326d59586e,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q26703063,Ian Goodfellow,heldout,science_technology,github,web-ollama,f1372185b5f9b2d1c043e5177a8c115550a713e09b1a6851c2269e470d7fc75e,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},6,0,0
+Q26703063,Ian Goodfellow,heldout,science_technology,github,account-rules,c4e51cffbd71eb71137dbfcf421f1e54193af52f97e769f9b612ea01503e036d,PARTIAL,11,3,13,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q26703063,Ian Goodfellow,heldout,science_technology,github,account-ollama,4223d726b26e1e64373fc9cb91deeafa25028d22c1468050c3d6eae733fb6dd9,PARTIAL,11,3,13,True,1,0,0,3,2,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},6,0,0
+Q2846695,Andrew Y. Ng,heldout,science_technology,facebook,web-rules,86a417430033ed89e20f7e6cd32758c0a3a18370d757c17325d02a35f5dec9f9,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q2846695,Andrew Y. Ng,heldout,science_technology,facebook,web-ollama,86a417430033ed89e20f7e6cd32758c0a3a18370d757c17325d02a35f5dec9f9,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q2846695,Andrew Y. Ng,heldout,science_technology,facebook,account-rules,67966b291dfd07d03f61ceee2403d016c9f583580a21b7e7a3fbfde63e3a008b,PARTIAL,9,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q2846695,Andrew Y. Ng,heldout,science_technology,facebook,account-ollama,67966b291dfd07d03f61ceee2403d016c9f583580a21b7e7a3fbfde63e3a008b,PARTIAL,9,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q2964778,Chris Lattner,heldout,science_technology,github,web-rules,7e13bfa34d18ca4bdecab5e7dd8bec4026569b7a0203ec052b9c88b11645b077,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2964778,Chris Lattner,heldout,science_technology,github,web-ollama,aa0c0f4c0249ddcfdd016ba8ef6ddcc06329e1dfa67919e253aec327b42cf50c,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q2964778,Chris Lattner,heldout,science_technology,github,account-rules,d473c172bdd274bbca29112a356ba6aafcece9a5ebee055cac616aa157fb205f,PARTIAL,13,4,17,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2964778,Chris Lattner,heldout,science_technology,github,account-ollama,1e51c264a4325097d2a16a6709c151368f94ef0b63eb5ea76ddaf6a51a7bec2a,PARTIAL,13,4,17,True,0,0,0,1,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},5,0,0
+Q3022141,Demis Hassabis,heldout,science_technology,x,web-rules,82271e517ea3594fef1ee1183cca465e327a13da0b747fee0188c3582cdbd62c,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q3022141,Demis Hassabis,heldout,science_technology,x,web-ollama,a3258d1b46dfb96cd26d7dd5c1c22e9a99f5bccc73cc4b08de73da8f6a248d39,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},11,0,0
+Q3022141,Demis Hassabis,heldout,science_technology,x,account-rules,883579d95081965144bbf2d5a62609e8d75700acb1a2d8010a54360a3ec10797,PARTIAL,11,4,18,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q3022141,Demis Hassabis,heldout,science_technology,x,account-ollama,cb83c67c0bae313a47dd42b25fc78d8e012f8714721eb01341dc9adcbdd0b425,PARTIAL,11,4,18,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},18,0,0
+Q30942,Guido van Rossum,heldout,science_technology,github,web-rules,89d5fe7b322a878d99a9cfbb9dea56549cc45112ae0e97dc0aa5df1a58a75cac,PARTIAL,10,5,27,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q30942,Guido van Rossum,heldout,science_technology,github,web-ollama,248e790dc78dfa37636170771fb3c45e6f5480e2ba8354f673182723032ec0a8,PARTIAL,10,5,27,True,1,0,0,4,1,0,0,"{""EMPTY"": 2, ""FAILED"": 1, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}","{""TIMEOUT"": 1}",1,0,0
+Q30942,Guido van Rossum,heldout,science_technology,github,account-rules,2adbb035c3ced3d354e482c2cf89e7ae91cbdf9f50ae4088e6a912561a3842de,PARTIAL,12,5,27,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q30942,Guido van Rossum,heldout,science_technology,github,account-ollama,6d783e88a37c37db091a73ddb2d4f25366c18768b41f7fc8da8f56b2fb68c343,PARTIAL,12,5,27,True,1,0,0,5,2,0,0,"{""EMPTY"": 2, ""PARTIAL"": 1, ""SUCCESS"": 2}",{},2,0,0
+Q316544,Anders Hejlsberg,heldout,science_technology,github,web-rules,623ab4cd63411db754e9a499b76d26866e972d9afecb16018a9cd92af1f10170,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q316544,Anders Hejlsberg,heldout,science_technology,github,web-ollama,b3bb76877e4271f9d4046cfc1ee56b59f92a430756befa60117e80370ee7c9be,PARTIAL,7,1,4,True,1,0,0,3,1,0,0,"{""PARTIAL"": 1}",{},3,0,0
+Q316544,Anders Hejlsberg,heldout,science_technology,github,account-rules,9e2406490496a29f014e0601a357750f45bedd472defd9b4edb08dfb6178d99b,PARTIAL,10,2,9,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q316544,Anders Hejlsberg,heldout,science_technology,github,account-ollama,4612447244165c78a959cb02dc696cfc887dfa25c53d7db1a846a6535a1ed6d5,PARTIAL,10,2,9,True,1,0,0,3,1,0,0,"{""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},4,0,0
+Q3571662,Yann LeCun,heldout,science_technology,x,web-rules,0b1c2926ddc29bf0cc8ef346396cad91370ad70f9a61ea30bbead95d93ef2a77,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q3571662,Yann LeCun,heldout,science_technology,x,web-ollama,6b218eb584aec312858ee8566af7a4f7698da2dc177a37c5350f95299747652c,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q3571662,Yann LeCun,heldout,science_technology,x,account-rules,1e819788c7027821087a6c782a45ec963cc1c2facd13f93c3be1c714ebebf03e,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q3571662,Yann LeCun,heldout,science_technology,x,account-ollama,65dc383a9e88272832cae6d6dc12e47a3b449fc816a709ceb864246d02024adb,PARTIAL,10,2,8,True,0,0,0,5,5,0,0,"{""EMPTY"": 1, ""SUCCESS"": 1}",{},0,0,0
+Q50495366,François Chollet,heldout,science_technology,github,web-rules,0a4d2eb092fd79fd88aecd4c08a9d602ce044bbf7e2700c34dfc912db2b86aa4,PARTIAL,7,1,4,True,0,0,0,2,0,0,0,{},{},0,0,0
+Q50495366,François Chollet,heldout,science_technology,github,web-ollama,ad8ca9dd836d18a15e15cac24b578892e07e24e53ebda807db1a92122ca8bef2,PARTIAL,7,1,4,True,0,0,0,3,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q50495366,François Chollet,heldout,science_technology,github,account-rules,5861e62547ba68bf65e77efb842e93a1baf9b48d022b4983545547eba2e5b305,PARTIAL,12,3,14,True,0,0,0,2,0,0,0,{},{},0,0,0
+Q50495366,François Chollet,heldout,science_technology,github,account-ollama,aa9c5bbdc4f23e471ebfe1e7e593fe3be5884eb1e0cc689cb285178ca3a09825,PARTIAL,12,3,14,True,0,0,0,4,2,0,0,"{""REJECTED_ALL"": 1, ""SUCCESS"": 2}",{},1,0,0
+Q55183,Susan Wojcicki,heldout,science_technology,facebook,web-rules,80ea2fb7f4bf69e050909fd1b866798feff6c0399e79a6fc516756709f0e65b9,PARTIAL,9,4,24,True,1,1,0,1,0,0,0,{},{},0,0,0
+Q55183,Susan Wojcicki,heldout,science_technology,facebook,web-ollama,0ba97cf41634582fe341203315b219205ea9b2e736c3dcd64ba7cab6c3281e4b,PARTIAL,9,4,24,True,1,1,0,2,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},14,0,0
+Q55183,Susan Wojcicki,heldout,science_technology,facebook,account-rules,9624c4da6570c8a685c9ec54ee277e1257c38071e7d6d7a5bee3dc39817d6d4a,PARTIAL,12,4,24,True,1,1,0,1,0,0,0,{},{},0,0,0
+Q55183,Susan Wojcicki,heldout,science_technology,facebook,account-ollama,b8e1c9145d16aaf948eeaf6ec9ea4bb542a2cad27df257e8281776c866feae6e,PARTIAL,12,4,24,True,1,1,0,2,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},11,0,0
+Q56037405,Andrej Karpathy,heldout,science_technology,github,web-rules,ca9872527c84b9c4f6118234c5509d5e2fd439f500245761fa6a0b03c2915927,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q56037405,Andrej Karpathy,heldout,science_technology,github,web-ollama,878c13c1145b4ab21283d86eb2d9a2d5e17f9b6e885e8e7a27a7f515854b17e9,PARTIAL,7,1,4,True,1,0,0,3,1,0,0,"{""PARTIAL"": 1}",{},5,0,0
+Q56037405,Andrej Karpathy,heldout,science_technology,github,account-rules,279080b78e0bd8244b1ce335900ec3c000ecbbb3cadeff84bb2cf1df7ecd9c7c,PARTIAL,13,4,18,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q56037405,Andrej Karpathy,heldout,science_technology,github,account-ollama,0cedd220f9444b2975e9829c14b4259a7cf59fb111d8813b687b67e8f025e488,PARTIAL,13,4,18,True,1,0,0,3,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},6,0,0
+Q6173703,Jeff Dean,heldout,science_technology,x,web-rules,596b7c979e5e4fa12153898335d424732cc0571aaccfec5903d77bd2710557fd,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q6173703,Jeff Dean,heldout,science_technology,x,web-ollama,5fe75a9b448d9c8691a6944d56fc4e60afdf413fd13e7af839aca092fa48805a,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q6173703,Jeff Dean,heldout,science_technology,x,account-rules,2fe9a6764949f92e68076a1af6424373cfcca7015173aa3f226cdd3b02a6dafe,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q6173703,Jeff Dean,heldout,science_technology,x,account-ollama,9434455c098c6c99fe6ef88530489fa45e703f653c29d6e742ef81240ba812bc,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 2}",{},2,0,0
+Q7426870,Satya Nadella,heldout,science_technology,x,web-rules,509903426380fa4870f317723de109898b1c46cc2eb1e46b6111bf78a625be11,PARTIAL,9,4,24,True,2,2,0,4,0,0,0,{},{},0,0,0
+Q7426870,Satya Nadella,heldout,science_technology,x,web-ollama,875df8a912975f18a05f09418ea16ba1268fcdd2ac1a8ef28105e1a0ce153579,PARTIAL,9,4,24,True,2,2,0,7,3,0,0,"{""SUCCESS"": 4}",{},0,0,0
+Q7426870,Satya Nadella,heldout,science_technology,x,account-rules,35fcbd5a204b6312400020d17cf946bc4f1dee006352235296483702c6392145,PARTIAL,11,4,21,True,1,1,0,1,0,0,0,{},{},0,0,0
+Q7426870,Satya Nadella,heldout,science_technology,x,account-ollama,d50047763abcfd2ced5c8369535839da8442a2c31ea9e4e8602eb83079c5613e,PARTIAL,11,4,21,True,1,1,0,4,3,0,0,"{""REJECTED_ALL"": 1, ""SUCCESS"": 3}",{},1,0,0
+Q74894,Martin Fowler,heldout,science_technology,x,web-rules,10b9a1f281bd419aff9550d591ccfaa1425084b87a3a8043a3855a3020eee36d,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q74894,Martin Fowler,heldout,science_technology,x,web-ollama,10b9a1f281bd419aff9550d591ccfaa1425084b87a3a8043a3855a3020eee36d,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q74894,Martin Fowler,heldout,science_technology,x,account-rules,f2611eb89f5f6823df9af2f712a316ce48ce08b28e1699ec529fd945cca76e9a,PARTIAL,9,1,4,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q74894,Martin Fowler,heldout,science_technology,x,account-ollama,53d71c5adc45027157036ba51b9670b7fc6fe5d602f7791c4ebfb6bd4563b35c,PARTIAL,9,1,4,False,0,0,0,1,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q7520062,Simon Willison,heldout,science_technology,github,web-rules,ddf26dd32684d0476719a5a487a9a28c7093baa66f30f65dd5146469869402c0,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q7520062,Simon Willison,heldout,science_technology,github,web-ollama,71023ead10195f65283d4bafc552f87a86b702edb7400c9052b1af3835e82e74,PARTIAL,7,1,4,True,1,0,0,6,4,0,0,"{""PARTIAL"": 1}",{},3,0,0
+Q7520062,Simon Willison,heldout,science_technology,github,account-rules,64ec1f2d2eef9ae28fc11476dd8352939c85000d1241f82ad5142f2a264b9845,PARTIAL,13,5,21,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q7520062,Simon Willison,heldout,science_technology,github,account-ollama,788dceec69f38dec15ca5346c2080ec12cbbe62201e02b28f50bbdef94c93baf,PARTIAL,13,5,21,True,1,0,0,7,5,0,0,"{""EMPTY"": 2, ""PARTIAL"": 1, ""SKIPPED"": 1, ""SUCCESS"": 1}",{},4,0,0
+Q7558,Radia Perlman,heldout,science_technology,x,web-rules,fba9bcf558d454af69fdec5b9b07eb89333e057d6bd667808efd6734e8acc6b2,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q7558,Radia Perlman,heldout,science_technology,x,web-ollama,e1f7da50c87c5c8902f1e291b77c1f62f8b98184862911c0bc6d5e76e8cc4586,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q7558,Radia Perlman,heldout,science_technology,x,account-rules,2abec488f37372d39a67bc0b53b44fe56987cc36e419f862f1eab78f79cbd90d,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q7558,Radia Perlman,heldout,science_technology,x,account-ollama,ebd12ef062e515648d166c3f92e71a6e8263b0df52b26001ea0cec1ef50cfba0,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q80,Tim Berners-Lee,heldout,science_technology,github,web-rules,16aaacbcdd47fcfee6012554f3b28d29833aff439d2549c2a7ef1ba38fdeac3c,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q80,Tim Berners-Lee,heldout,science_technology,github,web-ollama,bd333c7f51e37c4b9aee68a59a95731684e1cf47f213e9435d3e85e0d68a19fe,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q80,Tim Berners-Lee,heldout,science_technology,github,account-rules,df6b854b043f685e62cbdef29ea488f05ce6a2172fe17a46deff7bc41e81be14,PARTIAL,13,3,13,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q80,Tim Berners-Lee,heldout,science_technology,github,account-ollama,499f89f38e8370a567b14621f7aa2a0ff5712f171be204a779afd522a9c4239d,PARTIAL,13,3,13,True,0,0,0,0,0,0,0,"{""EMPTY"": 3}",{},0,0,0
+Q92620,Bjarne Stroustrup,heldout,science_technology,github,web-rules,641343687094ef33a3cf3aba096248aa5a693c81bc2ffcc004466ecebe85329c,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q92620,Bjarne Stroustrup,heldout,science_technology,github,web-ollama,1224c1ca01885d0eb5243044a2a195554593bb52b60bbc9c9a81934c7eace721,PARTIAL,7,1,4,True,1,0,0,3,1,0,0,"{""PARTIAL"": 1}",{},6,0,0
+Q92620,Bjarne Stroustrup,heldout,science_technology,github,account-rules,0a965b4efcad7c2e24b35751dd8c942cbc8688367aa082bd71522556b995caab,PARTIAL,13,4,19,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q92620,Bjarne Stroustrup,heldout,science_technology,github,account-ollama,87ea5e8b2b509230105bf726f5c84b28c60616800d058e9fbcffc5adb9389ae0,PARTIAL,13,4,19,True,1,0,0,2,0,0,0,"{""FAILED"": 4}","{""UNAVAILABLE"": 4}",0,0,0
+Q92622,James Gosling,heldout,science_technology,x,web-rules,aecace7a5a770988eb421b86d46e5e6d6a08c4015612bfcbf1a368f4f4756fd1,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q92622,James Gosling,heldout,science_technology,x,web-ollama,0c5cc877c880aa86d4677b8ac58ef0c0c71ae3d06e0047c86955e1f0bad5d32a,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q92622,James Gosling,heldout,science_technology,x,account-rules,6a8e5f7ff568f2258c709e2a8f81243727479a3392f5871ad09fc82e61108d0a,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q92622,James Gosling,heldout,science_technology,x,account-ollama,cc6d5fb9256c67e6a1dcb19c4f2a3af8a5b60ef941bf69671d487296192c2b26,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},3,0,0
+Q92648,Brendan Eich,heldout,science_technology,github,web-rules,760967390ada5b89d4a179791664fcd27e9b70b54c6778ad720235868302bc2c,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q92648,Brendan Eich,heldout,science_technology,github,web-ollama,0244dc689dedf376eeb64085822d9d2c8316f73d7472574b9be030cd477ca7c6,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},4,0,0
+Q92648,Brendan Eich,heldout,science_technology,github,account-rules,2701b83e9f7076e81789ec1e66affa09a694cb47ced0fde8d0954853e704fa6c,PARTIAL,12,3,13,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q92648,Brendan Eich,heldout,science_technology,github,account-ollama,df446500815aefb814ba2a2ae417880a3f845a4aba4c5c123b8fea844654d52c,PARTIAL,12,3,13,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1}",{},4,0,0
+Q92738,Kent Beck,heldout,science_technology,facebook,web-rules,8bc478c00f41188e2d4dc37ffb66e8bd846e34e59a09e1855f8bc4d689b5c73e,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q92738,Kent Beck,heldout,science_technology,facebook,web-ollama,7c5815acf286e30ba7b54bdf5f98cca83d5b4fd08ff9766afe3b115afda119e4,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q92738,Kent Beck,heldout,science_technology,facebook,account-rules,13dff1c86640c90c4795b60a060c5358b8a4452c35d28a9d209ed62b97a283dc,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q92738,Kent Beck,heldout,science_technology,facebook,account-ollama,d081c10ff5dd6f2070976059e88a74cda250a72563559cf2dffdc2173663c4ee,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q92748,Yukihiro Matsumoto,heldout,science_technology,github,web-rules,f36c62b3ef11afb8ec3e41fdac3e9b1c35118a2d2d6cfb851303b2bb4b2acc84,PARTIAL,5,1,4,True,1,0,0,4,0,1,1,{},{},0,0,0
+Q92748,Yukihiro Matsumoto,heldout,science_technology,github,web-ollama,9a3d2c78bec2b471342ab71706d4d614899ab13545920cdbcc66fc366eb6c414,PARTIAL,5,1,4,True,1,0,0,5,1,1,1,"{""PARTIAL"": 1}",{},4,0,0
+Q92748,Yukihiro Matsumoto,heldout,science_technology,github,account-rules,c6a53b4add765d5dee0facf782cea4f8b0cb37adff97434db89d3955d22eb09d,PARTIAL,8,2,9,True,1,0,0,4,0,1,1,{},{},0,0,0
+Q92748,Yukihiro Matsumoto,heldout,science_technology,github,account-ollama,116049e0858d456779958ff9c8d09ee3d211aec872b818dd3fb36c723189c733,PARTIAL,8,2,9,True,1,0,0,6,2,1,1,"{""PARTIAL"": 2}",{},6,0,0
+Q92768,Rasmus Lerdorf,heldout,science_technology,x,web-rules,1edfe135b3ed399d0ff4dc9426501f4f2a3b4a9807648ae17d7fa3c981aa81ab,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q92768,Rasmus Lerdorf,heldout,science_technology,x,web-ollama,86064b0c726c155fbd6dd1fe808804c7702157fb67bde8621c52d4ed94b75e72,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q92768,Rasmus Lerdorf,heldout,science_technology,x,account-rules,c7cbd05d8481c6142537a7f7e0089287b8c649194391abae8eebc9feac070255,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q92768,Rasmus Lerdorf,heldout,science_technology,x,account-ollama,0ec8a872f26ffe03d5d214f5e0293b906b7e02bf89ba4a49bf7ca97a54fdc3ea,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q92894,Geoffrey Hinton,heldout,science_technology,x,web-rules,fc19ed47756b9ae4a24b4f49b1d9eec4a665eb5b061c03ee6a11e331b761ed34,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q92894,Geoffrey Hinton,heldout,science_technology,x,web-ollama,a52a405267807747ea0a9cc652fe4d6ec9f73490eb6934b1890cae567ad3b224,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q92894,Geoffrey Hinton,heldout,science_technology,x,account-rules,c0560da9951e652e58f5c5c4ce31b527ae1201c2d91dbd73d3acc6a1ef94ef9c,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q92894,Geoffrey Hinton,heldout,science_technology,x,account-ollama,7352a4b569983c4fffa504aee0b9332863ca2195087945be098d7d503e0e9927,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q93010,Robert Cecil Martin,heldout,science_technology,github,web-rules,8314de2ab263900c1f3465a5093aeaf6bde752f00be87fb3a5a45d31d2fe2788,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q93010,Robert Cecil Martin,heldout,science_technology,github,web-ollama,367a8d6ca0bb9d8c01528cd6a72efedc17c64f63a126b8d56fbd70518d70225a,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q93010,Robert Cecil Martin,heldout,science_technology,github,account-rules,bce836505dc1e332a66312a34e6c8c5f0d00d426c6535fd347ca5e92f3f3053d,PARTIAL,13,3,13,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q93010,Robert Cecil Martin,heldout,science_technology,github,account-ollama,468b12c8c54dcec6058f457daaca01f28d2b046cf3f7b9b67358f076eaf14028,PARTIAL,13,3,13,True,0,0,0,1,1,0,0,"{""REJECTED_ALL"": 1, ""SKIPPED"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q10132,Rafael Nadal,heldout,sport,x,web-rules,43bfa4a3659ea4b6b6b28dd74884934b1aee6b077ecfd6e39898e9c61164f6c0,PARTIAL,9,4,21,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q10132,Rafael Nadal,heldout,sport,x,web-ollama,7bbb4d1409835e820782bc3c6e6bdade17979481dcea1e984359f5f785dfcd92,PARTIAL,9,4,21,True,1,0,0,1,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q10132,Rafael Nadal,heldout,sport,x,account-rules,273d814e52c259c8701b9524d2f247d83ca87ec4e084eb5f904cd8fbb20e8b4f,PARTIAL,11,4,22,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q10132,Rafael Nadal,heldout,sport,x,account-ollama,44abd982bd3e7067fa6af26c8ce9d752d8ed10b41815cdaa0085ef0755f31963,PARTIAL,11,4,22,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},1,0,0
+Q11459,Serena Williams,heldout,sport,facebook,web-rules,a564ccb876d8ea130cc130ec2e28718db0c4bd853366131fd88e70ab85959ea3,PARTIAL,10,5,27,True,2,0,0,3,0,0,0,{},{},0,0,0
+Q11459,Serena Williams,heldout,sport,facebook,web-ollama,e14a5876accaf06144c3c236763008b7ff940aacf0b625058418ee15fd8967c7,PARTIAL,10,5,27,True,2,0,0,3,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3, ""SKIPPED"": 1}",{},3,0,0
+Q11459,Serena Williams,heldout,sport,facebook,account-rules,1df6e2bc0435e6a2cfdc3f36e0046489debaf6157af1e24b8635a7e63b527d46,PARTIAL,13,5,27,True,2,0,0,3,0,0,0,{},{},0,0,0
+Q11459,Serena Williams,heldout,sport,facebook,account-ollama,200b9163f1dde002a88fd399f9d8b8b258836ff3b8aa787b9aa169e044391d51,PARTIAL,13,5,27,True,2,0,0,3,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3, ""SKIPPED"": 1}",{},3,0,0
+Q11571,Cristiano Ronaldo,heldout,sport,x,web-rules,e0a7b30a64d2130b048491ee3b848b49153cb6721169cf1fae87231b203a5077,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q11571,Cristiano Ronaldo,heldout,sport,x,web-ollama,02b39650f56ab5803cdd4f49fe57584120088a1b031d303ab91e05900055e4d0,PARTIAL,9,4,22,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},4,0,0
+Q11571,Cristiano Ronaldo,heldout,sport,x,account-rules,12432346ac3276fbf4fc187240eba98055f55ecfcea78997bd4a48f1e3d34430,PARTIAL,11,4,20,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q11571,Cristiano Ronaldo,heldout,sport,x,account-ollama,b728c862aa9b7710ecc9805c6c982a1883e51a722dd4272d76e8a9079af0a4d5,PARTIAL,11,4,20,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},4,0,0
+Q11578,Venus Williams,heldout,sport,facebook,web-rules,4fceba234f1f1aa555968d9d1688db7e2ae3708219640b5a57b4f2b96aee3160,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q11578,Venus Williams,heldout,sport,facebook,web-ollama,753aa2d05c0e571a445c3abf0d92ac9f11e63cbd48fb44a842b8416a296a064f,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q11578,Venus Williams,heldout,sport,facebook,account-rules,36d9e84ac03dbd06f62a68771048bd4cb3e82290aa36d822ead1d112dd98ebab,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q11578,Venus Williams,heldout,sport,facebook,account-ollama,9b31f0b25ec927d9188c6762a9aacb52fa8697afc03e2f950ee7032907a69705,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q129118,Ada Hegerberg,heldout,sport,instagram,web-rules,3ea429e0d915f4824c401e2a317f7959d81c7876565e106f34b6563885e6b8ac,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q129118,Ada Hegerberg,heldout,sport,instagram,web-ollama,6d952573cc0fcf630d6ed8da194621f83a40b3f5c7e78c4508bc5aaf8f125b3c,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q129118,Ada Hegerberg,heldout,sport,instagram,account-rules,807a3c6a1a23cc2397a8af86c02c10850b1ed410cd55e5c08b73ab547587fa4f,PARTIAL,12,2,7,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q129118,Ada Hegerberg,heldout,sport,instagram,account-ollama,a45fc289168d6614db4a77fa1f5cb09338b4349f88a10c82abb8ee3978dc12f7,PARTIAL,12,2,7,True,1,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q133903,Virgil van Dijk,heldout,sport,x,web-rules,57ceaf2a18dd03827fc9e78e28ce4198d00bf23f92b2ce434095f3e17ff66c60,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q133903,Virgil van Dijk,heldout,sport,x,web-ollama,196bfa6293fa849ae8799b2776ccdc3e5b14f50fa436040e7ed4b69b64d66329,PARTIAL,7,1,4,True,1,0,0,3,1,0,0,"{""PARTIAL"": 1}",{},3,0,0
+Q133903,Virgil van Dijk,heldout,sport,x,account-rules,6b3af44c9a91141c0870cf001537fc5d88852e33902014f5c6d3eabf35eb028a,PARTIAL,10,2,8,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q133903,Virgil van Dijk,heldout,sport,x,account-ollama,fec0684396fb1304b2f20d547df959924e58a7802ee26968f577043edb0a12bc,PARTIAL,10,2,8,True,1,0,0,3,1,0,0,"{""PARTIAL"": 1, ""REJECTED_ALL"": 1}",{},4,0,0
+Q1354960,Mohamed Salah,heldout,sport,x,web-rules,ab26b5aac30ef75f6be4009a3828ad8ff965062450dc5ee12c54ca8a26dc633a,PARTIAL,9,4,17,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q1354960,Mohamed Salah,heldout,sport,x,web-ollama,d15235c2f7b78594d9e6103b8054b1e41ce7b79f4757e7762785fbe6449d9620,PARTIAL,9,4,17,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q1354960,Mohamed Salah,heldout,sport,x,account-rules,55de8c503da296b8bbaf177f7afc7c14bf0b52050fabcd0085770d03f0a35822,PARTIAL,11,4,18,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q1354960,Mohamed Salah,heldout,sport,x,account-ollama,7ce544927de516e5453c9eb0144da1302c6c1e35e39d3aad700f80e9db5549c8,PARTIAL,11,4,18,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},3,0,0
+Q151269,Robert Lewandowski,heldout,sport,instagram,web-rules,7e760d04821420ff7bc32728952acd3e0318beca77cf5c829ace8de7974d68c7,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q151269,Robert Lewandowski,heldout,sport,instagram,web-ollama,d01280669ea2a15797d35856dac4eb016b4e6590ce8e42c72a0faec4f3d1ebd3,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q151269,Robert Lewandowski,heldout,sport,instagram,account-rules,f4b3269bb10459b799fba1716608aed10de277a8cc56072b2e472ccd777f198c,PARTIAL,10,2,5,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q151269,Robert Lewandowski,heldout,sport,instagram,account-ollama,dd78650ca7775e355e917115a259fe2edc213d3ec0945739b0e1e0bb670d5db0,PARTIAL,10,2,5,True,1,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q17281073,Nikola Jokić,heldout,sport,facebook,web-rules,39cd6a7e0d263c6c5c913b91447d1f3b04a8cc5677b5234f847c6672e7e78aea,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q17281073,Nikola Jokić,heldout,sport,facebook,web-ollama,18b422c87bdebcf95cd319beca707f415fbb271b4eac331cf74ed272684b6643,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q17281073,Nikola Jokić,heldout,sport,facebook,account-rules,65907a8bcce434a9f7eef3e308fd2f3a9f67a615a1ead90a2872e1b39dddf590,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q17281073,Nikola Jokić,heldout,sport,facebook,account-ollama,47b1427ecb2499f220e72b7490ddd76415991f6e35b279903a0e7989d13cebe1,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q17466583,Naomi Osaka,heldout,sport,instagram,web-rules,813e04aadbd533a7af1aae1ca88b798b700454652d0dcb00808d7d546e7694d3,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q17466583,Naomi Osaka,heldout,sport,instagram,web-ollama,24f7cd24e7c813d76cd4824def40bd3bbbcffaec93b83381066b5816a2b371cd,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},5,0,0
+Q17466583,Naomi Osaka,heldout,sport,instagram,account-rules,0537f8c4854d878e9d5d4d4158b243c3feecab5d0906f6ea5051846caf3cd5fe,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q17466583,Naomi Osaka,heldout,sport,instagram,account-ollama,ef10cf4d468e276b1df2e70294a48d8525fda4e167ac8058e493addc8ebc412c,PARTIAL,10,2,6,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},1,0,0
+Q209942,Sadio Mané,heldout,sport,facebook,web-rules,055799a4827216ebc7ba074fbf10b9696f694b283555a09288561949b7266281,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q209942,Sadio Mané,heldout,sport,facebook,web-ollama,fb4e6f7a9fddadc4975fdc491924861ce91118665362879dda3aeaea094f5599,PARTIAL,7,1,4,True,1,0,0,3,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q209942,Sadio Mané,heldout,sport,facebook,account-rules,d7f851c352a05f7541e39157d95d2fd7fc9eeffacfb7e3abcb0c4d6da9e73d57,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q209942,Sadio Mané,heldout,sport,facebook,account-ollama,39690519e334e37f10c96932645d8ac717bff6e713f53db4fa9687838f4482dd,PARTIAL,10,1,4,True,1,0,0,3,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q213854,Virat Kohli,heldout,sport,facebook,web-rules,14d8b07c33d1f3b81eb44b19410eff24bb3874629cf7333a2c5275464da63e70,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q213854,Virat Kohli,heldout,sport,facebook,web-ollama,57ed664be8d1c531a04fdd41cb9d1c3efe94ab245d0cd01b4a65835d76b513c2,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q213854,Virat Kohli,heldout,sport,facebook,account-rules,a82bef5ece338c4ab15558141209c24e72f5c1a9717d4359151946bd26bf325b,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q213854,Virat Kohli,heldout,sport,facebook,account-ollama,5a70a65bee67d975ca6ab473f5f8e42266fb1d4ca1560caea6d4d222d9c84360,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q21621995,Kylian Mbappé,heldout,sport,facebook,web-rules,4a7b36c4505383d3786f6a780b54873cbf685a805f378d566214e530990898c9,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q21621995,Kylian Mbappé,heldout,sport,facebook,web-ollama,f0a77240087847313c11882da0667a5b338b2c41f9982bbf321bb4ebaf7df8fb,PARTIAL,7,1,2,True,1,0,0,2,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q21621995,Kylian Mbappé,heldout,sport,facebook,account-rules,ee232ea403d13d63c2c91ffcd68618297684d348c4210898b5d1d75b92a67c33,PARTIAL,10,1,2,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q21621995,Kylian Mbappé,heldout,sport,facebook,account-ollama,e2b46db1b5a7958b1e8d7c1f98722470d3b38c9333529860466aa64fd6c2528f,PARTIAL,10,1,2,True,1,0,0,2,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q228616,Marta,heldout,sport,instagram,web-rules,fcdaf67f97ffffe2af637c09234a11c08549d295c058af379faec55a93aecb28,PARTIAL,9,4,24,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q228616,Marta,heldout,sport,instagram,web-ollama,de5bd88b90ddfafd57d53663443e96455e465e64c0e31f146cb52302dd3d9e60,PARTIAL,9,4,24,True,1,0,0,2,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},12,0,0
+Q228616,Marta,heldout,sport,instagram,account-rules,851815338435a99df06f096df2e5797f1e8284ad56a3e16755d03dc7d45f9352,PARTIAL,13,4,23,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q228616,Marta,heldout,sport,instagram,account-ollama,0c7e78cee9786fd5b49088a82dd6960bea31269cefa1f1d0fd4a5af480654db3,PARTIAL,13,4,23,True,1,0,0,2,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},10,0,0
+Q260725,Megan Rapinoe,heldout,sport,facebook,web-rules,1ea85046978f33d5dc31cca2a7b1b7105c0312695046a7841c9bc96894a50b55,PARTIAL,7,1,4,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q260725,Megan Rapinoe,heldout,sport,facebook,web-ollama,58a12969af2b6abb1a3164063f356bc8eeb21bb1bf32289ba734e340a32b167a,PARTIAL,7,1,4,True,0,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q260725,Megan Rapinoe,heldout,sport,facebook,account-rules,712bc911ac65f4feeff9dedba9ad1ec9676531072193dd7b2c0578eaad1889b7,PARTIAL,10,1,4,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q260725,Megan Rapinoe,heldout,sport,facebook,account-ollama,228bd794bb9627be2b953873cd8038e876a8f2b43b105a9cea8ea9caf088ba63,PARTIAL,10,1,4,True,0,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q26840238,Iga Świątek,heldout,sport,x,web-rules,18b9cc8ff03d4952168ea0735a9f800c9f4234fffb2673f970ce45ba35f2c169,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q26840238,Iga Świątek,heldout,sport,x,web-ollama,f27e7b8694d768f75329bc2be925301010de8545b46eeecb180a47b8278e134b,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q26840238,Iga Świątek,heldout,sport,x,account-rules,061a7cbc638f1c1443170f9a60b1d5920295f7aedf3d928e88c120e9971c1500,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q26840238,Iga Świątek,heldout,sport,x,account-ollama,3f9d55b0a09b53ecbe7460a82758ce4791458b132ec48e14c73b846c7d1014c6,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q27995553,Aitana Bonmatí,heldout,sport,facebook,web-rules,677a155e370b42eca63f0a8580abc4903399cdc37c75d6569bcf4c40fc33d3e6,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q27995553,Aitana Bonmatí,heldout,sport,facebook,web-ollama,90f7d4d9c26bd5bcb99d906413225b9bf9cfecc70e7091c8ae4c518ce709d289,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q27995553,Aitana Bonmatí,heldout,sport,facebook,account-rules,242d29b4e59022e353de0092ceb5bade083f0996d577f115d7ff09904fb1ee91,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q27995553,Aitana Bonmatí,heldout,sport,facebook,account-ollama,d86347fafc391b6ec11c24d74d072748d4f47913064f3705ca8b6026497ca35c,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q28967995,Erling Haaland,heldout,sport,instagram,web-rules,4e8060a53c8e24cadb9383fb5324743e370fe6285a21a2237bfd575eb48cc3c3,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q28967995,Erling Haaland,heldout,sport,instagram,web-ollama,1112efecf6a46be9cd33d97fe3b463e221a202fb11c8ad25eca4c5c1cfd26652,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q28967995,Erling Haaland,heldout,sport,instagram,account-rules,247e5f417f3690be747e74c0fb3e6a40f388380e0e848538528615218b2833a3,PARTIAL,12,2,7,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q28967995,Erling Haaland,heldout,sport,instagram,account-ollama,bc89c18f83225377227e274d0c42fe0ca1fab0b90c21f87e21a5f4690398c1a6,PARTIAL,12,2,7,True,1,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q28973866,Vinícius Júnior,heldout,sport,facebook,web-rules,d31a15f67c28a7777ecaaad243d371a3c9dfc69a9103920a83bc26a8dd889b83,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q28973866,Vinícius Júnior,heldout,sport,facebook,web-ollama,9a6a797543319fe8e0fe3ed052031e0f0149f512343f5930d0d7fdf24d4913b4,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q28973866,Vinícius Júnior,heldout,sport,facebook,account-rules,ed5f4d282d85c4327ddf98bcdd1361d22666f2502f1869859ea434358ea5dbd2,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q28973866,Vinícius Júnior,heldout,sport,facebook,account-ollama,34c730a7e1970663237f294a0849223fc4b3233c7cceaae3a5745e69d2012ae7,PARTIAL,10,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q352159,Stephen Curry,heldout,sport,instagram,web-rules,bdb6fe77dacdf548248d98da54a685258ee1338bdbc247fd09f55393cdac8b51,PARTIAL,7,1,2,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q352159,Stephen Curry,heldout,sport,instagram,web-ollama,f45865e21aaf6931fdef8cb74eff2b4625a3da0978c5e3a737faffd8926d18ff,PARTIAL,7,1,2,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q352159,Stephen Curry,heldout,sport,instagram,account-rules,58c5569594d92aed1b23972e12ad79c6ad9cdf1b1acf47fb5e7006b80df85567,PARTIAL,12,2,5,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q352159,Stephen Curry,heldout,sport,instagram,account-ollama,896ce50e1748e3d84fc58d43a439bf56c329342cda7ba3f063791afc3808b3a4,PARTIAL,12,2,5,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q357984,Kevin De Bruyne,heldout,sport,facebook,web-rules,eb03722b81d2b79467f12cdc6d91033d9472159f5b55b9a68fdafc58cc02c7b8,PARTIAL,9,4,22,True,2,0,0,4,0,0,0,{},{},0,0,0
+Q357984,Kevin De Bruyne,heldout,sport,facebook,web-ollama,32d6383b27c0ce175d29c654f1992eed704b8e5221084d93fd260684c16adcf2,PARTIAL,9,4,22,True,2,0,0,5,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},4,0,0
+Q357984,Kevin De Bruyne,heldout,sport,facebook,account-rules,d9e5390a29472dec513300b2fcbd8ecc3fe4235d0f7bbb7d3630c1c597355cb5,PARTIAL,12,4,22,True,2,0,0,4,0,0,0,{},{},0,0,0
+Q357984,Kevin De Bruyne,heldout,sport,facebook,account-ollama,aef1ada2000229a9a8adc1037fa1adb7d753230338ab5a1de0a5f26c852ff80e,PARTIAL,12,4,22,True,2,0,0,5,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},4,0,0
+Q36159,LeBron James,heldout,sport,instagram,web-rules,1b645d6ad22010e7ff671e359b49f8ec219ab777690530c07ad3798bf3a4852f,PARTIAL,10,5,34,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q36159,LeBron James,heldout,sport,instagram,web-ollama,77333f6689a4dcb03943b28b13fdd13d1be0a0321adc267cb3967cf17d0b4c2b,PARTIAL,10,5,34,True,1,0,0,2,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 3}",{},3,0,0
+Q36159,LeBron James,heldout,sport,instagram,account-rules,bee922b8c301d395ac248e369a3956d1386cf1e9e37af494a561a2a281978478,PARTIAL,12,5,30,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q36159,LeBron James,heldout,sport,instagram,account-ollama,fef379bde20fe5c4cb1d13d21a57525a96f5e416287421c2742eccb03151f325,PARTIAL,12,5,30,True,1,0,0,2,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3, ""SKIPPED"": 1}",{},3,0,0
+Q39263365,Coco Gauff,heldout,sport,instagram,web-rules,d311523aab8a7b3a1006663fdf5cd78d94dc3cc06db71c416a4c05899ad7c056,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q39263365,Coco Gauff,heldout,sport,instagram,web-ollama,ecfffbcb95bcbb927ca0f7269e731db4fad98f6177f5afb1e6bb4c271890afde,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q39263365,Coco Gauff,heldout,sport,instagram,account-rules,20864e2c7315fe3eb4fc3c764a41613bae78a758b90e79db6b5f77f7dea53bf0,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q39263365,Coco Gauff,heldout,sport,instagram,account-ollama,317c1f44b4e4dc47822b65d3043e288fde90f2dc0d1e6f1ce4d1b61f867c10de,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q4391858,Shohei Ohtani,heldout,sport,instagram,web-rules,b8c2665a8990ac517f28cfbdde03e1472856c4e71dbd5892861fb45ed3bad90f,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q4391858,Shohei Ohtani,heldout,sport,instagram,web-ollama,4045c8ac177d60b80d14404b204fbd6762763ec7ddda4b2f1ba0635782937d0f,PARTIAL,9,4,22,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},6,0,0
+Q4391858,Shohei Ohtani,heldout,sport,instagram,account-rules,906f5ae8f68d921ac8960cec687e4f30e3ce102a9b9af7797a1553ad91400e5b,PARTIAL,11,4,19,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q4391858,Shohei Ohtani,heldout,sport,instagram,account-ollama,61f4c664ba7e35e71831c35d500a2e02cca385b7d76acbe9e311e379c5e52c56,PARTIAL,11,4,19,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2}",{},6,0,0
+Q470774,MS Dhoni,heldout,sport,x,web-rules,f7b5f1600aff277fcf2ed434f00a3eaff9101ba764444af36b5a89cfb3bba6e9,PARTIAL,9,4,25,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q470774,MS Dhoni,heldout,sport,x,web-ollama,3dadbc9a50112f526edbff4f32ca057a140bac0f6eb72aec77a5b70447f8d63c,PARTIAL,9,4,25,True,0,0,0,0,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},2,0,0
+Q470774,MS Dhoni,heldout,sport,x,account-rules,bbedc18313370ece16bf658f20203dd0645cf1a05840d6a641d74167fbf2d2ae,PARTIAL,11,4,21,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q470774,MS Dhoni,heldout,sport,x,account-ollama,dcad9f751ead1bd719309e9a8c43058db2dca601dcdb052c2778491bd03cce26,PARTIAL,11,4,21,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},2,0,0
+Q4837515,Mohammad Babar Azam,heldout,sport,facebook,web-rules,a07e753e2a762d8de0a5052e3854bb7c8c09956a9f12826b944c813b7342d6fa,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q4837515,Mohammad Babar Azam,heldout,sport,facebook,web-ollama,211c352515ca9c9eab10d33dabd7dafcc800da9c345bb8a3c013108d15835abc,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q4837515,Mohammad Babar Azam,heldout,sport,facebook,account-rules,1ee3c2d1116b769cfe4824d30d8c41441919a111a68b60f49201d555285673a7,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q4837515,Mohammad Babar Azam,heldout,sport,facebook,account-ollama,b8adc1009ccd01acb4bdfbecd41fb721f7fb5d8a3b60f09c7731bc77e3077262,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q5812,Novak Djokovic,heldout,sport,facebook,web-rules,d3b8b16fac870d9acbafb9999d1a4690ca06328f8fd9fafef671144e26c41ff4,PARTIAL,7,1,2,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q5812,Novak Djokovic,heldout,sport,facebook,web-ollama,fc31fa4163fde92e26c4862fba68f43644d10b1f18ddb4d216097ef7b2d09766,PARTIAL,7,1,2,True,1,0,0,2,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q5812,Novak Djokovic,heldout,sport,facebook,account-rules,95baf6e0b6e1328906eb47bad2161f0ef319cc016616edc91171161cec1405dd,PARTIAL,11,1,2,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q5812,Novak Djokovic,heldout,sport,facebook,account-ollama,8b376541326b767075344b799108a7bdbeb77c881307b0f57a6a7521800b04a8,PARTIAL,11,1,2,True,1,0,0,2,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q58590,Yao Ming,heldout,sport,instagram,web-rules,fe5f8472fa5a84341132f74cdafa10e86dd892e5e8f8a3f70ce7a420ccf21ba7,PARTIAL,8,2,13,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q58590,Yao Ming,heldout,sport,instagram,web-ollama,3dc00b77b92cc7d5c607c1ce69e7f1e7b6320ceafdf8954a2c61e79e41a56614,PARTIAL,8,2,13,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 2}",{},4,0,0
+Q58590,Yao Ming,heldout,sport,instagram,account-rules,0987aaef2a170b966943c1975b614e88a2452a513538dfb122f29f9200b0461b,PARTIAL,12,4,24,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q58590,Yao Ming,heldout,sport,instagram,account-ollama,472979a189f54895562465829c1c27506333e46aaac1c2df8181991d34db11e1,PARTIAL,12,4,24,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SKIPPED"": 1}",{},4,0,0
+Q615,Lionel Messi,heldout,sport,facebook,web-rules,49ed6902fa60a93d01f44c23800a5759c7a2829a0c39adef9a4a584c945c619b,PARTIAL,10,5,30,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q615,Lionel Messi,heldout,sport,facebook,web-ollama,8765b7c019aa0b4151d356d603ebfdc25cae11c1aaef38db5cbf760c5d62afee,PARTIAL,10,5,30,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2, ""SKIPPED"": 1}",{},5,0,0
+Q615,Lionel Messi,heldout,sport,facebook,account-rules,91cf76312eb3e52e90d61938e8c608244dc91aed1eeb6774cf5379ecf200a7ff,PARTIAL,14,5,30,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q615,Lionel Messi,heldout,sport,facebook,account-ollama,17bf80247c250cafc0c42d4f8ad7e9fb87c22f1334ca59dd14f425543090c771,PARTIAL,14,5,30,True,0,0,0,0,0,0,0,"{""EMPTY"": 2, ""REJECTED_ALL"": 2, ""SKIPPED"": 1}",{},5,0,0
+Q8991894,Giannis Antetokounmpo,heldout,sport,instagram,web-rules,f634c755b96687aff5c94cb4fa2fa8db0d8ffc6d59dbaab9853da85d1f62f202,PARTIAL,7,1,4,True,1,1,0,1,0,0,0,{},{},0,0,0
+Q8991894,Giannis Antetokounmpo,heldout,sport,instagram,web-ollama,19a1a57653a83f261e15c24b7186d53c64b0059a2519eeb23f1bfddddfd8a92a,PARTIAL,7,1,4,True,1,1,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q8991894,Giannis Antetokounmpo,heldout,sport,instagram,account-rules,fb63b20dede2847ae46621dc3e275635328afb0e8f9200d8b341cb7b31cd25f2,PARTIAL,10,2,7,True,1,1,0,1,0,0,0,{},{},0,0,0
+Q8991894,Giannis Antetokounmpo,heldout,sport,instagram,account-ollama,6a4992194bfa938e4a3d5114a0593e51f0abe13b4aadaeea508f772a123f64a9,PARTIAL,10,2,7,True,1,1,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q919634,Sam Kerr,heldout,sport,instagram,web-rules,c1a23c2675acef9ab268a607a5e8693b8eff05db032fcbf1b168efe4740f106d,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q919634,Sam Kerr,heldout,sport,instagram,web-ollama,665eb3e4e9368f07bc9dc7650624b0d9c8225e82e1f1581f2095b4b3b3e52a0a,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q919634,Sam Kerr,heldout,sport,instagram,account-rules,d8e78ba44c2c917056c0c7d3d805a7995c8b744ad3fcbc94fcad1741d4327f68,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q919634,Sam Kerr,heldout,sport,instagram,account-ollama,0b47f9349f0a4bbc4a239e5c5601f29606e0f53b8a9694b9a6e687d881b3a6d5,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q9488,Sachin Tendulkar,heldout,sport,x,web-rules,cd16d14fd551b76b505fe47720a5fa860f753873e7ccf1241064d8c016947123,PARTIAL,9,4,21,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q9488,Sachin Tendulkar,heldout,sport,x,web-ollama,873bb7c46708aa13a4c668ff545345c712339fccfe3f3fe53eee859d317f9dbb,PARTIAL,9,4,21,True,0,0,0,0,0,0,0,"{""EMPTY"": 4}",{},0,0,0
+Q9488,Sachin Tendulkar,heldout,sport,x,account-rules,870907354f0166d46c8aacd70af0cc29844ad961d78fdfb8bcc0ac41a7b507d8,PARTIAL,11,4,19,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q9488,Sachin Tendulkar,heldout,sport,x,account-ollama,839a31b8e450a553ab4ce4300cdbe902a51f96fa1b58fca8b5fd30bf00555b83,PARTIAL,11,4,19,True,0,0,0,1,1,0,0,"{""EMPTY"": 3, ""SUCCESS"": 1}",{},0,0,0
+Q12881,Paulo Coelho,heldout,writing_public_education,x,web-rules,85835020aa7b2fedcd8ee60284207f990a49319461346627bbecc2e53bba7d90,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q12881,Paulo Coelho,heldout,writing_public_education,x,web-ollama,7a043ddc5a609b5e6488f0d6d3efa46453c507fc7067313c6ebd38b223caf5b3,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},2,0,0
+Q12881,Paulo Coelho,heldout,writing_public_education,x,account-rules,91dd5f2f4700917bbda996f3f4a3bf19cfd88945e77857779f65c8ed55c7ba4c,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q12881,Paulo Coelho,heldout,writing_public_education,x,account-ollama,fce7c11ba512c000112b0023dfbb651e382822dd71b59d4f7186bfaf5c9aa719,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q134798,Haruki Murakami,heldout,writing_public_education,facebook,web-rules,289e0bfec2bc660f7403cea417b71ab3503e6c76412047b42eb7f35996891aa7,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q134798,Haruki Murakami,heldout,writing_public_education,facebook,web-ollama,851f8b21abdb10a5fb91d4b6e7facbed8ff17b66f4c67634b0729ed7e8cbdc6c,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q134798,Haruki Murakami,heldout,writing_public_education,facebook,account-rules,ec0a8ccf5a93bdbc22de4f263c0fcdfcaa28934c83fe2d1e39d7034d2d9d7143,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q134798,Haruki Murakami,heldout,writing_public_education,facebook,account-ollama,05e7c29cdb93e12622952bcba2e35d1ef2768e55e89c3b896c5964bea74c2cd9,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q16202911,Roxane Gay,heldout,writing_public_education,x,web-rules,309ee97e4c9de9169d043d6dda280d7729c8894ca6fe8b77afdafd4b7ea1f782,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q16202911,Roxane Gay,heldout,writing_public_education,x,web-ollama,b0dc74ffaa9c4fc24acaea6c157b76bf6775fddcb6c4319a635423e324587690,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q16202911,Roxane Gay,heldout,writing_public_education,x,account-rules,2570346caf7f8501bf9f066cba50dbf574404027d66184393d98935ab8e4d07d,PARTIAL,10,2,8,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q16202911,Roxane Gay,heldout,writing_public_education,x,account-ollama,107a8426ed67e000a3c7fc79bc5ab33e35b8d362e4f7ef8b18f62f5d0ff7cb3b,PARTIAL,10,2,8,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 2}",{},2,0,0
+Q181677,George R. R. Martin,heldout,writing_public_education,facebook,web-rules,37a6ab867cccea8b33b678411da7e780c3302424532ad6c6a8f021cd5e0a74c5,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q181677,George R. R. Martin,heldout,writing_public_education,facebook,web-ollama,7703c0dbe97e567e17508bf3bec2a7ac94b3afdd0d6ac673cecb417f6dbbca56,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q181677,George R. R. Martin,heldout,writing_public_education,facebook,account-rules,39841704a3beee6286c57ba3e14e84cd66f417c1f32e37edd9bd30fc8c717ada,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q181677,George R. R. Martin,heldout,writing_public_education,facebook,account-ollama,bfe5374af89fc6bdd1c2582832df69b25231383bfc633c92256da736244af24f,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q183492,Margaret Atwood,heldout,writing_public_education,facebook,web-rules,8e869bf1e4c2dd0edb58e3ca77b749ec17dfc8f7778f08ded0c0bf7067b39c25,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q183492,Margaret Atwood,heldout,writing_public_education,facebook,web-ollama,260cfb85f87b2a1a500c1f0555b0b33b81996224e3b2e50458513bae15af61c2,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q183492,Margaret Atwood,heldout,writing_public_education,facebook,account-rules,e6783f84c153d8a7e49a9f914c72a84f92edc46f4bfc1e7472bc9a27ecaa0d43,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q183492,Margaret Atwood,heldout,writing_public_education,facebook,account-ollama,e76dd5b6a86996816d5aaf492dcb79a98e7e991ed040f4f9b6282f9281cb3da9,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q18355929,Ocean Vuong,heldout,writing_public_education,instagram,web-rules,0975f9352286ff49167deac332dd818356119e5d190b602b0cb5b355bb180a18,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q18355929,Ocean Vuong,heldout,writing_public_education,instagram,web-ollama,32f3d0ee4dc8634e5a7f73367d1b0576bd8604adf53281a043744cb93768a62b,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q18355929,Ocean Vuong,heldout,writing_public_education,instagram,account-rules,39fad866172bf8ffbfa6c5e3c1ce9649bd506fa97ae25fae11454870b00990f0,PARTIAL,10,2,7,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q18355929,Ocean Vuong,heldout,writing_public_education,instagram,account-ollama,b0d4526d9df23e6440f32b05acebe63121bb970f51988617e5716e688b11e215,PARTIAL,10,2,7,True,1,0,0,2,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q184746,Jane Goodall,heldout,writing_public_education,x,web-rules,3930a7a682167a17f28d32b31986d40a65bedd283c0e758c9b66a855ea706b84,PARTIAL,10,5,28,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q184746,Jane Goodall,heldout,writing_public_education,x,web-ollama,92a6e840014aa2a766aae3b26e8153f84db0ae89faece031ca8d0602bcdc4421,PARTIAL,10,5,28,True,0,0,0,1,1,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 2, ""SKIPPED"": 1, ""SUCCESS"": 1}",{},5,0,0
+Q184746,Jane Goodall,heldout,writing_public_education,x,account-rules,45bf98885392947975f7d72abddf745ca495e255495889a7e67d3b74f957d1e0,PARTIAL,12,5,25,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q184746,Jane Goodall,heldout,writing_public_education,x,account-ollama,f148e8bb683081924f8d71cab71a697e33a7e8adc4f0d6f8520cebc4538ff2be,PARTIAL,12,5,25,True,0,0,0,1,1,0,0,"{""REJECTED_ALL"": 3, ""SKIPPED"": 1, ""SUCCESS"": 1}",{},6,0,0
+Q190051,Jamie Oliver,heldout,writing_public_education,facebook,web-rules,a6b1e604d1224b00a59774acf0129bda2e39cb653998de376cd7c35c4586bbcd,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q190051,Jamie Oliver,heldout,writing_public_education,facebook,web-ollama,25cd4705846eaead05c2c2c4089acee788a3ecc601a5e53b730761dfc8a0833e,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q190051,Jamie Oliver,heldout,writing_public_education,facebook,account-rules,8ac63cfef93e71cc7dbd9ec5eaec478146d0c118c50fa2459449a859b1040d9b,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q190051,Jamie Oliver,heldout,writing_public_education,facebook,account-ollama,69f99fec096b9356673ea274107dbb2aa726f0a806c6d1d6cefe0185b357beb4,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q19662918,Rupi Kaur,heldout,writing_public_education,instagram,web-rules,922d72ba35284f47314cbcf1414ff8a1d55567054126b7375d17f1333bbe822b,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q19662918,Rupi Kaur,heldout,writing_public_education,instagram,web-ollama,48e29aaf26dacf5e97161830b43b813ea51ae49584db6e26cdc6a92e4cad8b67,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q19662918,Rupi Kaur,heldout,writing_public_education,instagram,account-rules,e955a912c21202dbcdf7034f83274643eb371eaecf20903974273aac91d3b14f,PARTIAL,10,2,7,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q19662918,Rupi Kaur,heldout,writing_public_education,instagram,account-ollama,d28178a46f5c7b59b747235c4a6ae07f6ce0dc50e043c7b42bdf6052e5f6da02,PARTIAL,10,2,7,True,1,0,0,2,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},1,0,0
+Q210059,Neil Gaiman,heldout,writing_public_education,instagram,web-rules,f28be4c13c0aabee1a749d4e88f1f58f02cf6fbbc3a88b0f8cd0599f0c372a20,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q210059,Neil Gaiman,heldout,writing_public_education,instagram,web-ollama,d614bd643aa431bc3004e43c11a787bd56065124c9ee081eb5624b150bcb5cb3,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q210059,Neil Gaiman,heldout,writing_public_education,instagram,account-rules,f4fba61c2ac93cf99e59eca7de5f026e85e397043cb7bd25ecff9131d8c9b4b8,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q210059,Neil Gaiman,heldout,writing_public_education,instagram,account-ollama,34aade8711d0e3354d061b1a496ba752599110eaf27c4bf80dc89b51588d3a62,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q211290,Massimo Bottura,heldout,writing_public_education,x,web-rules,c413a90fee04b40a8673fec41865b434c9f13c1f499849a3c24052e008c1af24,PARTIAL,7,1,4,True,1,0,0,4,0,0,0,{},{},0,0,0
+Q211290,Massimo Bottura,heldout,writing_public_education,x,web-ollama,25bf850deb51c2a749584c03d6cfdbcf3f86f8c24d106561040a8cd76e71c115,PARTIAL,7,1,4,True,1,0,0,4,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q211290,Massimo Bottura,heldout,writing_public_education,x,account-rules,34ebbc71fb6a8fa021cf0371b11805fa72323cb1a0ae078fd547f0219a556e96,PARTIAL,10,2,8,True,1,0,0,4,0,0,0,{},{},0,0,0
+Q211290,Massimo Bottura,heldout,writing_public_education,x,account-ollama,fc3adaec83d7966a914194a4cb4bf622ea6fb6ecb221b291992685fccabdeace,PARTIAL,10,2,8,True,1,0,0,4,0,0,0,"{""REJECTED_ALL"": 1, ""SKIPPED"": 1}",{},1,0,0
+Q212730,Steven Pinker,heldout,writing_public_education,x,web-rules,f504de009e096a82b324cc957c8fe615ac3efb1d5fb9c1c64bec28a3ce8a9135,PARTIAL,8,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q212730,Steven Pinker,heldout,writing_public_education,x,web-ollama,68a1f3dcc97e447a8fbf995e6fef4a357c15b4642d02bf5ef2cd5c0cb629c865,PARTIAL,8,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""SKIPPED"": 1}",{},0,0,0
+Q212730,Steven Pinker,heldout,writing_public_education,x,account-rules,aab923cb663e030aefe49008534d9acc987e447e5d80fabe9dd1ebce40525497,PARTIAL,11,3,12,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q212730,Steven Pinker,heldout,writing_public_education,x,account-ollama,5cf92d6981aede6556933a8def1a02c55d0a127fe36758c66c655e7652c6464e,PARTIAL,11,3,12,True,0,0,0,1,1,0,0,"{""EMPTY"": 1, ""SKIPPED"": 1, ""SUCCESS"": 1}",{},0,0,0
+Q230141,Chimamanda Ngozi Adichie,heldout,writing_public_education,facebook,web-rules,3851beaad0dd127ad533ab0de48a3550535b93428b44cf6e11868c880fc5227d,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q230141,Chimamanda Ngozi Adichie,heldout,writing_public_education,facebook,web-ollama,186b8d8d1f0d3f935305b062f22f06029e12fdd236ac42d50e60c378f69c81ad,PARTIAL,7,1,4,True,1,0,0,2,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q230141,Chimamanda Ngozi Adichie,heldout,writing_public_education,facebook,account-rules,702c05caf1ad58d53774454d7b3b7cd1d24151fc4dc51a08cff7194fbfd60c89,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,{},{},0,0,0
+Q230141,Chimamanda Ngozi Adichie,heldout,writing_public_education,facebook,account-ollama,3ab6b9e551322d24c27c8d14c22b8afb34490d0aac7cd46c11fa203040c7ce08,PARTIAL,10,1,4,True,1,0,0,2,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q23657278,Hannah Fry,heldout,writing_public_education,x,web-rules,002bcea903e4bb9bb62b9c70d77ff9d69a391a8b71eef832936418b2de51706f,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q23657278,Hannah Fry,heldout,writing_public_education,x,web-ollama,fdcb8d5839cc8d7b1ad4c5c931a9c1a66bfee831a8f35b797e1175d283c8b3f8,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q23657278,Hannah Fry,heldout,writing_public_education,x,account-rules,a92e789eae2d150bf5795e9cfbafa104d90f83a341e85100dbabf307cc041438,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q23657278,Hannah Fry,heldout,writing_public_education,x,account-ollama,cc3246468fb8ab73f09e94e64395ddde6961c086c8234f89f43eb3ac9aa88cb1,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 2}",{},2,0,0
+Q241248,Orhan Pamuk,heldout,writing_public_education,facebook,web-rules,fe15577a0417c07acfd3ef694466ced6f88797f97308698a213bcd0c723d3fa0,PARTIAL,9,4,22,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q241248,Orhan Pamuk,heldout,writing_public_education,facebook,web-ollama,c0cfee9329da7202321c4ca7a629f29e66fc5fe8cd76561f52a085d2591ca913,PARTIAL,9,4,22,True,0,0,0,2,1,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""REJECTED_ALL"": 2}",{},8,0,0
+Q241248,Orhan Pamuk,heldout,writing_public_education,facebook,account-rules,711549fcdf20b0704da158ed5fd86ba0d26fe95b9ee25221b93321f31ac06f64,PARTIAL,12,4,22,True,0,0,0,1,0,0,0,{},{},0,0,0
+Q241248,Orhan Pamuk,heldout,writing_public_education,facebook,account-ollama,be81f77baa48372dfeb1bcf31be1f998910abd44352394fac2a7e9db90a50826,PARTIAL,12,4,22,True,0,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 3}",{},5,0,0
+Q2427544,N. K. Jemisin,heldout,writing_public_education,x,web-rules,4b3996f2c0d11450102fa752f5629ae7dac5ca1408fedd350d6f0dee3c1ad225,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2427544,N. K. Jemisin,heldout,writing_public_education,x,web-ollama,b986eee73077addda732d9e6dcfe7e3c52bcf90e5e2775ce30294f1ec5f3eeda,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q2427544,N. K. Jemisin,heldout,writing_public_education,x,account-rules,b1cb33012676c38eb6ad5ee974e8149cf5a8bc6a95c5acc12256337370061ea6,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2427544,N. K. Jemisin,heldout,writing_public_education,x,account-ollama,2c91ad624f9193e3b59dc35b751fe57619842bc7ab5dcda4c295298914089b3a,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""SKIPPED"": 1}",{},0,0,0
+Q2619019,Bill Nye,heldout,writing_public_education,instagram,web-rules,31f64879fc210e0d5beaf2e5e8dfd0199a1edf7a81d8e784ea72d9a3f7b654b8,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2619019,Bill Nye,heldout,writing_public_education,instagram,web-ollama,8a7e134e52e4cbc0757859f10e1a6b45b62e26e9694645483da9b65f630a401c,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},3,0,0
+Q2619019,Bill Nye,heldout,writing_public_education,instagram,account-rules,fe4c84229f4c5abf381a3cc872e113242769b9347323b6b8e1986c1bf3ea2bc1,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q2619019,Bill Nye,heldout,writing_public_education,instagram,account-ollama,4cc3eee7ff9aede3477a05e7c32709ecdf9fbc951ec96f1330239cd92fa60e0c,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},2,0,0
+Q264724,Nigella Lawson,heldout,writing_public_education,facebook,web-rules,47d38cca7598d28068727a270b6e610bf10a0794ed3986bd5ea008ed0edc1c90,PARTIAL,9,4,29,True,0,0,0,4,0,0,0,{},{},0,0,0
+Q264724,Nigella Lawson,heldout,writing_public_education,facebook,web-ollama,5489b16134cd8333670ebdbf1849597560d26fb6f0e1dabf51828d2bfee5a46e,PARTIAL,9,4,29,True,0,0,0,4,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q264724,Nigella Lawson,heldout,writing_public_education,facebook,account-rules,0a15a6013eae231992f220c58064abdf7a83c8a9944f6ece98aea20fcce75570,PARTIAL,12,4,29,True,0,0,0,4,0,0,0,{},{},0,0,0
+Q264724,Nigella Lawson,heldout,writing_public_education,facebook,account-ollama,a15e4eb215863b57af89dc3676933d93e03aa44b8c6c037d0bb2519f9277b9a5,PARTIAL,12,4,29,True,0,0,0,4,0,0,0,"{""EMPTY"": 3, ""REJECTED_ALL"": 1}",{},1,0,0
+Q270739,Elif Şafak,heldout,writing_public_education,instagram,web-rules,a468a66a720a57a3612f2d35cf8f36e6493cf011c5530b758f720298addbe81e,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q270739,Elif Şafak,heldout,writing_public_education,instagram,web-ollama,1552c63083f8eb1477efb172958631dce275c8ef7f2d8b9a14928e97aa772bb2,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},2,0,0
+Q270739,Elif Şafak,heldout,writing_public_education,instagram,account-rules,072abdf292454ac5d3b27c30733a9ce63c54484d42c8606063874b7102b9b947,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q270739,Elif Şafak,heldout,writing_public_education,instagram,account-ollama,4060b78ffa5c2a06aa259389cf98e4aad68d4ab2933d1b2c9730f5cc78136f7a,PARTIAL,10,2,6,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},2,0,0
+Q310903,Neil deGrasse Tyson,heldout,writing_public_education,x,web-rules,177ea11060a3bbad08e22c9bda1f1c37cc0c29407967528c656bc76ba4326953,PARTIAL,9,1,5,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q310903,Neil deGrasse Tyson,heldout,writing_public_education,x,web-ollama,04b1226bc02df70133cfa10526310ab5252c60392e65fec3971f1574d31f1741,PARTIAL,9,1,5,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q310903,Neil deGrasse Tyson,heldout,writing_public_education,x,account-rules,577fffab4c2ce13fbfbbbdb1e6e6f2b978b6bc58353aaadfb64e516249d3b133,PARTIAL,12,2,9,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q310903,Neil deGrasse Tyson,heldout,writing_public_education,x,account-ollama,8a557fdfc98fe7b464c77c047515a52503312a4e0290f5381f3046709d06edef,PARTIAL,12,2,9,True,0,0,0,1,1,0,0,"{""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q31213305,Ibram X. Kendi,heldout,writing_public_education,instagram,web-rules,bbe0761caeb51e2fb77e2000f7cca89db56e463a8a98adf4062e0d2247d3f709,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q31213305,Ibram X. Kendi,heldout,writing_public_education,instagram,web-ollama,7f4a853382b225f5d16414f1e2f8cfb56952720a842c7c551d57420e89abedb9,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q31213305,Ibram X. Kendi,heldout,writing_public_education,instagram,account-rules,5cf0880a99e423445cd6974d577d4faef11a61dc8a6c4db4f1e97688fe402ed2,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q31213305,Ibram X. Kendi,heldout,writing_public_education,instagram,account-ollama,afdc1751d988696c034c90e8bd22491c6a8f5660f18f9b05ca9e598a74829fa5,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q32732,Malala Yousafzai,heldout,writing_public_education,instagram,web-rules,e3f2fbda0c8033b3d0cd76778dd7fc2c56acf4808b958e21aa70659c507310bc,PARTIAL,9,4,23,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q32732,Malala Yousafzai,heldout,writing_public_education,instagram,web-ollama,243a8092403456ad17d5ffaeba3e41417fd2160a65d6f5e301068bf853542aee,PARTIAL,9,4,23,True,1,0,0,6,3,0,0,"{""EMPTY"": 1, ""PARTIAL"": 1, ""SUCCESS"": 2}",{},4,0,0
+Q32732,Malala Yousafzai,heldout,writing_public_education,instagram,account-rules,4f56f77382f150b284999efdf4cca7f3a7c036fddcd7adc2edf7d69311a4e0b6,PARTIAL,11,4,23,True,1,0,0,3,0,0,0,{},{},0,0,0
+Q32732,Malala Yousafzai,heldout,writing_public_education,instagram,account-ollama,eb4fb2d81a0dfce50c2c79ec7e6f5426113f3e1cda03b320393110000dab7a12,PARTIAL,11,4,23,True,1,0,0,5,2,0,0,"{""EMPTY"": 2, ""PARTIAL"": 1, ""SUCCESS"": 1}",{},4,0,0
+Q3751091,José Andrés,heldout,writing_public_education,facebook,web-rules,45a1780a13f667e5965e5c2e1f030e0148def437b70e5caa6f3a8296462e6043,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q3751091,José Andrés,heldout,writing_public_education,facebook,web-ollama,4709633f02662ccaa253c65791c2d0f37db000685316fffd338003ea50cea752,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q3751091,José Andrés,heldout,writing_public_education,facebook,account-rules,a9fd5f2bb799495c5983a82ada4a09ad8839a19e7a41e5462af78eb662eb59e2,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q3751091,José Andrés,heldout,writing_public_education,facebook,account-ollama,36d2fc19d28f1dcfec24b8721a5926e85cb91a34013b9913073e8fc5b6f699fe,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q3877423,Nnedi Okorafor,heldout,writing_public_education,instagram,web-rules,db16bbb179e78e291f02ca9accf99feef30e540afd53046f50141b7f0d2a568a,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q3877423,Nnedi Okorafor,heldout,writing_public_education,instagram,web-ollama,c5c94867dff089bb13c94b72b8fbcd54bd1c4d6543d91493e68126354d83bacb,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q3877423,Nnedi Okorafor,heldout,writing_public_education,instagram,account-rules,b014bfa6e360e8a8720bc1eff51584694ab04513f6ab2f1058c8e9f5273548b1,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q3877423,Nnedi Okorafor,heldout,writing_public_education,instagram,account-ollama,cb5df785d326e9ab4a9109d2338cae3ca35739ccf51f3cf088c1ea1df1d5613c,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q44306,Salman Rushdie,heldout,writing_public_education,x,web-rules,650c7728174d7e7971f82e5c8db46c2354163703154d4403080baec5cffea4df,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q44306,Salman Rushdie,heldout,writing_public_education,x,web-ollama,e47c9f7ef1ed15e295c99b08a2bda333d7984b8942f68285dd054332e611a533,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q44306,Salman Rushdie,heldout,writing_public_education,x,account-rules,592676d02d9bf76fcbfd89a2ce8e356f50ba9afdd2db53af95e11ca1ab5be28d,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q44306,Salman Rushdie,heldout,writing_public_education,x,account-ollama,448e7712f642cf80d36b3594232676d5d814b4ccd5b03a3994937f19114a64aa,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,"{""EMPTY"": 2}",{},0,0,0
+Q458403,Mary Beard,heldout,writing_public_education,x,web-rules,e603bb98b2fdb77832d904b64b84e198b9d6b9dc2dc1316e4b8b7b80f2414faa,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q458403,Mary Beard,heldout,writing_public_education,x,web-ollama,a06a0a3e9e41569521f249465aac7ac0d650e740b192c14151b9c6a6e6177999,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},7,0,0
+Q458403,Mary Beard,heldout,writing_public_education,x,account-rules,3405853a2c75805d10a49418ef36eadc52acb7db14a4876ca8b9a346b36cd4c3,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q458403,Mary Beard,heldout,writing_public_education,x,account-ollama,4f14999538a85ddd1a9faa105967cec56df9772403901f050a52425b1715388c,PARTIAL,10,2,8,True,0,0,0,1,1,0,0,"{""REJECTED_ALL"": 1, ""SUCCESS"": 1}",{},1,0,0
+Q463581,Brian Cox,heldout,writing_public_education,facebook,web-rules,3dcc46f9a79e8650d6063d8c8907cc2eb6d506215e4f14bc1892aabe0293dead,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q463581,Brian Cox,heldout,writing_public_education,facebook,web-ollama,3dcc46f9a79e8650d6063d8c8907cc2eb6d506215e4f14bc1892aabe0293dead,PARTIAL,6,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q463581,Brian Cox,heldout,writing_public_education,facebook,account-rules,eb7d826c73934d0d764a81bdf73d64d6636c4d8bdb27baa49c30c544e9acd037,PARTIAL,9,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q463581,Brian Cox,heldout,writing_public_education,facebook,account-ollama,eb7d826c73934d0d764a81bdf73d64d6636c4d8bdb27baa49c30c544e9acd037,PARTIAL,9,0,0,False,0,0,0,0,0,0,0,{},{},0,0,0
+Q486882,Michio Kaku,heldout,writing_public_education,facebook,web-rules,34695455645d1165d0bd206f0a1617c3d961aff335462328c82cc2b3506e9462,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q486882,Michio Kaku,heldout,writing_public_education,facebook,web-ollama,b690f6c659d5e51fc4998a92436a195cfe56667ea2112148cae687caf5a3e932,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q486882,Michio Kaku,heldout,writing_public_education,facebook,account-rules,2737137f8a8cc7e5d7cb522769a4f4cae3e669d3c260438c052050da63d19dd3,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q486882,Michio Kaku,heldout,writing_public_education,facebook,account-ollama,bfe7c886e04137b5fba00683d63c2582971fd960f0012d3aa0c15e1e72fd10ae,PARTIAL,10,1,4,True,0,0,0,0,0,0,0,"{""REJECTED_ALL"": 1}",{},1,0,0
+Q4961808,Brené Brown,heldout,writing_public_education,instagram,web-rules,f231777b347831a430c448cf0f6c98c35bca2046aec1e5f782fe1200b65a9da5,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q4961808,Brené Brown,heldout,writing_public_education,instagram,web-ollama,d2bb4867fd48fdb832f2c986035ac41c7d440c949685c243e861f80cc7ec2243,PARTIAL,7,1,4,True,0,0,0,1,1,0,0,"{""PARTIAL"": 1}",{},7,0,0
+Q4961808,Brené Brown,heldout,writing_public_education,instagram,account-rules,c78a811b6b49f8c79e2cc1d41b782fa059a1a1af1056bbf19e698dbca29c68d8,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q4961808,Brené Brown,heldout,writing_public_education,instagram,account-ollama,7986a4edb2f7383a4cd888f320a2fa4af442899253e18b118d4fc10f8664d220,PARTIAL,10,2,7,True,0,0,0,0,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},5,0,0
+Q509662,Colson Whitehead,heldout,writing_public_education,x,web-rules,35305d3848bd77b2340a38bd8e0484be83e9ef52d7cae3f2b81836923c68e417,PARTIAL,7,1,4,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q509662,Colson Whitehead,heldout,writing_public_education,x,web-ollama,1edce041128d9cc3b8ce328de278cd3cdaee000123f9a09fb14c1e2f109c10e8,PARTIAL,7,1,4,True,0,0,0,1,1,0,0,"{""SUCCESS"": 1}",{},0,0,0
+Q509662,Colson Whitehead,heldout,writing_public_education,x,account-rules,b41c0a0151a6f3108b567081d879f7be5007a8163b2c95747e147ebd1817a226,PARTIAL,10,2,8,True,0,0,0,0,0,0,0,{},{},0,0,0
+Q509662,Colson Whitehead,heldout,writing_public_education,x,account-ollama,3af87252cba5e2fd87941ce219dd4e428842ddfd756783b09bc1f582a7e73158,PARTIAL,10,2,8,True,0,0,0,1,1,0,0,"{""EMPTY"": 1, ""SUCCESS"": 1}",{},0,0,0
+Q7328202,Richard Osman,heldout,writing_public_education,instagram,web-rules,200c4e7d2a34f264d0963c1e7c0515f6e5cb7bc654a5847ee0c4d089ee6646a0,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q7328202,Richard Osman,heldout,writing_public_education,instagram,web-ollama,f42013fcda6977c175cf49cc833942a0795350bc6f3ceb2bc76da299e4605b4c,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""REJECTED_ALL"": 1}",{},12,0,0
+Q7328202,Richard Osman,heldout,writing_public_education,instagram,account-rules,2efbddaa77e1c35e5e74f4f7da8d51e6a8f71899efc6b487f816fbac8430e852,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q7328202,Richard Osman,heldout,writing_public_education,instagram,account-ollama,a05527b91a2639cae2e9dc56dce3603aecb5f624dceb385913e900d0645d0a51,PARTIAL,10,2,7,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""REJECTED_ALL"": 1}",{},12,0,0
+Q8056413,Yotam Ottolenghi,heldout,writing_public_education,x,web-rules,459c568d8d70920594d0406cc6261030fbc9f41034d8db361963eb3a3aefd2d1,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q8056413,Yotam Ottolenghi,heldout,writing_public_education,x,web-ollama,323101414f64113f3dbf53ddd9ff72fb4cf7e1453fd2f9a2be616e20cab4a75e,PARTIAL,7,1,4,True,1,0,0,3,2,0,0,"{""PARTIAL"": 1}",{},1,0,0
+Q8056413,Yotam Ottolenghi,heldout,writing_public_education,x,account-rules,c936855d1796f04380ae9de046b7122289d57d3b6cb7d7b4ef2e14b645ebafe8,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q8056413,Yotam Ottolenghi,heldout,writing_public_education,x,account-ollama,17c07c19a25c9d86b0ed386e136ff5224188516e1110a61cd5704bdafa073c31,PARTIAL,10,2,8,True,1,0,0,3,2,0,0,"{""PARTIAL"": 1, ""SKIPPED"": 1}",{},1,0,0
+Q83566,Isabel Allende,heldout,writing_public_education,x,web-rules,0eb170f511180100ed79fd77cbb24d5d4dfb6b8d677e47f2df9ae24f710ff643,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q83566,Isabel Allende,heldout,writing_public_education,x,web-ollama,e0c6ae6376caeac8d376b4772f864ad9fb5846ea8ce54319d901075924b6bbb3,PARTIAL,7,1,4,True,1,0,0,1,0,0,0,"{""EMPTY"": 1}",{},0,0,0
+Q83566,Isabel Allende,heldout,writing_public_education,x,account-rules,0c1fde31fea439293f1a9c94a6a568ba72715befc0b03aa5ec4afcddee732cc5,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,{},{},0,0,0
+Q83566,Isabel Allende,heldout,writing_public_education,x,account-ollama,a73813784e52d4bc9e10af7c947d184082232e563ee584d765dc561ea7b6e60e,PARTIAL,10,2,8,True,1,0,0,1,0,0,0,"{""EMPTY"": 1, ""SKIPPED"": 1}",{},0,0,0

@@ -71,14 +71,14 @@ func TestDiscoveryDefaultsToLocalServiceAndReplacesOverride(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(d.providers) != 3 || d.providers[0].(*SearXNG).endpoint != "http://127.0.0.1:8888/search" {
+	if len(d.providers) != 4 || d.providers[0].(*SearXNG).endpoint != "http://127.0.0.1:8888/search" {
 		t.Fatal("local service missing from defaults")
 	}
 	d, err = NewConfiguredDiscovery(time.Second, "https://search.example.org/base")
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(d.providers) != 3 || d.providers[0].(*SearXNG).endpoint != "https://search.example.org/base/search" {
+	if len(d.providers) != 4 || d.providers[0].(*SearXNG).endpoint != "https://search.example.org/base/search" {
 		t.Fatal("override duplicated the local service")
 	}
 	d, err = NewConfiguredDiscoveryWithOptions(time.Second, "", SearXNGOptions{Pages: 2, Language: "id-ID", SafeSearch: 1})

@@ -46,6 +46,19 @@ func partialProfileName(q Query, raw, title string) bool {
 }
 
 func relevantSearchResult(q Query, raw, title, snippet string) bool {
+	// A platform-scoped handle query seeks that account, not another user's mention.
+	// Unscoped research queries still retain public third-party references.
+	if q.Username != "" && q.Platform != "" && q.Platform != "all" && q.Platform != "web" {
+		expected, err := accountURL(q.Platform, q.Username)
+		actual, parseErr := cleanURL(raw)
+		if err == nil && parseErr == nil {
+			account, _ := url.Parse(expected)
+			path, prefix := strings.ToLower(strings.TrimSuffix(actual.Path, "/")), strings.ToLower(strings.TrimSuffix(account.Path, "/"))
+			if platformFor(actual.Hostname()) != q.Platform || path != prefix && !strings.HasPrefix(path, prefix+"/") {
+				return false
+			}
+		}
+	}
 	return !directoryResult(raw) && (relevantResult(q, title+" "+snippet+" "+raw) || partialProfileName(q, raw, title))
 }
 

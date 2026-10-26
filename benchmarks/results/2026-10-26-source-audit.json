@@ -1,0 +1,765 @@
+{
+  "version": "matrix-source-audit-v1",
+  "method": "Hash-ordered heldout sample, at most one claim per person in each method/kind stratum; up to eight employment and twelve other role claims per method. Labels assess source entailment, not real-world truth or identity. This is a spot audit, not full-corpus precision.",
+  "scope": "Single-reviewer source-entailment spot audit of the frozen primary run, before subsequent fixes. Not independent adjudication or population accuracy. SUPPORTED allows conservative unknown/headline time; PARTIAL includes field-boundary and temporal errors.",
+  "raw_audit_sha256": "8c0a09f3d1adf2647fe5d8bd90fbbfb7e336de69c0ed6d4323430faea3989451",
+  "by_method": {
+    "deterministic": {
+      "SUPPORTED": 14,
+      "UNSUPPORTED": 1,
+      "PARTIAL": 2
+    },
+    "model": {
+      "UNSUPPORTED": 2,
+      "SUPPORTED": 15,
+      "PARTIAL": 3
+    }
+  },
+  "counts": {
+    "SUPPORTED": 29,
+    "UNSUPPORTED": 3,
+    "PARTIAL": 5
+  },
+  "claims": [
+    {
+      "audit_id": "07a2329c1ecaa5f021fffa54cf787e0c5b925e65ee5f34ad68d875efa690cab8",
+      "case_id": "Q7426870",
+      "name": "Satya Nadella",
+      "group": "deterministic",
+      "kind": "employment",
+      "subject": "Satya Nadella",
+      "role": "Chairman and Chief Executive Officer",
+      "organization": "Microsoft",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://www.bing.com/search?format=rss&q=%22Satya+Nadella%22"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q7426870\\web-ollama.json",
+      "snapshot_sha256": "875df8a912975f18a05f09418ea16ba1268fcdd2ac1a8ef28105e1a0ce153579",
+      "relation_id": "web-255dbcd797d7f9c89dfe3867c03fede839f485ababb3ad3fae83bae9d6088cbe-relation-caa61476e227903c",
+      "assessment": "SUPPORTED",
+      "reason": "The quoted clause explicitly names both position and organization.",
+      "quote_sha256": "b2c1d24cac5f2ae414336960fc2e5518040fec53080b8839a5295d5c39000ba4"
+    },
+    {
+      "audit_id": "104d85690ea4bcff9a1961babdd2c1c46fab24969a03c6f80a7301eddebf2a06",
+      "case_id": "Q229181",
+      "name": "Viola Davis",
+      "group": "deterministic",
+      "kind": "employment",
+      "subject": "Viola Davis",
+      "role": "American actress known",
+      "organization": "her precise",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://www.bing.com/search?format=rss&q=%22Viola+Davis%22"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q229181\\web-ollama.json",
+      "snapshot_sha256": "2ef56303f6c69deac00737a1557289a77ecab718f7fbbb4ae01047eb2d7018a8",
+      "relation_id": "web-fec08f501a16d5813f92686d439b12dc180d5740b3d879c151dba880d48308f3-relation-215252178e56ae8b",
+      "assessment": "UNSUPPORTED",
+      "reason": "Known for introduces a performance description, not an employer; her precise is not an organization.",
+      "quote_sha256": "292e01c62ca9694f442d39661912533c900d11c9c6a0904a3778775f1d3bd886"
+    },
+    {
+      "audit_id": "55a87eab7a5fafe4ff8d65eea04623578bb0301971d8036f2ec83148c1e5a86b",
+      "case_id": "Q8991894",
+      "name": "Giannis Antetokounmpo",
+      "group": "deterministic",
+      "kind": "employment",
+      "subject": "Giannis Antetokounmpo",
+      "role": "Greek-Nigerian professional basketball player",
+      "organization": "Miami Heat",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Giannis+Antetokounmpo"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q8991894\\account-ollama.json",
+      "snapshot_sha256": "6a4992194bfa938e4a3d5114a0593e51f0abe13b4aadaeea508f772a123f64a9",
+      "relation_id": "web-7092c244d81ddb68cdba05bde020c4dd494a96d44ef2ff5b6d67915065977bc2-relation-47a6aceed254eb2d",
+      "assessment": "SUPPORTED",
+      "reason": "The article title binds the expanded subject and the quoted clause names the team. This does not verify the real-world roster.",
+      "quote_sha256": "97af83cd7a028e5115f599ae1cea49d37ee63d971654d6dd8223a13f202a15b6"
+    },
+    {
+      "audit_id": "b3cb3ef1b2113eac3188059bc991f2ab507326b937befbaf2302c0f5771f96ff",
+      "case_id": "Q211290",
+      "name": "Massimo Bottura",
+      "group": "deterministic",
+      "kind": "employment",
+      "subject": "Massimo Bottura",
+      "role": "Chef and owner",
+      "organization": "Osteria Francescana (located in the historic center of his native Modena )",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Massimo_Bottura"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q211290\\account-ollama.json",
+      "snapshot_sha256": "fc3adaec83d7966a914194a4cb4bf622ea6fb6ecb221b291992685fccabdeace",
+      "relation_id": "web-5722197e203078209837e2abcfd491484c88e4d4b58047edd20cc5cb78b57607-relation-a840741caa88da95",
+      "assessment": "PARTIAL",
+      "reason": "The role and restaurant are explicit, but the organization field improperly includes a location description.",
+      "quote_sha256": "2137fe097e94dfc662e9fa535ea4a1f4f86aea02245e25b2f2437947ae262eb2"
+    },
+    {
+      "audit_id": "fe24a8ec90b15b9032231e2e3482c9dfa347edfd26eb61425a2d99caa3388500",
+      "case_id": "Q55183",
+      "name": "Susan Wojcicki",
+      "group": "deterministic",
+      "kind": "employment",
+      "subject": "Susan Wojcicki",
+      "role": "CEO",
+      "organization": "YouTube",
+      "temporal": "headline",
+      "sources": [
+        "https://www.bbc.co.uk/news/articles/c75nwnvvqr1o"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q55183\\account-ollama.json",
+      "snapshot_sha256": "b8e1c9145d16aaf948eeaf6ec9ea4bb542a2cad27df257e8281776c866feae6e",
+      "relation_id": "web-d4def2f1eeafed7e679932a66ac820a69623e3e9b7665a6191279e13afe6b0ec-relation-f856ee47c2f5bc17",
+      "assessment": "SUPPORTED",
+      "reason": "The undated headline supports a title association only, not current employment.",
+      "quote_sha256": "8c73a30af299422045cd352e0321a4af92a81f2c42481909e3b37db9a53b9e26"
+    },
+    {
+      "audit_id": "01291c7551fc976fcba7f16bf7f6086d1c46318fc1dc7ce125fe0781f3ee4220",
+      "case_id": "Q7520062",
+      "name": "Simon Willison",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Simon Willison",
+      "role": "British programmer",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Simon+Willison"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q7520062\\account-ollama.json",
+      "snapshot_sha256": "788dceec69f38dec15ca5346c2080ec12cbbe62201e02b28f50bbdef94c93baf",
+      "relation_id": "web-c0f57034fb3e3dcdf1b50fe5bed6e24e50292a2cd3c9e208f8cdd4b4d3dff192-relation-14dbd6d391360494",
+      "assessment": "SUPPORTED",
+      "reason": "The introductory clause explicitly states the occupation.",
+      "quote_sha256": "772ba70c302781b8e48f58a33f616b421f5824aa8db321de9e244c9eb8ee2843"
+    },
+    {
+      "audit_id": "0253519865865f7b527b069c54a8303f5b3725e3dc0b13c2ef1a2656803459df",
+      "case_id": "Q966845",
+      "name": "J Balvin",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Jos\u00e9 \u00c1lvaro Osorio Balv\u00edn",
+      "role": "Colombian singer",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=J+Balvin"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q966845\\account-ollama.json",
+      "snapshot_sha256": "ea9b2fe29202562716b25ebd0de92edebff12a80ab04d4d8288888f0ccd370b4",
+      "relation_id": "web-ce85930ac0a27a602a2b47d3fe6303036ea69ffdc4949c0eaecb2211e0c7da0b-relation-ce865d1e013ab602",
+      "assessment": "SUPPORTED",
+      "reason": "The passage explicitly gives the professional alias and singer occupation.",
+      "quote_sha256": "2eb2528af17d595ec9f25ceb5e2bf2f9d10db9a196eb5caa57d4ca0162676ed6"
+    },
+    {
+      "audit_id": "02b1daf754e31611ad380e5c6cb22754e0de927d96163c95e65c0cfb646efaa1",
+      "case_id": "Q48337",
+      "name": "Morgan Freeman",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Morgan Freeman",
+      "role": "American actor",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Morgan+Freeman"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q48337\\account-ollama.json",
+      "snapshot_sha256": "f18963755a39390f518627a4d44a21d7b555dbf7f1fad86664261bf1457196ef",
+      "relation_id": "web-189e21bbeb4e73b747b3719c52cd2bef8caa6cc40a56893231a7badd1c24da05-relation-cf72f91ed05ef6e5",
+      "assessment": "SUPPORTED",
+      "reason": "Actor is a supported subset of the listed occupations.",
+      "quote_sha256": "e7ec263ab5a13bd519d347776b8a293a2be5e4643590c6ec9f94aaf89d2484ae"
+    },
+    {
+      "audit_id": "02f827bffa369c5c0c50a081f9c37f36713c4c9bef0534588e06a45ed37e5818",
+      "case_id": "Q92768",
+      "name": "Rasmus Lerdorf",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Rasmus Lerdorf",
+      "role": "Danish-Canadian programmer",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Rasmus+Lerdorf"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q92768\\account-ollama.json",
+      "snapshot_sha256": "0ec8a872f26ffe03d5d214f5e0293b906b7e02bf89ba4a49bf7ca97a54fdc3ea",
+      "relation_id": "web-65988feb80c792f57bf89fce3f312724e9221d9ad8a4a22b36693b744af9e4c0-relation-2fccf3b53e947aca",
+      "assessment": "SUPPORTED",
+      "reason": "The introductory clause explicitly states the occupation.",
+      "quote_sha256": "6ee61b2edc4792923173ccecdfdca7cc231734929e252e69a00cf40c8d56a82b"
+    },
+    {
+      "audit_id": "0658273c9959532a080e1e45bfc6c22849cfd046d722e1a108836446f5e42c7d",
+      "case_id": "Q50495366",
+      "name": "Fran\u00e7ois Chollet",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Fran\u00e7ois Chollet",
+      "role": "French software engineer",
+      "organization": "",
+      "temporal": "historical",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fran%C3%A7ois_Chollet"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q50495366\\account-ollama.json",
+      "snapshot_sha256": "aa9c5bbdc4f23e471ebfe1e7e593fe3be5884eb1e0cc689cb285178ca3a09825",
+      "relation_id": "web-84aab30bcfedca3ca139985ce5555601e4b607113636b021f7d84d130f85c4f7-relation-4a13d0b0bb678965",
+      "assessment": "PARTIAL",
+      "reason": "Software engineer is supported, but former modifies the later staff position, not this occupation.",
+      "quote_sha256": "f97c1515cd4c2c16920d2305f79ed8f977bd8d95c86ed7873192aec1edbe3741"
+    },
+    {
+      "audit_id": "065cbdec07fb4dacc0164dc98e9026468943a2948ee855f63d97915048c8b112",
+      "case_id": "Q134895",
+      "name": "Javier Bardem",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Javier Bardem",
+      "role": "Spanish actor",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Javier+Bardem"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q134895\\account-ollama.json",
+      "snapshot_sha256": "902839062a39a86130d57782aa300178736d3a2621d3ebc2b3bd225c45b76e94",
+      "relation_id": "web-aaee3d7b6f39b01ea27bcb806c506bb78fea4432aaa2e3040f60a9b25f0de0cf-relation-dbd13fdd3d15c682",
+      "assessment": "SUPPORTED",
+      "reason": "The article heading binds the expanded introductory name and explicit occupation.",
+      "quote_sha256": "de16e266200b7c8854fe8772bb4088b869c21086236b60a98c203c8ce74eb0f9"
+    },
+    {
+      "audit_id": "0818bb96e6e9281409009d61ee69bc31df2d68790e8ed5df4e79224e8adf41fd",
+      "case_id": "Q38111",
+      "name": "Leonardo DiCaprio",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Leonardo DiCaprio",
+      "role": "American actor",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://www.bing.com/search?format=rss&q=%22Leonardo+DiCaprio%22"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q38111\\account-ollama.json",
+      "snapshot_sha256": "dce6d68144148bc2008f7990b66d667ca1fbbbbd380d6347cab6d476ead08b4e",
+      "relation_id": "web-5693530e6b11edbdf2d8bd56b891c23649b8e0f992beeb2b7541adea16f868a5-relation-31cc0bf574d820c0",
+      "assessment": "SUPPORTED",
+      "reason": "The main clause states actor; the subsequent career narrative does not make the occupation historical.",
+      "quote_sha256": "025d1b5e4ffb417eb9f3e51c6443afb70882dbfd6c68068b5e61f214a43c46ee"
+    },
+    {
+      "audit_id": "09034505ef86af6e4e323780aaa16c7ae79af0e1b27880c23b88dc99b3945dcf",
+      "case_id": "Q11755",
+      "name": "Daphne Koller",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Daphne Koller",
+      "role": "Israeli-American computer scientist",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Daphne_Koller"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q11755\\account-ollama.json",
+      "snapshot_sha256": "f259f7e56abb3d9b7ec7c14c5f9caa54c93ade64a51b038bfbbcf44d6d8952f6",
+      "relation_id": "web-9d47c6ad84cc45e62d31ec5a2c93602f316b94041a60f0bf9f7747657c0609db-relation-8430d407a183a36e",
+      "assessment": "SUPPORTED",
+      "reason": "The introductory clause explicitly states the occupation.",
+      "quote_sha256": "93fc47b79959e28aa2a9c827eeae6bb44833e95e04e646f38474e3da8cc93f8a"
+    },
+    {
+      "audit_id": "1730a634bb532ee4a58beea1f7ee5095d83d9cecd21877880c5d5d9dd3ad4933",
+      "case_id": "Q4235",
+      "name": "Miley Cyrus",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Miley Cyrus",
+      "role": "American singer",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Miley+Cyrus"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q4235\\account-ollama.json",
+      "snapshot_sha256": "96c7fe627aff3b47bdd20afabb46668a5b026c3c3cfc8f4fd07b66abe3ff581b",
+      "relation_id": "web-2e17994bb611e857e80aaf10ce4322d146093862ae2c77e65e5642a44e4cafa9-relation-3e49d790de5ed228",
+      "assessment": "SUPPORTED",
+      "reason": "The article heading binds the expanded name; former refers to a name, not the singer occupation.",
+      "quote_sha256": "611f735f9e3b177c2a0751ec1e46bafad7d4c110eb6a9c1582238eec05e0ed76"
+    },
+    {
+      "audit_id": "18a07b84231e66ae6a66f2a37f5f2e6510e43beaa76490934ae6c98fae231f45",
+      "case_id": "Q260725",
+      "name": "Megan Rapinoe",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Megan Rapinoe",
+      "role": "American former professional soccer player",
+      "organization": "",
+      "temporal": "historical",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Megan+Rapinoe"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q260725\\account-ollama.json",
+      "snapshot_sha256": "228bd794bb9627be2b953873cd8038e876a8f2b43b105a9cea8ea9caf088ba63",
+      "relation_id": "web-9995462699f5618bdf4c9531b6bd280588731453dcd5e15a3aaf317767d9aa91-relation-987f3f3be19485e6",
+      "assessment": "SUPPORTED",
+      "reason": "Former explicitly dates the professional sports occupation as historical.",
+      "quote_sha256": "0695e7532a8fc1a3da68dce96cb59e6837a7fdda7466aca7de229764c9bf7b45"
+    },
+    {
+      "audit_id": "19b212a9a69a68b4b0dcc295397bd263555bc8323546e4c03de1c222dd2ef70a",
+      "case_id": "Q36159",
+      "name": "LeBron James",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "LeBron James",
+      "role": "American professional basketball player",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=LeBron+James"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q36159\\account-ollama.json",
+      "snapshot_sha256": "fef379bde20fe5c4cb1d13d21a57525a96f5e416287421c2742eccb03151f325",
+      "relation_id": "web-c05a13fbc30506ad57ea4770bce72f758f68193391e4eb80be6f08fde0e88021-relation-853067cd81e0c221",
+      "assessment": "SUPPORTED",
+      "reason": "The quoted introduction supports the occupation; no team claim is assessed here.",
+      "quote_sha256": "cf818f396553429ffdf7c1285ab3c34279c0fcd9b29dfc2220b27123cc63ef16"
+    },
+    {
+      "audit_id": "1bda8327a1e8cc73c15599108d5a0f4ee60a8416c920982c28b914926f72adfa",
+      "case_id": "Q18638030",
+      "name": "Lea Verou",
+      "group": "deterministic",
+      "kind": "occupation",
+      "subject": "Lea Verou",
+      "role": "Greek-American computer scientist",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Lea+Verou"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q18638030\\account-ollama.json",
+      "snapshot_sha256": "b73f68de6cb836d8817c5ad7968626fa0a4d61f12fee0202831f7770eeb27d8e",
+      "relation_id": "web-d057d48c20cec39d05828757040a6a40ba985e576e50ff2d0f518ac2a53d551f-relation-f82dd8106c2c1a40",
+      "assessment": "SUPPORTED",
+      "reason": "Computer scientist is explicit in the introductory clause.",
+      "quote_sha256": "a117fb7fc840d9ddb8fac8010e47eea04d33608b21d90e6c60de4c94f236ef41"
+    },
+    {
+      "audit_id": "025271cd556c9cdbc5c3aa9193f5ebceda805e624462c12aa86b2fd4c3d2c1ff",
+      "case_id": "Q357984",
+      "name": "Kevin De Bruyne",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Kevin De Bruyne",
+      "role": "plays as",
+      "organization": "Napoli",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q357984\\account-ollama.json",
+      "snapshot_sha256": "aef1ada2000229a9a8adc1037fa1adb7d753230338ab5a1de0a5f26c852ff80e",
+      "relation_id": "web-bf77d7de89bb92023f193fc0b5e11180b58e8a619b64f6d5320e0a8784920db0-relation-c50b239a86318385",
+      "assessment": "UNSUPPORTED",
+      "reason": "Plays as is a verb phrase, not a position; midfielder is the quoted position.",
+      "quote_sha256": "5af8c55e6c731fdc18072a27e9cdd516324cb9885325c99b399176d4460e1af3"
+    },
+    {
+      "audit_id": "12a37f24db38027c9e274a03c375ac570473324685c9eb68a1a5fa111bea7866",
+      "case_id": "Q7520062",
+      "name": "Simon Willison",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Simon Willison",
+      "role": "co-founder",
+      "organization": "Lanyrd",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Simon+Willison"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q7520062\\account-ollama.json",
+      "snapshot_sha256": "788dceec69f38dec15ca5346c2080ec12cbbe62201e02b28f50bbdef94c93baf",
+      "relation_id": "web-c0f57034fb3e3dcdf1b50fe5bed6e24e50292a2cd3c9e208f8cdd4b4d3dff192-relation-0343ca5a6bb6ebe7",
+      "assessment": "SUPPORTED",
+      "reason": "The sentence explicitly associates the subject with co-founding Lanyrd.",
+      "quote_sha256": "6a8e3289245469a981754424ed5085c515e2ce45dab4800b832758b428f2af27"
+    },
+    {
+      "audit_id": "18a43c56cea4bb35ab7f01992dc2207ea12c164c5d42266ff16e78164cda8929",
+      "case_id": "Q92748",
+      "name": "Yukihiro Matsumoto",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Yukihiro Matsumoto",
+      "role": "Fellow",
+      "organization": "Rakuten Institute of Technology",
+      "temporal": "unknown",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Yukihiro+Matsumoto"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q92748\\account-ollama.json",
+      "snapshot_sha256": "116049e0858d456779958ff9c8d09ee3d211aec872b818dd3fb36c723189c733",
+      "relation_id": "web-d7fc8b6e85559e71e797ac655fb0b2faa9e064068ebc189a5e4d8bdcd786cbdb-relation-7510d866d9baec26",
+      "assessment": "SUPPORTED",
+      "reason": "The passage explicitly states the fellowship; unknown time remains conservative.",
+      "quote_sha256": "a53339eceee83af4606fa3efbdf884de58058051ec9093c14ccf1a86e74c0f14"
+    },
+    {
+      "audit_id": "1c6d72f1d5882e591d321467f36b76aa4532391b8f6427b3ed6eb55eb2dd92ee",
+      "case_id": "Q3571662",
+      "name": "Yann LeCun",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Yann LeCun",
+      "role": "Ex-Chief AI Scientist",
+      "organization": "Meta",
+      "temporal": "historical",
+      "sources": [
+        "https://x.com/ylecun"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q3571662\\account-ollama.json",
+      "snapshot_sha256": "65dc383a9e88272832cae6d6dc12e47a3b449fc816a709ceb864246d02024adb",
+      "relation_id": "web-255b21ab621baed09539282c280cbac6610f811aed1084573999ca253144a224-relation-897bdea7396e88fc",
+      "assessment": "SUPPORTED",
+      "reason": "The profile explicitly labels the Meta role as Ex-Chief AI Scientist.",
+      "quote_sha256": "b0583a95d780b08e10efaff0999d67d84357b05d6899c2690218cb6684ce54bd"
+    },
+    {
+      "audit_id": "2c519b8b325b4b4615ce27446b36058e1c63edaed43411d0827965f89e116666",
+      "case_id": "Q11755",
+      "name": "Daphne Koller",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Daphne Koller",
+      "role": "Founder and CEO",
+      "organization": "@ insitro",
+      "temporal": "unknown",
+      "sources": [
+        "https://x.com/DaphneKoller"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q11755\\account-ollama.json",
+      "snapshot_sha256": "f259f7e56abb3d9b7ec7c14c5f9caa54c93ade64a51b038bfbbcf44d6d8952f6",
+      "relation_id": "web-63caf039fb526cdfded8f4a569cdc24c1ed685c584de87522530a7cf333ef2e4-relation-395045e7fd776edc",
+      "assessment": "SUPPORTED",
+      "reason": "The profile names the founder/CEO role and account reference. The organization string remains an unverified account label.",
+      "quote_sha256": "c4c7d4eb68602fc458da39733163a1df79795cd0d0253c6f901ec0d5934763af"
+    },
+    {
+      "audit_id": "36b86a7e1369194c6a1971b9c4382736e0750eca461e721d3fce654095ac3cf3",
+      "case_id": "Q26703063",
+      "name": "Ian Goodfellow",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Ian Goodfellow",
+      "role": "AI chief",
+      "organization": "Apple",
+      "temporal": "headline",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ian_Goodfellow"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q26703063\\account-ollama.json",
+      "snapshot_sha256": "4223d726b26e1e64373fc9cb91deeafa25028d22c1468050c3d6eae733fb6dd9",
+      "relation_id": "web-3ec0084dd0d110721ed14801e29371454024c08bc09b44e0e75152658535ebd9-relation-7db0ca0834303fae",
+      "assessment": "PARTIAL",
+      "reason": "The role association is supported, but the headline reports quitting; the temporal label does not convey departure.",
+      "quote_sha256": "5bfcb57c7de30d78ccc9c34104501226f7f19c9ac663fed15720ecf7fb8be241"
+    },
+    {
+      "audit_id": "3ba8aecb9ebc3d981272ba7590640c66ac75779ccdde4842fd5071aae62a37a0",
+      "case_id": "Q133903",
+      "name": "Virgil van Dijk",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Virgil van Dijk",
+      "role": "centre-back",
+      "organization": "Liverpool",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Virgil+van+Dijk"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q133903\\account-ollama.json",
+      "snapshot_sha256": "fec0684396fb1304b2f20d547df959924e58a7802ee26968f577043edb0a12bc",
+      "relation_id": "web-064213edccc2e52bab5d335840619a3f1b069eb1c52fb830a3234a69ae31534f-relation-628e3eaf9e82d2aa",
+      "assessment": "SUPPORTED",
+      "reason": "The same sentence explicitly connects the playing position with the club.",
+      "quote_sha256": "bf29c526e046e0644661676bf43db88872044aeb6439ed213ba73da5f6ec2a6a"
+    },
+    {
+      "audit_id": "699b5bf8f4a753bb1e52e6c49c62d63f8595506f6d4e539f6d8d3ffc25cd2eb9",
+      "case_id": "Q92620",
+      "name": "Bjarne Stroustrup",
+      "group": "model",
+      "kind": "employment",
+      "subject": "Bjarne Stroustrup",
+      "role": "full professor",
+      "organization": "Columbia University",
+      "temporal": "historical",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Bjarne+Stroustrup"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q92620\\web-ollama.json",
+      "snapshot_sha256": "1224c1ca01885d0eb5243044a2a195554593bb52b60bbc9c9a81934c7eace721",
+      "relation_id": "web-51af4930738be59471ca99d84a6479001787522e52ea78480f1ebd68a7f355ff-relation-e3ab73fdcde82a0a",
+      "assessment": "PARTIAL",
+      "reason": "The role and university are supported across the paragraph, but the quoted since-2022 professorship is not historical; the period is omitted.",
+      "quote_sha256": "286bd95a36e617616c667ded048d4bee8333689f3dc370d15fd1cc98f405fae4"
+    },
+    {
+      "audit_id": "00cc10f4d191824b94c6883a0a420ed6cdbb94688ddd9d49c836e121df240d08",
+      "case_id": "Q9543",
+      "name": "Salman Khan",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Salman Khan",
+      "role": "Film actor, artist, painter, humanitarian",
+      "organization": "",
+      "temporal": "unknown",
+      "sources": [
+        "https://x.com/BeingSalmanKhan"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q9543\\account-ollama.json",
+      "snapshot_sha256": "171d93dccd672caa1abd24329d2bd648ed6384d65fcfe3fab8a2e44b00085c15",
+      "relation_id": "web-70ab682d2476621e07044bf1a2b579949f4d579c8762bdc220936502211eb95c-relation-4ff01c5aae4eae3e",
+      "assessment": "SUPPORTED",
+      "reason": "The profile explicitly lists all of these activities.",
+      "quote_sha256": "c7bedf1e9846032e3b3eb4af1257791dbf84dbe4f0423387baa68b7e23d1f4a0"
+    },
+    {
+      "audit_id": "049932af9d4a8ac0ee0da148d76fa2eb81a78c2422a2c7d7fee202e2ff9ccc10",
+      "case_id": "Q7520062",
+      "name": "Simon Willison",
+      "group": "model",
+      "kind": "education",
+      "subject": "Simon Willison",
+      "role": "Django Web framework",
+      "organization": "co-creator",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Simon+Willison"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q7520062\\web-ollama.json",
+      "snapshot_sha256": "71023ead10195f65283d4bafc552f87a86b702edb7400c9052b1af3835e82e74",
+      "relation_id": "web-c0f57034fb3e3dcdf1b50fe5bed6e24e50292a2cd3c9e208f8cdd4b4d3dff192-relation-9dd1332f79b41dc3",
+      "assessment": "UNSUPPORTED",
+      "reason": "Co-creator of a software framework does not state education or an institution.",
+      "quote_sha256": "6a8e3289245469a981754424ed5085c515e2ce45dab4800b832758b428f2af27"
+    },
+    {
+      "audit_id": "06fd41031342b252181ab2fb4f86d9eeb8627948408ea366ee670b7d169797df",
+      "case_id": "Q209942",
+      "name": "Sadio Man\u00e9",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Sadio Man\u00e9",
+      "role": "left winger",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Sadio+Man%C3%A9"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q209942\\account-ollama.json",
+      "snapshot_sha256": "39690519e334e37f10c96932645d8ac717bff6e713f53db4fa9687838f4482dd",
+      "relation_id": "web-a611e3433f213ba87000a6a0662e2865da85ba7ad86333158833916c76094625-relation-d785196e3dccfd3b",
+      "assessment": "SUPPORTED",
+      "reason": "The sentence explicitly states the playing position.",
+      "quote_sha256": "f399f6468fbe03fc965ab91f720be876a4289015496dd533982ae3833892a5d8"
+    },
+    {
+      "audit_id": "087ddcb772e5b8646953665528cc3dae4ae036dbc54ee3d7873fbe6f121d4003",
+      "case_id": "Q229181",
+      "name": "Viola Davis",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Viola Davis",
+      "role": "Academy-Award winning actress, philanthropist",
+      "organization": "",
+      "temporal": "unknown",
+      "sources": [
+        "https://x.com/violadavis"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q229181\\account-ollama.json",
+      "snapshot_sha256": "725aeb252a6aaca894967fa235c5282826d3cd3d2ac9f4e11262c46dc897d344",
+      "relation_id": "web-2480ac20ca7f70b0c63c9529dcc487399579810519113b3772a5af2ac95f97a3-relation-3aa89624e42b1137",
+      "assessment": "SUPPORTED",
+      "reason": "The profile explicitly lists the actress and philanthropist descriptions.",
+      "quote_sha256": "ad9d8d6db08e7588e45eb930ba6de232120ef0d600766e51f642d28a750db713"
+    },
+    {
+      "audit_id": "18d7bf3e710cb929e7a8572c93b86175eb0eb78258f34a8d09ce8c2794e90488",
+      "case_id": "Q32732",
+      "name": "Malala Yousafzai",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Malala Yousafzai",
+      "role": "activist",
+      "organization": "",
+      "temporal": "headline",
+      "sources": [
+        "https://www.bing.com/search?format=rss&q=%22Malala+Yousafzai%22"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q32732\\web-ollama.json",
+      "snapshot_sha256": "243a8092403456ad17d5ffaeba3e41417fd2160a65d6f5e301068bf853542aee",
+      "relation_id": "web-b0c916761c105c829eb635a56640cb33567333ac6a47253a8674d2e92c055dbd-relation-a71994bfaccc308c",
+      "assessment": "SUPPORTED",
+      "reason": "The biographical heading identifies the subject as an activist; headline time is conservative.",
+      "quote_sha256": "0464ebd07a567782029036dedce206cf4727c636ec3ed25ac433275cc0890805"
+    },
+    {
+      "audit_id": "1f92282f9f3ee98e99848f989e440dedfe82fab10ced3e49788e4c654239295a",
+      "case_id": "Q18638030",
+      "name": "Lea Verou",
+      "group": "model",
+      "kind": "membership",
+      "subject": "Lea Verou",
+      "role": "invited expert",
+      "organization": "W3C CSS Working Group",
+      "temporal": "headline",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Lea+Verou"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q18638030\\web-ollama.json",
+      "snapshot_sha256": "8999792cd76f4d1cadf5ff96a58152e821f5975171cd108e920362ad981e550a",
+      "relation_id": "web-d057d48c20cec39d05828757040a6a40ba985e576e50ff2d0f518ac2a53d551f-relation-e5de1ae1a888f1eb",
+      "assessment": "SUPPORTED",
+      "reason": "The paragraph explicitly identifies the invited-expert relationship; headline time is conservative.",
+      "quote_sha256": "caaf3c2d843a965d81f3ed35099cf894e5c4f4013dcd4c86fbff2ad797d55c0a"
+    },
+    {
+      "audit_id": "229a0420a272c982c27cbccfc91e5aa383db466e618873cf14bf54ad529b4e22",
+      "case_id": "Q241248",
+      "name": "Orhan Pamuk",
+      "group": "model",
+      "kind": "education",
+      "subject": "Orhan Pamuk",
+      "role": "Honorary Doctorate",
+      "organization": "University of Crete",
+      "temporal": "headline",
+      "sources": [
+        "https://orhanpamuk.net/"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q241248\\web-ollama.json",
+      "snapshot_sha256": "c0cfee9329da7202321c4ca7a629f29e66fc5fe8cd76561f52a085d2591ca913",
+      "relation_id": "web-2bde3733011a81c6a89e2bb9ea6b07600e0bd238f0194745ac9b47a8cad5c11c-relation-c3cb2ffed0f307eb",
+      "assessment": "SUPPORTED",
+      "reason": "The title supports an honorary qualification, not attendance or an earned degree; the role preserves Honorary.",
+      "quote_sha256": "9a10e3a08d789c2f406eedb3a7f1465dbc8db62e5d572418bc004a8dc87a84dd"
+    },
+    {
+      "audit_id": "2bc36e856d8e4ab7c79f667b99fd5e3ee9022abdd693d3c5520a3421e7a81f55",
+      "case_id": "Q212730",
+      "name": "Steven Pinker",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Steven Pinker",
+      "role": "Cognitive scientist",
+      "organization": "",
+      "temporal": "unknown",
+      "sources": [
+        "https://x.com/sapinker"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q212730\\account-ollama.json",
+      "snapshot_sha256": "5cf92d6981aede6556933a8def1a02c55d0a127fe36758c66c655e7652c6464e",
+      "relation_id": "web-adcb0356f54fdb7ca4998aebeb3183f203129a336c1dd21b09cb9aa28a53cdbb-relation-981c5cffd224427d",
+      "assessment": "SUPPORTED",
+      "reason": "The profile explicitly states cognitive scientist without a current-tense assertion.",
+      "quote_sha256": "a8c11373f0aa5d009ebc8b7fd5d6b09e98da01d4d81e74f4f05150e11c9d8bd6"
+    },
+    {
+      "audit_id": "358a35369912eab736f1df04906791d4b7d1dadf4747b3b6330c42ce22adb7ad",
+      "case_id": "Q39476",
+      "name": "Emma Watson",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Emma Watson",
+      "role": "Actress",
+      "organization": "",
+      "temporal": "headline",
+      "sources": [
+        "https://www.bing.com/search?format=rss&q=%22Emma+Watson%22"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q39476\\web-ollama.json",
+      "snapshot_sha256": "e4a8ab36ce478b6c12fd57e44a6dff125ea8483e22337eb92cc3e7f6aa42c9c8",
+      "relation_id": "web-8aa26aecd615a07a8d490d49fdbaace568ab1f71a893efa454a36a64a6492120-relation-96c11aeaada7046c",
+      "assessment": "SUPPORTED",
+      "reason": "The film-profile heading explicitly labels the subject Actress.",
+      "quote_sha256": "8fc09ca9762e732abac0e093ef220160aeaf8c3104a4028ad0c446f4f1e444ef"
+    },
+    {
+      "audit_id": "36c0ffe987d9cc0cc1395ff8d47857ad18c8bede90431071f65448feae1849dd",
+      "case_id": "Q93010",
+      "name": "Robert Cecil Martin",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Robert C. Martin",
+      "role": "Author of Clean Code",
+      "organization": "",
+      "temporal": "unknown",
+      "sources": [
+        "https://github.com/unclebob"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q93010\\account-ollama.json",
+      "snapshot_sha256": "468b12c8c54dcec6058f457daaca01f28d2b046cf3f7b9b67358f076eaf14028",
+      "relation_id": "web-fcf17dc2b9b06e4bf99b326bc8c7eed7864231fc29b59d5556f077124cd6634a-relation-2f1682beec0fab07",
+      "assessment": "SUPPORTED",
+      "reason": "The named profile explicitly states authorship of the book.",
+      "quote_sha256": "8424baf9dc76860efcd726e4f81d5887a1e57e1f8adfefbee606423435e712c4"
+    },
+    {
+      "audit_id": "38a2efe311ad8b8fb075aa5bb7b6dbcefe86320a54652af368167da3fee997fe",
+      "case_id": "Q74894",
+      "name": "Martin Fowler",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Martin Fowler",
+      "role": "Author on Software Development",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://x.com/martinfowler"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q74894\\account-ollama.json",
+      "snapshot_sha256": "53d71c5adc45027157036ba51b9670b7fc6fe5d602f7791c4ebfb6bd4563b35c",
+      "relation_id": "web-27b6577fb24abf6816803b79bbfefeff41ea5b8df15348cd317c7f8c8f4aabc0-relation-6948ac1d4354b94a",
+      "assessment": "PARTIAL",
+      "reason": "The author description is supported, but the explicit present-tense verb belongs to the separate employer statement.",
+      "quote_sha256": "c5f367cd1496c06f2b63d9119f9f792834c5bfdab4bf70351ee3f3e7105d3edf"
+    },
+    {
+      "audit_id": "453400dc2bcb3e5a63365c2a8d48d963d4b44f6d5e5710e3257c937d32b70dd3",
+      "case_id": "Q179576",
+      "name": "Gael Garc\u00eda Bernal",
+      "group": "model",
+      "kind": "occupation",
+      "subject": "Gael Garc\u00eda Bernal",
+      "role": "actor",
+      "organization": "",
+      "temporal": "present_assertion",
+      "sources": [
+        "https://en.wikipedia.org/w/api.php?action=query&exchars=6000&exintro=1&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&ppprop=disambiguation&prop=extracts%7Cinfo%7Cpageprops&redirects=1&titles=Gael+Garc%C3%ADa+Bernal"
+      ],
+      "snapshot": "data\\matrix-20261026\\release\\heldout\\Q179576\\account-ollama.json",
+      "snapshot_sha256": "7d93701e5e0cc0ca0e3f0549ffef79cc49fe5256476a317f4f312de7f687749a",
+      "relation_id": "web-c528c3c2d6b53d974bae17a9ccca22608d4850c7cfe646491fb18d90a6055771-relation-5d509aab2ed17c49",
+      "assessment": "SUPPORTED",
+      "reason": "The introductory sentence explicitly identifies the subject as an actor.",
+      "quote_sha256": "0031e2f8829abe76ddfcd59e61d5098297898d1309bcb9104e7e78053fad43f8"
+    }
+  ]
+}

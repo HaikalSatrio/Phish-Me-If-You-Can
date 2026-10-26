@@ -193,7 +193,7 @@ func operationalFailure(r Result) bool {
 		return false
 	}
 	for _, event := range r.Events {
-		for _, marker := range []string{"service unavailable", "connection failed", "dns lookup failed", "network request failed", "request timed out", "tls certificate"} {
+		for _, marker := range []string{"service unavailable", "upstream engines unavailable", "connection failed", "dns lookup failed", "network request failed", "request timed out", "tls certificate"} {
 			if strings.Contains(strings.ToLower(event.Detail), marker) {
 				return true
 			}

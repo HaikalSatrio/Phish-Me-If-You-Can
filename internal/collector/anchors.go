@@ -24,7 +24,7 @@ func discoveryQueries(q Query) []Query {
 		next.Accounts, next.URL = nil, ""
 		out = append(out, next)
 	}
-	if len(strings.Fields(q.Name)) >= 2 {
+	if strings.TrimSpace(q.Name) != "" {
 		next := q
 		next.Platform, next.Username, next.Accounts, next.URL = "", "", nil, ""
 		out = append(out, next)
@@ -56,6 +56,22 @@ func discoveryURLKey(raw string) string {
 	if platformFor(u.Hostname()) != "web" {
 		u.Host = strings.TrimPrefix(u.Host, "www.")
 		u.Path = strings.TrimSuffix(u.Path, "/")
+		parts := strings.Split(strings.Trim(u.Path, "/"), "/")
+		if len(parts) == 2 {
+			tab := strings.ToLower(parts[1])
+			platform := platformFor(u.Hostname())
+			reserved := strings.Contains(" p reel reels explore accounts i search ", " "+strings.ToLower(parts[0])+" ")
+			if !reserved && (platform == "instagram" && (tab == "reels" || tab == "feed" || tab == "tagged") || platform == "x" && (tab == "media" || tab == "with_replies")) {
+				u.Path = "/" + parts[0]
+			}
+		}
+		query := u.Query()
+		for key := range query {
+			if strings.HasPrefix(strings.ToLower(key), "utm_") || key == "hl" || key == "igsh" || key == "igshid" || key == "fbclid" {
+				query.Del(key)
+			}
+		}
+		u.RawQuery = query.Encode()
 	}
 	return u.String()
 }

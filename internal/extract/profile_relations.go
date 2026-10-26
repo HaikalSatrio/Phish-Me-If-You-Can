@@ -14,8 +14,12 @@ var credentialPrefix = regexp.MustCompile(`^(?:[A-Z](?:\.[A-Za-z]{1,6})+\.?|[A-Z
 
 var ambiguousRolePrefix = map[string]bool{"executive": true, "chief": true, "principal": true, "associate": true, "assistant": true, "vice": true, "staff": true}
 var organizationDescription = regexp.MustCompile(`(?i)\s+(?:working\s+(?:on|with|to)|where\s|which\s|speciali[sz]ing\s+in|focusing\s+on|responsible\s+for|developing\s|building\s|yang\s|dengan\s+tugas)`)
+var interfaceRole = regexp.MustCompile(`(?i)\b(?:profiles?|biograph(?:y|ies)|statistics|stats|net worth|latest news)\b`)
 
 func organizationField(value string) string {
+	if loc := regexp.MustCompile(`(?i)\s+\((?:located|based|situated)\s+`).FindStringIndex(value); loc != nil {
+		value = value[:loc[0]]
+	}
 	if loc := organizationDescription.FindStringIndex(value); loc != nil {
 		value = value[:loc[0]]
 	}
@@ -40,6 +44,9 @@ func validRoleValue(role string) bool {
 
 // A headline role starts with a role word or a bounded professional qualifier.
 func profileRole(role string) bool {
+	if interfaceRole.MatchString(role) {
+		return false
+	}
 	qualifiers := map[string]bool{"general": true, "senior": true, "junior": true, "software": true, "security": true, "information": true, "cyber": true, "cybersecurity": true, "computer": true, "science": true, "awareness": true, "penetration": true, "financial": true, "technical": true, "business": true, "product": true, "full": true, "stack": true}
 	for _, q := range []string{"digital", "strategic", "communication", "communications", "startup", "public", "deputy"} {
 		qualifiers[q] = true

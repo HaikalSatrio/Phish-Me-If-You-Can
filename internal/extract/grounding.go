@@ -61,6 +61,9 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	if !strings.EqualFold(compact(r.Subject), compact(subject)) {
 		return fail("SUBJECT", "The proposed subject differs from the requested subject")
 	}
+	if interfaceRole.MatchString(r.Role) {
+		return fail("ROLE_IS_INTERFACE_LABEL", "The proposed role is a page label, not a profession")
+	}
 	if r.Quote == "" || len([]rune(r.Quote)) > 1000 {
 		return fail("QUOTE_LIMIT", "Quote is empty or exceeds 1000 characters")
 	}
@@ -108,6 +111,8 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	proofDoc := doc
 	proofDoc.Text = r.Quote
 	proved := false
+	var proofStart, proofEnd int
+	var proofTemporal string
 	for _, proof := range Relations(subject, []Document{proofDoc}, asOf) {
 		if proof.Kind == "public_office" && proof.Organization == "" && r.Organization != "" && strings.EqualFold(proof.Role, r.Role+" of "+r.Organization) {
 			adjust("role", r.Role, proof.Role, "Preserved the public-office title boundary in the quoted source")
@@ -124,6 +129,7 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 		}
 		if proofRoleMatches(proof.Role, r.Role) && strings.EqualFold(proof.Organization, r.Organization) {
 			proved = true
+			proofStart, proofEnd, proofTemporal = proof.StartYear, proof.EndYear, proof.Temporal
 			adjust("quote", r.Quote, proof.Quote, "Focused the selected passage on its explicit relationship")
 			r.Quote = proof.Quote
 			adjust("kind", r.Kind, proof.Kind, "Explicit relationship in the quoted source")
@@ -139,7 +145,31 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	if strings.EqualFold(r.Role, "board of directors") {
 		return fail("ROLE_IS_COLLECTIVE", "A governing body is not an individual's job title")
 	}
-	if !proved && r.Temporal == "present_assertion" && !explicitPresent.MatchString(r.Quote) {
+	temporalText := r.Quote
+	if !proved {
+		// Dates and tense must belong to a clause containing the proposed fields.
+		matches := []string{}
+		for _, sentence := range Sentences(r.Quote) {
+			if (r.Role == "" || containsWords(sentence, strings.TrimRight(r.Role, ". "))) && (r.Organization == "" || containsWords(sentence, strings.TrimRight(r.Organization, ". "))) {
+				matches = append(matches, sentence)
+			}
+		}
+		if len(matches) == 0 {
+			return fail("RELATION_SCOPE", "The selected passage does not isolate the role and organization in one sentence")
+		}
+		temporalText = matches[0]
+		start, end, state := temporal(temporalText, "", asOf)
+		for _, match := range matches[1:] {
+			s, e, status := temporal(match, "", asOf)
+			if s != start || e != end || status != state || explicitPresent.MatchString(match) != explicitPresent.MatchString(temporalText) {
+				return fail("RELATION_SCOPE", "Repeated relationship statements have incompatible periods or tense")
+			}
+		}
+		if r.Kind == "education" && !educationCue.MatchString(temporalText) {
+			return fail("EDUCATION_UNSUPPORTED", "The cited relationship has no explicit study or qualification statement")
+		}
+	}
+	if !proved && r.Temporal == "present_assertion" && !explicitPresent.MatchString(temporalText) {
 		state := "unknown"
 		if doc.Type == "search_title" || doc.Type == "page_title" || doc.Type == "search_snippet" || doc.Type == "page_description" || doc.Type == "profile_description" {
 			state = "headline"
@@ -147,7 +177,10 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 		adjust("temporal", r.Temporal, state, "No explicit present-tense relationship in the selected passage")
 		r.Temporal = state
 	}
-	s, e, state := temporal(r.Quote, "", asOf)
+	s, e, state := temporal(temporalText, "", asOf)
+	if proved {
+		s, e, state = proofStart, proofEnd, proofTemporal
+	}
 	if r.StartYear != 0 && r.StartYear != s || r.EndYear != 0 && r.EndYear != e {
 		return fail("PERIOD_UNSUPPORTED", "Proposed start/end years do not match a supported date expression in the quote")
 	}
@@ -179,7 +212,9 @@ func groundProposal(r domain.Relation, subject string, doc Document, asOf time.T
 	return r, adjustments, "", ""
 }
 
-var relationshipVerbValue = regexp.MustCompile(`(?i)^(?:works?|worked|serves?|served)(?:\s+(?:at|as|in))?$|^(?:pernah\s+)?(?:bekerja|menjabat)(?:\s+(?:di|sebagai))?$`)
+var relationshipVerbValue = regexp.MustCompile(`(?i)^(?:works?|worked|serves?|served|plays?|played)(?:\s+(?:at|as|in|for))?$|^(?:pernah\s+)?(?:bekerja|menjabat)(?:\s+(?:di|sebagai))?$`)
+
+var educationCue = regexp.MustCompile(`(?i)\b(?:studied|studies|studying|student|undergraduate|postgraduate|graduated|graduate|alumnus|alumna|alumni|attended|trained|training|enrolled|degree|doctorate|bachelor|master|PhD|Ph\.D|belajar|kuliah|mahasiswa|mahasiswi|lulusan|lulus|sarjana|pendidikan|pendidikannya|bersekolah)\b`)
 
 var explicitPresent = regexp.MustCompile(`(?i)\b(?:is|works|serves|adalah|merupakan|menjabat|bekerja|I am|I'm|I\x{2019}m)\b`)
 

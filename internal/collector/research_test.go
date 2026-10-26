@@ -51,7 +51,7 @@ func TestResearchHypothesisSearchDoesNotInventObservedName(t *testing.T) {
 		return Result{Status: "SUCCESS", Requests: 1, Profiles: []Profile{{URL: q.URL, SourceURL: q.URL, Facts: []Fact{{"page_title", "LailaKartika"}}}}}
 	}}
 	index := &anchorPage{response: func(q Query) Result {
-		if q.Username != "" {
+		if q.Username != "" || q.Name == "Laila" {
 			return Result{Status: "EMPTY", Requests: 1}
 		}
 		if q.Name != "Laila Kartika" || q.Platform != "" || len(q.Accounts) != 0 {
@@ -62,7 +62,7 @@ func TestResearchHypothesisSearchDoesNotInventObservedName(t *testing.T) {
 	d := Discovery{page: page, providers: []Collector{index}}
 	q := Query{Name: "Laila", Accounts: []domain.AccountClue{{Platform: "github", Username: "LailaKartika"}}, Budget: 10, Limit: 5}
 	r := d.Collect(context.Background(), q)
-	if len(index.queries) != 3 || len(r.Profiles) != 2 || r.Requests != 5 {
+	if len(index.queries) != 5 || len(r.Profiles) != 2 || r.Requests != 7 {
 		t.Fatalf("follow-up search missing: %+v", r)
 	}
 	for _, p := range r.Profiles {
@@ -70,7 +70,7 @@ func TestResearchHypothesisSearchDoesNotInventObservedName(t *testing.T) {
 			t.Fatal("query promoted to observed name")
 		}
 	}
-	if !strings.Contains(r.Profiles[1].DiscoveryBasis, "hypothesis") || r.Research[1].Query != "Laila Kartika" || q.Accounts[0].Username != "LailaKartika" {
+	if !strings.Contains(r.Profiles[1].DiscoveryBasis, "hypothesis") || r.Research[len(r.Research)-2].Query != "Laila Kartika" || q.Accounts[0].Username != "LailaKartika" {
 		t.Fatalf("hypothesis provenance lost: %+v", r)
 	}
 }

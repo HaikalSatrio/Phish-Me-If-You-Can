@@ -54,7 +54,7 @@ func pageIdentity(doc *html.Node, base *url.URL, facts []Fact) (string, []resear
 					reason = "explicit biography or portfolio link"
 				}
 				if ref, err := url.Parse(attr(n, "href")); err == nil && reason != "" && attr(n, "href") != "" && !strings.HasPrefix(attr(n, "href"), "#") {
-					if u, err := cleanURL(base.ResolveReference(ref).String()); err == nil && u.RawQuery == "" && !seen[u.String()] && (reason != "same-site biography navigation" || u.Hostname() == base.Hostname()) {
+					if u, err := cleanURL(base.ResolveReference(ref).String()); err == nil && u.RawQuery == "" && !seen[u.String()] && !wikiNavigation(u) && (reason != "same-site biography navigation" || u.Hostname() == base.Hostname()) {
 						seen[u.String()] = true
 						links = append(links, researchLink{u.String(), reason})
 					}
@@ -80,6 +80,10 @@ func pageIdentity(doc *html.Node, base *url.URL, facts []Fact) (string, []resear
 		}
 	}
 	return strings.TrimSpace(name), links
+}
+
+func wikiNavigation(u *url.URL) bool {
+	return strings.HasSuffix(strings.ToLower(u.Hostname()), ".wikipedia.org") && strings.HasPrefix(u.Path, "/wiki/") && strings.Contains(strings.TrimPrefix(u.Path, "/wiki/"), ":")
 }
 
 func plausiblePersonName(s string) bool {
