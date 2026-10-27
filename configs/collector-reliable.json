@@ -1,0 +1,22 @@
+{
+  "version": "public_collection_access_v1",
+  "searxng_url": "http://127.0.0.1:8888",
+  "searxng_engines": ["bing", "brave"],
+  "candidate_limit": 5,
+  "request_budget": 20,
+  "max_attempts": 3,
+  "timeout_seconds": 15,
+  "session_timeout_seconds": 90,
+  "name_confidence": 0.3,
+  "username_confidence": 0.6,
+  "attribute_boost": 0.15,
+  "evidence_confidence": 1.0,
+  "discoverability": 0.5,
+  "access": {
+    "state_dir": "data/access-state",
+    "dns_resolver": "cloudflare",
+    "min_interval_ms": 1000,
+    "search_interval_ms": 6000,
+    "max_retries": 1
+  }
+}

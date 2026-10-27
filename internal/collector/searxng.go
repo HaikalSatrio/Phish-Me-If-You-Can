@@ -50,7 +50,7 @@ func (o SearXNGOptions) Validate() error {
 		return fmt.Errorf("search_time_range must be day, week, month, or year")
 	}
 	for _, engine := range o.Engines {
-		if !validSearchToken(engine, "_-.") {
+		if engine != strings.TrimSpace(engine) || !validSearchToken(engine, "_-. ") {
 			return fmt.Errorf("searxng_engines entries must be engine names")
 		}
 	}
@@ -161,6 +161,8 @@ func (s *SearXNG) Collect(ctx context.Context, q Query) Result {
 				values.Set("language", s.opts.Language)
 			}
 			if len(s.opts.Engines) > 0 {
+				// SearXNG unions explicit engines with category engines when both are sent.
+				values.Del("categories")
 				values.Set("engines", strings.Join(s.opts.Engines, ","))
 			}
 			if s.opts.TimeRange != "" {
@@ -176,10 +178,12 @@ func (s *SearXNG) Collect(ctx context.Context, q Query) Result {
 				return r
 			}
 			req.Header.Set("Accept", "application/json")
-			response, err := s.client.Do(req)
+			response, err := doAccess(s.client, req)
 			r.Requests++
 			if err != nil {
-				r.Events = append(r.Events, Event{op, "FAILED", "SearXNG service unavailable or timed out; start the configured service first. For the bundled local service run: powershell -File scripts/start-local-search.ps1"})
+				status, detail := networkFailure(err)
+				r.Status = status
+				r.Events = append(r.Events, Event{op, status, "SearXNG service unavailable: " + detail})
 				return r
 			}
 			if response.StatusCode != 200 {
@@ -201,6 +205,8 @@ func (s *SearXNG) Collect(ctx context.Context, q Query) Result {
 				return r
 			}
 			if len(data.Results) == 0 && len(data.Unresponsive) > 0 {
+				// SearXNG manages per-engine suspension. Do not block the healthy local
+				// service or other engines because one upstream failed for this query.
 				details := []string{}
 				for _, raw := range data.Unresponsive {
 					var pair []string

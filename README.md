@@ -96,6 +96,7 @@ Untuk GitHub gunakan `search -source github -username octocat`. Untuk Bluesky gu
 
 ## Dokumen
 
+- [Keandalan akses, cooldown, DNS, dan TLS Bing di WSL](docs/ACCESS-RELIABILITY.md) — aktifkan dengan `-config configs/collector-reliable-v4.json`.
 - [Penelusuran bertahap, bukti identitas, dan pendidikan](docs/ITERATIVE-RESEARCH.md)
 - [Arsitektur](docs/ARCHITECTURE.md)
 - [Spesifikasi PES](docs/PES_SPEC.md)

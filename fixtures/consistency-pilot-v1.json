@@ -1,0 +1,15 @@
+{
+  "version": "consistency-pilot-v1",
+  "purpose": "Exploratory diagnostic, not an untouched acceptance test or population accuracy estimate.",
+  "limitations": ["Eight purposively selected public figures; six software developers, two entertainers.", "Three repetitions in one session measure short-term repeatability only.", "Reference URLs are partial known-source targets, not an exhaustive web ground truth.", "Account clues are public reference associations, not legal identity verification.", "Four cases reuse the prior public matrix; all cases are development diagnostics."],
+  "cases": [
+    {"id":"simon", "name":"Simon Willison", "platform":"github", "username":"simonw", "reference_urls":["https://github.com/simonw", "https://simonwillison.net/", "https://en.wikipedia.org/wiki/Simon_Willison"], "reference_basis":"Existing public matrix Q7520062; public GitHub profile."},
+    {"id":"guido", "name":"Guido van Rossum", "platform":"github", "username":"gvanrossum", "reference_urls":["https://github.com/gvanrossum", "https://python.org/~guido/", "https://en.wikipedia.org/wiki/Guido_van_Rossum"], "reference_basis":"Existing public matrix Q30942; personal URL recorded by the public GitHub API before collection."},
+    {"id":"linus", "name":"Linus Torvalds", "platform":"github", "username":"torvalds", "reference_urls":["https://github.com/torvalds", "https://en.wikipedia.org/wiki/Linus_Torvalds"], "reference_basis":"Existing public matrix Q34253; public GitHub profile."},
+    {"id":"taylor", "name":"Taylor Swift", "platform":"instagram", "username":"taylorswift", "reference_urls":["https://www.instagram.com/taylorswift/", "https://www.taylorswift.com/", "https://en.wikipedia.org/wiki/Taylor_Swift"], "reference_basis":"Existing public matrix Q26876."},
+    {"id":"maudy", "name":"Maudy Ayunda", "platform":"instagram", "username":"maudyayunda", "reference_urls":["https://www.instagram.com/maudyayunda/", "https://en.wikipedia.org/wiki/Maudy_Ayunda", "https://id.wikipedia.org/wiki/Maudy_Ayunda"], "reference_basis":"Public Wikipedia article and its external account reference, inspected before this pilot."},
+    {"id":"rich", "name":"Rich Harris", "platform":"github", "username":"Rich-Harris", "reference_urls":["https://github.com/Rich-Harris"], "reference_basis":"Public GitHub profile; API provides no personal website, so none is presumed."},
+    {"id":"kent", "name":"Kent C. Dodds", "platform":"github", "username":"kentcdodds", "reference_urls":["https://github.com/kentcdodds", "https://kentcdodds.com/"], "reference_basis":"Public GitHub profile and linked personal website."},
+    {"id":"addy", "name":"Addy Osmani", "platform":"github", "username":"addyosmani", "reference_urls":["https://github.com/addyosmani", "https://addyosmani.com/"], "reference_basis":"Public GitHub profile and linked personal website."}
+  ]
+}

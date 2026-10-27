@@ -38,9 +38,9 @@ func (g *GitHub) get(ctx context.Context, path string, out any) (string, string)
 	if g.token != "" {
 		req.Header.Set("Authorization", "Bearer "+g.token)
 	}
-	resp, err := g.client.Do(req)
+	resp, err := doAccess(g.client, req)
 	if err != nil {
-		return "FAILED", "Request failed, timed out, or was cancelled"
+		return networkFailure(err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode == 404 {

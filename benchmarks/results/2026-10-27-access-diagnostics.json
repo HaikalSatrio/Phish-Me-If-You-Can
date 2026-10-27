@@ -1,0 +1,491 @@
+{
+  "network_probes_started_at": "2026-10-26T19:52:09.612234+00:00",
+  "dns": [
+    {
+      "host": "html.duckduckgo.com",
+      "system": [
+        "2606:4700:3030::ac43:be3c",
+        "2606:4700:3034::6815:13d9",
+        "36.86.63.185"
+      ],
+      "https_dns": {
+        "Status": 0,
+        "TC": false,
+        "RD": true,
+        "RA": true,
+        "AD": false,
+        "CD": false,
+        "Question": [
+          {
+            "name": "html.duckduckgo.com",
+            "type": 1
+          }
+        ],
+        "Answer": [
+          {
+            "name": "html.duckduckgo.com",
+            "type": 5,
+            "TTL": 115,
+            "data": "duckduckgo.com."
+          },
+          {
+            "name": "duckduckgo.com",
+            "type": 1,
+            "TTL": 115,
+            "data": "20.43.161.105"
+          }
+        ]
+      }
+    },
+    {
+      "host": "www.bing.com",
+      "system": [
+        "23.203.165.73",
+        "23.203.165.81",
+        "2600:1413:b000:1d::17d1:2e8b",
+        "2600:1413:b000:1d::17d1:2e98"
+      ],
+      "https_dns": {
+        "Status": 0,
+        "TC": false,
+        "RD": true,
+        "RA": true,
+        "AD": false,
+        "CD": false,
+        "Question": [
+          {
+            "name": "www.bing.com",
+            "type": 1
+          }
+        ],
+        "Answer": [
+          {
+            "name": "www.bing.com",
+            "type": 5,
+            "TTL": 21599,
+            "data": "www-www.bing.com.trafficmanager.net."
+          },
+          {
+            "name": "www-www.bing.com.trafficmanager.net",
+            "type": 5,
+            "TTL": 59,
+            "data": "www.bing.com.edgekey.net."
+          },
+          {
+            "name": "www.bing.com.edgekey.net",
+            "type": 5,
+            "TTL": 21599,
+            "data": "e86303.dscx.akamaiedge.net."
+          },
+          {
+            "name": "e86303.dscx.akamaiedge.net",
+            "type": 1,
+            "TTL": 19,
+            "data": "23.55.39.10"
+          },
+          {
+            "name": "e86303.dscx.akamaiedge.net",
+            "type": 1,
+            "TTL": 19,
+            "data": "23.55.39.16"
+          },
+          {
+            "name": "e86303.dscx.akamaiedge.net",
+            "type": 1,
+            "TTL": 19,
+            "data": "23.55.39.8"
+          },
+          {
+            "name": "e86303.dscx.akamaiedge.net",
+            "type": 1,
+            "TTL": 19,
+            "data": "23.55.39.7"
+          }
+        ]
+      }
+    }
+  ],
+  "protocol_probes": [
+    {
+      "host": "html.duckduckgo.com",
+      "route": "system",
+      "protocol": "--http1.1",
+      "exit_code": 60,
+      "result": "000 0 0.120851",
+      "error": "curl: (60) SSL certificate problem: certificate has expired\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.",
+      "at": "2026-10-26T19:52:10.217832+00:00"
+    },
+    {
+      "host": "html.duckduckgo.com",
+      "route": "system",
+      "protocol": "--http2",
+      "exit_code": 60,
+      "result": "000 0 0.130705",
+      "error": "curl: (60) SSL certificate problem: certificate has expired\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.",
+      "at": "2026-10-26T19:52:13.416242+00:00"
+    },
+    {
+      "host": "html.duckduckgo.com",
+      "route": "verified_https_dns",
+      "protocol": "--http1.1",
+      "exit_code": 0,
+      "result": "200 1.1 0.667875",
+      "error": "",
+      "at": "2026-10-26T19:52:17.350324+00:00",
+      "bytes": 32680,
+      "rss": false,
+      "challenge": false
+    },
+    {
+      "host": "html.duckduckgo.com",
+      "route": "verified_https_dns",
+      "protocol": "--http2",
+      "exit_code": 0,
+      "result": "202 2 0.256351",
+      "error": "",
+      "at": "2026-10-26T19:52:20.747970+00:00",
+      "bytes": 14223,
+      "rss": false,
+      "challenge": true
+    },
+    {
+      "host": "www.bing.com",
+      "route": "system",
+      "protocol": "--http1.1",
+      "exit_code": 0,
+      "result": "200 1.1 0.297214",
+      "error": "",
+      "at": "2026-10-26T19:52:24.146035+00:00",
+      "bytes": 6043,
+      "rss": true,
+      "challenge": false
+    },
+    {
+      "host": "www.bing.com",
+      "route": "system",
+      "protocol": "--http2",
+      "exit_code": 0,
+      "result": "200 2 0.288713",
+      "error": "",
+      "at": "2026-10-26T19:52:27.543515+00:00",
+      "bytes": 1368,
+      "rss": true,
+      "challenge": false
+    },
+    {
+      "host": "www.bing.com",
+      "route": "verified_https_dns",
+      "protocol": "--http1.1",
+      "exit_code": 0,
+      "result": "200 1.1 0.297391",
+      "error": "",
+      "at": "2026-10-26T19:52:30.965935+00:00",
+      "bytes": 5387,
+      "rss": true,
+      "challenge": false
+    },
+    {
+      "host": "www.bing.com",
+      "route": "verified_https_dns",
+      "protocol": "--http2",
+      "exit_code": 0,
+      "result": "200 2 0.334937",
+      "error": "",
+      "at": "2026-10-26T19:52:34.398236+00:00",
+      "bytes": 5241,
+      "rss": true,
+      "challenge": false
+    }
+  ],
+  "initial_engines": [
+    {
+      "engine": "google",
+      "at": "2026-10-26T19:55:40.579162+00:00",
+      "results": 0,
+      "unavailable": [
+        [
+          "google",
+          "access denied"
+        ]
+      ],
+      "actual_engines": []
+    },
+    {
+      "engine": "bing",
+      "at": "2026-10-26T19:55:53.266601+00:00",
+      "results": 10,
+      "unavailable": [],
+      "actual_engines": [
+        "bing"
+      ]
+    },
+    {
+      "engine": "brave",
+      "at": "2026-10-26T19:56:05.895116+00:00",
+      "results": 22,
+      "unavailable": [],
+      "actual_engines": [
+        "brave"
+      ]
+    }
+  ],
+  "alternative_engines": [
+    {
+      "engine": "mwmbl",
+      "at": "2026-10-27T04:08:32.271106+00:00",
+      "results": 0,
+      "unavailable": [],
+      "actual_engines": []
+    },
+    {
+      "engine": "qwant",
+      "at": "2026-10-27T04:08:46.249898+00:00",
+      "results": 0,
+      "unavailable": [
+        [
+          "qwant",
+          "access denied"
+        ]
+      ],
+      "actual_engines": []
+    },
+    {
+      "engine": "yahoo",
+      "at": "2026-10-27T04:08:58.801447+00:00",
+      "results": 7,
+      "unavailable": [],
+      "actual_engines": [
+        "yahoo"
+      ]
+    }
+  ],
+  "bing_tls_comparison": [
+    {
+      "access": [
+        {
+          "at": "2026-10-27T03:58:15.010598564Z",
+          "host": "www.bing.com",
+          "outcome": "NETWORK_ERROR",
+          "reason": "Request timed out",
+          "duration_ms": 15018
+        }
+      ],
+      "events": [
+        {
+          "Operation": "bing:web",
+          "Status": "FAILED",
+          "Detail": "Request timed out"
+        }
+      ],
+      "http2_enabled": true,
+      "phases": [
+        {
+          "detail": true,
+          "ms": 59,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 59,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 139,
+          "phase": "connect_done"
+        }
+      ],
+      "profiles": 0,
+      "requests": 1,
+      "status": "FAILED",
+      "classical_tls": false,
+      "source_sha256": "2110fad81cea8de81b75721b00730f3174445a61461f4960cbcab497dd034149"
+    },
+    {
+      "access": [
+        {
+          "at": "2026-10-27T03:59:06.193642972Z",
+          "host": "www.bing.com",
+          "outcome": "NETWORK_ERROR",
+          "reason": "Request timed out",
+          "duration_ms": 15008
+        }
+      ],
+      "events": [
+        {
+          "Operation": "bing:web",
+          "Status": "FAILED",
+          "Detail": "Request timed out"
+        }
+      ],
+      "http2_enabled": false,
+      "phases": [
+        {
+          "detail": true,
+          "ms": 37198,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 37199,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 37238,
+          "phase": "connect_done"
+        },
+        {
+          "detail": {
+            "alpn": "",
+            "ok": false
+          },
+          "ms": 52240,
+          "phase": "tls_done"
+        }
+      ],
+      "profiles": 0,
+      "requests": 1,
+      "status": "FAILED",
+      "classical_tls": false,
+      "source_sha256": "2110fad81cea8de81b75721b00730f3174445a61461f4960cbcab497dd034149"
+    },
+    {
+      "access": [
+        {
+          "at": "2026-10-27T03:59:42.798506573Z",
+          "host": "www.bing.com",
+          "outcome": "RESPONSE",
+          "http_status": 200,
+          "reason": "HTTP response received; parse/relevance are evaluated separately",
+          "duration_ms": 306
+        }
+      ],
+      "classical_tls": true,
+      "events": [
+        {
+          "Operation": "bing:web",
+          "Status": "FAILED",
+          "Detail": "No usable matching links: 0 invalid URLs, 0 outside the requested platform, 7 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent."
+        }
+      ],
+      "http2_enabled": true,
+      "phases": [
+        {
+          "detail": true,
+          "ms": 5944,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 5944,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 5965,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 5965,
+          "phase": "tls_start"
+        },
+        {
+          "detail": {
+            "alpn": "h2",
+            "ok": true
+          },
+          "ms": 6033,
+          "phase": "tls_done"
+        },
+        {
+          "detail": true,
+          "ms": 6034,
+          "phase": "request_written"
+        },
+        {
+          "detail": true,
+          "ms": 6248,
+          "phase": "first_response_byte"
+        }
+      ],
+      "profiles": 0,
+      "requests": 1,
+      "status": "FAILED",
+      "source_sha256": "92b0468d9ca8ae1894f79e6c855996ef94643b2c72a67d8d5558a5caa43a3fc0"
+    },
+    {
+      "access": [
+        {
+          "at": "2026-10-27T03:59:48.913328731Z",
+          "host": "www.bing.com",
+          "outcome": "RESPONSE",
+          "http_status": 200,
+          "reason": "HTTP response received; parse/relevance are evaluated separately",
+          "duration_ms": 361
+        }
+      ],
+      "classical_tls": true,
+      "events": [
+        {
+          "Operation": "bing:web",
+          "Status": "FAILED",
+          "Detail": "No usable matching links: 0 invalid URLs, 0 outside the requested platform, 7 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent."
+        }
+      ],
+      "http2_enabled": false,
+      "phases": [
+        {
+          "detail": true,
+          "ms": 5752,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 5752,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 5826,
+          "phase": "connect_done"
+        },
+        {
+          "detail": true,
+          "ms": 5826,
+          "phase": "tls_start"
+        },
+        {
+          "detail": {
+            "alpn": "",
+            "ok": true
+          },
+          "ms": 5847,
+          "phase": "tls_done"
+        },
+        {
+          "detail": true,
+          "ms": 5848,
+          "phase": "request_written"
+        },
+        {
+          "detail": true,
+          "ms": 6113,
+          "phase": "first_response_byte"
+        }
+      ],
+      "profiles": 0,
+      "requests": 1,
+      "status": "FAILED",
+      "source_sha256": "92b0468d9ca8ae1894f79e6c855996ef94643b2c72a67d8d5558a5caa43a3fc0"
+    }
+  ],
+  "limitations": [
+    "Sequential development probes, not a randomized controlled experiment.",
+    "Default and classical TLS used the same verified certificate policy but may resolve different public edge IPs.",
+    "HTTP success does not imply matching search results.",
+    "Bing trace probes overlapped iteration-2 and used its shared host cooldown.",
+    "Engine probes issued one query per engine, with a twelve-second gap; no suspensions were cleared."
+  ]
+}

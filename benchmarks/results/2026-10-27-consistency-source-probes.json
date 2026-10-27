@@ -1,0 +1,195 @@
+{
+  "tls_probes": [
+    {
+      "host": "html.duckduckgo.com",
+      "at": "2026-10-26T19:04:06.980427+00:00",
+      "addresses": [
+        "2606:4700:3030::ac43:be3c",
+        "2606:4700:3034::6815:13d9",
+        "36.86.63.185"
+      ],
+      "tls": "failed",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'html.duckduckgo.com'. (_ssl.c:1000)",
+      "seconds": 0.134
+    },
+    {
+      "host": "www.bing.com",
+      "at": "2026-10-26T19:04:07.114364+00:00",
+      "addresses": [
+        "184.25.236.10",
+        "184.25.236.17",
+        "184.25.236.19",
+        "184.25.236.32",
+        "184.25.236.40",
+        "184.25.236.48",
+        "184.25.236.56",
+        "184.25.236.59",
+        "184.25.236.8",
+        "2001:4488:f831::17d8:9ebb",
+        "2001:4488:f831::17d8:9ec2"
+      ],
+      "tls": "verified",
+      "issuer": [
+        [
+          [
+            "countryName",
+            "US"
+          ]
+        ],
+        [
+          [
+            "organizationName",
+            "Microsoft Corporation"
+          ]
+        ],
+        [
+          [
+            "commonName",
+            "Microsoft TLS G2 ECC CA OCSP 02"
+          ]
+        ]
+      ],
+      "subject": [
+        [
+          [
+            "countryName",
+            "US"
+          ]
+        ],
+        [
+          [
+            "stateOrProvinceName",
+            "WA"
+          ]
+        ],
+        [
+          [
+            "localityName",
+            "Redmond"
+          ]
+        ],
+        [
+          [
+            "organizationName",
+            "Microsoft Corporation"
+          ]
+        ],
+        [
+          [
+            "commonName",
+            "r.bing.com"
+          ]
+        ]
+      ],
+      "seconds": 0.115
+    },
+    {
+      "host": "api.github.com",
+      "at": "2026-10-26T19:04:07.229178+00:00",
+      "addresses": [
+        "20.205.243.168"
+      ],
+      "tls": "verified",
+      "issuer": [
+        [
+          [
+            "countryName",
+            "GB"
+          ]
+        ],
+        [
+          [
+            "organizationName",
+            "Sectigo Limited"
+          ]
+        ],
+        [
+          [
+            "commonName",
+            "Sectigo Public Server Authentication CA DV E36"
+          ]
+        ]
+      ],
+      "subject": [
+        [
+          [
+            "commonName",
+            "*.github.com"
+          ]
+        ]
+      ],
+      "seconds": 0.127
+    },
+    {
+      "host": "en.wikipedia.org",
+      "at": "2026-10-26T19:04:07.355836+00:00",
+      "addresses": [
+        "103.102.166.224",
+        "2001:df2:e500:ed1a::1"
+      ],
+      "tls": "verified",
+      "issuer": [
+        [
+          [
+            "countryName",
+            "US"
+          ]
+        ],
+        [
+          [
+            "organizationName",
+            "Let's Encrypt"
+          ]
+        ],
+        [
+          [
+            "commonName",
+            "YE2"
+          ]
+        ]
+      ],
+      "subject": [
+        [
+          [
+            "commonName",
+            "*.wikipedia.org"
+          ]
+        ]
+      ],
+      "seconds": 0.168
+    }
+  ],
+  "searxng": {
+    "url": "http://127.0.0.1:8888/search?q=%22Simon%20Willison%22&format=json",
+    "at": "2026-10-26T19:04:10.564967+00:00",
+    "unresponsive_engines": [
+      [
+        "brave",
+        "Suspended: too many requests"
+      ],
+      [
+        "duckduckgo",
+        "Suspended: SSL error: certificate validation has failed"
+      ],
+      [
+        "google cse",
+        "Suspended: too many requests"
+      ],
+      [
+        "wikidata",
+        "timeout"
+      ],
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ],
+    "result_count": 0,
+    "result_engines": []
+  },
+  "container": "docker.io/searxng/searxng:latest sha256:7c7cbe509429e82755104b2a95f52085a98633c95d53f44e4e905fa3a59f08c8",
+  "limitations": [
+    "Supplemental probes are not the collector's own HTTP transport.",
+    "TLS failure cause needs investigation; verification was not disabled."
+  ]
+}

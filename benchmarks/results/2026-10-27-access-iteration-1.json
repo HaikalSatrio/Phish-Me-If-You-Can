@@ -1,0 +1,536 @@
+{
+  "run": "data/access-repair-20261027/iteration-1",
+  "manifest": {
+    "started_at": "2026-10-26T20:01:27.497063+00:00",
+    "spec": {
+      "binary_sha256": "fe7b84c6a3abe786dde60238a0da264bb38bb8518c7fb8f3f1f422bd82c2a76c",
+      "corpus_sha256": "85e74accfde68d9e74bc243e79adcae59a1eac95611be53675fee83d2313a094",
+      "config_sha256": "750225ef99ec839f6eb0df3a77fc0339eb4046001c0c9ae82139cb3571dfa3b7",
+      "runner_sha256": "fde68ba9037e0d1693993937ebea0d9f20636616eb590cb7ab1994acb5508603",
+      "rounds": 1,
+      "gap": 6,
+      "workers": 2,
+      "commit": "6a918c612c2489316fffd61d146526f4c8bff6c1",
+      "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+      "config": {
+        "version": "public_collection_access_v1",
+        "searxng_url": "http://127.0.0.1:8888",
+        "searxng_engines": [
+          "bing",
+          "brave"
+        ],
+        "candidate_limit": 5,
+        "request_budget": 20,
+        "max_attempts": 3,
+        "timeout_seconds": 15,
+        "session_timeout_seconds": 90,
+        "name_confidence": 0.3,
+        "username_confidence": 0.6,
+        "attribute_boost": 0.15,
+        "evidence_confidence": 1.0,
+        "discoverability": 0.5,
+        "access": {
+          "state_dir": "data/access-state",
+          "dns_resolver": "cloudflare",
+          "min_interval_ms": 1000,
+          "search_interval_ms": 6000,
+          "max_retries": 1
+        }
+      }
+    },
+    "limitations": [
+      "Eight purposively selected public figures; six software developers, two entertainers.",
+      "Three repetitions in one session measure short-term repeatability only.",
+      "Reference URLs are partial known-source targets, not an exhaustive web ground truth.",
+      "Account clues are public reference associations, not legal identity verification.",
+      "Four cases reuse the prior public matrix; all cases are development diagnostics."
+    ]
+  },
+  "complete": true,
+  "stopped": null,
+  "finished_at": "2026-10-26T20:06:40.360696+00:00",
+  "reporter_sha256": "dbc2f6f044bf0e08be4a37bd990cb59b30736b92e27ccb21639f1130005d640e",
+  "searxng_upstreams": {
+    "queries_with_upstream_errors": 32
+  },
+  "summary": {
+    "web": {
+      "runs": 8,
+      "with_candidates": 6,
+      "statuses": {
+        "PARTIAL": 6,
+        "BLOCKED": 2
+      },
+      "median_seconds": 18.697499999999998,
+      "max_seconds": 86.742,
+      "requests": 44
+    },
+    "account": {
+      "runs": 8,
+      "with_candidates": 8,
+      "statuses": {
+        "PARTIAL": 8
+      },
+      "median_seconds": 26.5875,
+      "max_seconds": 68.504,
+      "requests": 76
+    },
+    "api": {
+      "runs": 6,
+      "with_candidates": 6,
+      "statuses": {
+        "REVIEW_REQUIRED": 6
+      },
+      "median_seconds": 0.8394999999999999,
+      "max_seconds": 10.805,
+      "requests": 6
+    }
+  },
+  "hosts": {
+    "github.com": {
+      "http_200": 10
+    },
+    "127.0.0.1:8888": {
+      "DEFERRED": 6,
+      "http_200": 32
+    },
+    "html.duckduckgo.com": {
+      "http_200": 9,
+      "http_202": 1,
+      "DEFERRED": 11
+    },
+    "www.bing.com": {
+      "DEFERRED": 7,
+      "NETWORK_ERROR": 10
+    },
+    "en.wikipedia.org": {
+      "http_200": 20
+    },
+    "www.addyosmani.com": {
+      "http_301": 1
+    },
+    "addyosmani.com": {
+      "http_200": 4,
+      "http_301": 2
+    },
+    "twitter.com": {
+      "http_301": 2
+    },
+    "x.com": {
+      "http_200": 3
+    },
+    "api.github.com": {
+      "http_200": 6
+    },
+    "www.linkedin.com": {
+      "http_301": 1,
+      "http_200": 2
+    },
+    "python.org": {
+      "http_301": 1
+    },
+    "www.python.org": {
+      "http_301": 1
+    },
+    "gvanrossum.github.io": {
+      "http_200": 2
+    },
+    "kentcdodds.com": {
+      "http_200": 2
+    },
+    "grokipedia.com": {
+      "http_200": 1
+    },
+    "lemelson.mit.edu": {
+      "http_200": 1
+    },
+    "torvalds-family.blogspot.com": {
+      "http_200": 1
+    },
+    "www.biographies.net": {
+      "http_200": 1
+    },
+    "id.wikipedia.org": {
+      "http_200": 2
+    },
+    "www.instagram.com": {
+      "DEFERRED": 3,
+      "http_302": 1,
+      "http_429": 1
+    },
+    "lifestyle.kompas.com": {
+      "http_200": 1
+    },
+    "bsky.app": {
+      "http_200": 1
+    },
+    "simonwillison.net": {
+      "http_200": 2
+    },
+    "www.youtube.com": {
+      "http_200": 2
+    },
+    "www.taylorswift.com": {
+      "http_200": 2
+    },
+    "starsunfolded.com": {
+      "http_200": 1
+    }
+  },
+  "operations": {
+    "web:anchor:github": {
+      "SUCCESS": 6
+    },
+    "searxng:github": {
+      "BLOCKED": 1,
+      "SUCCESS": 7,
+      "FAILED": 2
+    },
+    "duckduckgo:github": {
+      "SUCCESS": 3,
+      "BLOCKED": 3
+    },
+    "duckduckgo:web": {
+      "FAILED": 2,
+      "BLOCKED": 7,
+      "SUCCESS": 5
+    },
+    "bing:github": {
+      "BLOCKED": 2,
+      "FAILED": 2
+    },
+    "wikipedia:title": {
+      "EMPTY": 4,
+      "SUCCESS": 6
+    },
+    "web:research:link": {
+      "SUCCESS": 12
+    },
+    "github:user": {
+      "SUCCESS": 6
+    },
+    "searxng:web": {
+      "SUCCESS": 21,
+      "BLOCKED": 4
+    },
+    "bing:web": {
+      "FAILED": 3,
+      "BLOCKED": 4
+    },
+    "web:page": {
+      "SUCCESS": 23,
+      "BLOCKED": 5,
+      "FAILED": 4
+    },
+    "web:anchor:instagram": {
+      "BLOCKED": 2
+    },
+    "searxng:instagram": {
+      "BLOCKED": 1,
+      "SUCCESS": 2
+    },
+    "duckduckgo:instagram": {
+      "BLOCKED": 1
+    },
+    "bing:instagram": {
+      "BLOCKED": 1
+    }
+  },
+  "rows": [
+    {
+      "case": "addy",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 5,
+      "duration_seconds": 13.53,
+      "access_counts": {
+        "http_200": 7,
+        "DEFERRED": 3,
+        "http_202": 1,
+        "http_301": 3
+      }
+    },
+    {
+      "case": "addy",
+      "arm": "api",
+      "round": 1,
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "duration_seconds": 0.84,
+      "access_counts": {
+        "http_200": 1
+      }
+    },
+    {
+      "case": "addy",
+      "arm": "web",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 12,
+      "candidates": 5,
+      "duration_seconds": 50.775,
+      "access_counts": {
+        "http_200": 8,
+        "NETWORK_ERROR": 2,
+        "http_301": 2
+      }
+    },
+    {
+      "case": "guido",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 13,
+      "candidates": 5,
+      "duration_seconds": 49.617,
+      "access_counts": {
+        "http_200": 8,
+        "DEFERRED": 1,
+        "NETWORK_ERROR": 2,
+        "http_301": 3
+      }
+    },
+    {
+      "case": "guido",
+      "arm": "api",
+      "round": 1,
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "duration_seconds": 0.94,
+      "access_counts": {
+        "http_200": 1
+      }
+    },
+    {
+      "case": "guido",
+      "arm": "web",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 1,
+      "duration_seconds": 86.742,
+      "access_counts": {
+        "http_200": 4,
+        "DEFERRED": 2,
+        "NETWORK_ERROR": 2
+      }
+    },
+    {
+      "case": "kent",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 5,
+      "duration_seconds": 34.429,
+      "access_counts": {
+        "http_200": 10
+      }
+    },
+    {
+      "case": "kent",
+      "arm": "api",
+      "round": 1,
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "duration_seconds": 0.837,
+      "access_counts": {
+        "http_200": 1
+      }
+    },
+    {
+      "case": "kent",
+      "arm": "web",
+      "round": 1,
+      "status": "BLOCKED",
+      "requests": 1,
+      "candidates": 0,
+      "duration_seconds": 0.681,
+      "access_counts": {
+        "DEFERRED": 3,
+        "http_200": 1
+      }
+    },
+    {
+      "case": "linus",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 5,
+      "duration_seconds": 24.741,
+      "access_counts": {
+        "http_200": 11
+      }
+    },
+    {
+      "case": "linus",
+      "arm": "api",
+      "round": 1,
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "duration_seconds": 0.839,
+      "access_counts": {
+        "http_200": 1
+      }
+    },
+    {
+      "case": "linus",
+      "arm": "web",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 3,
+      "duration_seconds": 10.521,
+      "access_counts": {
+        "http_200": 6,
+        "DEFERRED": 2
+      }
+    },
+    {
+      "case": "maudy",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 2,
+      "candidates": 1,
+      "duration_seconds": 2.669,
+      "access_counts": {
+        "DEFERRED": 4,
+        "http_200": 2
+      }
+    },
+    {
+      "case": "maudy",
+      "arm": "web",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 4,
+      "candidates": 4,
+      "duration_seconds": 9.365,
+      "access_counts": {
+        "http_200": 4,
+        "DEFERRED": 1
+      }
+    },
+    {
+      "case": "rich",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 2,
+      "duration_seconds": 68.504,
+      "access_counts": {
+        "http_200": 8,
+        "DEFERRED": 1,
+        "NETWORK_ERROR": 2
+      }
+    },
+    {
+      "case": "rich",
+      "arm": "api",
+      "round": 1,
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "duration_seconds": 10.805,
+      "access_counts": {
+        "http_200": 1
+      }
+    },
+    {
+      "case": "rich",
+      "arm": "web",
+      "round": 1,
+      "status": "BLOCKED",
+      "requests": 1,
+      "candidates": 0,
+      "duration_seconds": 0.79,
+      "access_counts": {
+        "DEFERRED": 3,
+        "http_200": 1
+      }
+    },
+    {
+      "case": "simon",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 5,
+      "duration_seconds": 27.902,
+      "access_counts": {
+        "http_200": 11,
+        "DEFERRED": 2
+      }
+    },
+    {
+      "case": "simon",
+      "arm": "api",
+      "round": 1,
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "duration_seconds": 0.789,
+      "access_counts": {
+        "http_200": 1
+      }
+    },
+    {
+      "case": "simon",
+      "arm": "web",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 5,
+      "candidates": 1,
+      "duration_seconds": 41.438,
+      "access_counts": {
+        "http_200": 3,
+        "DEFERRED": 2,
+        "NETWORK_ERROR": 2
+      }
+    },
+    {
+      "case": "taylor",
+      "arm": "account",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 4,
+      "duration_seconds": 25.273,
+      "access_counts": {
+        "DEFERRED": 3,
+        "http_200": 8
+      }
+    },
+    {
+      "case": "taylor",
+      "arm": "web",
+      "round": 1,
+      "status": "PARTIAL",
+      "requests": 9,
+      "candidates": 5,
+      "duration_seconds": 26.874,
+      "access_counts": {
+        "http_200": 7,
+        "http_302": 1,
+        "http_429": 1
+      }
+    }
+  ],
+  "limitations": [
+    "DEFERRED is not successful access.",
+    "HTTP 200 alone does not establish valid content, relevance, or identity.",
+    "HTTP 404 is a completed lookup, not a transport error.",
+    "Comparison with older runs is affected by changing provider availability.",
+    "DNS lookups are infrastructure requests outside the content-request budget; no cached content is used.",
+    "Request counts measure content-client attempts. A network error does not prove that a request reached the provider."
+  ]
+}
