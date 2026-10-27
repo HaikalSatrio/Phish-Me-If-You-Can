@@ -1,0 +1,229 @@
+{
+  "method": "Single assistant review of captured candidate titles, snippets and profile context. No independent human adjudication. RELEVANT means about the subject, not verified identity or accurate claims. Exact case/URL keys prevent automatic labels on newly appearing pages.",
+  "labels": {
+    "addy|github.com/addyosmani": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "addy|linkedin.com/in/addyosmani": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "addy|addyosmani.com": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "addy|x.com/addyosmani": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "addy|addyosmani.com/bio": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|github.com/gvanrossum": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|en.wikipedia.org/wiki/Guido_van_Rossum": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|id.wikipedia.org/wiki/Guido_van_Rossum": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|computerhistory.org/profile/guido-van-rossum": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|computerhistory.org/about": {
+      "label": "IRRELEVANT",
+      "reason": "General museum About page, not a biography of Guido."
+    },
+    "guido|commons.wikimedia.org/wiki/Category:Guido_van_Rossum": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "kent|github.com/kentcdodds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "kent|kentcdodds.com": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "kent|linkedin.com/in/kentcdodds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "kent|x.com/kentcdodds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "kent|kentcdodds.com/about": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "kent|kentcdodds.com/blog": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|github.com/torvalds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|en.wikipedia.org/wiki/Linus_Torvalds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|lemelson.mit.edu/resources/linus-torvalds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|id.wikipedia.org/wiki/Linus_Torvalds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|goodreads.com/author/quotes/92867.Linus_Torvalds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|build5nines.com/big-thinkers-linus-torvalds-linux-cloud-computing": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|goodreads.com/genres/biography": {
+      "label": "IRRELEVANT",
+      "reason": "General biography-book genre page, not a page about Linus."
+    },
+    "maudy|instagram.com/maudyayunda": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "maudy|youtube.com/@modmedia": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "maudy|um-surabaya.ac.id/article/konten-mindfulness-maudy-ayunda-dikritik-pakar-umsura-soroti-perspektif-kelas": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "maudy|en.wikipedia.org/wiki/Maudy_Ayunda": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "maudy|open.spotify.com/intl-id/artist/17Wt0hzZb6fAEVfIHffQFB": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "rich|github.com/rich-harris": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "rich|x.com/Rich_Harris": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "rich|master.dev/teachers/rich-harris": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "rich|en.wikipedia.org/wiki/Judith_Rich_Harris": {
+      "label": "WRONG_PERSON",
+      "reason": "Judith Rich Harris is a different subject from the programmer Rich Harris."
+    },
+    "rich|bsky.app/profile/rich-harris.dev": {
+      "label": "UNCERTAIN",
+      "reason": "Matching name and handle, but inspected snippet lacks independent subject-disambiguating context."
+    },
+    "rich|imdb.com/name/nm5931032/bio": {
+      "label": "WRONG_PERSON",
+      "reason": "Title and snippet concern Judith Rich Harris."
+    },
+    "simon|github.com/simonw": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "simon|en.wikipedia.org/wiki/Simon_Willison": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "simon|simonwillison.net/about": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "simon|build.microsoft.com/en-US/speakers/1768245294609build26-1776365809006001iDqG": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "simon|latent.space/wiki/simon-willison": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "simon|canto.so/leader/simon-willison": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "taylor|instagram.com/taylorswift": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "taylor|taylorswift.com": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "taylor|open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "taylor|en.wikipedia.org/wiki/Taylor_Swift": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "taylor|imdb.com/name/nm2357847": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "taylor|facebook.com/TaylorSwift": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|gvanrossum.github.io": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|gvanrossum.github.io//Resume.html": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "guido|x.com/gvanrossum": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "linus|en.wikiquote.org/wiki/Linus_Torvalds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "rich|instagram.com/richharrisaudio": {
+      "label": "UNCERTAIN",
+      "reason": "Same name; retrieved snippet does not establish this is the software developer."
+    },
+    "addy|github.com/addyosmani/addyosmani": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "kent|github.com/kentcdodds/kentcdodds": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "simon|github.com/simonw/simonw": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    },
+    "simon|simonwillison.net": {
+      "label": "RELEVANT",
+      "reason": "Inspected title/snippet or profile context supports page relevance to the intended public subject; not ownership or factual verification."
+    }
+  }
+}

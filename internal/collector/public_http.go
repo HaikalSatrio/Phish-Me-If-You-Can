@@ -75,7 +75,10 @@ func networkFailure(err error) (string, string) {
 	var certificateError *tls.CertificateVerificationError
 	var networkError net.Error
 	var operationError *net.OpError
+	var deferred *accessError
 	switch {
+	case errors.As(err, &deferred):
+		return "BLOCKED", deferred.Error()
 	case errors.Is(err, errNonPublicDNS):
 		return "BLOCKED", "DNS returned a non-public address; destination was not fetched"
 	case errors.Is(err, context.Canceled):
@@ -129,7 +132,7 @@ func publicClient(timeout time.Duration) *http.Client {
 		if err != nil {
 			return nil, err
 		}
-		ips, err := net.DefaultResolver.LookupNetIP(ctx, "ip", host)
+		ips, err := lookupPublicIPs(ctx, host)
 		if err != nil {
 			return nil, err
 		}
@@ -155,7 +158,7 @@ func readPublicOnce(ctx context.Context, client *http.Client, raw string, header
 	for k, v := range headers {
 		req.Header.Set(k, v)
 	}
-	resp, err := client.Do(req)
+	resp, err := doAccess(client, req)
 	if err != nil {
 		status, detail := networkFailure(err)
 		return nil, status, detail, "", ""

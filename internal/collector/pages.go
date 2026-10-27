@@ -95,6 +95,7 @@ func (p *Page) Collect(ctx context.Context, q Query) Result {
 		return r
 	}
 	if blockedPage(doc) {
+		cooldownAccess(ctx, response.URL, 15*time.Minute, "login, consent, or challenge page")
 		r.Status = "BLOCKED"
 		r.Events = append(r.Events, Event{"url:page", "BLOCKED", "Login, consent, or challenge page detected"})
 		return r

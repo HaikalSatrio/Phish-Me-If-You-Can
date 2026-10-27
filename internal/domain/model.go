@@ -223,6 +223,7 @@ type AccountClue struct {
 }
 
 type SearchSession struct {
+	Access       []AccessEvent  `json:"access,omitempty"`
 	Research     []ResearchStep `json:"research,omitempty"`
 	Accounts     []AccountClue  `json:"accounts,omitempty"`
 	Provider     string         `json:"provider,omitempty"`
@@ -259,6 +260,16 @@ type SearchEvent struct {
 	Operation string `json:"operation"`
 	Status    string `json:"status"`
 	Detail    string `json:"detail"`
+}
+
+// Transport observations are separate from evidence coverage and identity confidence.
+type AccessEvent struct {
+	At         string `json:"at"`
+	Host       string `json:"host"`
+	Outcome    string `json:"outcome"`
+	HTTPStatus int    `json:"http_status,omitempty"`
+	Reason     string `json:"reason"`
+	DurationMS int64  `json:"duration_ms"`
 }
 
 type Policy struct {

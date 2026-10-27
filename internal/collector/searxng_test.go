@@ -154,6 +154,9 @@ func TestSearXNGQueryExpansionAndParameters(t *testing.T) {
 		t.Fatalf("unexpected request count: %d", len(queries))
 	}
 	first, second, third, fourth := queries[0], queries[1], queries[2], queries[3]
+	if first.Has("categories") {
+		t.Fatalf("explicit engines must not expand to the general category: %v", first)
+	}
 	if first.Get("q") != `"Anton Test"` || first.Get("pageno") != "" || first.Get("language") != "id-ID" || first.Get("engines") != "google,bing" || first.Get("time_range") != "month" || first.Get("safesearch") != "0" {
 		t.Fatalf("search parameters missing: %v", first)
 	}
@@ -162,5 +165,27 @@ func TestSearXNGQueryExpansionAndParameters(t *testing.T) {
 	}
 	if !strings.Contains(third.Get("q"), "Example Corp") || third.Get("pageno") != "" || fourth.Get("pageno") != "2" {
 		t.Fatalf("expanded phrase or pagination missing: %v %v", third, fourth)
+	}
+}
+
+func TestSearXNGEngineSuspensionDoesNotBlockWholeService(t *testing.T) {
+	calls := 0
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		calls++
+		w.Header().Set("Content-Type", "application/json")
+		if calls == 1 {
+			w.Write([]byte(`{"results":[],"unresponsive_engines":[["brave","Suspended: too many requests"]]}`))
+		} else {
+			w.Write([]byte(`{"results":[{"url":"https://example.org/anton","title":"Anton Test"}],"unresponsive_engines":[]}`))
+		}
+	}))
+	defer s.Close()
+	c, _ := NewSearXNGWithOptions(s.URL, time.Second, SearXNGOptions{Engines: []string{"bing", "brave"}})
+	opts := &AccessOptions{StateDir: t.TempDir()}
+	q := Query{Name: "Anton Test", Budget: 1, Limit: 5}
+	first := c.Collect(WithAccess(context.Background(), opts, 1), q)
+	second := c.Collect(WithAccess(context.Background(), opts, 1), q)
+	if first.Status != "FAILED" || second.Status != "SUCCESS" || calls != 2 {
+		t.Fatalf("service incorrectly blocked: %s %s calls=%d", first.Status, second.Status, calls)
 	}
 }

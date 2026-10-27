@@ -1,0 +1,6323 @@
+{
+  "manifest": {
+    "started_at": "2026-10-27T04:23:52.529080+00:00",
+    "spec": {
+      "binary_sha256": "6ae4cf1ed9526eb002662cf919bb2e5aebb1ef6e4e6ed8ad31547df1638f8f78",
+      "corpus_sha256": "85e74accfde68d9e74bc243e79adcae59a1eac95611be53675fee83d2313a094",
+      "config_sha256": "067c7ebfa694a794fcb39617faf74505c1108d8104c6cf95fcd812c189ff5002",
+      "runner_sha256": "fde68ba9037e0d1693993937ebea0d9f20636616eb590cb7ab1994acb5508603",
+      "rounds": 3,
+      "gap": 6,
+      "workers": 2,
+      "commit": "6a918c612c2489316fffd61d146526f4c8bff6c1",
+      "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+      "config": {
+        "version": "public_collection_access_v4",
+        "searxng_url": "http://127.0.0.1:8888",
+        "searxng_engines": [
+          "bing",
+          "yahoo"
+        ],
+        "candidate_limit": 5,
+        "request_budget": 20,
+        "max_attempts": 3,
+        "timeout_seconds": 15,
+        "session_timeout_seconds": 90,
+        "name_confidence": 0.3,
+        "username_confidence": 0.6,
+        "attribute_boost": 0.15,
+        "evidence_confidence": 1.0,
+        "discoverability": 0.5,
+        "access": {
+          "state_dir": "data/access-state",
+          "dns_resolver": "cloudflare",
+          "dns_hosts": [
+            "html.duckduckgo.com"
+          ],
+          "classical_tls_hosts": [
+            "www.bing.com"
+          ],
+          "min_interval_ms": 1000,
+          "search_interval_ms": 6000,
+          "max_cooldown_wait_ms": 5000,
+          "max_retries": 1
+        }
+      }
+    },
+    "limitations": [
+      "Eight purposively selected public figures; six software developers, two entertainers.",
+      "Three repetitions in one session measure short-term repeatability only.",
+      "Reference URLs are partial known-source targets, not an exhaustive web ground truth.",
+      "Account clues are public reference associations, not legal identity verification.",
+      "Four cases reuse the prior public matrix; all cases are development diagnostics."
+    ]
+  },
+  "rows": [
+    {
+      "case": "addy",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:24:55.321504+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/addy-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Addy Osmani",
+        "-account",
+        "github:addyosmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:25:30.825867+00:00",
+      "duration_seconds": 36.478,
+      "snapshot_sha256": "011f349567ef91f96e8195a674aff90735da8ac502a16ffcbb9e1abdd2fc2b00",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 39,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 2,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 3,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "person_jsonld": 2,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "addyosmani.com",
+        "addyosmani.com/blog",
+        "github.com/addyosmani",
+        "grokipedia.com/page/Addy_Osmani",
+        "linkedin.com/in/addyosmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "addy",
+      "arm": "api",
+      "round": 1,
+      "started_at": "2026-10-27T04:29:55.179370+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/addy-api.json",
+        "-source",
+        "github",
+        "-username",
+        "addyosmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:56.025218+00:00",
+      "duration_seconds": 0.846,
+      "snapshot_sha256": "48d8c4524ae2fa7b6a5f80c9e3f53e112a6f5a1234538371ad11a4b6a6542efb",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 6,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1,
+        "profile_description": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/addyosmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "addy",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:24:37.594115+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/addy-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Addy Osmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:24:49.735504+00:00",
+      "duration_seconds": 12.141,
+      "snapshot_sha256": "9094c034a9c11bc79ce9ead1a0f71c5a9f4fd6fa680c98514c585cf862f1e7b0",
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 5,
+      "observations": 39,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "name": 2,
+        "person_jsonld": 2,
+        "profile_links": 3,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "addyosmani.com",
+        "addyosmani.com/blog",
+        "github.com/addyosmani",
+        "grokipedia.com/page/Addy_Osmani",
+        "linkedin.com/in/addyosmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:27:21.175448+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/guido-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Guido van Rossum",
+        "-account",
+        "github:gvanrossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:28:06.535667+00:00",
+      "duration_seconds": 45.738,
+      "snapshot_sha256": "65502584e429a31130416d8465cf5001340f0f6e68813972fa3cd4342204c867",
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 5,
+      "observations": 30,
+      "known_urls_found": 2,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 4,
+        "page_description": 1,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Guido_van_Rossum",
+        "github.com/gvanrossum",
+        "gvanrossum.github.io",
+        "gvanrossum.github.io/Resume.html",
+        "linkedin.com/in/guido-van-rossum-4a0756"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "api",
+      "round": 1,
+      "started_at": "2026-10-27T04:29:31.638627+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/guido-api.json",
+        "-source",
+        "github",
+        "-username",
+        "gvanrossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:32.802421+00:00",
+      "duration_seconds": 1.164,
+      "snapshot_sha256": "6d9df8b80694f741584894f9ae27b42add00cb1001ca7b054078f9a734384390",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 5,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/gvanrossum"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:26:27.684331+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/guido-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Guido van Rossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:26:43.458767+00:00",
+      "duration_seconds": 15.774,
+      "snapshot_sha256": "e9e5eca784e323e36851204185aafc8036fb725edb76d171e679e11e6a181a63",
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 5,
+      "observations": 27,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Guido_van_Rossum",
+        "gvanrossum.github.io",
+        "gvanrossum.github.io/Resume.html",
+        "linkedin.com/in/guido-van-rossum-4a0756",
+        "nl.wikipedia.org/wiki/Guido_van_Rossum"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "company",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:24:49.790946+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/kent-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Kent C. Dodds",
+        "-account",
+        "github:kentcdodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:25:34.924906+00:00",
+      "duration_seconds": 46.577,
+      "snapshot_sha256": "20fa85495af5dc9226abd15625637be63ab125ca273c082b5fdb678ae0b415d7",
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 5,
+      "observations": 34,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 3,
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds",
+        "github.com/kentcdodds/kentcdodds",
+        "kentcdodds.com",
+        "kentcdodds.com/about",
+        "linkedin.com/in/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "api",
+      "round": 1,
+      "started_at": "2026-10-27T04:29:49.170755+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/kent-api.json",
+        "-source",
+        "github",
+        "-username",
+        "kentcdodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:50.166440+00:00",
+      "duration_seconds": 0.996,
+      "snapshot_sha256": "bb3e2d229283ed6296d719687aa506fe88c368a3c57369abd0fe01cb8514f188",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 6,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1,
+        "profile_description": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:25:30.879624+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/kent-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Kent C. Dodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:26:13.784706+00:00",
+      "duration_seconds": 43.752,
+      "snapshot_sha256": "1209782ebdab193dfbb7b3dd8f931407ac3fded9d07fe3729e1e356aeaaee523",
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 5,
+      "observations": 34,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 3,
+        "name": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds",
+        "github.com/kentcdodds/kentcdodds",
+        "kentcdodds.com",
+        "kentcdodds.com/about",
+        "linkedin.com/in/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:24:00.626333+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/linus-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Linus Torvalds",
+        "-account",
+        "github:torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:24:52.592265+00:00",
+      "duration_seconds": 52.422,
+      "snapshot_sha256": "b917aeb4f0ba7c982f16f0edaba8f15fc25a5793ad244e04004f1065d0deb7f6",
+      "status": "PARTIAL",
+      "requests": 12,
+      "candidates": 4,
+      "observations": 29,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 3,
+        "page_description": 3,
+        "page_text": 3,
+        "page_links": 3,
+        "search_title": 4,
+        "search_snippet": 8,
+        "indexed_url": 4
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "britannica.com/biography/Linus-Torvalds",
+        "en.wikipedia.org/wiki/Linus_Torvalds",
+        "github.com/torvalds",
+        "github.com/torvalds/linux"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "api",
+      "round": 1,
+      "started_at": "2026-10-27T04:29:37.638911+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/linus-api.json",
+        "-source",
+        "github",
+        "-username",
+        "torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:38.534388+00:00",
+      "duration_seconds": 0.896,
+      "snapshot_sha256": "a9e0c7d1164650efa3fe6bf7fbcaa6db020e90b9cc7df7a002e6fd3a85ecfc4e",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 4,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/torvalds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:26:13.829211+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/linus-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Linus Torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:26:27.629666+00:00",
+      "duration_seconds": 14.239,
+      "snapshot_sha256": "03168084aed24cffb33571ed5e4dde59b59ac1a1ac02618cd609572d3901abb7",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 4,
+      "observations": 22,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 2,
+        "page_text": 2,
+        "page_links": 2,
+        "name": 1,
+        "page_description": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "britannica.com/biography/Linus-Torvalds",
+        "en.wikipedia.org/wiki/Linus_Torvalds",
+        "github.com/torvalds",
+        "linkedin.com/in/linustorvalds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "maudy",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:28:06.588274+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/maudy-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Maudy Ayunda",
+        "-account",
+        "instagram:maudyayunda"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:25.491732+00:00",
+      "duration_seconds": 80.623,
+      "snapshot_sha256": "774afd7f22087915bb403e1ae2a15895e81336e214843715df1f5af0fa05c622",
+      "status": "PARTIAL",
+      "requests": 13,
+      "candidates": 4,
+      "observations": 21,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 2,
+        "page_text": 2,
+        "page_links": 2,
+        "page_description": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Maudy_Ayunda",
+        "id.wikipedia.org/wiki/Maudy_Ayunda",
+        "instagram.com/maudyayunda",
+        "tiktok.com/@maudyayunda"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "maudy",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:26:43.513070+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/maudy-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Maudy Ayunda"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:26:54.461144+00:00",
+      "duration_seconds": 11.83,
+      "snapshot_sha256": "983833c592f58e71de19d0de9d257fcb3089bd46f0033620767c2d0d4601235b",
+      "status": "PARTIAL",
+      "requests": 5,
+      "candidates": 4,
+      "observations": 25,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 3,
+        "page_text": 3,
+        "page_links": 3,
+        "page_description": 1,
+        "person_jsonld": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Maudy_Ayunda",
+        "id.wikipedia.org/wiki/Maudy_Ayunda",
+        "instagram.com/maudyayunda",
+        "youtube.com/@modmedia"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "rich",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:25:36.880925+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/rich-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Rich Harris",
+        "-account",
+        "github:Rich-Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:26:45.194513+00:00",
+      "duration_seconds": 69.599,
+      "snapshot_sha256": "0a811b67ef9c508d0718c20b828e7832da3ffffcabbeda64736f0095e3d7bb12",
+      "status": "PARTIAL",
+      "requests": 12,
+      "candidates": 5,
+      "observations": 34,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 4,
+        "page_description": 3,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 2,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "person_jsonld": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/rich-harris",
+        "lifeplan-richharris.com/about",
+        "people.equilar.com/bio/person/rich-harris-trustengine/24322367",
+        "realcoreapps.com/bio-rich.html",
+        "x.com/Rich_Harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "rich",
+      "arm": "api",
+      "round": 1,
+      "started_at": "2026-10-27T04:29:43.641209+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/rich-api.json",
+        "-source",
+        "github",
+        "-username",
+        "Rich-Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:44.589251+00:00",
+      "duration_seconds": 0.948,
+      "snapshot_sha256": "c3d27614ca3ada0f34c7bd729e207778bb778b2604dde2150d0a0ed0da971a59",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 3,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "location": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/rich-harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "rich",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:27:48.552348+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/rich-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Rich Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:28:17.843412+00:00",
+      "duration_seconds": 29.668,
+      "snapshot_sha256": "5298a152c4efa598812b6af07ebfe02c5c5cdc16590bc3452e2c90f439208e86",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 38,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 5,
+        "page_description": 4,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "person_jsonld": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/rich-harris",
+        "lifeplan-richharris.com/about",
+        "nytimes.com/by/rich-harris",
+        "realcoreapps.com/bio-rich.html",
+        "x.com/Rich_Harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:28:17.887728+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/simon-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Simon Willison",
+        "-account",
+        "github:simonw"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:00.936579+00:00",
+      "duration_seconds": 44.3,
+      "snapshot_sha256": "83f06156e30a1686b3d7cf7f394f09455642070369b2732067ec9a946af9e8e6",
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 5,
+      "observations": 32,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 5,
+        "page_description": 2,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Simon_Willison",
+        "github.com/simonw",
+        "simonwillison.net",
+        "simonwillison.net/about",
+        "simonwillison.net/tags/ai"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "api",
+      "round": 1,
+      "started_at": "2026-10-27T04:29:25.627937+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/simon-api.json",
+        "-source",
+        "github",
+        "-username",
+        "simonw"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:29:26.622266+00:00",
+      "duration_seconds": 0.994,
+      "snapshot_sha256": "00f5568b23abb99cef57bc34f24a0d9f7e9d68cdcb52d7de8bc8566b9510d017",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 5,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/simonw"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:26:54.632709+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/simon-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Simon Willison"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:27:21.102630+00:00",
+      "duration_seconds": 26.853,
+      "snapshot_sha256": "73f77fd82d85df648aec358be6e292faab067a744ce1df6dce22c6726fc2aa8a",
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 5,
+      "observations": 32,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4,
+        "page_title": 5,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "page_description": 2,
+        "name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Simon_Willison",
+        "github.com/simonw",
+        "simonwillison.net",
+        "simonwillison.net/about",
+        "simonwillison.net/tags/ai"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "taylor",
+      "arm": "account",
+      "round": 1,
+      "started_at": "2026-10-27T04:26:49.513920+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/taylor-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Taylor Swift",
+        "-account",
+        "instagram:taylorswift"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:27:48.477685+00:00",
+      "duration_seconds": 60.229,
+      "snapshot_sha256": "dd28e8c2cd99cde6a4ffcead81a28950bcf64fc4b6228b592ee1cd7cc23da59e",
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 4,
+      "observations": 18,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 1,
+        "page_description": 1,
+        "page_text": 1,
+        "page_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Taylor_Swift",
+        "instagram.com/taylorswift",
+        "taylorswift.com",
+        "youtube.com/@taylorswift"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "taylor",
+      "arm": "web",
+      "round": 1,
+      "started_at": "2026-10-27T04:24:06.628615+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-1/taylor-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Taylor Swift"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:24:37.551103+00:00",
+      "duration_seconds": 31.379,
+      "snapshot_sha256": "254d8fb89f237fe890cf9d061763b80f5e4fb4f57020852a8dcc733cd771dc22",
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 4,
+      "observations": 18,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 1,
+        "page_description": 1,
+        "page_text": 1,
+        "page_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Taylor_Swift",
+        "instagram.com/taylorswift",
+        "taylorswift.com",
+        "youtube.com/@taylorswift"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "addy",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:30:13.187271+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/addy-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Addy Osmani",
+        "-account",
+        "github:addyosmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:30:49.399389+00:00",
+      "duration_seconds": 37.342,
+      "snapshot_sha256": "bc954dc3121c38cd6824464e8e826f140e0b9bdaa1bcfd1fb74f903c56913f39",
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 5,
+      "observations": 44,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 2,
+        "page_title": 5,
+        "page_description": 5,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 4,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "person_jsonld": 3
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "addyosmani.com",
+        "addyosmani.com/bio",
+        "addyosmani.com/blog",
+        "github.com/addyosmani",
+        "grokipedia.com/page/Addy_Osmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "addy",
+      "arm": "api",
+      "round": 2,
+      "started_at": "2026-10-27T04:35:32.778493+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/addy-api.json",
+        "-source",
+        "github",
+        "-username",
+        "addyosmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:35:33.623740+00:00",
+      "duration_seconds": 0.845,
+      "snapshot_sha256": "524006547257eb94ab2308fe82ad4f342489eaa6e176d06da77d3ae135be8ea5",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 6,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1,
+        "profile_description": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/addyosmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "addy",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:34:29.055350+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/addy-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Addy Osmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:34:54.141638+00:00",
+      "duration_seconds": 25.432,
+      "snapshot_sha256": "b77c4924d55f0bacb77be981802617bdd26c4458caf6a413c5fe6a51b41b614b",
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 5,
+      "observations": 39,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "name": 2,
+        "person_jsonld": 2,
+        "profile_links": 3,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "addyosmani.com",
+        "addyosmani.com/blog",
+        "github.com/addyosmani",
+        "grokipedia.com/page/Addy_Osmani",
+        "linkedin.com/in/addyosmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:34:19.682669+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/guido-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Guido van Rossum",
+        "-account",
+        "github:gvanrossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:35:02.981914+00:00",
+      "duration_seconds": 43.645,
+      "snapshot_sha256": "dca06d26b7f31e87308a20be305895fd1355bafcb0afbbd6c751dc4f6244c427",
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 5,
+      "observations": 30,
+      "known_urls_found": 2,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 4,
+        "page_description": 1,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Guido_van_Rossum",
+        "github.com/gvanrossum",
+        "gvanrossum.github.io",
+        "gvanrossum.github.io/Resume.html",
+        "linkedin.com/in/guido-van-rossum-4a0756"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "api",
+      "round": 2,
+      "started_at": "2026-10-27T04:35:09.131215+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/guido-api.json",
+        "-source",
+        "github",
+        "-username",
+        "gvanrossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:35:10.133479+00:00",
+      "duration_seconds": 1.002,
+      "snapshot_sha256": "e0dada0790802315e9c890bbd303886b8d68906c12c88b850971dd0f0c6b1077",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 5,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/gvanrossum"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:32:44.365962+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/guido-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Guido van Rossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:33:08.778102+00:00",
+      "duration_seconds": 24.412,
+      "snapshot_sha256": "4cf54711895d9a25bd91d2632f79ece7dc8e07e15c0f1f53c4890a0a697d6449",
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 5,
+      "observations": 27,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Guido_van_Rossum",
+        "gvanrossum.github.io",
+        "gvanrossum.github.io/Resume.html",
+        "linkedin.com/in/guido-van-rossum-4a0756",
+        "nl.wikipedia.org/wiki/Guido_van_Rossum"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "company",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:30:07.186111+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/kent-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Kent C. Dodds",
+        "-account",
+        "github:kentcdodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:30:42.762620+00:00",
+      "duration_seconds": 36.014,
+      "snapshot_sha256": "8475435982e97793172f62a88905d4e76521990f2b1bfd2db443238dff2f3ba0",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 37,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 4,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds",
+        "kentcdodds.com",
+        "kentcdodds.com/about",
+        "kentcdodds.com/courses",
+        "linkedin.com/in/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "api",
+      "round": 2,
+      "started_at": "2026-10-27T04:35:26.778151+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/kent-api.json",
+        "-source",
+        "github",
+        "-username",
+        "kentcdodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:35:27.825754+00:00",
+      "duration_seconds": 1.048,
+      "snapshot_sha256": "bbe76cc0250297420cd366997a965831eb83ddecadba7a54d0e513875bf903ed",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 6,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1,
+        "profile_description": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:30:49.474760+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/kent-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Kent C. Dodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:31:24.365990+00:00",
+      "duration_seconds": 35.28,
+      "snapshot_sha256": "612b181b75d2e3a014ca0c7debb40ebee401e392939fb5fd00471210f1134520",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 37,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 4,
+        "name": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds",
+        "kentcdodds.com",
+        "kentcdodds.com/about",
+        "kentcdodds.com/courses",
+        "linkedin.com/in/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:33:14.440173+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/linus-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Linus Torvalds",
+        "-account",
+        "github:torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:34:13.628969+00:00",
+      "duration_seconds": 59.864,
+      "snapshot_sha256": "883b1bddfe0ac40c018cce9cd70c8830f675cce7ffa2e2693bb9825213711aa3",
+      "status": "PARTIAL",
+      "requests": 12,
+      "candidates": 4,
+      "observations": 29,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 3,
+        "page_description": 3,
+        "page_text": 3,
+        "page_links": 3,
+        "search_title": 4,
+        "search_snippet": 8,
+        "indexed_url": 4
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "britannica.com/biography/Linus-Torvalds",
+        "en.wikipedia.org/wiki/Linus_Torvalds",
+        "github.com/torvalds",
+        "github.com/torvalds/linux"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "api",
+      "round": 2,
+      "started_at": "2026-10-27T04:35:14.774080+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/linus-api.json",
+        "-source",
+        "github",
+        "-username",
+        "torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:35:15.560847+00:00",
+      "duration_seconds": 0.787,
+      "snapshot_sha256": "ca176db1c6ec7aa0af7290da805043d64af968cc0e000d302c74f79a5e904572",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 4,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/torvalds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:32:50.367074+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/linus-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Linus Torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:33:14.310603+00:00",
+      "duration_seconds": 24.328,
+      "snapshot_sha256": "6f7284b548661ee08d588251bb4ef05c3e2e72b44995b5996543f3ef449a10e2",
+      "status": "PARTIAL",
+      "requests": 5,
+      "candidates": 4,
+      "observations": 22,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 2,
+        "page_text": 2,
+        "page_links": 2,
+        "name": 1,
+        "page_description": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "britannica.com/biography/Linus-Torvalds",
+        "en.wikipedia.org/wiki/Linus_Torvalds",
+        "github.com/torvalds",
+        "linkedin.com/in/linustorvalds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "maudy",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:31:24.437399+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/maudy-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Maudy Ayunda",
+        "-account",
+        "instagram:maudyayunda"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:32:47.776909+00:00",
+      "duration_seconds": 84.495,
+      "snapshot_sha256": "ebace3227f2639f7728701daf781a57253746581de350fc6d3f9d6b16ac2a1fb",
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 4,
+      "observations": 21,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 2,
+        "page_text": 2,
+        "page_links": 2,
+        "page_description": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Maudy_Ayunda",
+        "id.wikipedia.org/wiki/Maudy_Ayunda",
+        "instagram.com/maudyayunda",
+        "tiktok.com/@maudyayunda"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "maudy",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:30:01.179777+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/maudy-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Maudy Ayunda"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:30:10.683212+00:00",
+      "duration_seconds": 9.503,
+      "snapshot_sha256": "c9759858078f5ede42d8c2a72d15137785f5bad43ab7b3d713272083e42a18e6",
+      "status": "PARTIAL",
+      "requests": 5,
+      "candidates": 4,
+      "observations": 25,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 3,
+        "page_text": 3,
+        "page_links": 3,
+        "page_description": 1,
+        "person_jsonld": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Maudy_Ayunda",
+        "id.wikipedia.org/wiki/Maudy_Ayunda",
+        "instagram.com/maudyayunda",
+        "youtube.com/@modmedia"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "rich",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:32:14.089946+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/rich-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Rich Harris",
+        "-account",
+        "github:Rich-Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:32:44.309197+00:00",
+      "duration_seconds": 30.968,
+      "snapshot_sha256": "89a77b68a18f0ec164180cc6c1db73b74853de138acdfa94af3580b03e0bfe2d",
+      "status": "PARTIAL",
+      "requests": 13,
+      "candidates": 5,
+      "observations": 34,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 5,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4,
+        "person_jsonld": 2
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "bsky.app/profile/rich-harris.dev",
+        "github.com/rich-harris",
+        "lifeplan-richharris.com/about",
+        "realcoreapps.com/bio-rich.html",
+        "x.com/Rich_Harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "rich",
+      "arm": "api",
+      "round": 2,
+      "started_at": "2026-10-27T04:35:20.774490+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/rich-api.json",
+        "-source",
+        "github",
+        "-username",
+        "Rich-Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:35:21.715760+00:00",
+      "duration_seconds": 0.941,
+      "snapshot_sha256": "1d8c7f269050c2bd4bc5c905c23f9bc2152a2cb58537734eb33e41eab9d2da39",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 3,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "location": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/rich-harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "rich",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:34:13.681483+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/rich-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Rich Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:34:29.015197+00:00",
+      "duration_seconds": 15.334,
+      "snapshot_sha256": "52edcca3be5ed7631137bb467bbb5a421ad15a96816f3e91825e486f9e9eaa34",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 38,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 5,
+        "page_description": 4,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "person_jsonld": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/rich-harris",
+        "lifeplan-richharris.com/about",
+        "nytimes.com/by/rich-harris",
+        "realcoreapps.com/bio-rich.html",
+        "x.com/Rich_Harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:30:42.803891+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/simon-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Simon Willison",
+        "-account",
+        "github:simonw"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:31:29.346873+00:00",
+      "duration_seconds": 47.623,
+      "snapshot_sha256": "22cff9d0321245ae7f57a7a07fa6ff96823fb8cb2f4e6da24aeb58bcb639a0ec",
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 5,
+      "observations": 32,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 5,
+        "page_description": 2,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Simon_Willison",
+        "github.com/simonw",
+        "simonwillison.net",
+        "simonwillison.net/about",
+        "simonwillison.net/tags/ai"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "api",
+      "round": 2,
+      "started_at": "2026-10-27T04:35:03.126879+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/simon-api.json",
+        "-source",
+        "github",
+        "-username",
+        "simonw"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:35:03.981275+00:00",
+      "duration_seconds": 0.854,
+      "snapshot_sha256": "30372ab92663d44e24e618e32c51be87c9bc453c1817d30c4489420883cbd11a",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 5,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/simonw"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:31:30.440192+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/simon-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Simon Willison"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:31:55.186958+00:00",
+      "duration_seconds": 25.153,
+      "snapshot_sha256": "619a5c676f90fbc11c1a5b630db1787c6220e7d031dd4febc2adb0fb30f65983",
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 5,
+      "observations": 32,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4,
+        "page_title": 5,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "page_description": 2,
+        "name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Simon_Willison",
+        "github.com/simonw",
+        "simonwillison.net",
+        "simonwillison.net/about",
+        "simonwillison.net/tags/ai"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "taylor",
+      "arm": "account",
+      "round": 2,
+      "started_at": "2026-10-27T04:33:08.824225+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/taylor-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Taylor Swift",
+        "-account",
+        "instagram:taylorswift"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:34:13.877972+00:00",
+      "duration_seconds": 66.113,
+      "snapshot_sha256": "3768a16545171c50b0133686050ffd7e6107d310a5ba8bc83a5ead7369a7b307",
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 4,
+      "observations": 18,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 1,
+        "page_description": 1,
+        "page_text": 1,
+        "page_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Taylor_Swift",
+        "instagram.com/taylorswift",
+        "taylorswift.com",
+        "youtube.com/@taylorswift"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "taylor",
+      "arm": "web",
+      "round": 2,
+      "started_at": "2026-10-27T04:31:55.229884+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-2/taylor-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Taylor Swift"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:32:14.046406+00:00",
+      "duration_seconds": 18.817,
+      "snapshot_sha256": "6fd500e2f9ed41ac4f1c9337f293d963aa3fdc0f4bf8b8f545c90ae1a05736d9",
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 4,
+      "observations": 18,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 1,
+        "page_description": 1,
+        "page_text": 1,
+        "page_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Taylor_Swift",
+        "instagram.com/taylorswift",
+        "taylorswift.com",
+        "youtube.com/@taylorswift"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "addy",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:35:44.487158+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/addy-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Addy Osmani",
+        "-account",
+        "github:addyosmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:36:20.674327+00:00",
+      "duration_seconds": 36.534,
+      "snapshot_sha256": "576fb1405407b4e4e60725f868851baf2fb3b3c1316346c4299bb7d1d773abc4",
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 5,
+      "observations": 44,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 2,
+        "page_title": 5,
+        "page_description": 5,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 4,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "person_jsonld": 3
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "addyosmani.com",
+        "addyosmani.com/bio",
+        "addyosmani.com/blog",
+        "github.com/addyosmani",
+        "grokipedia.com/page/Addy_Osmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "addy",
+      "arm": "api",
+      "round": 3,
+      "started_at": "2026-10-27T04:41:07.338582+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/addy-api.json",
+        "-source",
+        "github",
+        "-username",
+        "addyosmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:41:08.181708+00:00",
+      "duration_seconds": 0.843,
+      "snapshot_sha256": "de8fb022b97de13c3348f0ccc5631a5593eba35fcd2a82a689fd2066c4698985",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 6,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1,
+        "profile_description": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/addyosmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "addy",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:38:32.093902+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/addy-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Addy Osmani"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:38:58.532581+00:00",
+      "duration_seconds": 26.78,
+      "snapshot_sha256": "180e64abb3b198e95c7521a665716c7e8d21bbf81021af7ea9bae14a3dfa4429",
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 5,
+      "observations": 39,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "name": 2,
+        "person_jsonld": 2,
+        "profile_links": 3,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "addyosmani.com",
+        "addyosmani.com/blog",
+        "github.com/addyosmani",
+        "grokipedia.com/page/Addy_Osmani",
+        "linkedin.com/in/addyosmani"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:36:24.499190+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/guido-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Guido van Rossum",
+        "-account",
+        "github:gvanrossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:37:12.411955+00:00",
+      "duration_seconds": 48.528,
+      "snapshot_sha256": "ba39489b5ccab0881c421bacb0af4e701240a62f031b4047336a139965348827",
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 5,
+      "observations": 30,
+      "known_urls_found": 2,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 4,
+        "page_description": 1,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Guido_van_Rossum",
+        "github.com/gvanrossum",
+        "gvanrossum.github.io",
+        "gvanrossum.github.io/Resume.html",
+        "linkedin.com/in/guido-van-rossum-4a0756"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "api",
+      "round": 3,
+      "started_at": "2026-10-27T04:40:43.321468+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/guido-api.json",
+        "-source",
+        "github",
+        "-username",
+        "gvanrossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:40:44.262193+00:00",
+      "duration_seconds": 0.941,
+      "snapshot_sha256": "3d85121330ce622e647c364955ed87b890487a105778a48dc19909c418868b33",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 5,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/gvanrossum"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "guido",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:37:12.451033+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/guido-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Guido van Rossum"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:37:56.272777+00:00",
+      "duration_seconds": 44.163,
+      "snapshot_sha256": "62dd73c361d3e605337d241c15053207f255780b6f927109c09f9c5c99f19fff",
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 5,
+      "observations": 27,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Guido_van_Rossum",
+        "gvanrossum.github.io",
+        "gvanrossum.github.io/Resume.html",
+        "linkedin.com/in/guido-van-rossum-4a0756",
+        "nl.wikipedia.org/wiki/Guido_van_Rossum"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "company",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:36:44.063907+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/kent-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Kent C. Dodds",
+        "-account",
+        "github:kentcdodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:37:20.864697+00:00",
+      "duration_seconds": 37.113,
+      "snapshot_sha256": "99fbf6e68c60863b143e71358c35fd287b23a0c4866ef88d864959285eed6182",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 37,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 4,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds",
+        "kentcdodds.com",
+        "kentcdodds.com/about",
+        "kentcdodds.com/courses",
+        "linkedin.com/in/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "api",
+      "round": 3,
+      "started_at": "2026-10-27T04:41:01.330853+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/kent-api.json",
+        "-source",
+        "github",
+        "-username",
+        "kentcdodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:41:02.185257+00:00",
+      "duration_seconds": 0.854,
+      "snapshot_sha256": "3e4d4ff58b857fbc804b25c1172dab95dae45e18301c19c231c709677d5e0d63",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 6,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1,
+        "profile_description": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "kent",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:36:18.498066+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/kent-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Kent C. Dodds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:36:44.018042+00:00",
+      "duration_seconds": 25.823,
+      "snapshot_sha256": "f8ff1f09252e80178615cecca172707202e1f21443fe31ea29a433ca2972f53a",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 37,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 4,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 4,
+        "name": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/kentcdodds",
+        "kentcdodds.com",
+        "kentcdodds.com/about",
+        "kentcdodds.com/courses",
+        "linkedin.com/in/kentcdodds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:39:28.392619+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/linus-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Linus Torvalds",
+        "-account",
+        "github:torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:40:13.806114+00:00",
+      "duration_seconds": 46.069,
+      "snapshot_sha256": "8dba9e3e78d55e34165dfa82474fbe3329967105c54b1f69406c980b8a9e1b8a",
+      "status": "PARTIAL",
+      "requests": 12,
+      "candidates": 4,
+      "observations": 29,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 3,
+        "page_description": 3,
+        "page_text": 3,
+        "page_links": 3,
+        "search_title": 4,
+        "search_snippet": 8,
+        "indexed_url": 4
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "britannica.com/biography/Linus-Torvalds",
+        "en.wikipedia.org/wiki/Linus_Torvalds",
+        "github.com/torvalds",
+        "github.com/torvalds/linux"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "api",
+      "round": 3,
+      "started_at": "2026-10-27T04:40:49.325447+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/linus-api.json",
+        "-source",
+        "github",
+        "-username",
+        "torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:40:50.221182+00:00",
+      "duration_seconds": 0.896,
+      "snapshot_sha256": "62c671014e8fba327ac37a4ed58bb499c9fc8b9c1b21e918f706cef0118d3b45",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 4,
+      "known_urls_found": 1,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/torvalds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "linus",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:38:08.538201+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/linus-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Linus Torvalds"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:38:32.056154+00:00",
+      "duration_seconds": 23.845,
+      "snapshot_sha256": "356df6b10c69d609a3df502b305194b263b9a5e9bbb6ef572410a95b93f656f3",
+      "status": "PARTIAL",
+      "requests": 5,
+      "candidates": 4,
+      "observations": 22,
+      "known_urls_found": 2,
+      "known_urls_total": 2,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 1,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 2,
+        "page_text": 2,
+        "page_links": 2,
+        "name": 1,
+        "page_description": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "britannica.com/biography/Linus-Torvalds",
+        "en.wikipedia.org/wiki/Linus_Torvalds",
+        "github.com/torvalds",
+        "linkedin.com/in/linustorvalds"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "maudy",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:38:17.658524+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/maudy-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Maudy Ayunda",
+        "-account",
+        "instagram:maudyayunda"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:39:31.916413+00:00",
+      "duration_seconds": 74.906,
+      "snapshot_sha256": "c1a5e4aaa5fb7f3d63e7999801e7f515304324a2f61eebd71abfe0913dd697da",
+      "status": "PARTIAL",
+      "requests": 11,
+      "candidates": 4,
+      "observations": 21,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 2,
+        "page_text": 2,
+        "page_links": 2,
+        "page_description": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Maudy_Ayunda",
+        "id.wikipedia.org/wiki/Maudy_Ayunda",
+        "instagram.com/maudyayunda",
+        "tiktok.com/@maudyayunda"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "maudy",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:39:34.393362+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/maudy-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Maudy Ayunda"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:39:56.077782+00:00",
+      "duration_seconds": 21.995,
+      "snapshot_sha256": "151326cee3922c24783d04e447e16ef68af9a3912f67890fe90ae9dc97f8cfe9",
+      "status": "PARTIAL",
+      "requests": 5,
+      "candidates": 4,
+      "observations": 25,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 3,
+        "page_text": 3,
+        "page_links": 3,
+        "page_description": 1,
+        "person_jsonld": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Maudy_Ayunda",
+        "id.wikipedia.org/wiki/Maudy_Ayunda",
+        "instagram.com/maudyayunda",
+        "youtube.com/@modmedia"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "rich",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:37:20.905283+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/rich-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Rich Harris",
+        "-account",
+        "github:Rich-Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:38:08.490216+00:00",
+      "duration_seconds": 47.926,
+      "snapshot_sha256": "25dd404c3919adfc406f6803582617f7acf0bbd36332a5ae3f33d35f6e8515a5",
+      "status": "PARTIAL",
+      "requests": 13,
+      "candidates": 5,
+      "observations": 34,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 5,
+        "page_description": 4,
+        "page_text": 4,
+        "page_links": 4,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4,
+        "person_jsonld": 2
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "bsky.app/profile/rich-harris.dev",
+        "github.com/rich-harris",
+        "lifeplan-richharris.com/about",
+        "realcoreapps.com/bio-rich.html",
+        "x.com/Rich_Harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "rich",
+      "arm": "api",
+      "round": 3,
+      "started_at": "2026-10-27T04:40:55.326372+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/rich-api.json",
+        "-source",
+        "github",
+        "-username",
+        "Rich-Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:40:56.222460+00:00",
+      "duration_seconds": 0.896,
+      "snapshot_sha256": "57ad4fd4881e98f2bf39690b4b67469dc86283f4a8edfd76d4e7540cf674e0ff",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 3,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "location": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/rich-harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "rich",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:37:56.316645+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/rich-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Rich Harris"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:38:17.620248+00:00",
+      "duration_seconds": 21.631,
+      "snapshot_sha256": "51dbc52cf59e52b09f3d6cd433462cdee18727f83160989e16e578d4f4d53e3a",
+      "status": "PARTIAL",
+      "requests": 7,
+      "candidates": 5,
+      "observations": 38,
+      "known_urls_found": 1,
+      "known_urls_total": 1,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 0,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "search_title": 5,
+        "search_snippet": 5,
+        "indexed_url": 5,
+        "page_title": 5,
+        "page_description": 4,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "person_jsonld": 1
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "github.com/rich-harris",
+        "lifeplan-richharris.com/about",
+        "nytimes.com/by/rich-harris",
+        "realcoreapps.com/bio-rich.html",
+        "x.com/Rich_Harris"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:35:38.780680+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/simon-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Simon Willison",
+        "-account",
+        "github:simonw"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:36:18.459090+00:00",
+      "duration_seconds": 40.319,
+      "snapshot_sha256": "ca245608a744d4ad8c021d1f07ae8b81c38d3ebe3808bc2507a01cf518891711",
+      "status": "PARTIAL",
+      "requests": 12,
+      "candidates": 5,
+      "observations": 32,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 5,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": true,
+      "budget_exhausted": false,
+      "observed_types": {
+        "name": 1,
+        "page_title": 5,
+        "page_description": 2,
+        "page_text": 5,
+        "page_links": 5,
+        "profile_links": 2,
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4
+      },
+      "identity_decisions": {
+        "PENDING": 5
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Simon_Willison",
+        "github.com/simonw",
+        "simonwillison.net",
+        "simonwillison.net/about",
+        "simonwillison.net/tags/ai"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 5
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "api",
+      "round": 3,
+      "started_at": "2026-10-27T04:40:37.641263+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/simon-api.json",
+        "-source",
+        "github",
+        "-username",
+        "simonw"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:40:38.530372+00:00",
+      "duration_seconds": 0.889,
+      "snapshot_sha256": "559e68f0e8161b230fa38e9181deb399a632bbc91d2da6068f594529f1169520",
+      "status": "REVIEW_REQUIRED",
+      "requests": 1,
+      "candidates": 1,
+      "observations": 5,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 1,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "username": 1,
+        "name": 1,
+        "workplace": 1,
+        "location": 1,
+        "website": 1
+      },
+      "identity_decisions": {
+        "PENDING": 1
+      },
+      "candidate_urls": [
+        "github.com/simonw"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 1
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "company",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "blog",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        },
+        {
+          "field": "location",
+          "source_present": true,
+          "literal_observed": true,
+          "typed_observed": true
+        }
+      ]
+    },
+    {
+      "case": "simon",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:38:58.590899+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/simon-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Simon Willison"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:39:17.104979+00:00",
+      "duration_seconds": 18.821,
+      "snapshot_sha256": "e93ef5b124f48d120b3b0fbe10eab73bfa597f8931d5eb86e39deda7908252e6",
+      "status": "PARTIAL",
+      "requests": 8,
+      "candidates": 4,
+      "observations": 26,
+      "known_urls_found": 1,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 1,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "page_title": 4,
+        "page_description": 2,
+        "search_title": 4,
+        "search_snippet": 4,
+        "indexed_url": 4,
+        "page_text": 4,
+        "page_links": 4
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "ai.miraheze.org/wiki/Simon_Willison",
+        "en.everybodywiki.com/Simon_Willison",
+        "en.wikipedia.org/wiki/Simon_Willison",
+        "simonwillison.net/about"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": [
+        {
+          "field": "name",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "company",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "blog",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        },
+        {
+          "field": "location",
+          "source_present": false,
+          "literal_observed": false,
+          "typed_observed": false
+        }
+      ]
+    },
+    {
+      "case": "taylor",
+      "arm": "account",
+      "round": 3,
+      "started_at": "2026-10-27T04:39:56.121152+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/taylor-account.json",
+        "-source",
+        "web",
+        "-name",
+        "Taylor Swift",
+        "-account",
+        "instagram:taylorswift"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:40:37.524913+00:00",
+      "duration_seconds": 41.748,
+      "snapshot_sha256": "efbaddf75d08f4ff45397d20771d2491f2957551a5a505d438df2faa49607072",
+      "status": "PARTIAL",
+      "requests": 10,
+      "candidates": 4,
+      "observations": 18,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 1,
+        "page_description": 1,
+        "page_text": 1,
+        "page_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Taylor_Swift",
+        "instagram.com/taylorswift",
+        "taylorswift.com",
+        "youtube.com/@taylorswift"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    },
+    {
+      "case": "taylor",
+      "arm": "web",
+      "round": 3,
+      "started_at": "2026-10-27T04:39:17.145691+00:00",
+      "command": [
+        "/mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can/bin/pmiyc-access-v6",
+        "search",
+        "-config",
+        "configs/collector-reliable-v4.json",
+        "-out",
+        "data/access-repair-20261027/iteration-5/round-3/taylor-web.json",
+        "-source",
+        "web",
+        "-name",
+        "Taylor Swift"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T04:39:28.353177+00:00",
+      "duration_seconds": 11.208,
+      "snapshot_sha256": "d81a2a4a27792a3750be4f98527ce07fb1ee28316704b8220ab1f81ba264f6b2",
+      "status": "PARTIAL",
+      "requests": 6,
+      "candidates": 4,
+      "observations": 18,
+      "known_urls_found": 3,
+      "known_urls_total": 3,
+      "unique_candidate_urls": 4,
+      "duplicate_candidate_urls": 0,
+      "nonseed_urls_found": 2,
+      "nonseed_urls_total": 2,
+      "at_candidate_cap": false,
+      "budget_exhausted": false,
+      "observed_types": {
+        "search_title": 4,
+        "search_snippet": 5,
+        "indexed_url": 4,
+        "page_title": 1,
+        "page_description": 1,
+        "page_text": 1,
+        "page_links": 1,
+        "profile_display_name": 1
+      },
+      "identity_decisions": {
+        "PENDING": 4
+      },
+      "candidate_urls": [
+        "en.wikipedia.org/wiki/Taylor_Swift",
+        "instagram.com/taylorswift",
+        "taylorswift.com",
+        "youtube.com/@taylorswift"
+      ],
+      "audit_statuses": {
+        "UNREVIEWED": 4
+      },
+      "reference_fields": []
+    }
+  ],
+  "summary": {
+    "web": {
+      "runs": 24,
+      "status": {
+        "PARTIAL": 24
+      },
+      "exit_codes": {
+        "0": 24
+      },
+      "candidates": 110,
+      "requests": 159,
+      "unique_candidate_url_instances": 110,
+      "duplicate_candidate_url_instances": 0,
+      "at_candidate_cap": 14,
+      "budget_exhausted": 0,
+      "median_seconds": 24.0865,
+      "max_seconds": 44.163,
+      "known_urls_found": 49,
+      "known_urls_total": 57,
+      "nonseed_urls_found": 29,
+      "nonseed_urls_total": 33,
+      "reference_fields": {
+        "total": 63,
+        "source_present": 47,
+        "literal_observed": 47,
+        "typed_observed": 14
+      },
+      "audit_statuses": {
+        "UNREVIEWED": 110
+      },
+      "identity_decisions": {
+        "PENDING": 110
+      },
+      "url_jaccard_mean": 0.9126984126984127,
+      "observation_jaccard_mean": 0.877442365835223
+    },
+    "account": {
+      "runs": 24,
+      "status": {
+        "PARTIAL": 24
+      },
+      "exit_codes": {
+        "0": 24
+      },
+      "candidates": 111,
+      "requests": 256,
+      "unique_candidate_url_instances": 111,
+      "duplicate_candidate_url_instances": 0,
+      "at_candidate_cap": 15,
+      "budget_exhausted": 0,
+      "median_seconds": 46.323,
+      "max_seconds": 84.495,
+      "known_urls_found": 54,
+      "known_urls_total": 57,
+      "nonseed_urls_found": 30,
+      "nonseed_urls_total": 33,
+      "reference_fields": {
+        "total": 63,
+        "source_present": 63,
+        "literal_observed": 63,
+        "typed_observed": 18
+      },
+      "audit_statuses": {
+        "UNREVIEWED": 111
+      },
+      "identity_decisions": {
+        "PENDING": 111
+      },
+      "url_jaccard_mean": 0.9166666666666666,
+      "observation_jaccard_mean": 0.8956769413422639
+    },
+    "api": {
+      "runs": 18,
+      "status": {
+        "REVIEW_REQUIRED": 18
+      },
+      "exit_codes": {
+        "0": 18
+      },
+      "candidates": 18,
+      "requests": 18,
+      "unique_candidate_url_instances": 18,
+      "duplicate_candidate_url_instances": 0,
+      "at_candidate_cap": 0,
+      "budget_exhausted": 0,
+      "median_seconds": 0.896,
+      "max_seconds": 1.164,
+      "known_urls_found": 18,
+      "known_urls_total": 39,
+      "nonseed_urls_found": 0,
+      "nonseed_urls_total": 21,
+      "reference_fields": {
+        "total": 63,
+        "source_present": 63,
+        "literal_observed": 63,
+        "typed_observed": 63
+      },
+      "audit_statuses": {
+        "UNREVIEWED": 18
+      },
+      "identity_decisions": {
+        "PENDING": 18
+      },
+      "url_jaccard_mean": 1.0,
+      "observation_jaccard_mean": 1.0
+    }
+  },
+  "stability": [
+    {
+      "case": "simon",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.8285714285714286
+    },
+    {
+      "case": "simon",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 0.2857142857142857,
+      "observation_jaccard": 0.1836734693877551
+    },
+    {
+      "case": "simon",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 0.2857142857142857,
+      "observation_jaccard": 0.1836734693877551
+    },
+    {
+      "case": "simon",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.8285714285714286
+    },
+    {
+      "case": "simon",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.8285714285714286
+    },
+    {
+      "case": "simon",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.8285714285714286
+    },
+    {
+      "case": "simon",
+      "arm": "api",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "simon",
+      "arm": "api",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "simon",
+      "arm": "api",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "guido",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.9285714285714286
+    },
+    {
+      "case": "guido",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.9285714285714286
+    },
+    {
+      "case": "guido",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "guido",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.9354838709677419
+    },
+    {
+      "case": "guido",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.9354838709677419
+    },
+    {
+      "case": "guido",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "guido",
+      "arm": "api",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "guido",
+      "arm": "api",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "guido",
+      "arm": "api",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "api",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "api",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "linus",
+      "arm": "api",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "taylor",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "taylor",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "taylor",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "taylor",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "taylor",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "taylor",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "maudy",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "maudy",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "maudy",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "maudy",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "maudy",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "maudy",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "rich",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "rich",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "rich",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "rich",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.8378378378378378
+    },
+    {
+      "case": "rich",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.8378378378378378
+    },
+    {
+      "case": "rich",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "rich",
+      "arm": "api",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "rich",
+      "arm": "api",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "rich",
+      "arm": "api",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "kent",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.5777777777777777
+    },
+    {
+      "case": "kent",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.5777777777777777
+    },
+    {
+      "case": "kent",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.85
+    },
+    {
+      "case": "kent",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.5777777777777777
+    },
+    {
+      "case": "kent",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.5777777777777777
+    },
+    {
+      "case": "kent",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 0.85
+    },
+    {
+      "case": "kent",
+      "arm": "api",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "kent",
+      "arm": "api",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "kent",
+      "arm": "api",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "addy",
+      "arm": "web",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "addy",
+      "arm": "web",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "addy",
+      "arm": "web",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "addy",
+      "arm": "account",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.7291666666666666
+    },
+    {
+      "case": "addy",
+      "arm": "account",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 0.6666666666666666,
+      "observation_jaccard": 0.7291666666666666
+    },
+    {
+      "case": "addy",
+      "arm": "account",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "addy",
+      "arm": "api",
+      "rounds": [
+        1,
+        2
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "addy",
+      "arm": "api",
+      "rounds": [
+        1,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    },
+    {
+      "case": "addy",
+      "arm": "api",
+      "rounds": [
+        2,
+        3
+      ],
+      "url_jaccard": 1.0,
+      "observation_jaccard": 1.0
+    }
+  ],
+  "event_status_counts": {
+    "account|web:anchor:github": {
+      "SUCCESS": 18
+    },
+    "account|searxng:github": {
+      "SUCCESS": 21
+    },
+    "account|searxng:web": {
+      "SUCCESS": 63
+    },
+    "account|web:page": {
+      "SUCCESS": 55,
+      "BLOCKED": 10,
+      "FAILED": 7
+    },
+    "api|github:user": {
+      "SUCCESS": 18
+    },
+    "web|searxng:web": {
+      "SUCCESS": 54
+    },
+    "web|web:page": {
+      "SUCCESS": 77,
+      "BLOCKED": 21,
+      "FAILED": 6
+    },
+    "account|duckduckgo:web": {
+      "BLOCKED": 10,
+      "FAILED": 1
+    },
+    "account|bing:web": {
+      "FAILED": 24,
+      "SUCCESS": 12
+    },
+    "account|web:research:link": {
+      "SUCCESS": 9
+    },
+    "web|duckduckgo:web": {
+      "BLOCKED": 13
+    },
+    "web|bing:web": {
+      "FAILED": 7,
+      "SUCCESS": 6
+    },
+    "web|web:research:link": {
+      "SUCCESS": 6
+    },
+    "account|duckduckgo:github": {
+      "BLOCKED": 8
+    },
+    "account|bing:github": {
+      "FAILED": 6,
+      "SUCCESS": 2
+    },
+    "account|wikipedia:title": {
+      "SUCCESS": 6,
+      "EMPTY": 5
+    },
+    "account|web:anchor:instagram": {
+      "BLOCKED": 6
+    },
+    "account|searxng:instagram": {
+      "SUCCESS": 12
+    },
+    "account|duckduckgo:instagram": {
+      "BLOCKED": 3
+    },
+    "account|bing:instagram": {
+      "FAILED": 3
+    },
+    "web|wikipedia:title": {
+      "SUCCESS": 1
+    }
+  },
+  "observed_type_counts": {
+    "account": {
+      "name": 21,
+      "page_title": 85,
+      "page_description": 61,
+      "page_text": 83,
+      "page_links": 83,
+      "profile_links": 40,
+      "search_title": 102,
+      "search_snippet": 124,
+      "indexed_url": 102,
+      "person_jsonld": 13,
+      "profile_display_name": 13
+    },
+    "api": {
+      "username": 18,
+      "name": 18,
+      "workplace": 15,
+      "location": 18,
+      "website": 12,
+      "profile_description": 6
+    },
+    "web": {
+      "search_title": 104,
+      "search_snippet": 117,
+      "indexed_url": 104,
+      "page_title": 83,
+      "page_description": 51,
+      "page_text": 83,
+      "page_links": 83,
+      "name": 17,
+      "person_jsonld": 12,
+      "profile_links": 33,
+      "profile_display_name": 18
+    }
+  },
+  "diagnostics": [
+    {
+      "arm": "account",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "6 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 38
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "6 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 23
+    },
+    {
+      "arm": "account",
+      "operation": "bing:web",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 0 outside the requested platform, 10 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 17
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:github",
+      "status": "SUCCESS",
+      "detail": "6 relevant links; 0 upstream engines unavailable (phrase 1/2, page 1). No matches do not establish account absence.",
+      "count": 15
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "4 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 11
+    },
+    {
+      "arm": "web",
+      "operation": "duckduckgo:web",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:35:49Z: search challenge response; no request sent",
+      "count": 9
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:41:27Z: login, consent, or challenge page; no request sent",
+      "count": 9
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "8 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 9
+    },
+    {
+      "arm": "account",
+      "operation": "duckduckgo:web",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:35:49Z: search challenge response; no request sent",
+      "count": 7
+    },
+    {
+      "arm": "web",
+      "operation": "bing:web",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 0 outside the requested platform, 10 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 7
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "6 relevant links; 0 upstream engines unavailable (phrase 1/3, page 1). No matches do not establish account absence.",
+      "count": 6
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "7 relevant links; 0 upstream engines unavailable (phrase 1/3, page 1). No matches do not establish account absence.",
+      "count": 6
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "1 relevant links; 0 upstream engines unavailable (phrase 2/3, page 1). No matches do not establish account absence.",
+      "count": 6
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:instagram",
+      "status": "SUCCESS",
+      "detail": "2 relevant links; 0 upstream engines unavailable (phrase 1/2, page 1). No matches do not establish account absence.",
+      "count": 6
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:instagram",
+      "status": "SUCCESS",
+      "detail": "0 relevant links; 0 upstream engines unavailable (phrase 2/2, page 1). No matches do not establish account absence.",
+      "count": 6
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "7 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 6
+    },
+    {
+      "arm": "account",
+      "operation": "web:page",
+      "status": "FAILED",
+      "detail": "Unreadable or oversized response",
+      "count": 6
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "FAILED",
+      "detail": "Unreadable or oversized response",
+      "count": 6
+    },
+    {
+      "arm": "account",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:41:27Z: login, consent, or challenge page; no request sent",
+      "count": 5
+    },
+    {
+      "arm": "account",
+      "operation": "duckduckgo:github",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:35:49Z: search challenge response; no request sent",
+      "count": 5
+    },
+    {
+      "arm": "account",
+      "operation": "web:anchor:instagram",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:43:08Z: HTTP 429 rate limit; no request sent",
+      "count": 4
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:43:08Z: HTTP 429 rate limit; no request sent",
+      "count": 4
+    },
+    {
+      "arm": "web",
+      "operation": "duckduckgo:web",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:50:59Z: search challenge response; no request sent",
+      "count": 4
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "3 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:github",
+      "status": "SUCCESS",
+      "detail": "5 relevant links; 0 upstream engines unavailable (phrase 1/2, page 1). No matches do not establish account absence.",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:github",
+      "status": "SUCCESS",
+      "detail": "0 relevant links; 0 upstream engines unavailable (phrase 2/2, page 1). No matches do not establish account absence.",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "bing:github",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 10 outside the requested platform, 0 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "bing:github",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 9 outside the requested platform, 1 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "bing:web",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 0 outside the requested platform, 1 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "duckduckgo:github",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:50:59Z: search challenge response; no request sent",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "duckduckgo:web",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:50:59Z: search challenge response; no request sent",
+      "count": 3
+    },
+    {
+      "arm": "account",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:26:26Z: login, consent, or challenge page; no request sent",
+      "count": 2
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:26:26Z: login, consent, or challenge page; no request sent",
+      "count": 2
+    },
+    {
+      "arm": "account",
+      "operation": "duckduckgo:instagram",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:35:49Z: search challenge response; no request sent",
+      "count": 2
+    },
+    {
+      "arm": "account",
+      "operation": "bing:instagram",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 10 outside the requested platform, 0 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 2
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:28:02Z: HTTP 429 rate limit; no request sent",
+      "count": 2
+    },
+    {
+      "arm": "account",
+      "operation": "bing:web",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 0 outside the requested platform, 7 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 2
+    },
+    {
+      "arm": "account",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:41:24Z: HTTP access restriction; no request sent",
+      "count": 2
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:41:24Z: HTTP access restriction; no request sent",
+      "count": 2
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "1 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 2
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "1 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 2
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "2 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 2
+    },
+    {
+      "arm": "account",
+      "operation": "bing:web",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 0 outside the requested platform, 2 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:25:44Z: HTTP access restriction; no request sent",
+      "count": 1
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "HTTP 403; access restriction or redirect not followed",
+      "count": 1
+    },
+    {
+      "arm": "web",
+      "operation": "web:page",
+      "status": "BLOCKED",
+      "detail": "Login, consent, or challenge page detected",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "web:anchor:instagram",
+      "status": "BLOCKED",
+      "detail": "HTTP 429 rate limit; retry later",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "web:page",
+      "status": "FAILED",
+      "detail": "Request timed out",
+      "count": 1
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "3 relevant links; 0 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "web:anchor:instagram",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:28:02Z: HTTP 429 rate limit; no request sent",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "6 relevant links; 1 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "bing:instagram",
+      "status": "FAILED",
+      "detail": "No usable matching links: 0 invalid URLs, 1 outside the requested platform, 0 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "bing:web",
+      "status": "FAILED",
+      "detail": "No usable matching links: 1 invalid URLs, 0 outside the requested platform, 9 without the supplied name or username. The feed is insufficient for this query; this does not establish that the account or public data is absent.",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "duckduckgo:instagram",
+      "status": "BLOCKED",
+      "detail": "Provider cooldown until 2026-10-27T04:50:59Z: search challenge response; no request sent",
+      "count": 1
+    },
+    {
+      "arm": "account",
+      "operation": "duckduckgo:web",
+      "status": "FAILED",
+      "detail": "HTTP 202",
+      "count": 1
+    },
+    {
+      "arm": "web",
+      "operation": "searxng:web",
+      "status": "SUCCESS",
+      "detail": "0 relevant links; 1 upstream engines unavailable (phrase 1/1, page 1). No matches do not establish account absence.",
+      "count": 1
+    }
+  ],
+  "reference_hashes": {
+    "addy.json": "073f5d61e8726b4a0a2eaf58760451ad025ef712c65fb488f7c1eac917469894",
+    "guido.json": "f071e462374ab9d6007746548d6df3bffd298caa0440f7ddad0c8506dcf71934",
+    "kent.json": "66109e4fccaacbeb708878d9a74cd4b188ee5ffa4c91d741b87afeda5bfb4665",
+    "linus.json": "54547286b9004ebb469ab8a8a3c1ccfa2474521624099af8140f0c5ab80a058c",
+    "rich.json": "4e815d8cd2e714f1a5c9637a695ff040bcfe8c5aa3c2172aa646cc390f39a248",
+    "simon.json": "e4fc95e545fddee8d1534f39221e8b529638c683ad873affd7826bca0ae195b1"
+  },
+  "audit_sha256": null,
+  "reporter_sha256": "42df5d7e24f2f50d76c5a40a9b06ba0fd19d7f19e27583c18b5bde37eec96033",
+  "limitations": [
+    "Eight purposively selected public figures; six software developers, two entertainers.",
+    "Three repetitions in one session measure short-term repeatability only.",
+    "Reference URLs are partial known-source targets, not an exhaustive web ground truth.",
+    "Account clues are public reference associations, not legal identity verification.",
+    "Four cases reuse the prior public matrix; all cases are development diagnostics.",
+    "Event counts are diagnostic operations, not per-HTTP-request availability.",
+    "API controls are only six supplied GitHub handles; not a discovery baseline.",
+    "Literal matches are source-field retention proxies, not semantic verification.",
+    "Repetitions are dependent; do not treat candidate occurrences as independent people."
+  ]
+}

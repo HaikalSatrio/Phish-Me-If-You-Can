@@ -17,24 +17,25 @@ import (
 )
 
 type Config struct {
-	Extraction            *extract.Config `json:"extraction,omitempty"`
-	SearXNGURL            string          `json:"searxng_url,omitempty"`
-	Version               string          `json:"version"`
-	CandidateLimit        int             `json:"candidate_limit"`
-	RequestBudget         int             `json:"request_budget"`
-	MaxAttempts           int             `json:"max_attempts"`
-	TimeoutSeconds        int             `json:"timeout_seconds"`
-	SessionTimeoutSeconds int             `json:"session_timeout_seconds"`
-	NameConfidence        float64         `json:"name_confidence"`
-	UsernameConfidence    float64         `json:"username_confidence"`
-	AttributeBoost        float64         `json:"attribute_boost"`
-	EvidenceConfidence    float64         `json:"evidence_confidence"`
-	Discoverability       float64         `json:"discoverability"`
-	SearXNGEngines        []string        `json:"searxng_engines,omitempty"`
-	SearchLanguage        string          `json:"search_language,omitempty"`
-	SearchTimeRange       string          `json:"search_time_range,omitempty"`
-	SearchPages           int             `json:"search_pages,omitempty"`
-	SearXNGSafeSearch     int             `json:"searxng_safesearch,omitempty"`
+	Access                *collector.AccessOptions `json:"access,omitempty"`
+	Extraction            *extract.Config          `json:"extraction,omitempty"`
+	SearXNGURL            string                   `json:"searxng_url,omitempty"`
+	Version               string                   `json:"version"`
+	CandidateLimit        int                      `json:"candidate_limit"`
+	RequestBudget         int                      `json:"request_budget"`
+	MaxAttempts           int                      `json:"max_attempts"`
+	TimeoutSeconds        int                      `json:"timeout_seconds"`
+	SessionTimeoutSeconds int                      `json:"session_timeout_seconds"`
+	NameConfidence        float64                  `json:"name_confidence"`
+	UsernameConfidence    float64                  `json:"username_confidence"`
+	AttributeBoost        float64                  `json:"attribute_boost"`
+	EvidenceConfidence    float64                  `json:"evidence_confidence"`
+	Discoverability       float64                  `json:"discoverability"`
+	SearXNGEngines        []string                 `json:"searxng_engines,omitempty"`
+	SearchLanguage        string                   `json:"search_language,omitempty"`
+	SearchTimeRange       string                   `json:"search_time_range,omitempty"`
+	SearchPages           int                      `json:"search_pages,omitempty"`
+	SearXNGSafeSearch     int                      `json:"searxng_safesearch,omitempty"`
 }
 
 func (c Config) SearXNGPreferences() collector.SearXNGOptions {
@@ -48,6 +49,11 @@ func (c Config) SearXNGPreferences() collector.SearXNGOptions {
 }
 
 func (c Config) Validate() error {
+	if c.Access != nil {
+		if err := c.Access.Validate(); err != nil {
+			return err
+		}
+	}
 	if c.Extraction != nil {
 		if err := c.Extraction.Validate(); err != nil {
 			return err
@@ -161,7 +167,15 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 	}
 	ctx, cancel := context.WithTimeout(ctx, time.Duration(cfg.SessionTimeoutSeconds)*time.Second)
 	defer cancel()
+	ctx = collector.WithAccess(ctx, cfg.Access, cfg.RequestBudget-s.RequestsUsed)
 	r := c.Collect(ctx, collector.Query{Name: s.Name, Username: s.Username, Accounts: s.Accounts, Company: s.Company, Location: s.Location, URL: s.URL, Platform: s.Platform, Limit: cfg.CandidateLimit, Budget: cfg.RequestBudget - s.RequestsUsed})
+	if requests, access, enabled := collector.AccessSnapshot(ctx); enabled {
+		// Browser subprocesses have their own accounting; ordinary HTTP collectors use this transport.
+		if s.Provider != "google" {
+			r.Requests = requests
+		}
+		s.Access = append(append([]domain.AccessEvent(nil), s.Access...), access...)
+	}
 	now = time.Now().UTC().Format(time.RFC3339)
 	s.Attempts++
 	s.RequestsUsed += r.Requests

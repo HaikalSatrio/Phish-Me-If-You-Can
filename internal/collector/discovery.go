@@ -72,6 +72,9 @@ func (d *DuckDuckGo) Collect(ctx context.Context, q Query) Result {
 			continue
 		}
 		profiles, status := parseDuckDuckGo(body, raw, q, p.Name)
+		if status == "BLOCKED" {
+			cooldownAccess(ctx, raw, 15*time.Minute, "search challenge page")
+		}
 		r.Status = status
 		blocked = status == "BLOCKED"
 		rankResults(profiles, q)
