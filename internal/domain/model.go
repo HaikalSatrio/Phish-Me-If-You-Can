@@ -45,6 +45,7 @@ type SummaryClaim struct {
 }
 
 type Source struct {
+	RequestURL     string `json:"request_url,omitempty"`
 	ResponseSHA256 string `json:"response_sha256,omitempty"`
 	Rule           string `json:"rule,omitempty"`
 	URL            string `json:"url"`
@@ -91,6 +92,7 @@ type Coverage struct {
 }
 
 type Case struct {
+	SocialPosts     []SocialPost        `json:"social_posts,omitempty"`
 	NameClaims      []NameClaim         `json:"name_claims,omitempty"`
 	IdentityReviews []IdentityReview    `json:"identity_reviews,omitempty"`
 	Relations       []Relation          `json:"relations,omitempty"`

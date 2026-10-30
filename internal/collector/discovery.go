@@ -148,7 +148,7 @@ type Discovery struct {
 
 func NewDiscovery(timeout time.Duration) *Discovery {
 	local, _ := NewSearXNG("http://127.0.0.1:8888", timeout)
-	return &Discovery{[]Collector{local, NewDuckDuckGo(timeout), NewBing(timeout), NewWikipedia(timeout)}, NewPage(timeout)}
+	return &Discovery{[]Collector{local, NewDuckDuckGo(timeout), NewBing(timeout), NewWikipedia(timeout)}, NewPublicPage(timeout, nil)}
 }
 
 func (d *Discovery) Collect(ctx context.Context, q Query) Result {
@@ -179,6 +179,7 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 		attempted[key] = true
 		part := d.collectAnchor(ctx, anchor, q.Budget-r.Requests)
 		r.Requests += part.Requests
+		r.Access = append(r.Access, part.Access...)
 		r.Events = append(r.Events, part.Events...)
 		status = part.Status
 		for _, p := range part.Profiles {
@@ -275,6 +276,12 @@ func (d *Discovery) Collect(ctx context.Context, q Query) Result {
 		attempted[discoveryURLKey(p.URL)] = true
 		page := d.page.Collect(ctx, Query{URL: p.URL, Budget: q.Budget - r.Requests, Limit: 1})
 		r.Requests += page.Requests
+		r.Access = append(r.Access, page.Access...)
+		for _, event := range page.Events {
+			if strings.HasPrefix(event.Operation, "instagram:") {
+				r.Events = append(r.Events, event)
+			}
+		}
 		detail := "Destination extraction failed; indexed evidence retained"
 		if len(page.Events) > 0 {
 			detail = page.Events[len(page.Events)-1].Detail

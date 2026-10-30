@@ -40,7 +40,7 @@ type Profile struct {
 	Bio            string `json:"bio"`
 }
 
-type FactSource struct{ URL, ResponseSHA256, Rule string }
+type FactSource struct{ URL, RequestURL, ObservedAt, ResponseSHA256, Rule string }
 
 type Fact struct{ Type, Value string }
 
@@ -51,6 +51,7 @@ type Event struct {
 }
 
 type Result struct {
+	Access     []domain.AccessEvent
 	Research   []domain.ResearchStep
 	Receipts   []domain.CollectionReceipt
 	Profiles   []Profile

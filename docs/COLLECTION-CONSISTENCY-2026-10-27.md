@@ -106,7 +106,7 @@ Saran sementara untuk pemakaian: berikan petunjuk akun yang memang diketahui; un
 - Snapshot dan log asli: `data/consistency-20261027/` (lokal, diabaikan Git).
 
 ```bash
-cd /mnt/c/Users/ATHAR/Documents/BISMILLAH-BLACKHAT/OSINTCENG/Phish-Me-If-You-Can
+cd /path/to/Phish-Me-If-You-Can
 go build -o bin/pmiyc-consistency ./cmd/pmiyc
 python3 scripts/benchmark_consistency.py --out data/consistency-new-run
 python3 scripts/report_consistency.py --run data/consistency-new-run --out data/consistency-new-run/report.json

@@ -2,3 +2,18 @@
 /bin/
 *.exe
 __pycache__/
+
+# Local credentials, sessions, and handoff notes
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+cookies.txt
+cookies.json
+session-*
+PMIYC-CONTEXT.md
+PMIYC-HANDOFF.md
+.venv/
+venv/

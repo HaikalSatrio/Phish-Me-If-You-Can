@@ -1,0 +1,174 @@
+{
+  "reference_version": "4.16",
+  "fixtures": [
+    {
+      "input": null,
+      "caption": null,
+      "mentions": [],
+      "hashtags": []
+    },
+    {
+      "input": "",
+      "caption": "",
+      "mentions": [],
+      "hashtags": []
+    },
+    {
+      "input": "🥂",
+      "caption": "🥂",
+      "mentions": [],
+      "hashtags": []
+    },
+    {
+      "input": "made it out alive💋",
+      "caption": "made it out alive💋",
+      "mentions": [],
+      "hashtags": []
+    },
+    {
+      "input": "Café @USER #Café",
+      "caption": "Café @USER #Café",
+      "mentions": [
+        "user"
+      ],
+      "hashtags": [
+        "café"
+      ]
+    },
+    {
+      "input": "mail@example.com @User.Name #JAKARTA #日本語",
+      "caption": "mail@example.com @User.Name #JAKARTA #日本語",
+      "mentions": [
+        "user.name"
+      ],
+      "hashtags": [
+        "jakarta",
+        "日本語"
+      ]
+    },
+    {
+      "input": "@a..b @user. _@Other @x",
+      "caption": "@a..b @user. _@Other @x",
+      "mentions": [
+        "a",
+        "user",
+        "other",
+        "x"
+      ],
+      "hashtags": []
+    },
+    {
+      "input": "@a@b @one @two @ONE #Tag #TAG",
+      "caption": "@a@b @one @two @ONE #Tag #TAG",
+      "mentions": [
+        "a",
+        "one",
+        "two",
+        "one"
+      ],
+      "hashtags": [
+        "tag",
+        "tag"
+      ]
+    },
+    {
+      "input": "@AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "caption": "@AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "mentions": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "hashtags": []
+    },
+    {
+      "input": "#日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日",
+      "caption": "#日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日",
+      "mentions": [],
+      "hashtags": [
+        "日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日日"
+      ]
+    },
+    {
+      "input": "é@user #é #Ⅳ #１２ #٢ #²",
+      "caption": "é@user #é #Ⅳ #１２ #٢ #²",
+      "mentions": [
+        "user"
+      ],
+      "hashtags": [
+        "é",
+        "ⅳ",
+        "１２",
+        "٢",
+        "²"
+      ]
+    },
+    {
+      "input": "#ΟΣ #İSTANBUL",
+      "caption": "#ΟΣ #İSTANBUL",
+      "mentions": [],
+      "hashtags": [
+        "ος",
+        "i"
+      ]
+    },
+    {
+      "input": "Hello\n@User_Name\n#123_abc",
+      "caption": "Hello\n@User_Name\n#123_abc",
+      "mentions": [
+        "user_name"
+      ],
+      "hashtags": [
+        "123_abc"
+      ]
+    },
+    {
+      "input": "@@a @a.b.c. @a...b",
+      "caption": "@@a @a.b.c. @a...b",
+      "mentions": [
+        "a",
+        "a.b.c",
+        "a"
+      ],
+      "hashtags": []
+    },
+    {
+      "input": "@a_ @a._ @a.b_",
+      "caption": "@a_ @a._ @a.b_",
+      "mentions": [
+        "a_",
+        "a._",
+        "a.b_"
+      ],
+      "hashtags": []
+    },
+    {
+      "input": "@a#word @a.#tag",
+      "caption": "@a#word @a.#tag",
+      "mentions": [
+        "a",
+        "a"
+      ],
+      "hashtags": [
+        "word",
+        "tag"
+      ]
+    },
+    {
+      "input": "#𝔘nicode #emoji🥂 #á",
+      "caption": "#𝔘nicode #emoji🥂 #á",
+      "mentions": [],
+      "hashtags": [
+        "𝔘nicode",
+        "emoji",
+        "á"
+      ]
+    },
+    {
+      "input": "https://example.org/@user",
+      "caption": "https://example.org/@user",
+      "mentions": [
+        "user"
+      ],
+      "hashtags": []
+    }
+  ]
+}

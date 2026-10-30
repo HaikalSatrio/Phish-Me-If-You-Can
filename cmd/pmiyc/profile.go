@@ -51,6 +51,7 @@ func printProfile(w io.Writer, r dossier.Report) {
 		fmt.Fprintf(w, "  %q | %q\n", p.Name, p.URL)
 	}
 	fmt.Fprintln(w, "Observed names:")
+	printSocialPosts(w, r.SocialPosts)
 	printPublicNames(w, r.PublicNames)
 	if len(r.ObservedNames) == 0 {
 		fmt.Fprintln(w, "  Not established from collected sources.")

@@ -2,6 +2,8 @@
 
 Mesin Go untuk analisis exposure dari evidence publik dalam penelitian defensif. Prototipe ini mengikuti Build Guidelines dan menyediakan evidence ingestion, review identitas, penyimpanan lokal, serta lima dimensi Personal Exposure Score (PES).
 
+Collector Instagram Go terintegrasi melalui `search -source instagram -username HANDLE`, URL profil, dan profil Instagram yang ditemukan dalam pencarian web. Caption, waktu unggahan, akun penerbit, dan provenance disimpan; petunjuk caption tetap belum terverifikasi. Tidak memerlukan Python. Lihat [pemakaian, batas akses, dan pengujian Instagram](docs/INSTAGRAM-COLLECTOR.md).
+
 Evaluasi yang dapat dijalankan ulang tersedia melalui `pmiyc benchmark -out data/benchmark.json`. Tambahkan `-model qwen2.5:7b` untuk membandingkan rules dan Ollama pada input identik. Corpus awal berisi 24 kasus sintetis, bukan ukuran akurasi web. Lihat [panduan benchmark](docs/BENCHMARK.md).
 
 Matriks internasional berisi 200 nama publik dengan empat mode pencarian dan ekstraksi. Runner menyimpan checkpoint dan membandingkan rules dengan Qwen pada observasi yang sama. Lihat [metode pengujian, batas cakupan, dan cara menjalankan ulang](docs/MATRIX-EVALUATION.md).

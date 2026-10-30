@@ -160,6 +160,9 @@ func (s *accessSession) gate(ctx context.Context, req *http.Request) error {
 	if strings.Contains(req.URL.Path, "search") || strings.Contains(host, "duckduckgo.com") {
 		interval = time.Duration(s.opts.SearchIntervalMS) * time.Millisecond
 	}
+	if host == "www.instagram.com" || host == "instagram.com" {
+		interval = max(interval, 3*time.Second)
+	}
 	// Reserve a slot once. Polling Next without a reservation lets a fast process
 	// repeatedly take another process's turn and exhaust its session deadline.
 	var slot time.Time
@@ -282,6 +285,8 @@ func retryAfter(raw string, fallback time.Duration) time.Duration {
 	return fallback
 }
 
+type noAccessRetryKey struct{}
+
 func doAccess(client *http.Client, req *http.Request) (*http.Response, error) {
 	ctx := req.Context()
 	s := accessFrom(ctx)
@@ -333,7 +338,7 @@ func doAccess(client *http.Client, req *http.Request) (*http.Response, error) {
 				return response, err
 			}
 			var transient net.Error
-			if attempt < s.opts.MaxRetries && errors.As(err, &transient) && transient.Timeout() && ctx.Err() == nil {
+			if ctx.Value(noAccessRetryKey{}) != true && attempt < s.opts.MaxRetries && errors.As(err, &transient) && transient.Timeout() && ctx.Err() == nil {
 				if waitAccess(ctx, time.Second+time.Duration(rand.IntN(300))*time.Millisecond) == nil {
 					continue
 				}
@@ -356,7 +361,7 @@ func doAccess(client *http.Client, req *http.Request) (*http.Response, error) {
 		case 502, 503, 504:
 			delay := retryAfter(response.Header.Get("Retry-After"), time.Second+time.Duration(rand.IntN(300))*time.Millisecond)
 			cooldownAccess(ctx, req.URL.String(), delay, "temporary upstream failure")
-			if attempt < s.opts.MaxRetries && req.Method == http.MethodGet && delay <= 30*time.Second {
+			if ctx.Value(noAccessRetryKey{}) != true && attempt < s.opts.MaxRetries && req.Method == http.MethodGet && delay <= 30*time.Second {
 				if deadline, ok := ctx.Deadline(); !ok || time.Until(deadline)-delay > time.Second {
 					closeAccessResponse(response)
 					if err := waitAccess(ctx, delay+5*time.Millisecond); err != nil {
