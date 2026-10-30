@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -39,7 +40,7 @@ func runSearch(args []string) error {
 	username := fs.String("username", "", "exact account username or full Bluesky handle; use -name for people search")
 	var accounts accountFlags
 	fs.Var(&accounts, "account", "known platform:username clue; repeat for multiple platforms (web source)")
-	source := fs.String("source", "", "auto (free public profiles), direct (HTML), web (free search and pages), searxng, duckduckgo, bing, github, devto, google, brave, google-api, url, or bluesky")
+	source := fs.String("source", "", "auto (free public profiles), direct (HTML), web (free search and pages), instagram, searxng, duckduckgo, bing, github, devto, google, brave, google-api, url, or bluesky")
 	platform := fs.String("platform", "", "platform name or all; web tries scoped account hints and indexed discovery")
 	pageURL := fs.String("url", "", "explicit public page URL")
 	company := fs.String("company", "", "company clue for comparison")
@@ -97,6 +98,8 @@ func runSearch(args []string) error {
 	timeout := time.Duration(cfg.TimeoutSeconds) * time.Second
 	var client collector.Collector
 	switch provider {
+	case "instagram":
+		client = collector.NewInstagram(timeout, cfg.Instagram)
 	case "auto":
 		client = collector.NewPublicProfiles(timeout, os.Getenv("GITHUB_TOKEN"))
 	case "devto":
@@ -108,6 +111,7 @@ func runSearch(args []string) error {
 		if err != nil {
 			return err
 		}
+		configured.SetInstagramOptions(timeout, cfg.Instagram)
 		client = configured
 	case "searxng":
 		configured, err := collector.NewSearXNGWithOptions(cfg.SearXNGURL, timeout, cfg.SearXNGPreferences())
@@ -128,7 +132,7 @@ func runSearch(args []string) error {
 	case "google-api":
 		client = collector.NewWeb("google", os.Getenv("GOOGLE_API_KEY"), os.Getenv("GOOGLE_CSE_ID"), timeout)
 	case "url":
-		client = collector.NewPage(timeout)
+		client = collector.NewPublicPage(timeout, cfg.Instagram)
 	case "bluesky":
 		client = collector.NewBluesky(timeout)
 	default:
@@ -144,7 +148,7 @@ func runSearch(args []string) error {
 	if lookupUsername == "" && previous != nil && previous.Search != nil {
 		lookupUsername = previous.Search.Username
 	}
-	if (provider == "devto" || provider == "bluesky" || provider == "direct" || provider == "auto") && lookupUsername == "" {
+	if (provider == "instagram" || provider == "devto" || provider == "bluesky" || provider == "direct" || provider == "auto") && lookupUsername == "" {
 		return fmt.Errorf("-source %s retrieves exact usernames and requires -username; to find people by name on DEV use: search -source web -platform devto -name \"Ben\"", provider)
 	}
 	project, err := search.Run(ctx, client, search.Input{Name: *name, Username: *username, Accounts: accounts, Company: *company, Location: *location, Provider: provider, Platform: *platform, URL: *pageURL}, cfg, previous)
@@ -310,6 +314,21 @@ func printCandidates(c domain.Case) {
 		fmt.Println("  Public observations:")
 		for _, e := range c.Evidence {
 			if e.CandidateID == p.ID {
+				if e.Type == "instagram_post" {
+					continue
+				} // Shown with provenance in the review card.
+				if e.Type == "instagram_collection" {
+					var summary struct {
+						CollectedPosts int    `json:"collected_posts"`
+						MaxPosts       int    `json:"max_posts"`
+						PostsStatus    string `json:"posts_status"`
+						StopReason     string `json:"stop_reason"`
+					}
+					if json.Unmarshal([]byte(e.Value), &summary) == nil {
+						fmt.Printf("    Instagram collection: posts=%d/%d status=%s stop=%s (request receipts in saved JSON)\n", summary.CollectedPosts, summary.MaxPosts, summary.PostsStatus, summary.StopReason)
+					}
+					continue
+				}
 				value := []rune(e.Value)
 				status := ""
 				if e.Status != "OBSERVED" {

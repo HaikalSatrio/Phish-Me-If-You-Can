@@ -239,10 +239,13 @@ func Normalize(c domain.Case) (domain.Case, error) {
 				lines[i] = strings.Join(strings.Fields(lines[i]), " ")
 			}
 			e.Value = strings.TrimSpace(strings.Join(lines, "\n"))
-		} else {
+		} else if e.Type != "instagram_post" && e.Type != "instagram_collection" {
 			e.Value = strings.Join(strings.Fields(e.Value), " ")
 		}
 		key := e.CandidateID + "\x00" + e.Type + "\x00" + canonical(e.Value)
+		if e.Type == "instagram_post" || e.Type == "instagram_collection" {
+			key = e.CandidateID + "\x00" + e.Type + "\x00" + e.Value
+		}
 		if i, ok := seen[key]; ok && e.Status == "OBSERVED" {
 			x := &out[i]
 			x.Aliases = append(x.Aliases, e.ID)
@@ -286,6 +289,9 @@ func Normalize(c domain.Case) (domain.Case, error) {
 		}
 	}
 	c.Evidence = out
+	if err := normalizeSocialPosts(&c); err != nil {
+		return c, err
+	}
 	byID := map[string]domain.Evidence{}
 	for _, e := range out {
 		byID[e.ID] = e

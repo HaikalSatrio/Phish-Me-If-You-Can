@@ -56,6 +56,7 @@ type Issue struct {
 }
 
 type Report struct {
+	SocialPosts         []domain.SocialPost     `json:"social_posts,omitempty"`
 	PublicNames         []identity.NameCard     `json:"public_names,omitempty"`
 	Version             string                  `json:"version"`
 	InputSHA256         string                  `json:"input_sha256"`
@@ -117,6 +118,11 @@ func Build(input domain.Case) (Report, error) {
 		return out, nil
 	}
 	out.Status = "SOURCE_REVIEW_REQUIRED"
+	for _, post := range c.SocialPosts {
+		if selected[post.CandidateID] {
+			out.SocialPosts = append(out.SocialPosts, post)
+		}
+	}
 	publicNames := map[string]map[string]bool{}
 	for _, claim := range out.PublicNames {
 		key := normalized(claim.Alias)

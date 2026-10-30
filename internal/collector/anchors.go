@@ -80,6 +80,10 @@ func mergeProfileFacts(dst *Profile, src Profile) {
 	if dst.FactSources == nil {
 		dst.FactSources = map[string]FactSource{}
 	}
+	if dst.Login == "" && src.Login != "" {
+		dst.Login = src.Login
+		dst.FactSources["username"] = SourceForFact(src, Fact{Type: "username", Value: src.Login})
+	}
 	if dst.Name == "" && src.Name != "" {
 		dst.Name = src.Name
 		source, ok := src.FactSources["name"]
@@ -96,7 +100,11 @@ func mergeProfileFacts(dst *Profile, src Profile) {
 		dst.FactSources[fact.Type+"\x00"+fact.Value] = SourceForFact(*dst, fact)
 	}
 	for _, fact := range src.Facts {
-		if seen[fact] || counts[fact.Type] >= 8 {
+		cap := 8
+		if fact.Type == "instagram_post" {
+			cap = 12
+		}
+		if seen[fact] || counts[fact.Type] >= cap {
 			continue
 		}
 		seen[fact] = true
@@ -176,6 +184,6 @@ func (d *Discovery) collectAnchor(ctx context.Context, anchor discoveryAnchor, b
 			r.Status = "EMPTY"
 		}
 	}
-	r.Events = []Event{{op, r.Status, detail}}
+	r.Events = append(r.Events, Event{op, r.Status, detail})
 	return r
 }

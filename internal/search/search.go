@@ -17,25 +17,26 @@ import (
 )
 
 type Config struct {
-	Access                *collector.AccessOptions `json:"access,omitempty"`
-	Extraction            *extract.Config          `json:"extraction,omitempty"`
-	SearXNGURL            string                   `json:"searxng_url,omitempty"`
-	Version               string                   `json:"version"`
-	CandidateLimit        int                      `json:"candidate_limit"`
-	RequestBudget         int                      `json:"request_budget"`
-	MaxAttempts           int                      `json:"max_attempts"`
-	TimeoutSeconds        int                      `json:"timeout_seconds"`
-	SessionTimeoutSeconds int                      `json:"session_timeout_seconds"`
-	NameConfidence        float64                  `json:"name_confidence"`
-	UsernameConfidence    float64                  `json:"username_confidence"`
-	AttributeBoost        float64                  `json:"attribute_boost"`
-	EvidenceConfidence    float64                  `json:"evidence_confidence"`
-	Discoverability       float64                  `json:"discoverability"`
-	SearXNGEngines        []string                 `json:"searxng_engines,omitempty"`
-	SearchLanguage        string                   `json:"search_language,omitempty"`
-	SearchTimeRange       string                   `json:"search_time_range,omitempty"`
-	SearchPages           int                      `json:"search_pages,omitempty"`
-	SearXNGSafeSearch     int                      `json:"searxng_safesearch,omitempty"`
+	Instagram             *collector.InstagramOptions `json:"instagram,omitempty"`
+	Access                *collector.AccessOptions    `json:"access,omitempty"`
+	Extraction            *extract.Config             `json:"extraction,omitempty"`
+	SearXNGURL            string                      `json:"searxng_url,omitempty"`
+	Version               string                      `json:"version"`
+	CandidateLimit        int                         `json:"candidate_limit"`
+	RequestBudget         int                         `json:"request_budget"`
+	MaxAttempts           int                         `json:"max_attempts"`
+	TimeoutSeconds        int                         `json:"timeout_seconds"`
+	SessionTimeoutSeconds int                         `json:"session_timeout_seconds"`
+	NameConfidence        float64                     `json:"name_confidence"`
+	UsernameConfidence    float64                     `json:"username_confidence"`
+	AttributeBoost        float64                     `json:"attribute_boost"`
+	EvidenceConfidence    float64                     `json:"evidence_confidence"`
+	Discoverability       float64                     `json:"discoverability"`
+	SearXNGEngines        []string                    `json:"searxng_engines,omitempty"`
+	SearchLanguage        string                      `json:"search_language,omitempty"`
+	SearchTimeRange       string                      `json:"search_time_range,omitempty"`
+	SearchPages           int                         `json:"search_pages,omitempty"`
+	SearXNGSafeSearch     int                         `json:"searxng_safesearch,omitempty"`
 }
 
 func (c Config) SearXNGPreferences() collector.SearXNGOptions {
@@ -49,6 +50,11 @@ func (c Config) SearXNGPreferences() collector.SearXNGOptions {
 }
 
 func (c Config) Validate() error {
+	if c.Instagram != nil {
+		if err := c.Instagram.Validate(); err != nil {
+			return err
+		}
+	}
 	if c.Access != nil {
 		if err := c.Access.Validate(); err != nil {
 			return err
@@ -175,6 +181,9 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 			r.Requests = requests
 		}
 		s.Access = append(append([]domain.AccessEvent(nil), s.Access...), access...)
+	} else {
+		// Instagram enables a host gate even when older configs omit access.
+		s.Access = append(append([]domain.AccessEvent(nil), s.Access...), r.Access...)
 	}
 	now = time.Now().UTC().Format(time.RFC3339)
 	s.Attempts++
@@ -282,6 +291,10 @@ func Run(ctx context.Context, c collector.Collector, in Input, cfg Config, previ
 			provenance := domain.Source{URL: sourceURL, ObservedAt: now, Collector: collectorName + "/" + cfg.Version, ResponseSHA256: p.ResponseSHA256, Rule: p.Rule}
 			if source := collector.SourceForFact(p, fact); source.URL != "" {
 				provenance.URL, provenance.ResponseSHA256, provenance.Rule = source.URL, source.ResponseSHA256, source.Rule
+				provenance.RequestURL = source.RequestURL
+				if source.ObservedAt != "" {
+					provenance.ObservedAt = source.ObservedAt
+				}
 			}
 			project.Evidence = append(project.Evidence, domain.Evidence{ID: evidenceID, CandidateID: id, Type: fact.Type, Value: fact.Value, Status: "OBSERVED", Confidence: cfg.EvidenceConfidence, Discoverability: cfg.Discoverability, Sources: []domain.Source{provenance}})
 		}

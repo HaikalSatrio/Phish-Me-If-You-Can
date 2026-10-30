@@ -26,14 +26,15 @@ type ClaimCard struct {
 }
 
 type ReviewCard struct {
-	Names          []NameCard  `json:"names,omitempty"`
-	CandidateID    string      `json:"candidate_id"`
-	Name           string      `json:"name,omitempty"`
-	Title          string      `json:"title,omitempty"`
-	URL            string      `json:"url"`
-	Decision       string      `json:"decision"`
-	Claims         []ClaimCard `json:"claims"`
-	Contradictions []string    `json:"contradictions,omitempty"`
+	SocialPosts    []domain.SocialPost `json:"social_posts,omitempty"`
+	Names          []NameCard          `json:"names,omitempty"`
+	CandidateID    string              `json:"candidate_id"`
+	Name           string              `json:"name,omitempty"`
+	Title          string              `json:"title,omitempty"`
+	URL            string              `json:"url"`
+	Decision       string              `json:"decision"`
+	Claims         []ClaimCard         `json:"claims"`
+	Contradictions []string            `json:"contradictions,omitempty"`
 }
 
 type NameCard struct {
@@ -65,6 +66,11 @@ func Cards(c domain.Case) []ReviewCard {
 	for _, p := range c.Candidates {
 		card := ReviewCard{CandidateID: p.ID, Name: p.DisplayName, Title: p.Label, URL: p.ProfileURL, Decision: p.Decision, Claims: []ClaimCard{}, Contradictions: append([]string(nil), p.Contradictions...)}
 		card.Names = NameCards(c, p.ID)
+		for _, post := range c.SocialPosts {
+			if post.CandidateID == p.ID {
+				card.SocialPosts = append(card.SocialPosts, post)
+			}
+		}
 		for _, r := range c.Relations {
 			if r.CandidateID != p.ID || domain.RelationDecision(r) == "REJECT" {
 				continue

@@ -57,8 +57,14 @@ func (d *Discovery) followResearchLinks(ctx context.Context, q Query, r *Result,
 		}
 		attempted[key] = true
 		steps++
-		part := d.page.Collect(ctx, Query{URL: link.URL, Limit: 1, Budget: min(3, q.Budget-r.Requests)})
+		part := d.page.Collect(ctx, Query{URL: link.URL, Limit: 1, Budget: d.inspectionBudget(link.URL, q.Budget-r.Requests, 3)})
 		r.Requests += part.Requests
+		r.Access = append(r.Access, part.Access...)
+		for _, event := range part.Events {
+			if strings.HasPrefix(event.Operation, "instagram:") {
+				r.Events = append(r.Events, event)
+			}
+		}
 		r.Research = append(r.Research, domain.ResearchStep{Action: "follow_link", FromURL: parent.URL, URL: link.URL, Reason: link.Reason, Status: part.Status, Requests: part.Requests})
 		r.Events = append(r.Events, Event{"web:research:link", part.Status, link.URL + ": " + link.Reason})
 		for _, p := range part.Profiles {
@@ -165,8 +171,14 @@ func (d *Discovery) researchQueries(ctx context.Context, q Query, r *Result, att
 				p.DiscoveryBasis, p.LinkedFrom = plan.reason, plan.from
 				if !attempted[key] && r.Requests < q.Budget && ctx.Err() == nil {
 					attempted[key] = true
-					page := d.page.Collect(ctx, Query{URL: p.URL, Limit: 1, Budget: min(2, q.Budget-r.Requests)})
+					page := d.page.Collect(ctx, Query{URL: p.URL, Limit: 1, Budget: d.inspectionBudget(p.URL, q.Budget-r.Requests, 2)})
 					r.Requests += page.Requests
+					r.Access = append(r.Access, page.Access...)
+					for _, event := range page.Events {
+						if strings.HasPrefix(event.Operation, "instagram:") {
+							r.Events = append(r.Events, event)
+						}
+					}
 					r.Research = append(r.Research, domain.ResearchStep{Action: "inspect_result", FromURL: plan.from, URL: p.URL, Query: queryText, Reason: "inspect destination evidence; a name match alone does not link identities", Status: page.Status, Requests: page.Requests})
 					for _, observed := range page.Profiles {
 						attempted[discoveryURLKey(observed.URL)] = true
