@@ -86,11 +86,34 @@ func mergeProfileFacts(dst *Profile, src Profile) {
 	}
 	if dst.Name == "" && src.Name != "" {
 		dst.Name = src.Name
-		source, ok := src.FactSources["name"]
-		if !ok {
-			source = FactSource{URL: src.SourceURL, ResponseSHA256: src.ResponseSHA256, Rule: src.Rule}
+		dst.FactSources["name"] = SourceForFact(src, Fact{Type: "name", Value: src.Name})
+	}
+	for _, field := range []struct {
+		kind  string
+		dst   *string
+		value string
+	}{
+		{"workplace", &dst.Company, src.Company},
+		{"location", &dst.Location, src.Location},
+		{"email", &dst.Email, src.Email},
+		{"website", &dst.Blog, src.Blog},
+	} {
+		if *field.dst != "" {
+			fact := Fact{Type: field.kind, Value: *field.dst}
+			dst.FactSources[field.kind+"\x00"+fact.Value] = SourceForFact(*dst, fact)
 		}
-		dst.FactSources["name"] = source
+		if strings.TrimSpace(field.value) == "" {
+			continue
+		}
+		fact := Fact{Type: field.kind, Value: field.value}
+		source := SourceForFact(src, fact)
+		if *field.dst == "" {
+			*field.dst = field.value
+			dst.FactSources[field.kind] = source
+			dst.FactSources[field.kind+"\x00"+field.value] = source
+		} else if *field.dst != field.value {
+			src.Facts = append(append([]Fact(nil), src.Facts...), fact)
+		}
 	}
 	seen := map[Fact]bool{}
 	counts := map[string]int{}
@@ -115,6 +138,34 @@ func mergeProfileFacts(dst *Profile, src Profile) {
 		if counts[fact.Type] == 1 {
 			dst.FactSources[fact.Type] = source
 		}
+	}
+	for _, field := range []struct {
+		kind  string
+		value *string
+	}{
+		{"workplace", &dst.Company}, {"location", &dst.Location},
+		{"email", &dst.Email}, {"website", &dst.Blog},
+	} {
+		values := map[string]bool{}
+		if *field.value != "" {
+			values[*field.value] = true
+		}
+		for _, fact := range dst.Facts {
+			if fact.Type == field.kind && strings.TrimSpace(fact.Value) != "" {
+				values[fact.Value] = true
+			}
+		}
+		if len(values) <= 1 {
+			continue
+		}
+		if *field.value != "" {
+			fact := Fact{Type: field.kind, Value: *field.value}
+			if !seen[fact] {
+				dst.Facts = append(dst.Facts, fact)
+				dst.FactSources[field.kind+"\x00"+fact.Value] = SourceForFact(*dst, fact)
+			}
+		}
+		*field.value = ""
 	}
 }
 

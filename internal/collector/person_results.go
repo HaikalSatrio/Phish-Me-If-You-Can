@@ -2,8 +2,10 @@ package collector
 
 import (
 	"net/url"
+	"regexp"
 	"strings"
 
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/personname"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/profile"
 )
 
@@ -46,6 +48,9 @@ func partialProfileName(q Query, raw, title string) bool {
 }
 
 func relevantSearchResult(q Query, raw, title, snippet string) bool {
+	if conflictingLeadingName(q, raw, title, snippet) {
+		return false
+	}
 	// A platform-scoped handle query seeks that account, not another user's mention.
 	// Unscoped research queries still retain public third-party references.
 	if q.Username != "" && q.Platform != "" && q.Platform != "all" && q.Platform != "web" {
@@ -60,6 +65,47 @@ func relevantSearchResult(q Query, raw, title, snippet string) bool {
 		}
 	}
 	return !directoryResult(raw) && (relevantResult(q, title+" "+snippet+" "+raw) || partialProfileName(q, raw, title))
+}
+
+func conflictingLeadingName(q Query, raw, title, snippet string) bool {
+	if q.Username != "" || len(strings.Fields(q.Name)) < 2 {
+		return false
+	}
+	name, ok := profile.NameFromTitle(raw, title)
+	if !ok {
+		u, err := url.Parse(raw)
+		if err == nil && strings.HasSuffix(strings.ToLower(u.Hostname()), ".wikipedia.org") && strings.HasPrefix(u.Path, "/wiki/") && strings.HasSuffix(title, " - Wikipedia") {
+			name = strings.TrimSuffix(title, " - Wikipedia")
+			ok = plausiblePersonName(name)
+		}
+	}
+	if !ok {
+		return false
+	}
+	want, got := searchWords(q.Name), searchWords(name)
+	if before, _, found := strings.Cut(got, want); found {
+		honorificsOnly := strings.TrimSpace(before) != ""
+		for _, word := range strings.Fields(before) {
+			switch word {
+			case "dr", "prof", "mr", "mrs", "ms", "bapak", "ibu":
+			default:
+				honorificsOnly = false
+			}
+		}
+		if honorificsOnly {
+			return false
+		}
+	}
+	for _, claim := range personname.Find(q.Name, snippet) {
+		if personname.Equal(claim.Name, name) || personname.Equal(claim.Alias, name) {
+			return false
+		}
+	}
+	alias := `(?im)(?:^|[.!?\n][ \t]*)` + regexp.QuoteMeta(strings.TrimSpace(name)) + `,?[ \t]+(?:is[ \t]+)?(?:also known as|known as|dikenal sebagai)[ \t]+` + regexp.QuoteMeta(strings.TrimSpace(q.Name)) + `(?:[.!,;]|$)`
+	if regexp.MustCompile(alias).MatchString(snippet) {
+		return false
+	}
+	return strings.Contains(" "+got+" ", " "+want+" ") && !strings.HasPrefix(got, want+" ") && got != want
 }
 
 // AcceptIndexedPerson exposes the same candidate filter used by public search

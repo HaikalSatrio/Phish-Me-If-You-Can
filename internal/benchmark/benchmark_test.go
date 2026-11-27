@@ -106,3 +106,39 @@ func TestBundledCorpusAndInvalidLabels(t *testing.T) {
 		t.Fatal("unlabeled result accepted as a negative")
 	}
 }
+
+func TestPersonFilterRegressionCorpus(t *testing.T) {
+	var c Corpus
+	if err := storage.Read("../../fixtures/benchmark-person-filter-v1.json", &c); err != nil {
+		t.Fatal(err)
+	}
+	r, err := Execute(context.Background(), c, extract.Config{}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if r.CandidateFilter.TP != 5 || r.CandidateFilter.FP != 0 || r.CandidateFilter.FN != 0 {
+		t.Fatalf("candidate filter regression: %+v", r.CandidateFilter)
+	}
+	for _, run := range r.Runs {
+		for _, candidate := range run.Output.Candidates {
+			if candidate.Decision != "PENDING" || !candidate.RequiresReview {
+				t.Fatal("filter accepted identity automatically")
+			}
+		}
+	}
+}
+
+func TestExistingRepairsRegressionCorpus(t *testing.T) {
+	var c Corpus
+	if err := storage.Read("../../fixtures/benchmark-existing-repairs-v1.json", &c); err != nil {
+		t.Fatal(err)
+	}
+	r, err := Execute(context.Background(), c, extract.Config{}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	m := r.Metrics["rules"]
+	if r.CandidateFilter.TP != 4 || r.CandidateFilter.FP != 0 || r.CandidateFilter.FN != 0 || m.Claims.TP != 2 || m.Claims.FP != 0 || m.Claims.FN != 0 {
+		t.Fatalf("existing repair regression: filter=%+v claims=%+v", r.CandidateFilter, m.Claims)
+	}
+}

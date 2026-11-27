@@ -1,8 +1,10 @@
 # Validation
 
+The current deterministic extraction pipeline is `relations-v13`. The dated entries below describe historical validation of earlier versions, not the current pipeline's accuracy. See [the matrix and post-audit evaluation](MATRIX-RESULTS-2026-10-26.md) and [the later access evaluation](ACCESS-RELIABILITY-2026-10-27.md) for subsequent results and their limits.
+
 ## New-name comparison and passage extraction, 24 October 2026
 
-The default pipeline is now `relations-v4`. Three previously unsearched names were collected once and replayed through rules and local Qwen before and after the changes. Observed evidence hashes match across replays. See [COMPARISON-NEW-NAMES.md](COMPARISON-NEW-NAMES.md) for per-name results, errors, model configuration, artifacts, and limitations. Rules now fill six company fields and nine role fields across 15 candidates; the earlier pipeline filled one incorrect company and five roles. Model proposals passing validation increased from three to thirteen, including overlap with rules. These counts do not measure general accuracy or establish current employment truth.
+The pipeline evaluated in this entry was `relations-v4`. Three previously unsearched names were collected once and replayed through rules and local Qwen before and after the changes. Observed evidence hashes match across replays. See [COMPARISON-NEW-NAMES.md](COMPARISON-NEW-NAMES.md) for per-name results, errors, model configuration, artifacts, and limitations. Rules then filled six company fields and nine role fields across 15 candidates; the earlier pipeline filled one incorrect company and five roles. Model proposals passing validation increased from three to thirteen, including overlap with rules. These counts do not measure general accuracy or establish current employment truth.
 
 The full Go test suite, vet, and Windows build passed. Added regression cases cover varied grammar, incorrect attribution to a longer personal name, topic/employer separation, source passage bounds, later subject mentions, source ID mapping, rejection of generated quotes, and preservation of source citations. The existing 13-case known regression corpus was also rerun with Qwen: all ten expected relationships were retained and the four negative cases produced no retained relationships.
 

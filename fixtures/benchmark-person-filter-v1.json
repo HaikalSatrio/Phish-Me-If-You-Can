@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "description": "Synthetic development regression cases for leading-name collisions in individual profile titles. URLs are input strings only; this corpus is replayed offline. Labels were authored for this change and are not held-out or real-person identity accuracy measurements.",
+  "observed_at": "2026-11-27T17:00:00Z",
+  "cases": [
+    {"id":"wiki-leading-name","category":"name-collision","name":"Mira Chen","results":[{"id":"a","url":"https://en.wikipedia.org/wiki/Amelia_Mira_Chen","title":"Amelia Mira Chen - Wikipedia","snippet":"Biography of Amelia Mira Chen.","keep":false,"expected":[]}]},
+    {"id":"linkedin-leading-name","category":"name-collision","name":"Mira Chen","results":[{"id":"a","url":"https://linkedin.com/in/amelia-mira","title":"Amelia Mira Chen - Profile","snippet":"Profile of Amelia Mira Chen.","keep":false,"expected":[]}]},
+    {"id":"instagram-leading-name","category":"name-collision","name":"Mira Chen","results":[{"id":"a","url":"https://instagram.com/amelia_mira","title":"Amelia Mira Chen (@amelia_mira)","snippet":"Profile of Amelia Mira Chen.","keep":false,"expected":[]}]},
+    {"id":"exact-wiki","category":"positive-control","name":"Mira Chen","results":[{"id":"a","url":"https://en.wikipedia.org/wiki/Mira_Chen","title":"Mira Chen - Wikipedia","snippet":"Biography of Mira Chen.","keep":true,"expected":[]}]},
+    {"id":"middle-name","category":"review-candidate","name":"Mira Chen","results":[{"id":"a","url":"https://en.wikipedia.org/wiki/Mira_Elena_Chen","title":"Mira Elena Chen - Wikipedia","snippet":"Biography of Mira Elena Chen.","keep":true,"expected":[]}]},
+    {"id":"alias-clue","category":"review-candidate","name":"Mira Chen","results":[{"id":"a","url":"https://en.wikipedia.org/wiki/Amelia_Mira_Chen","title":"Amelia Mira Chen - Wikipedia","snippet":"Amelia Mira Chen, also known as Mira Chen.","keep":true,"expected":[]}]},
+    {"id":"article-mention","category":"third-party","name":"Mira Chen","results":[{"id":"a","url":"https://news.example.org/interview","title":"Amelia interviews Mira Chen","snippet":"Interview with Mira Chen.","keep":true,"expected":[]}]},
+    {"id":"directory","category":"directory","name":"Mira Chen","results":[{"id":"a","url":"https://linkedin.com/pub/dir/mira/chen","title":"Mira Chen profiles","snippet":"Directory.","keep":false,"expected":[]}]},
+    {"id":"unrelated","category":"unrelated","name":"Mira Chen","results":[{"id":"a","url":"https://profiles.example.org/amelia","title":"Amelia Solis","snippet":"Personal profile.","keep":false,"expected":[]}]},
+    {"id":"partial-individual","category":"review-candidate","name":"Mira Elena Chen","results":[{"id":"a","url":"https://linkedin.com/in/mira-chen","title":"Mira Chen - Profile","snippet":"Individual profile.","keep":true,"expected":[]}]}
+  ]
+}

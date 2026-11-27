@@ -16,6 +16,10 @@ Hubungan nama panggung dan nama publik sekarang diekstrak dari kutipan eksplisit
 
 PES adalah indeks eksperimental exposure, bukan probabilitas seseorang akan terkena phishing. Bobot, threshold, dan rubric contoh belum divalidasi secara empiris.
 
+Perbaikan algoritma terbaru mencakup pemetaan field GitHub HTML, preservasi konflik/provenance ketika hasil digabung, filter benturan nama pada judul profil, dan pendidikan eksplisit dalam prosa. Lihat [hasil sebelum/sesudah dan pekerjaan berikutnya](docs/ALGORITHM-PROGRESS-2026-11-28.md). Evaluasi terbaru bersifat offline dan sintetis; bukan ukuran akurasi web atau identitas nyata.
+
+Koreksi lanjutan untuk implementasi yang sudah ada tersedia pada `relations-v13`: penanganan pertanyaan, atribusi tautan profil, konten tersembunyi, provenance nama, dan pengikatan alias. Lihat [bukti regresi perbaikan](docs/EXISTING-REPAIRS-2026-11-28.md).
+
 ## Menjalankan
 
 Memerlukan Go 1.26 atau lebih baru untuk build. Executable yang sudah dibuat dapat langsung dijalankan. Jalankan dari root repository:
@@ -30,6 +34,12 @@ go test ./...
 ```
 
 Pada Windows, executable build dapat diberi nama `bin/pmiyc.exe`. Semua output file harus memakai nama yang belum ada. Review menyimpan snapshot baru sehingga input asli tetap tersedia.
+
+Pencarian baru memakai `configs/collector-default-v2.json`: jeda minimum 1 detik per host (6 detik untuk pencarian), cooldown persisten sesuai `Retry-After`, maksimal satu retry, dan maksimal 5 detik menunggu cooldown. Semua percobaan tetap memakai budget dan deadline sesi. Profil ini memakai resolver sistem; penyesuaian DNS/TLS khusus jaringan pada `collector-reliable-v4.json` tetap opsional. Proses yang dijalankan dari direktori kerja yang sama berbagi state di `data/access-state`.
+
+Untuk melanjutkan sesi lama, berikan konfigurasi asli secara eksplisit, misalnya `search -input data/sesi-lama.json -config configs/collector-v1.json`. Konfigurasi dan observasi lama tidak dimigrasikan otomatis. Jika proses berhenti paksa dan meninggalkan lock, ikuti [panduan pemulihan state](docs/ACCESS-RELIABILITY.md); jangan menghapus state untuk mengabaikan cooldown.
+
+Perintah `graph` memvalidasi policy sebelum menulis output. JSON dan DOT harus memakai path berbeda; keduanya dipublikasikan melalui temporary file tanpa menimpa file yang sudah ada. Publikasi aman berlaku per file, bukan transaksi gabungan: jika output kedua gagal, output pertama dapat tetap tersimpan.
 
 ## Isi versi awal
 

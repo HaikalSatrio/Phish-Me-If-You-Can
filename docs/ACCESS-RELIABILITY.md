@@ -2,6 +2,14 @@
 
 Keberhasilan koneksi, tersedianya hasil pencarian, dan kecocokan identitas adalah tiga ukuran berbeda. HTTP 200 belum membuktikan halaman berisi hasil yang dapat dipakai. Kandidat yang ditemukan tetap memerlukan review identitas.
 
+## Konfigurasi default
+
+Pencarian baru menggunakan `configs/collector-default-v2.json`. Profil ini mengaktifkan antrean per host, cooldown persisten, penghormatan `Retry-After`, maksimal satu retry, dan maksimal 5 detik menunggu cooldown. Jeda minimum adalah 1 detik per host dan 6 detik untuk pencarian. State disimpan di `data/access-state`, relatif terhadap direktori kerja. Resolver sistem dan negosiasi TLS standar tetap dipakai.
+
+Profil default belum diuji ulang terhadap penyedia secara live; angka pilot di laporan akses hanya berlaku pada konfigurasi yang direkam dalam laporan tersebut. Peningkatan jeda/retry dapat menambah latensi. Browser Google dan fan-out engine SearXNG tetap berada di luar antrean HTTP ini.
+
+Konfigurasi `collector-v1.json` tetap tersedia untuk reproduksi dan melanjutkan sesi lama. Resume harus menyertakan `-config` yang sama dengan sesi asal; perubahan default tidak mengubah snapshot lama.
+
 ## Menjalankan di WSL
 
 Dari direktori repository, dengan SearXNG lokal berjalan pada port 8888:

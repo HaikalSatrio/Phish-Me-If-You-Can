@@ -48,7 +48,7 @@ func runSearch(args []string) error {
 	input := fs.String("input", "", "saved search session to refine")
 	interactive := fs.Bool("interactive", false, "review collected identities interactively and save a separate reviewed snapshot")
 	out := fs.String("out", "", "new output file, default data/<session>-<attempt>.json")
-	config := fs.String("config", "configs/collector-v1.json", "collector configuration")
+	config := fs.String("config", "configs/collector-default-v2.json", "collector configuration; resume requires the original configuration")
 	if err := fs.Parse(args); err != nil {
 		return err
 	}

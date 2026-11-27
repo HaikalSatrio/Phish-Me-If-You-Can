@@ -34,10 +34,10 @@ func pageIdentity(doc *html.Node, base *url.URL, facts []Fact) (string, []resear
 				return
 			}
 			if n.Data == "h1" && heading == "" {
-				heading = nodeText(n)
+				heading = profileFieldText(n)
 			}
 			if platformFor(base.Hostname()) == "github" && len(strings.Split(strings.Trim(base.Path, "/"), "/")) == 1 && hasClass(n, "p-name") && hasClass(n, "vcard-fullname") {
-				name = nodeText(n)
+				name = profileFieldText(n)
 			}
 			if n.Data == "a" && len(links) < 8 {
 				label := strings.ToLower(strings.TrimSpace(nodeText(n)))

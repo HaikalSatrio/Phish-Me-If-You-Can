@@ -24,8 +24,8 @@ type Adapter struct {
 
 func DirectAdapters() []Adapter {
 	return []Adapter{
-		{"github", "https://github.com/", `^[A-Za-z0-9][A-Za-z0-9-]{0,38}$`, "github-html-v2"},
-		{"devto", "https://dev.to/", `^[A-Za-z0-9_]{1,30}$`, "devto-html-v2"},
+		{"github", "https://github.com/", `^[A-Za-z0-9][A-Za-z0-9-]{0,38}$`, "github-html-v4"},
+		{"devto", "https://dev.to/", `^[A-Za-z0-9_]{1,30}$`, "devto-html-v3"},
 	}
 }
 
@@ -126,6 +126,9 @@ func parseDirect(body []byte, a Adapter, username, raw string) (Profile, string,
 	canonical, nickname, displayName, heading, bio := "", "", "", "", ""
 	var walk func(*html.Node)
 	walk = func(n *html.Node) {
+		if ignoredProfileNode(n) {
+			return
+		}
 		if n.Type == html.ElementNode {
 			if n.Data == "meta" {
 				meta[attr(n, "property")] = attr(n, "content")
@@ -135,17 +138,17 @@ func parseDirect(body []byte, a Adapter, username, raw string) (Profile, string,
 			}
 			if a.Name == "github" {
 				if attr(n, "itemprop") == "additionalName" && hasClass(n, "p-nickname") {
-					nickname = nodeText(n)
+					nickname = profileFieldText(n)
 				}
 				if attr(n, "itemprop") == "name" && hasClass(n, "p-name") {
-					displayName = nodeText(n)
+					displayName = profileFieldText(n)
 				}
 				if hasClass(n, "p-note") {
-					bio = nodeText(n)
+					bio = profileFieldText(n)
 				}
 			}
 			if a.Name == "devto" && n.Data == "h1" && hasClass(n, "crayons-title") {
-				heading = nodeText(n)
+				heading = profileFieldText(n)
 			}
 		}
 		for child := n.FirstChild; child != nil; child = child.NextSibling {
@@ -162,6 +165,7 @@ func parseDirect(body []byte, a Adapter, username, raw string) (Profile, string,
 			return p, "FAILED", "Expected profile type and exact visible username were not both found"
 		}
 		p.Login, p.Name = nickname, displayName
+		p.Company, p.Location, p.Email, p.Blog, p.Facts = githubDetailFields(doc)
 	case "devto":
 		if heading == "" || meta["og:site_name"] != "DEV Community" || !strings.HasSuffix(meta["og:title"], "DEV Community Profile") {
 			return p, "FAILED", "Expected DEV profile heading and profile metadata were not both found"
@@ -170,6 +174,6 @@ func parseDirect(body []byte, a Adapter, username, raw string) (Profile, string,
 	default:
 		return p, "FAILED", "Unsupported extraction rule"
 	}
-	p.Facts = []Fact{{"page_title", meta["og:title"]}, {"profile_description", bio}}
+	p.Facts = append(p.Facts, Fact{"page_title", meta["og:title"]}, Fact{"profile_description", bio})
 	return p, "SUCCESS", "Matching profile URL and site-specific profile markers observed; person ownership still requires review"
 }

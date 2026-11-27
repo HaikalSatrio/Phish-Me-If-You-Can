@@ -7,10 +7,12 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/domain"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/evidence"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/graph"
+	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/scoring"
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/storage"
 )
 
@@ -27,12 +29,27 @@ func runGraph(args []string) error {
 	if *input == "" || fs.NArg() != 0 {
 		return fmt.Errorf("graph requires -input")
 	}
+	if *out != "" && *dot != "" {
+		jsonPath, err := filepath.Abs(*out)
+		if err != nil {
+			return err
+		}
+		dotPath, err := filepath.Abs(*dot)
+		if err != nil {
+			return err
+		}
+		if strings.EqualFold(jsonPath, dotPath) {
+			return fmt.Errorf("graph JSON and DOT outputs must use different paths")
+		}
+	}
 	for _, path := range []string{*out, *dot} {
 		if path == "" {
 			continue
 		}
 		if _, err := os.Stat(path); err == nil {
 			return fmt.Errorf("output already exists: %s", path)
+		} else if !os.IsNotExist(err) {
+			return err
 		}
 	}
 	var c domain.Case
@@ -46,6 +63,9 @@ func runGraph(args []string) error {
 	var p domain.Policy
 	if err := storage.Read(*policyPath, &p); err != nil {
 		return err
+	}
+	if err := scoring.Validate(p); err != nil {
+		return fmt.Errorf("graph policy: %w", err)
 	}
 	g := graph.Build(c, graph.Options{Policy: p, IncludeUnconfirmed: *unconfirmed})
 	if *out != "" {
@@ -66,18 +86,7 @@ func runGraph(args []string) error {
 
 // writeNewText follows the same never-overwrite rule as storage.WriteNew.
 func writeNewText(path, text string) error {
-	if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
-		return err
-	}
-	f, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0600)
-	if err != nil {
-		return err
-	}
-	if _, err := f.WriteString(text); err != nil {
-		f.Close()
-		return err
-	}
-	return f.Close()
+	return storage.WriteNewBytes(path, []byte(text))
 }
 
 func printGraph(w io.Writer, g graph.Graph) {

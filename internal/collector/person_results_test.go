@@ -10,6 +10,28 @@ import (
 	"time"
 )
 
+func TestLeadingNameFilterKeepsHonorificsAndExactAccountClues(t *testing.T) {
+	if !AcceptIndexedPerson(Query{Name: "Mira Chen"}, "https://linkedin.com/in/mira", "Dr Mira Chen - Profile", "") {
+		t.Fatal("honorific treated as another person's first name")
+	}
+	if !AcceptIndexedPerson(Query{Name: "Mira Chen", Username: "amelia_mira", Platform: "instagram"}, "https://instagram.com/amelia_mira", "Amelia Mira Chen (@amelia_mira)", "") {
+		t.Fatal("name heuristic overrode the supplied exact account clue")
+	}
+}
+
+func TestUnrelatedAliasMentionDoesNotOverrideLeadingNameCollision(t *testing.T) {
+	for _, snippet := range []string{
+		"Amelia Mira Chen profile. Another artist is known as Moon Light.",
+		"Amelia Mira Chen profile. Unknown as yet.",
+		"Amelia Mira Chen is not known as Mira Chen.",
+		"Amelia Mira Chen, also known as Mira Chen?",
+	} {
+		if AcceptIndexedPerson(Query{Name: "Mira Chen"}, "https://linkedin.com/in/amelia-mira", "Amelia Mira Chen - Profile", snippet) {
+			t.Fatalf("unrelated or negated alias bypassed name filter: %q", snippet)
+		}
+	}
+}
+
 func TestPartialNamesRequireIndividualProfileAndOrderedSubset(t *testing.T) {
 	q := Query{Name: "Raka Aditya Pranata"}
 	for _, tc := range []struct {

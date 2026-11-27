@@ -39,6 +39,10 @@ func WriteNew(path string, value any) error {
 	if err != nil {
 		return err
 	}
+	return WriteNewBytes(path, append(b, '\n'))
+}
+
+func WriteNewBytes(path string, b []byte) error {
 	if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
 		return err
 	}
@@ -47,7 +51,7 @@ func WriteNew(path string, value any) error {
 		return err
 	}
 	defer os.Remove(f.Name())
-	if _, err = f.Write(append(b, '\n')); err != nil {
+	if _, err = f.Write(b); err != nil {
 		f.Close()
 		return err
 	}

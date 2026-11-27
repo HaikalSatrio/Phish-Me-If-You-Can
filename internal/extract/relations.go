@@ -12,7 +12,7 @@ import (
 	"github.com/HaikalSatrio/Phish-Me-If-You-Can/internal/personname"
 )
 
-const RelationVersion = "relations-v11"
+const RelationVersion = "relations-v13"
 
 type Document struct {
 	ID   string `json:"id"`
@@ -43,6 +43,10 @@ func compact(s string) string { return strings.Join(strings.Fields(s), " ") }
 
 // Sentences retains table and paragraph boundaries and does not split PT names.
 func Sentences(text string) []string {
+	return splitSentences(text, false)
+}
+
+func splitSentences(text string, preserveQuestions bool) []string {
 	var out []string
 	start := 0
 	depth := 0
@@ -63,7 +67,11 @@ func Sentences(text string) []string {
 			boundary = depth == 0 && last != "pt" && last != "dr" && last != "mr" && last != "mrs" && last != "prof" && last != "jr" && last != "sr" && len([]rune(last)) != 1
 		}
 		if boundary {
-			if v := strings.TrimSpace(text[start:i]); v != "" {
+			end := i
+			if preserveQuestions && r == '?' {
+				end += len(string(r))
+			}
+			if v := strings.TrimSpace(text[start:end]); v != "" {
 				out = append(out, v)
 			}
 			start = i + len(string(r))
@@ -202,8 +210,9 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 		out = append(out, profileRelations(subject, doc, asOf)...)
 		out = append(out, profileBlockRelations(subject, doc, asOf)...)
 		out = append(out, attributedTitleRelations(subject, doc, asOf)...)
-		for _, quote := range Sentences(doc.Text) {
-			if len([]rune(quote)) > 600 || negatedRelation.MatchString(quote) {
+		out = append(out, adjacentEmploymentRelations(subject, doc, asOf)...)
+		for _, quote := range splitSentences(doc.Text, true) {
+			if strings.HasSuffix(quote, "?") || len([]rune(quote)) > 600 || negatedRelation.MatchString(quote) {
 				continue
 			}
 			rest, ok := subjectPrefix(quote, subject)
@@ -215,6 +224,10 @@ func Relations(subject string, docs []Document, asOf time.Time) []domain.Relatio
 			r := domain.Relation{Subject: subject, EvidenceID: doc.ID, Quote: quote, Method: RelationVersion, Status: "UNVERIFIED", Temporal: "unknown"}
 			// Non-employment relations must never populate the company summary.
 			lower := strings.ToLower(rest)
+			if organization, verb := studyFields(rest); organization != "" {
+				r.Kind, r.Organization = "education", organization
+				r.StartYear, r.EndYear, r.Temporal = temporal(temporalText, verb, asOf)
+			}
 			for _, marker := range []struct{ prefix, kind string }{{"was born at ", "birthplace"}, {"was born in ", "birthplace"}, {"lahir di ", "birthplace"}, {"studied at ", "education"}, {"belajar di ", "education"}, {"is a member of ", "membership"}, {"adalah anggota ", "membership"}} {
 				if strings.HasPrefix(lower, marker.prefix) {
 					r.Kind = marker.kind

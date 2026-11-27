@@ -1,6 +1,12 @@
 # Ekstraksi hubungan dengan bukti
 
-Pencarian sekarang menjalankan `relations-v8`. Ekstraktor company/role lama tetap tersedia sebagai baseline pengujian, tetapi tidak lagi mengisi hasil pencarian. Penyebutan nama di suatu halaman tidak cukup untuk mengaitkan semua organisasi di halaman itu dengan orang tersebut.
+Versi `relations-v13` mempertahankan tanda tanya ketika memproses pola pernyataan eksplisit, sehingga pertanyaan seperti `Mira Chen studies Computer Science at Harbor University?` tidak menjadi klaim pendidikan. Pernyataan setelah pertanyaan tetap dapat diekstrak. Ini koreksi pemisahan kalimat, bukan perluasan kemampuan ekstraksi. Lihat [catatan perbaikan implementasi](EXISTING-REPAIRS-2026-11-28.md).
+
+Pencarian sekarang menjalankan `relations-v13`. Ekstraktor company/role lama tetap tersedia sebagai baseline pengujian, tetapi tidak lagi mengisi hasil pencarian. Penyebutan nama di suatu halaman tidak cukup untuk mengaitkan semua organisasi di halaman itu dengan orang tersebut.
+
+Versi v12 menambahkan pola studi eksplisit seperti `studies Computer Science at Harbor University` dan `kuliah Teknik Informatika di Universitas Cendana`. Subjek harus mengawali klausa, institusi harus disebut secara literal, dan jurusan dibatasi pada daftar pola yang didukung. Pernyataan riset seperti `studies the effects of pollution` tidak diperlakukan sebagai pendidikan. Hasil tetap `UNVERIFIED`, memakai kutipan sumber, dan tidak menjadi employer atau evidence observed untuk PES. Bentuk bahasa dan jurusan di luar pola dapat tetap terlewat. Lihat [progres algoritma dan batas evaluasi](ALGORITHM-PROGRESS-2026-11-28.md).
+
+Pola dua kalimat bersebelahan mendukung `Mira Chen joined Pine Labs. She works there as Researcher.` beserta bentuk `bergabung di ... . Ia bekerja di sana sebagai ...`. Nama lengkap harus mengawali paragraf dan dua kalimat harus berasal dari dokumen serta paragraf yang sama, tanpa orang lain atau klausa yang ambigu di antaranya. Kutipan menyimpan kedua kalimat asli; ini tetap usulan hubungan yang belum terverifikasi, bukan resolusi pronoun umum. Periode pada kalimat pekerjaan dinilai terpisah dari waktu bergabung.
 
 Versi v8 menolak usulan model yang mengaitkan profesi eksplisit kerabat atau teman kepada subjek, serta usulan pendidikan yang memakai judul role sebagai institusi. Perubahan berasal dari [benchmark pada input yang sama](BENCHMARK-BASELINE.md); aturan tersebut belum mencakup semua bentuk atribusi bahasa alami.
 

@@ -1,0 +1,106 @@
+{
+  "schema_version": "existing-repairs-v1",
+  "date": "2026-11-28",
+  "scope": "Offline synthetic regression and mock transport tests only. No external target access.",
+  "before_binary_sha256": "6f6ac3bca8b189f083bb81f9941217195e85ddf27093a2e7fe6f80e35069154b",
+  "after_binary_sha256": "0ca959b0dd1249c8c2e561ddc106b30ef2b92768da84efae624978ae4d1a2e25",
+  "source_sha256": {
+    "internal/collector/anchors.go": "25c50d825db3709e5a46ada327362197d845ec13db830a79d0e9205f0b1d312e",
+    "internal/collector/direct.go": "171c5e404e1dde98f8dd5a16e7ed26654fb49062a2c2e10ff616b9bb03fbed69",
+    "internal/collector/github_fields.go": "cc66b53c0cdb47164b23c50afe3b64ba9b27e691df3a435371b2f1012c01f400",
+    "internal/collector/pages.go": "a129390ca0de6054a7f32b3febbfc51a3d5095ddc60485d628a4d56fe7067f02",
+    "internal/collector/person_results.go": "fff06bedf34897258762cec59b56fa2afc39346ebad447f0e569ceffcce0d200",
+    "internal/collector/research_clues.go": "bbbba798063773d05874b04f9ffb2ba2a3c1192105638b5fe9586fe2474e0372",
+    "internal/extract/adjacent_employment.go": "723d8a047a042131be299a2c50ddc096af8a8fd056eab1d0b2aaabb6934b27c0",
+    "internal/extract/education.go": "0e106ffd5cd7ee03b4cb71d136715a4fdd359a69d744177a4b62d11d95797d41",
+    "internal/extract/relations.go": "a37accf68da0fe776d3155df0ee83a952dc5732b0e74f0b60c2fac7089ba065b"
+  },
+  "reports": {
+    "before": {
+      "path": "data/existing-repairs-20261128-015936/before.json",
+      "sha256": "2ddbf899aff5a33082abe56e4653c4691a1ffa04cd35c26a77e2a5f657e222f3",
+      "corpus_sha256": "4db941ac99fa64836fcf10c3531e6662507f26bca99c7acfb1515a2c517ed2c2",
+      "extractor_version": "relations-v12",
+      "candidate_filter": {
+        "true_positive": 4,
+        "false_positive": 2,
+        "false_negative": 0,
+        "precision": 0.6666666666666666,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 2,
+        "false_positive": 2,
+        "false_negative": 0,
+        "precision": 0.5,
+        "recall": 1
+      }
+    },
+    "after": {
+      "path": "data/existing-repairs-20261128-015936/after.json",
+      "sha256": "915444c1dbd3c103550a73ef1cafb38e15292a6b842c68e3cecdeb28d7834ee7",
+      "corpus_sha256": "4db941ac99fa64836fcf10c3531e6662507f26bca99c7acfb1515a2c517ed2c2",
+      "extractor_version": "relations-v13",
+      "candidate_filter": {
+        "true_positive": 4,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 2,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      }
+    },
+    "person-filter": {
+      "path": "data/existing-repairs-20261128-015936/person-filter.json",
+      "sha256": "40e919fd265e7781d9866cb4aa959dce3ce2f8c8a54e0c08d54c8f4db2a40bd1",
+      "corpus_sha256": "bc304866161d1b1e7dddd0a00e7cfa86080425faa09d60008e9b5b0570aa5614",
+      "extractor_version": "relations-v13",
+      "candidate_filter": {
+        "true_positive": 5,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": null,
+        "recall": null
+      }
+    },
+    "extraction": {
+      "path": "data/existing-repairs-20261128-015936/extraction.json",
+      "sha256": "907ce9805deff1d785e79704d7b193d30f936609fa86ac77e63147717c3483e1",
+      "corpus_sha256": "247c342d37d5b4a7096f8856c4860777d20b0e39ab0d95fab6085db435042c0d",
+      "extractor_version": "relations-v13",
+      "candidate_filter": {
+        "true_positive": 21,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 16,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      }
+    }
+  },
+  "limitations": [
+    "Development regression sets, not independent held-out evaluation.",
+    "Six new cases exercise question and alias repairs; HTML and provenance repairs are covered by separate tests.",
+    "No general real-world accuracy or latency improvement is established.",
+    "Raw benchmark reports remain in ignored local data directory."
+  ]
+}

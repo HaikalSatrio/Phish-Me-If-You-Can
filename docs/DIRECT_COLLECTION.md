@@ -2,7 +2,11 @@
 
 This experimental collection path uses public HTML, without API credentials or a browser. It implements two adapters: GitHub and DEV Community. Regression tests cover matching profile metadata, conflicting URLs, and bounded redirects. See VALIDATION.md for live checks; these do not establish reliability across all accounts and layouts.
 
+The GitHub `github-html-v4` rule maps explicit company, location, website, and email fields inside the visible `vcard-details` container. Matching profile URL metadata, profile type and visible username are required. The public-page path reuses this rule on single-account GitHub URLs without an additional request. Repository content, hidden markup and unsafe website links cannot populate these fields through this rule. Conflicting values remain separate source claims instead of selecting one summary value. These are public self-descriptions, not verified current employment or account ownership; CSS classes and the supported HTML layout can change.
+
 ## Usage
+
+Current rules are `github-html-v4` and `devto-html-v3`. Visible profile text excludes hidden child elements. Links nested inside company/location fields are not interpreted as personal website/email fields. See [the corrective regression tests](EXISTING-REPAIRS-2026-11-28.md).
 
 Run from the repository root. Use an account you own or are authorized to assess.
 

@@ -1,0 +1,114 @@
+{
+  "schema_version": "algorithm-regression-v1",
+  "date": "2026-11-28",
+  "scope": "Offline synthetic development regressions; no live target collection or model evaluation.",
+  "baseline_windows_binary_sha256": "eb95df7f0cfc8c503bba79ee4396e397d5f9eaea29e17fcbd681b96439c6195c",
+  "updated_windows_binary_sha256": "6f6ac3bca8b189f083bb81f9941217195e85ddf27093a2e7fe6f80e35069154b",
+  "source_sha256": {
+    "internal/collector/anchors.go": "52f7fe790864af1a49a9989acffa32a04fda4ddea1517b5e76c3f2808d9f1241",
+    "internal/collector/direct.go": "57e3336c2ecc3b58bcc9f3d1481315b83c237b45f6c4b11f042ab56aa2b2cb89",
+    "internal/collector/pages.go": "5a237fe9e4f317979c70832b503023e0868d8c11b6d36402bd0b1ad1b866f8f0",
+    "internal/collector/person_results.go": "1e5ba4eefc21fb8050403bc2e390c63c3fff92b55df2c19013f8844984187c60",
+    "internal/collector/github_fields.go": "f5dd0d024a9a5638f22bf236f36994d494e453e2216f58a35c5681ccbffb5587",
+    "internal/extract/education.go": "f435409598fd53fa5f4597bbd742507f0cf27fd2c1c3c9f09d66bed75f665bbc",
+    "internal/extract/adjacent_employment.go": "1dcce072c03fecb2ba33322e4851aff47a2e925e3888cb626c7b9e9763b0a211",
+    "internal/extract/relations.go": "2f9f0799318e2fb42454f5b418f6b54d244a2bb47eb9af6950c63da940920e90"
+  },
+  "reports": {
+    "person-filter-before": {
+      "path": "data/algorithm-review-20261128-011525/person-filter-before.json",
+      "sha256": "9b798f53ecd37bd91248b4eaa868e2f1f32613cd9468b91cd48811c023b6e7d6",
+      "corpus_sha256": "bc304866161d1b1e7dddd0a00e7cfa86080425faa09d60008e9b5b0570aa5614",
+      "extractor_version": "relations-v11",
+      "candidate_filter": {
+        "true_positive": 5,
+        "false_positive": 3,
+        "false_negative": 0,
+        "precision": 0.625,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": null,
+        "recall": null
+      },
+      "correct_abstentions": 10,
+      "negative_cases": 10
+    },
+    "person-filter-after": {
+      "path": "data/algorithm-review-20261128-011525/person-filter-v12-final.json",
+      "sha256": "f9e30e6adf0698e3fcafc9b7486189e507c08ee917a53a1104a2fbe8a0a6ba9d",
+      "corpus_sha256": "bc304866161d1b1e7dddd0a00e7cfa86080425faa09d60008e9b5b0570aa5614",
+      "extractor_version": "relations-v12",
+      "candidate_filter": {
+        "true_positive": 5,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": null,
+        "recall": null
+      },
+      "correct_abstentions": 10,
+      "negative_cases": 10
+    },
+    "extraction-before": {
+      "path": "data/algorithm-review-20261128-011525/extraction-before.json",
+      "sha256": "ae585593320d69c132dc0bf9ec206ffd63d3f9f3ec8073a2ee23a91e7cfb75bb",
+      "corpus_sha256": "247c342d37d5b4a7096f8856c4860777d20b0e39ab0d95fab6085db435042c0d",
+      "extractor_version": "relations-v11",
+      "candidate_filter": {
+        "true_positive": 21,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 14,
+        "false_positive": 0,
+        "false_negative": 2,
+        "precision": 1,
+        "recall": 0.875
+      },
+      "correct_abstentions": 11,
+      "negative_cases": 11
+    },
+    "extraction-after": {
+      "path": "data/algorithm-review-20261128-011525/extraction-v12-final.json",
+      "sha256": "e776b93058a3ad4fe87945a1867f949e75aebb9e4e776289ee5bd5f51da38be8",
+      "corpus_sha256": "247c342d37d5b4a7096f8856c4860777d20b0e39ab0d95fab6085db435042c0d",
+      "extractor_version": "relations-v12",
+      "candidate_filter": {
+        "true_positive": 21,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "claims": {
+        "true_positive": 16,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "correct_abstentions": 11,
+      "negative_cases": 11
+    }
+  },
+  "limitations": [
+    "Both corpora are development regression sets, not held-out.",
+    "Filter fixture has 10 cases; original extraction corpus has 24 cases.",
+    "No real-world identity accuracy, provider availability, or web recall measurement.",
+    "Only the bounded adjacent-sentence employment pattern is supported, not general pronoun resolution.",
+    "Raw reports remain in ignored local data directory."
+  ]
+}

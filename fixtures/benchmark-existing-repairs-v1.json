@@ -1,0 +1,13 @@
+{
+  "version": "1",
+  "description": "Synthetic development regressions for existing implementation repairs: questions are not assertions, and unrelated or negated aliases cannot bypass a leading-name collision. Offline replay only; not held-out or real-world identity evaluation.",
+  "observed_at": "2026-11-27T17:00:00Z",
+  "cases": [
+    {"id":"study-question","category":"question","name":"Mira Chen","results":[{"id":"a","url":"https://profiles.example.org/mira","title":"Mira Chen","snippet":"Mira Chen studies Computer Science at Harbor University?","keep":true,"expected":[]}]},
+    {"id":"unrelated-alias","category":"name-collision","name":"Mira Chen","results":[{"id":"a","url":"https://linkedin.com/in/amelia-mira","title":"Amelia Mira Chen - Profile","snippet":"Amelia Mira Chen profile. Another artist is known as Moon Light.","keep":false,"expected":[]}]},
+    {"id":"negated-alias","category":"name-collision","name":"Mira Chen","results":[{"id":"a","url":"https://linkedin.com/in/amelia-mira","title":"Amelia Mira Chen - Profile","snippet":"Amelia Mira Chen is not known as Mira Chen.","keep":false,"expected":[]}]},
+    {"id":"explicit-alias","category":"positive-control","name":"Mira Chen","results":[{"id":"a","url":"https://linkedin.com/in/amelia-mira","title":"Amelia Mira Chen - Profile","snippet":"Amelia Mira Chen, also known as Mira Chen.","keep":true,"expected":[]}]},
+    {"id":"assertion-after-question","category":"positive-control","name":"Mira Chen","results":[{"id":"a","url":"https://profiles.example.org/mira","title":"Mira Chen","snippet":"Mira Chen studies Computer Science at Harbor University? Mira Chen studies Computer Science at Cedar University.","keep":true,"expected":[{"subject":"Mira Chen","kind":"education","organization":"Cedar University","temporal":"present_assertion"}]}]},
+    {"id":"study-assertion","category":"positive-control","name":"Mira Chen","results":[{"id":"a","url":"https://profiles.example.org/mira","title":"Mira Chen","snippet":"Mira Chen studies Computer Science at Harbor University.","keep":true,"expected":[{"subject":"Mira Chen","kind":"education","organization":"Harbor University","temporal":"present_assertion"}]}]}
+  ]
+}

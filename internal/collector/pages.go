@@ -139,7 +139,15 @@ func (p *Page) Collect(ctx context.Context, q Query) Result {
 		encoded, _ := json.Marshal(profileLinks)
 		facts = append(facts, Fact{"profile_links", string(encoded)})
 	}
-	r.Profiles = append(r.Profiles, Profile{Name: name, Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(response.Body)), Rule: "public-page-v6", Facts: facts})
+	observed := Profile{Name: name, Key: keyFor("page", u.String()), Platform: platformFor(u.Hostname()), URL: u.String(), SourceURL: u.String(), ResponseSHA256: fmt.Sprintf("%x", sha256.Sum256(response.Body)), Rule: "public-page-v8", Facts: facts}
+	if observed.Platform == "github" && ValidLogin(strings.Trim(u.Path, "/")) {
+		adapter := DirectAdapters()[0]
+		if parsed, status, _ := parseDirect(response.Body, adapter, strings.Trim(u.Path, "/"), u.String()); status == "SUCCESS" {
+			parsed.Rule, parsed.ResponseSHA256 = adapter.Rule, observed.ResponseSHA256
+			mergeProfileFacts(&observed, parsed)
+		}
+	}
+	r.Profiles = append(r.Profiles, observed)
 	r.Events = append(r.Events, Event{"url:page", "SUCCESS", "HTML metadata, bounded page text, and public links; no verified personal facts"})
 	return r
 }
