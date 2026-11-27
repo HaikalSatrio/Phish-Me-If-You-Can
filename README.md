@@ -12,6 +12,8 @@ Setelah konfirmasi identitas, `pmiyc profile -input data/hasil-reviewed.json -ou
 
 Hubungan nama panggung dan nama publik sekarang diekstrak dari kutipan eksplisit tanpa Ollama. Nama yang ambigu tetap dipisahkan untuk review, dan pencarian nama saja dapat menambahkan query biografi dalam budget yang sama. Lihat [cara kerja dan hasil uji 17 query](docs/PUBLIC-NAMES.md).
 
+`pmiyc graph -input data/hasil-reviewed.json -out data/graph.json -dot data/graph.dot` menyusun exposure graph: subjek, akun dengan identitas yang diterima, dan fakta publik yang diekspos akun tersebut. Fakta dikelompokkan sebagai identity, contact, affiliation, routine, atau social. Fakta yang sama pada beberapa akun menjadi satu node, sehingga kombinasi exposure terlihat. Caption Instagram menyumbang node post beserta hashtag, mention, dan label lokasi atau acara. Metadata penemuan (judul, cuplikan, teks halaman) dikecualikan seperti pada PES. Tambahkan `-include-unconfirmed` untuk memeriksa kandidat yang belum dikonfirmasi; kandidat yang ditolak selalu dikecualikan. File DOT dapat dirender dengan Graphviz (`dot -Tpng data/graph.dot -o graph.png`). Graph hanya menata ulang evidence yang ada dan belum menghitung Shapley atau remediasi.
+
 PES adalah indeks eksperimental exposure, bukan probabilitas seseorang akan terkena phishing. Bobot, threshold, dan rubric contoh belum divalidasi secara empiris.
 
 ## Menjalankan
